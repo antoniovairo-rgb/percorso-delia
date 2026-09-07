@@ -509,17 +509,28 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 <section class="vista" id="v-porte" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Altre porte</h2>
-    <p class="desc">Due elenchi. Sopra, il lavoro di segreteria part time entro dieci chilometri da casa: quello che sai fare da dieci anni e che nessuno ti può contestare. Sotto, i lavori che la tua laurea apre fuori dalla sezione, dove non ti chiedono né l'ESEI né le graduatorie. Annunci veri, controllati il 7 settembre 2026, con la data e il link per verificarli tu.</p>
+    <p class="desc">Lavoro di segreteria vicino casa, e lavori che la tua laurea apre fuori dalla sezione. Tengo solo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Controllato il 7 settembre 2026.</p>
 
     <div class="avviso" style="margin-bottom:18px">
-      <h3>Prima di scorrere, una cosa</h3>
-      <p>Il fatto che la strada dell'infanzia sia lenta non vuol dire che tu sia ferma. Vuol dire solo che quella porta ha una fila davanti. Tu di porte ne hai tre, non una: dieci anni di segreteria con un diploma di ragioniere alle spalle, una laurea che vale in posti dove non hai mai guardato, e l'esperienza in sezione che continui a costruire.</p>
-      <p>Questa pagina non sostituisce le altre. Sta accanto. Puoi mandare una candidatura da qui stasera e continuare domani con la scuola, senza rinunciare a niente.</p>
+      <h3>Fermati un secondo e leggi questo</h3>
+      <p>Se in questi mesi ti sei sentita ferma, non è perché non vali abbastanza. La strada dei nidi è lenta per un motivo burocratico, un decreto che chiede certi crediti nel piano di studi, e basta. Non è un giudizio su di te.</p>
+      <p>E intanto tu, in mano, hai tre cose e non una: una laurea presa a 107 studiando mentre lavoravi, un diploma di ragioniere, e dieci anni veri di segreteria in società serie. Non sei una che comincia adesso. Sei una che sa già fare due mestieri diversi.</p>
+      <p>Qui sotto ci sono due studi legali che descrivono, riga per riga, il lavoro che facevi in DeA Capital. E c'è una porta, l'OEPAC, che il regolamento di Roma Capitale ti apre oggi con la laurea che hai già, senza aspettare nessun corso. Non è poco. Comincia da una sola cosa, e falla oggi.</p>
+    </div>
+
+    <div class="avviso info" style="margin-bottom:18px">
+      <h3>Se oggi fai solo tre cose, fai queste</h3>
+      <ul>
+        <li><b>Manda il curriculum a cv@studiomassafra.com.</b> Part time dalle 15 alle 19, tempo indeterminato, e si scrive direttamente allo studio senza passare da nessun portale. In Lettere scegli il testo per la segreteria in azienda o studio.</li>
+        <li><b>Scrivi a ISKRA e a Obiettivo Uomo per l'OEPAC.</b> Sono due enti veri, con nome e indirizzo, e Obiettivo Uomo dice apertamente che si entra in banca dati anche senza annunci aperti. In Lettere c'è il testo già pronto per l'OEPAC.</li>
+        <li><b>Rispondi a Fisioaniene.</b> Reception in un centro di fisioterapia, orario flessibile e parcheggio, e tu hai già lavorato in due cliniche.</li>
+      </ul>
+      <p>Tre mail. Mezz'ora in tutto. Quando le hai mandate, aggiungile al tracker e chiudi il telefono.</p>
     </div>
 
     <div class="card" id="lista-porte"></div>
 
-    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Gli annunci vengono da Indeed e sono stati letti uno per uno il 7 settembre 2026: quello che c'è scritto qui sopra è quello che c'è scritto nell'annuncio, non una mia interpretazione. Dove l'annuncio non dice l'indirizzo, ho scritto da verificare invece di indovinare. Le distanze sono stime in linea d'aria da Torpignattara, servono a farti un'idea, non a pianificare il tragitto. Qualcuno può essere già stato coperto: il link serve proprio a controllare.</p>
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di sei chilometri circa nel quadrante est, cioè Municipio V e VII e quelli attaccati, oppure raggiungibile senza cambi complicati con la metro C o con la A dopo San Giovanni. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Sei annunci su undici non dicevano dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri pubblici, e dove l'ho fatto è scritto nella scheda. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
   </div>
 </section>
 
@@ -963,85 +974,97 @@ const CANALI = [
 ];
 
 /* ===== ALTRE PORTE =====
-   Due famiglie: quello che sai già fare (segreteria) e quello che il titolo apre fuori dalla sezione.
-   Annunci trovati su Indeed il 7 settembre 2026. Distanze stimate in linea d'aria da Torpignattara. */
+   Criterio deciso il 7 settembre 2026: entro circa 6 km nel quadrante est
+   (Municipio V e VII più i confinanti attaccati), oppure raggiungibile con la
+   metro C da Malatesta o con la metro A dopo San Giovanni.
+   Distanze in linea d'aria da Torpignattara, ricalcolate sugli indirizzi veri.
+   fuori:true = sta fuori dal criterio, finisce in coda. */
 const PORTE = [
-{fam:"A", id:"p-mg", t:"Segretaria di studio legale", ente:"Studio Legale MG", zona:"Piazza Bologna", km:6, kmt:"6 km circa",
- tipo:"Part time, 650-1300 euro al mese", pubb:"1 settembre 2026", stato:"top",
- d:"Questo è il tuo lavoro, scritto da qualcun altro. L'annuncio elenca: agenda e appuntamenti, centralino, accoglienza clienti, posta elettronica ordinaria e PEC, corrispondenza in entrata e uscita, organizzazione viaggi, apertura e registrazione incarichi, archiviazione cartacea e digitale, parcelle e fatture elettroniche. È parola per parola quello che hai fatto per quattro anni come assistente di direzione dell'area legale in DeA Capital, e prima ancora in Cassa Depositi e Prestiti. Non chiedono titoli di studio, chiedono che tu lo sappia fare.",
- url:"https://to.indeed.com/aamxcjnkrhlm"},
-{fam:"A", id:"p-massafra", t:"Segretaria di studio legale, tempo indeterminato", ente:"Studio legale Massafra", zona:"Parioli", km:9, kmt:"9 km circa",
- tipo:"Part time pomeridiano, 15 alle 19, dal lunedì al venerdì", pubb:"2 settembre 2026", stato:"top",
- d:"L'unico di tutta la lista che offre un tempo indeterminato, con il CCNL Studi professionali. Orario 15 alle 19 dal lunedì al venerdì, e valutano anche un part time più lungo. Le mansioni sono le stesse dell'altro studio legale, più il fascicolo telematico del processo civile, amministrativo e tributario: quello non l'hai mai fatto, ma è una procedura, si impara. Il curriculum va mandato direttamente a cv@studiomassafra.com, quindi non passi da nessun portale. Di tutta la pagina, questa è la mail da scrivere per prima.",
+{fam:"A", id:"p-massafra", pri:0, t:"Segretaria di studio legale, tempo indeterminato", ente:"Studio legale Massafra", zona:"Prati, vicino alla metro A Lepanto", km:8.8, kmt:"metro A", 
+ tipo:"Part time pomeridiano, 15 alle 19, dal lunedì al venerdì, tempo indeterminato", pubb:"2 settembre 2026", stato:"top",
+ d:"Di tutta questa pagina è l'unico che offre un posto fisso, con il CCNL Studi professionali. Le mansioni sono quelle che hai fatto per quattro anni in DeA Capital: accoglienza, centralino, calendario dello studio, posta elettronica e PEC degli avvocati, fascicoli cartacei e informatici. In più il fascicolo telematico del processo civile, che non hai mai fatto: è una procedura, si impara in una settimana. Il curriculum si manda diretto a cv@studiomassafra.com, senza passare da nessun portale. Un dettaglio da chiarire: l'annuncio dice zona Parioli, mentre i registri pubblici danno lo studio in via Giovanni Bettolo, che è Prati, a otto minuti a piedi da Lepanto. Se è Prati ci arrivi con la C fino a San Giovanni e la A fino a Lepanto, senza mai uscire dal metro. Chiedilo nella prima mail.",
  url:"https://to.indeed.com/aar6wxhzbfc8"},
-{fam:"A", id:"p-123", t:"Segreteria organizzativa con contabilità", ente:"Associazione 123 stella", zona:"Roma, due sedi, non indicate nell'annuncio", km:0, kmt:"da verificare",
- tipo:"Part time, 644-1200 euro al mese", pubb:"1 settembre 2026", stato:"buono",
- d:"Pratiche amministrative, emissione e registrazione fatture, scritture contabili, cassetto fiscale, archiviazione, fogli firma, rapporti con enti e collaboratori. Chiedono due anni di esperienza in segreteria organizzativa come requisito obbligatorio: tu ne hai dieci, quindi il filtro lo passi largamente. Il tuo diploma di ragioniere qui conta più della laurea. Prima di candidarti chiedi dove sono le due sedi, perché nell'annuncio non c'è scritto.",
- url:"https://to.indeed.com/aaxyf9lkbfgc"},
-{fam:"A", id:"p-fisio", t:"Segretaria di centro di fisioterapia, sostituzione maternità", ente:"Fisioaniene", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
- tipo:"Part time, circa 12 mesi, fino a 950 euro al mese", pubb:"31 agosto 2026", stato:"buono",
- d:"Reception, agenda dei fisioterapisti, pratiche amministrative sanitarie, rapporti con assicurazioni e fondi sanitari, supporto alla fatturazione. Chiedono esperienza in segreteria o reception, meglio se in ambito sanitario: tu hai due anni tra Vitaldent e Blu Dental più l'attestato da receptionist di cliniche odontoiatriche. Offrono orario flessibile e parcheggio libero, due cose che con due bambini piccoli pesano. Il nome fa pensare alla zona dell'Aniene, ma nell'annuncio l'indirizzo non c'è: chiedilo subito.",
+{fam:"A", id:"p-mg", t:"Segretaria di studio legale", ente:"Studio Legale MG", zona:"Piazza Bologna", km:4.5, kmt:"4,5 km",
+ tipo:"Part time, 650-1300 euro al mese", pubb:"1 settembre 2026", stato:"top",
+ d:"Questo è il tuo lavoro, scritto da qualcun altro. L'annuncio elenca: gestione di agenda, appuntamenti e call, centralino, accoglienza clienti, posta ordinaria e certificata, corrispondenza in entrata e uscita, organizzazione viaggi, apertura e registrazione incarichi, archiviazione cartacea e digitale, parcelle e fatture elettroniche. È riga per riga quello che facevi come assistente di direzione dell'area legale in DeA Capital, e prima ancora in Cassa Depositi e Prestiti. Non chiedono nessun titolo di studio: chiedono che tu lo sappia fare, e tu lo sai fare da dieci anni.",
+ url:"https://to.indeed.com/aamxcjnkrhlm"},
+{fam:"A", id:"p-fisio", t:"Segretaria di centro di fisioterapia", ente:"Fisioaniene", zona:"Via del Forte Tiburtino, zona Tiburtina", km:4.5, kmt:"4,5 km",
+ tipo:"Part time, sostituzione maternità di circa 12 mesi, fino a 950 euro al mese", pubb:"31 agosto 2026", stato:"top",
+ d:"Reception, agenda dei fisioterapisti, pratiche amministrative sanitarie, rapporti con assicurazioni e fondi sanitari, supporto alla fatturazione. Chiedono esperienza in segreteria o reception, meglio se in ambito sanitario: tu hai un anno in Vitaldent, sei mesi in Blu Dental e l'attestato di receptionist per cliniche odontoiatriche. Offrono orario flessibile e parcheggio libero, e con due bambini piccoli quelle due righe valgono più dello stipendio. Un anno di contratto è abbastanza per rimettere in moto tutto.",
  url:"https://to.indeed.com/aal4gmjw87wc"},
-{fam:"A", id:"p-scln", t:"Segretaria part time pomeridiana, sostituzione maternità", ente:"SCLN Legal Network", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
- tipo:"Part time, 15 alle 19, da dicembre 2026", pubb:"27 agosto 2026", stato:"buono",
- d:"Annuncio corto: cercano una segretaria part time pomeridiano dalle 15 alle 19, con competenze informatiche e conoscenze amministrative di base, disponibile da dicembre 2026. Poco altro. Proprio perché parte a dicembre vale la pena scrivere adesso e non all'ultimo: quando cercheranno davvero, il tuo nome ce l'hanno già.",
- url:"https://to.indeed.com/aa42xdpffmkf"},
-{fam:"A", id:"p-omai", t:"Impiegata di segreteria e amministrazione", ente:"OMAI Service", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
- tipo:"Part time, valutano anche il tempo pieno, 741-1000 euro al mese", pubb:"4 settembre 2026", stato:"buono",
- d:"Segreteria, gestione pratiche amministrative e supporto organizzativo. Chiedono disponibilità immediata e di essere automunita, e scrivono che va bene anche la prima esperienza: quindi non ti confrontano con profili senior. È l'annuncio più recente della pagina. Nell'annuncio non c'è l'indirizzo: chiedilo prima di muoverti.",
- url:"https://to.indeed.com/aafkr9s8x42k"},
-{fam:"A", id:"p-dicastro", t:"Impiegata amministrativa in impresa edile", ente:"Di Castro Società Cooperativa", zona:"Torrenova, zona Tor Vergata", km:8, kmt:"8 km circa",
+{fam:"A", id:"p-dicastro", t:"Impiegata amministrativa in impresa edile", ente:"Di Castro Società Cooperativa", zona:"Torrenova, zona Tor Vergata", km:6.7, kmt:"metro C",
  tipo:"Tempo pieno, 700-1500 euro al mese", pubb:"24 agosto 2026", stato:"buono",
- d:"Contabilità generale, documentazione per gare d'appalto e lavori pubblici, rapporti con clienti, fornitori, banche ed enti, fatture e archivio. Il requisito è il diploma di ragioneria oppure una laurea economica: il tuo diploma è esattamente quello, ragioniere per l'amministrazione e il controllo delle piccole e medie aziende. E hai già fatto fatturazione attiva e passiva in un'impresa edile, in Domo Progetti. L'unico problema è l'orario, perché è tempo pieno.",
+ d:"Torrenova è una fermata della metro C: sali a Malatesta e scendi lì, senza cambiare. Il lavoro è contabilità generale, documentazione per gare d'appalto e lavori pubblici, rapporti con clienti, fornitori, banche ed enti, fatture e archivio. Il requisito è il diploma di ragioneria oppure una laurea economica, e il tuo diploma è esattamente quello: ragioniere per l'amministrazione e il controllo delle piccole e medie aziende. Hai anche già fatto fatturazione attiva e passiva dentro un'impresa edile, in Domo Progetti. L'unico ostacolo è l'orario, perché è tempo pieno.",
  url:"https://to.indeed.com/aak6kyp6tb7v"},
-{fam:"A", id:"p-marchetti", t:"Addetta alla segreteria con mansioni contabili", ente:"Marchetti e C.", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
- tipo:"Tempo pieno, tempo determinato, 1300-1600 euro al mese", pubb:"25 agosto 2026", stato:"buono",
- d:"Impresa edile, segreteria con contabilità e amministrazione. Un anno di esperienza come preferenziale, quindi il filtro è leggero. Anche qui il precedente in Domo Progetti parla da solo. È lo stipendio più alto della pagina, ma è a tempo pieno.",
- url:"https://to.indeed.com/aaq9pxdnhxn4"},
-{fam:"A", id:"p-caputo", t:"Receptionist di clinica odontoiatrica", ente:"Angela Caputo Odontoiatrica Digitale", zona:"Via Casilina, dentro il centro commerciale Casilino", km:3, kmt:"3 km circa",
- tipo:"Part time, solo domeniche e festivi, 10 alle 20:30, 430-450 euro al mese", pubb:"2 settembre 2026", stato:"attenzione",
- d:"È il più vicino a casa di tutti, sulla Casilina, e sulla carta sei perfetta: due anni da receptionist in Vitaldent, sei mesi in Blu Dental e l'attestato di receptionist per cliniche odontoiatriche. Ma va detto chiaro prima che tu ci perda tempo: si lavora solo la domenica e nei giorni festivi, dalle 10 alle 20:30, per 430 o 450 euro al mese. Con due bambini piccoli vuol dire rinunciare a tutte le domeniche. Guardalo, ma decidi in famiglia prima di rispondere.",
+{fam:"A", id:"p-scln", t:"Segretaria part time pomeridiana", ente:"SCLN Legal Network", zona:"Piazza Cavour, Prati, vicino alla metro A Lepanto", km:7.9, kmt:"metro A",
+ tipo:"Part time, 15 alle 19, sostituzione maternità, da dicembre 2026", pubb:"27 agosto 2026", stato:"buono",
+ d:"Società tra avvocati con sede in piazza Cavour 17, otto minuti a piedi da Lepanto. Chiedono competenze informatiche e conoscenze amministrative di base, orario 15 alle 19, con inizio da dicembre 2026. Proprio perché parte fra tre mesi conviene scrivere adesso e non a novembre: quando cominceranno a cercare davvero, il tuo nome ce l'hanno già sul tavolo.",
+ url:"https://to.indeed.com/aa42xdpffmkf"},
+{fam:"A", id:"p-123", t:"Segreteria organizzativa con contabilità", ente:"Associazione 123 stella", zona:"Probabilmente via Monte delle Gioie, zona Trieste, ma le sedi sono due", km:6.2, kmt:"6,2 km",
+ tipo:"Part time, 644-1200 euro al mese", pubb:"1 settembre 2026", stato:"attenzione",
+ d:"Pratiche amministrative, emissione e registrazione fatture, scritture contabili, cassetto fiscale, archiviazione, fogli firma, rapporti con enti e collaboratori. Chiedono due anni di esperienza come requisito obbligatorio e tu ne hai dieci, quindi il filtro lo passi larga. Qui c'è anche un vantaggio in più: l'associazione si occupa di riabilitazione, sostegno psicologico e assistenza educativa a bambini e famiglie, quindi la tua laurea non è un dettaglio fuori posto, è un motivo per preferirti. Due cose da chiedere subito: quali sono le due sedi, e in quale delle due si lavora di più. L'indirizzo qui sopra viene dai registri pubblici e non dall'annuncio.",
+ url:"https://to.indeed.com/aaxyf9lkbfgc"},
+{fam:"A", id:"p-caputo", t:"Receptionist di clinica odontoiatrica", ente:"Angela Caputo Odontoiatrica Digitale", zona:"Via Casilina, dentro il centro commerciale Casilino", km:2.1, kmt:"2 km",
+ tipo:"Part time, solo domeniche e giorni festivi, 10 alle 20:30, 430-450 euro al mese", pubb:"2 settembre 2026", stato:"attenzione",
+ d:"È il più vicino di tutti, praticamente sulla Casilina, e sulla carta sei perfetta: un anno in Vitaldent, sei mesi in Blu Dental, l'attestato di receptionist odontoiatrica. Ma te lo dico prima che tu ci perda tempo: si lavora solo la domenica e nei festivi, dalle 10 alle 20:30, per 430 o 450 euro al mese. Vuol dire tutte le domeniche fuori casa. Non è una bocciatura, è una cosa da decidere in famiglia prima di rispondere.",
  url:"https://to.indeed.com/aacfzm6qsz6s"},
-{fam:"A", id:"p-molinari", t:"Front office in un centro di formazione professionale", ente:"Molinari Art Center", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
- tipo:"Part time, dal lunedì al venerdì più due sabati al mese, 700-800 euro al mese", pubb:"26 agosto 2026", stato:"attenzione",
- d:"È un centro di formazione professionale per la danza e lo spettacolo, quindi segreteria dentro un ente di formazione: il punto dove i tuoi dieci anni di ufficio e la tua laurea si incontrano invece di darsi le spalle. Due cose da sapere prima: chiedono il curriculum con la foto, e chiedono una discreta conoscenza dell'inglese, mentre il tuo è scolastico. Non è un no automatico, ma scrivilo tu con onestà invece di farti scoprire al colloquio.",
- url:"https://to.indeed.com/aajvsrssk2lj"},
-{fam:"A", id:"p-bg", t:"Addetta alla segreteria e assistenza clienti", ente:"Officina di pneumatici", zona:"Casal Monastero, uscita del Grande Raccordo", km:13, kmt:"13 km circa",
- tipo:"Part time o tempo pieno da concordare, fino a 1500 euro al mese", pubb:"12 agosto 2026", stato:"attenzione",
- d:"Accoglienza clienti, telefono e mail, agenda dell'officina, documenti fiscali con software di fatturazione, cassa. Scrivono nero su bianco che non serve nessuna esperienza e che l'orario, part time o pieno, si concorda. Il difetto è la distanza: Casal Monastero sta fuori dai dieci chilometri, dalla parte opposta della città rispetto a casa tua. Tienilo come riserva, non come prima scelta.",
- url:"https://to.indeed.com/aa4cwdxc7gs4"},
 
-{fam:"B", id:"p-oepac", t:"OEPAC, l'operatrice educativa dentro le scuole di Roma", ente:"Roma Capitale, tramite gli enti accreditati", zona:"Le scuole del tuo municipio", km:1, kmt:"scuola sotto casa",
+{fam:"B", id:"p-oepac", t:"OEPAC: la porta più grande, e la tua laurea basta già", ente:"Roma Capitale, tramite gli enti accreditati", zona:"Le scuole del tuo municipio", km:1, kmt:"scuola sotto casa",
  tipo:"Orario della scuola, contratti degli enti accreditati", pubb:"", stato:"top",
- d:"Questa è la porta più grande che nessuno ti ha mai indicato, e la apre la laurea che hai già in mano. L'OEPAC affianca a scuola i bambini con disabilità per l'autonomia e la comunicazione. Il regolamento di Roma Capitale, all'articolo 12, elenca i titoli validi: diploma magistrale o dei servizi socio sanitari, oppure laurea in Scienze dell'Educazione e della Formazione, Servizio Sociale, Scienze e Tecniche Psicologiche o similari, oppure diploma più corso di qualifica OEPAC. La laurea è una delle tre strade, in alternativa al corso, non in aggiunta. Attenzione a un punto che ti può confondere: molti annunci delle cooperative chiedono comunque l'attestato OEPAC. Non è il regolamento a chiederlo, è l'ente che alza l'asticella. Se ti dicono di no per quello, non stanno applicando una legge, stanno scegliendo. Dal 2023 il servizio non va più ad appalto: gli enti si accreditano in un registro chiamato RUAS e sono le famiglie a scegliere l'ente. Vuol dire che i nomi a cui mandare il curriculum stanno in un elenco pubblico.",
+ d:"Se leggi una sola scheda di questa pagina, leggi questa. L'OEPAC affianca a scuola i bambini con disabilità per l'autonomia e la comunicazione. Il Regolamento di Roma Capitale, articolo 12, elenca i titoli validi in alternativa fra loro: diploma magistrale o dei servizi socio sanitari; oppure laurea in Scienze dell'Educazione e della Formazione, Servizio Sociale, Scienze e Tecniche Psicologiche o similari; oppure diploma più corso di qualifica OEPAC. La laurea è una delle tre strade, non un pezzo da aggiungere al corso. Vuol dire che questa porta è aperta adesso: niente ESEI, niente graduatorie, niente attesa. Attenzione a una cosa che ti può confondere: parecchi annunci di cooperative chiedono comunque l'attestato OEPAC. Non lo chiede il regolamento, lo chiede l'ente. Se ti dicono di no per quello non stanno applicando una legge, stanno scegliendo, e la cooperativa dopo può dire di sì. Dal 2023 il servizio non va più ad appalto: gli enti si accreditano a un registro pubblico chiamato RUAS e sono le famiglie a scegliere l'ente. I nomi a cui scrivere stanno in quell'elenco.",
  url:"https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF1131252&pagina=5", link:"Apri l'elenco degli enti accreditati",
- fonte:"Regolamento OEPAC di Roma Capitale, deliberazioni di Assemblea Capitolina 20 del 2022 e 19 del 23 gennaio 2023, articolo 12. Le pagine del Comune da qui non si lasciano leggere, quindi l'elenco aprilo tu."},
-{fam:"B", id:"p-socioped", t:"Educatrice professionale socio pedagogica, fuori dalla scuola", ente:"Cooperative sociali e servizi del territorio", zona:"Tutta Roma", km:0, kmt:"varia",
- tipo:"Di solito CCNL cooperative sociali, part time", pubb:"", stato:"top",
- d:"La legge 205 del 2017, al comma 595, dice che la qualifica di educatore professionale socio pedagogico si ottiene con la laurea L-19. La tua. E il comma 594 elenca dove si lavora: ambito educativo e formativo, scolastico, socio assistenziale per la parte educativa, socio sanitario per la parte educativa, genitorialità e famiglia, culturale, giudiziario, ambientale, sportivo e motorio, cooperazione internazionale. Non è un elenco di possibilità vaghe: sono comunità per minori, centri diurni, servizi per la disabilità, centri per anziani, doposcuola, servizi educativi dei musei, area penale. In quasi tutti questi posti non ti chiedono l'ESEI e non ti chiedono le graduatorie, ti chiedono la laurea che hai.",
+ fonte:"Regolamento OEPAC di Roma Capitale, deliberazioni di Assemblea Capitolina 20 del 2022 e 19 del 23 gennaio 2023, articolo 12. Le pagine del Comune da questa sessione non si lasciano leggere, quindi l'elenco aprilo tu."},
+{fam:"B", id:"p-iskra", t:"ISKRA, cooperativa che gestisce l'OEPAC nel Municipio VI", ente:"ISKRA società cooperativa", zona:"Via delle Avocette 16, zona Torre Maura", km:4.0, kmt:"4 km",
+ tipo:"Candidatura spontanea, si manda quando vuoi", pubb:"", stato:"top",
+ d:"Nome vero, indirizzo vero, a quattro chilometri da casa. ISKRA gestisce il servizio OEPAC nel Municipio VI, che confina con il tuo. Non c'è un annuncio aperto: si manda una candidatura spontanea, ed è il modo normale in cui si entra in questo giro. Telefono 06 2315248, mail iskraroma@iskra.coop, PEC iskra@pec.iskra.coop. Nella mail scrivi che hai la laurea L-19 e cita l'articolo 12 del regolamento: fa capire in due righe che sai di cosa parli. La lettera pronta sta in Lettere, voce OEPAC.",
+ url:"https://iskra.coop/oepac/", link:"Il loro servizio OEPAC"},
+{fam:"B", id:"p-obiettivouomo", t:"Obiettivo Uomo, accreditata OEPAC al Comune di Roma", ente:"Obiettivo Uomo società cooperativa sociale ETS", zona:"Via Ostiense 131/L, ma si lavora nelle scuole", km:7.1, kmt:"sede lontana, scuole vicine",
+ tipo:"Banca dati aperta tutto l'anno", pubb:"", stato:"top",
+ d:"Questa è ancora più comoda, perché lo dicono loro: si può entrare nella loro banca dati anche quando non ci sono annunci aperti, per le occasioni future. Fra i profili che cercano ci sono espressamente OEPAC ed educatori. Curriculum a curriculum.obiettivo@gmail.com e a protocollo@obiettivouomo.it, telefono 06 57177653. La sede sta in via Ostiense, a sette chilometri, ma non è lì che lavori: il posto di lavoro è la scuola, quindi nella mail chiedi esplicitamente l'assegnazione nelle scuole del Municipio V.",
+ url:"https://www.obiettivouomo.it/?page_id=5770", link:"La loro pagina Lavora con noi"},
+{fam:"B", id:"p-socioped", t:"Educatrice professionale socio pedagogica, fuori dalla scuola", ente:"Cooperative sociali e servizi del territorio", zona:"Tutta Roma", km:5, kmt:"varia",
+ tipo:"Di solito CCNL cooperative sociali, spesso part time", pubb:"", stato:"buono",
+ d:"La legge 205 del 2017, al comma 595, dice che la qualifica di educatore professionale socio pedagogico si ottiene con la laurea L-19. La tua, senza aggiunte. E il comma 594 elenca dove si lavora: ambito educativo e formativo, scolastico, socio assistenziale per la parte educativa, socio sanitario per la parte educativa, genitorialità e famiglia, culturale, giudiziario, ambientale, sportivo e motorio, cooperazione internazionale. Tradotto: comunità per minori, centri diurni, servizi per la disabilità, centri anziani, doposcuola, servizi educativi dei musei, area penale. In quasi tutti questi posti non ti chiedono né l'ESEI né le graduatorie. Ti chiedono la laurea che hai già.",
  url:"https://www.gianvincenzonicodemo.it/normativa-educatore-professionale-e-pedagogista/educatore-professionale-sociopedagogico-e-pedagogista/legge-205-2017-pedagogista-ed-educatore-professionale-sociopedagogico/", link:"Leggi i commi 594 e 595",
  fonte:"Legge 27 dicembre 2017 numero 205, commi 594 e 601."},
-{fam:"B", id:"p-blu", t:"Educatrice in una comunità per detenuti", ente:"Consorzio Blu", zona:"Via Labicana 45, vicino al Colosseo", km:4, kmt:"4 km circa",
+{fam:"B", id:"p-blu", t:"Educatrice in una comunità per detenuti", ente:"Consorzio Blu", zona:"Via Labicana 45, a piedi da San Giovanni", km:5.3, kmt:"metro C e A",
  tipo:"Part time 36 ore, CCNL cooperative sociali livello D2, 1637 euro lordi al mese", pubb:"15 giugno 2026", stato:"attenzione",
- d:"È l'esempio concreto dell'ambito giudiziario del comma 594. Chiedono la laurea in Scienze dell'Educazione, punto: nessun anno minimo di esperienza, nessuna qualifica in più. Lo stipendio è il più alto di tutta questa pagina. Due avvertenze oneste: l'annuncio è del 15 giugno, quindi ha quasi tre mesi e può essere già chiuso, e lavorare in una comunità filtro per detenuti non è un contesto per tutti. Anche se questo è scaduto, il Consorzio Blu resta un ente a cui mandare una candidatura spontanea.",
+ d:"È l'esempio concreto dell'ambito giudiziario del comma 594, e si arriva a piedi da San Giovanni, dove ti porta la tua metro. Chiedono la laurea in Scienze dell'Educazione e basta: nessun anno minimo, nessuna qualifica in più. Lo stipendio è il più alto di tutta la pagina. Due avvertenze oneste: l'annuncio è del 15 giugno, quindi ha quasi tre mesi e può essere già chiuso, e una comunità filtro per detenuti non è un contesto per tutti. Anche se questo posto è andato, il Consorzio Blu resta un nome a cui mandare una spontanea.",
  url:"https://to.indeed.com/aat4nq8n9pcx"},
+{fam:"B", id:"p-segrscuola", t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Le venti scuole che hai già in questa app", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
+ tipo:"Varia, spesso part time", pubb:"", stato:"buono",
+ d:"Questa non è un annuncio, è una mossa che puoi fare stasera senza chiedere il permesso a nessuno. Alle venti scuole paritarie della sezione Scuole private hai scritto, o stai per scrivere, per la sezione. Scrivi alle stesse anche per la segreteria: iscrizioni, rette, registri, comunicazioni alle famiglie, rapporti con gli enti. Una scuola piccola cerca esattamente quella persona, e trovare qualcuno che sappia fare segreteria per davvero e che capisca anche come funziona una giornata scolastica è raro. Tu sei tutte e due le cose nella stessa persona, e sono tutte a pochi chilometri da casa. In Lettere c'è il testo già pronto.",
+ url:"", link:"", fonte:""},
 {fam:"B", id:"p-ata", t:"Assistente amministrativa nelle scuole, il profilo ATA", ente:"Ministero dell'Istruzione, graduatorie di terza fascia", zona:"Le scuole che scegli tu", km:1, kmt:"scegli tu le sedi",
  tipo:"Supplenze nelle segreterie scolastiche", pubb:"", stato:"prepara",
- d:"Qui la tua vita di prima e la scuola si incontrano davvero: è il lavoro di segreteria, dentro un istituto. Il titolo richiesto è un diploma di scuola superiore di qualunque tipo, e il tuo di ragioniere va benissimo. Ma c'è un requisito nuovo da conoscere subito: il decreto ministeriale 89 del 2024 ha reso la certificazione digitale CIAD obbligatoria per l'accesso, non più solo un punteggio in più. Senza, la domanda non viene accettata. Le graduatorie di terza fascia si aggiornano ogni tre anni e la prossima finestra è attesa nella primavera del 2027. Non è una cosa da fare oggi, ma la CIAD si prende adesso, con calma e senza corsa, così quando apre la domanda tu sei già pronta. Le date esatte usciranno con il decreto: vanno controllate nei primi mesi del 2027.",
+ d:"Qui la tua vita di prima e la scuola si incontrano per davvero: è lavoro di segreteria, dentro un istituto, e le sedi le scegli tu. Il titolo richiesto è un diploma di scuola superiore di qualunque tipo, quindi il tuo di ragioniere è più che sufficiente. Un requisito nuovo però c'è: il decreto ministeriale 89 del 2024 ha reso la certificazione digitale CIAD obbligatoria per l'accesso, non più un semplice punteggio in più. Senza, la domanda non viene accettata. Le graduatorie si aggiornano ogni tre anni e la prossima finestra è attesa nella primavera del 2027. Non è roba di domani, ma la CIAD si prende adesso con calma, e quando apre la domanda tu sei già pronta mentre gli altri corrono.",
  url:"https://www.tecnicadellascuola.it/graduatorie-ata", link:"Come funzionano le graduatorie ATA",
- fonte:"Decreto ministeriale 89 del 2024 per la CIAD. Sulla finestra di primavera 2027 le fonti sono giornalistiche e sindacali, non c'è ancora il decreto: la data va riverificata."},
-{fam:"B", id:"p-inpa", t:"Concorsi pubblici, con il diploma e con la laurea", ente:"inPA, il portale unico del reclutamento", zona:"Roma e Lazio", km:0, kmt:"varia",
+ fonte:"Decreto ministeriale 89 del 2024 per la CIAD. Sulla finestra di primavera 2027 le fonti sono giornalistiche e sindacali, il decreto non è ancora uscito: la data va riverificata nei primi mesi del 2027."},
+{fam:"B", id:"p-inpa", t:"Concorsi pubblici, con il diploma e con la laurea", ente:"inPA, il portale unico del reclutamento", zona:"Roma e Lazio", km:5, kmt:"varia",
  tipo:"Tempo indeterminato", pubb:"", stato:"prepara",
- d:"Nei comuni e negli enti locali i profili amministrativi si dividono in due: l'area degli istruttori, dove di solito basta il diploma, e l'area dei funzionari, dove serve la laurea. Tu hai tutti e due i titoli, e in più dieci anni di lavoro amministrativo vero. È l'unica strada di questa pagina che porta a un posto fisso. È anche la più lenta, perché si passa da una prova. Non è un piano per domani mattina, è un piano per l'anno prossimo: intanto registrati su inPA, metti Roma come zona e lascia arrivare gli avvisi da soli.",
+ d:"Nei comuni e negli enti locali i profili amministrativi si dividono in due: l'area degli istruttori, dove di solito basta il diploma, e quella dei funzionari, dove serve la laurea. Tu hai tutti e due i titoli, più dieci anni di lavoro amministrativo vero. È l'unica strada di questa pagina che porta a un posto fisso, ed è anche la più lenta, perché si passa da una prova. Non è un piano per domani mattina, è un piano per l'anno prossimo: intanto registrati, metti Roma come zona, e lascia che gli avvisi arrivino da soli mentre fai altro.",
  url:"https://www.inpa.gov.it/", link:"Registrati su inPA",
  fonte:"I requisiti cambiano da bando a bando: quello che conta è sempre l'articolo sui titoli di accesso del singolo bando."},
-{fam:"B", id:"p-segrscuola", t:"Segreteria didattica nelle paritarie e negli enti di formazione", ente:"Le venti scuole che hai già in questa app, più gli enti accreditati del Lazio", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
- tipo:"Varia, spesso part time", pubb:"", stato:"prepara",
- d:"Questa non è un annuncio, è una mossa che puoi fare da sola stasera. Alle venti scuole paritarie che stanno nella sezione Scuole private hai scritto, o stai per scrivere, per la sezione. Scrivi alle stesse anche per la segreteria: iscrizioni, rette, registri, comunicazioni alle famiglie, rapporti con gli enti. Una scuola piccola cerca esattamente quella persona lì, e trovare qualcuno che sappia fare segreteria e che capisca anche la scuola è raro. Tu sei tutte e due le cose in una. Lo stesso vale per gli enti di formazione accreditati dalla Regione Lazio, dove la figura si chiama segreteria didattica o tutor d'aula. Nella sezione Lettere trovi due testi già pronti per questo.",
- url:"", link:"", fonte:""},
-{fam:"B", id:"p-visioncom", t:"Coordinatrice della formazione e selezione formatori", ente:"Vision Com", zona:"Villa Adriana, Tivoli", km:25, kmt:"25 km circa",
+
+{fam:"C", id:"p-marchetti", t:"Segreteria con contabilità in impresa edile", ente:"Marchetti e C.", zona:"Via San Giovanni in Argentella, zona Settecamini", km:9.0, kmt:"9 km, senza metro",
+ tipo:"Tempo pieno, tempo determinato, 1300-1600 euro al mese", pubb:"25 agosto 2026", stato:"attenzione",
+ d:"Lo stipendio più alto che ho trovato, e il lavoro è quello che facevi in Domo Progetti. Ma è tempo pieno e sta a Settecamini, dalla parte opposta del quadrante: nove chilometri in linea d'aria che in macchina, all'ora giusta, diventano molti di più, e non c'è nessun metro che ci arrivi. L'indirizzo viene dai registri, non dall'annuncio.",
+ url:"https://to.indeed.com/aaq9pxdnhxn4"},
+{fam:"C", id:"p-molinari", t:"Front office in un centro di formazione professionale", ente:"Molinari Art Center", zona:"Via Antonino Lo Surdo, zona Marconi", km:9.0, kmt:"9 km, metro B",
+ tipo:"Part time dal lunedì al venerdì più due sabati al mese, 700-800 euro al mese", pubb:"26 agosto 2026", stato:"attenzione",
+ d:"Segreteria dentro un ente di formazione, quindi è il ruolo giusto. Curiosita: sta nella stessa strada dove hai lavorato nel 2013, in Blu Dental. Ma sono nove chilometri dall'altra parte della città e si arriva solo con la metro B, quindi due cambi. In più chiedono il curriculum con la foto e una discreta conoscenza dell'inglese, mentre il tuo è scolastico.",
+ url:"https://to.indeed.com/aajvsrssk2lj"},
+{fam:"C", id:"p-bg", t:"Segreteria e assistenza clienti in officina", ente:"Officina di pneumatici", zona:"Casal Monastero, uscita del Raccordo", km:9.9, kmt:"10 km, senza metro",
+ tipo:"Part time o tempo pieno da concordare, fino a 1500 euro al mese", pubb:"12 agosto 2026", stato:"attenzione",
+ d:"Scrivono nero su bianco che non serve nessuna esperienza e che l'orario si concorda, part time o pieno. Il problema è solo dove sta: Casal Monastero, fuori dal Raccordo a nord est, quasi dieci chilometri e nessun mezzo diretto.",
+ url:"https://to.indeed.com/aa4cwdxc7gs4"},
+{fam:"C", id:"p-omai", t:"Impiegata di segreteria e amministrazione", ente:"OMAI Service", zona:"Sede legale sulla via Flaminia, oltre il Raccordo", km:14.4, kmt:"14 km",
+ tipo:"Part time, valutano anche il tempo pieno, 741-1000 euro al mese", pubb:"4 settembre 2026", stato:"attenzione",
+ d:"Ieri era in cima a questa pagina perché l'annuncio non dice dove si lavora e scrivono che va bene anche la prima esperienza. Poi ho cercato: la sede risulta sulla via Flaminia al civico 2194, cioè oltre il Raccordo a nord, quattordici chilometri. Può darsi che il posto di lavoro sia un altro, ma finché non lo confermano non ha senso metterlo davanti agli altri.",
+ url:"https://to.indeed.com/aafkr9s8x42k"},
+{fam:"C", id:"p-visioncom", t:"Coordinatrice della formazione e selezione formatori", ente:"Vision Com", zona:"Villa Adriana, Tivoli", km:18.4, kmt:"18 km",
  tipo:"Part time, 400-600 euro al mese", pubb:"27 agosto 2026", stato:"attenzione",
- d:"Lo metto perché è l'esempio più chiaro di cosa vuol dire segreteria didattica: organizzare i calendari dei corsi, cercare e selezionare i formatori, tenere il database, gestire le sostituzioni. Fra i titoli preferenziali c'è l'esperienza in segreteria didattica e scrivono che conoscere il mondo della scuola è un valore aggiunto: tu hai tutte e due. Ma va detto: Villa Adriana è a Tivoli, ben oltre i dieci chilometri, e lo stipendio dichiarato è 400 o 600 euro al mese. Guardalo per capire il ruolo, poi cerca lo stesso ruolo più vicino a casa.",
+ d:"Lo tengo solo perché fa capire cos'è la segreteria didattica: calendari dei corsi, ricerca e selezione dei formatori, database, sostituzioni. Fra i titoli preferenziali c'è proprio l'esperienza in segreteria didattica e la conoscenza del mondo della scuola, e tu le hai tutte e due. Ma sono diciotto chilometri e 400 o 600 euro al mese. Guardalo per sapere che ruolo cercare, non per candidarti.",
  url:"https://to.indeed.com/aas9m76v47kn"}
 ];
 
@@ -1312,16 +1335,17 @@ $("#an-salva").addEventListener("click",()=>{
 const PILLP = {top:["p-ok","guarda questo per primo"], buono:["p-info","in linea con te"],
                attenzione:["p-ora","leggi bene prima"], prepara:["p-info","da preparare"]};
 const TESTE = {
-  A:["Segreteria part time, vicino casa","Quello che sai già fare. Annunci veri, in ordine di distanza da Torpignattara"],
-  B:["Porte che la tua laurea apre","Lavori fuori dalla sezione dove il titolo che hai già basta"]
+  A:["Segreteria part time, vicino casa","Quello che sai già fare, entro il raggio. In ordine di quanto ti somigliano"],
+  B:["Porte che la tua laurea apre","Lavori fuori dalla sezione dove il titolo che hai già basta"],
+  C:["Fuori dal raggio, guardali solo se vuoi","Buoni lavori, ma lontani o senza un mezzo diretto. Li tengo per non nasconderti niente"]
 };
 function renderPorte(){
   const el = document.getElementById("lista-porte"); if(!el) return;
   const ordine = {top:0, buono:1, prepara:2, attenzione:3};
   let html = "";
-  ["A","B"].forEach(f=>{
+  ["A","B","C"].forEach(f=>{
     const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id))
-      .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.km||99)-(b.km||99)));
+      .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
     if(!gruppo.length) return;
     const [tit,sot] = TESTE[f];
     html += '<div class="zona-testa"><b>'+tit+'</b><span>'+sot+'</span></div>';
