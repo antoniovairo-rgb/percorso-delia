@@ -6,21 +6,21 @@
 <title>Il mio percorso, servizi educativi 0-6</title>
 <style>
 :root{
-  --ink:#141A2E;
-  --indaco:#4B5BD6;
-  --indaco-chiaro:#EEF0FE;
-  --menta:#12A992;
-  --menta-chiaro:#E4F6F2;
-  --ambra:#D98A1F;
+  --ink:#241419;
+  --indaco:#C0242E;
+  --indaco-chiaro:#FBEAEB;
+  --menta:#2F7D62;
+  --menta-chiaro:#E7F2ED;
+  --ambra:#9B5D10;
   --ambra-chiaro:#FDF3E2;
-  --rosa:#D4557E;
-  --sfondo:#F3F4FA;
+  --rosa:#8E2B4A;
+  --sfondo:#FAF4F4;
   --carta:#FFFFFF;
-  --nebbia:#E4E7F4;
-  --grigio:#5F6982;
-  --grad:linear-gradient(135deg,#4B5BD6 0%,#12A992 100%);
-  --om-s:0 1px 2px rgba(20,26,46,.04), 0 4px 12px -4px rgba(20,26,46,.10);
-  --om-m:0 2px 4px rgba(20,26,46,.04), 0 14px 34px -14px rgba(20,26,46,.20);
+  --nebbia:#EFDDDE;
+  --grigio:#6E6165;
+  --grad:linear-gradient(135deg,#B01E30 0%,#E2582C 100%);
+  --om-s:0 1px 2px rgba(58,20,24,.05), 0 4px 12px -4px rgba(58,20,24,.11);
+  --om-m:0 2px 4px rgba(58,20,24,.05), 0 14px 34px -14px rgba(58,20,24,.22);
   --r:18px; --r-s:12px;
 }
 *{box-sizing:border-box}
@@ -37,7 +37,7 @@ a{color:var(--indaco);text-decoration-thickness:1px;text-underline-offset:2px}
 :focus-visible{outline:2.5px solid var(--indaco);outline-offset:3px;border-radius:6px}
 
 /* ============ barra superiore ============ */
-.bar{position:sticky;top:0;z-index:30;background:rgba(243,244,250,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--nebbia)}
+.bar{position:sticky;top:0;z-index:30;background:rgba(250,244,244,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--nebbia)}
 .bar-in{max-width:1140px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:11px;flex:0 0 auto}
 .logo .pallino{width:32px;height:32px;border-radius:10px;background:var(--grad);flex:0 0 auto}
@@ -77,7 +77,7 @@ main{max-width:1140px;margin:0 auto;padding:26px 20px 90px}
 .b{border:1px solid var(--nebbia);background:var(--carta);color:var(--ink);padding:9px 16px;border-radius:11px;font-size:14px;font-weight:500;transition:.16s;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
 .b:hover{border-color:var(--indaco);color:var(--indaco);transform:translateY(-1px)}
 .b-pri{background:var(--indaco);border-color:var(--indaco);color:#fff}
-.b-pri:hover{background:#3E4CC0;border-color:#3E4CC0;color:#fff}
+.b-pri:hover{background:#9C1C25;border-color:#9C1C25;color:#fff}
 .b-luce{background:#fff;border-color:#fff;color:var(--indaco);font-weight:600}
 .b-luce:hover{background:#fff;color:var(--indaco);transform:translateY(-1px)}
 .b-vuoto{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.42);color:#fff}
@@ -96,7 +96,7 @@ main{max-width:1140px;margin:0 auto;padding:26px 20px 90px}
 summary.tappa-testa{list-style:none}
 summary.tappa-testa::-webkit-details-marker{display:none}
 .tappa-testa{width:100%;cursor:pointer;text-align:left;background:var(--carta);border:1px solid var(--nebbia);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--om-s);transition:.18s}
-.tappa-testa:hover{border-color:#C9CFEC;transform:translateY(-1px);box-shadow:var(--om-m)}
+.tappa-testa:hover{border-color:#E8C4C6;transform:translateY(-1px);box-shadow:var(--om-m)}
 .tappa.corrente .tappa-testa{border-color:var(--indaco);box-shadow:0 0 0 3px var(--indaco-chiaro),var(--om-s)}
 .tappa-testa h3{font-size:17.5px;flex:1;min-width:0}
 .tappa.fatta .tappa-testa h3{color:var(--grigio);text-decoration:line-through;text-decoration-color:var(--nebbia)}
@@ -119,9 +119,9 @@ summary.tappa-testa::-webkit-details-marker{display:none}
 .pillole{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:2px}
 .pill{font-size:11.5px;font-weight:500;padding:3px 10px;border-radius:99px;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;letter-spacing:.02em}
 .p-ora{background:var(--ambra-chiaro);color:var(--ambra)}
-.p-ok{background:var(--menta-chiaro);color:#0C7D6C}
+.p-ok{background:var(--menta-chiaro);color:#206B53}
 .p-info{background:var(--indaco-chiaro);color:var(--indaco)}
-.p-no{background:#FBE9EF;color:var(--rosa)}
+.p-no{background:#EBE3E3;color:#5A4F52}
 
 /* ============ griglie / annunci / tabelle ============ */
 .grid{display:grid;gap:16px}
@@ -143,26 +143,26 @@ summary.tappa-testa::-webkit-details-marker{display:none}
 .dist{flex:0 0 auto;width:52px;text-align:center}
 .dist .n{font-size:19px;font-weight:700;line-height:1}
 .dist .u{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:9.5px;color:var(--grigio);letter-spacing:.05em;text-transform:uppercase;margin-top:2px;display:block}
-.dist .box{border-radius:12px;padding:9px 4px;background:var(--menta-chiaro);color:#0C7D6C}
+.dist .box{border-radius:12px;padding:9px 4px;background:var(--menta-chiaro);color:#206B53}
 .dist .box.d3{background:var(--indaco-chiaro);color:var(--indaco)}
 .dist .box.d4{background:var(--ambra-chiaro);color:var(--ambra)}
-.dist .box.d0{background:#F0F1F7;color:var(--grigio)}
+.dist .box.d0{background:#F3EDED;color:var(--grigio)}
 
 .tab-wrap{overflow-x:auto;border-radius:var(--r)}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th{text-align:left;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio);font-weight:400;padding:13px 16px;border-bottom:1px solid var(--nebbia);white-space:nowrap;background:#FAFBFE}
+th{text-align:left;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio);font-weight:400;padding:13px 16px;border-bottom:1px solid var(--nebbia);white-space:nowrap;background:#FDF8F8}
 td{padding:14px 16px;border-bottom:1px solid var(--nebbia);vertical-align:top}
 tr:last-child td{border-bottom:0}
 .stato{font-size:11.5px;padding:4px 11px;border-radius:99px;font-weight:500;white-space:nowrap;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace}
-.s-dainviare{background:#F0F1F7;color:var(--grigio)}
+.s-dainviare{background:#F3EDED;color:var(--grigio)}
 .s-inviata{background:var(--indaco-chiaro);color:var(--indaco)}
 .s-colloquio{background:var(--ambra-chiaro);color:var(--ambra)}
-.s-esito{background:var(--menta-chiaro);color:#0C7D6C}
-.s-chiusa{background:#FBE9EF;color:var(--rosa)}
+.s-esito{background:var(--menta-chiaro);color:#206B53}
+.s-chiusa{background:#EBE3E3;color:#5A4F52}
 .vuoto{padding:44px 22px;text-align:center;color:var(--grigio);font-size:14.5px}
 
 label{display:block;font-size:12.5px;color:var(--grigio);margin-bottom:5px;font-weight:500}
-input,select,textarea{width:100%;padding:10px 13px;border:1px solid var(--nebbia);border-radius:11px;font:inherit;font-size:14.5px;background:#FAFBFE;color:var(--ink);transition:.15s}
+input,select,textarea{width:100%;padding:10px 13px;border:1px solid var(--nebbia);border-radius:11px;font:inherit;font-size:14.5px;background:#FDF8F8;color:var(--ink);transition:.15s}
 input:focus,select:focus,textarea:focus{background:#fff;border-color:var(--indaco);outline:none;box-shadow:0 0 0 3px var(--indaco-chiaro)}
 textarea{min-height:96px;resize:vertical}
 .campi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -174,10 +174,10 @@ textarea{min-height:96px;resize:vertical}
 .sc:last-child{border-bottom:0}
 .sc h3{font-size:17px;margin:8px 0 0}
 .sc .quando{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:12.5px;color:var(--grigio);margin-top:5px}
-.sc p{margin:10px 0 0;font-size:14.5px;color:#39415A;max-width:80ch}
+.sc p{margin:10px 0 0;font-size:14.5px;color:#4A3A3D;max-width:80ch}
 
 .confronto{border:1px solid var(--nebbia);border-radius:var(--r);overflow:hidden;background:var(--carta)}
-.confronto .testa{background:#FAFBFE;padding:16px 20px;border-bottom:1px solid var(--nebbia)}
+.confronto .testa{background:#FDF8F8;padding:16px 20px;border-bottom:1px solid var(--nebbia)}
 .confronto .testa h3{font-size:17px}
 .confronto .testa .quanto{font-size:28px;font-weight:700;margin-top:6px;display:block}
 .confronto dl{margin:0;padding:6px 20px 18px}
@@ -186,22 +186,22 @@ textarea{min-height:96px;resize:vertical}
 
 
 .crediti{width:100%;border-collapse:collapse;font-size:14.5px}
-.crediti th{background:#FAFBFE;text-align:left;padding:12px 14px;border-bottom:1px solid var(--nebbia);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);font-weight:600}
+.crediti th{background:#FDF8F8;text-align:left;padding:12px 14px;border-bottom:1px solid var(--nebbia);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);font-weight:600}
 .crediti td{padding:14px;border-bottom:1px solid var(--nebbia);vertical-align:top}
 .crediti tr:last-child td{border-bottom:0}
 .crediti .amb{font-weight:600}
 .crediti .amb small{display:block;font-weight:400;color:var(--grigio);font-size:12.5px;margin-top:3px}
-.crediti .hai{color:#39415A}
+.crediti .hai{color:#4A3A3D}
 .crediti .n{white-space:nowrap;font-weight:600}
-tr.riga-manca{background:#FEF6F9}
-tr.riga-ok{background:#F4FBF8}
+tr.riga-manca{background:#FCF0F1}
+tr.riga-ok{background:#EFF6F2}
 .scuola{display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--nebbia);align-items:flex-start}
 .scuola:last-child{border-bottom:0}
 .scuola h4{font-size:16px;font-weight:600}
 .scuola .ind{color:var(--grigio);font-size:13.5px;margin-top:3px}
 .scuola .cont{font-size:13.5px;margin-top:6px}
 .scuola .azioni{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-.zona-testa{padding:14px 20px;background:#FAFBFE;border-bottom:1px solid var(--nebbia);display:flex;align-items:baseline;gap:10px}
+.zona-testa{padding:14px 20px;background:#FDF8F8;border-bottom:1px solid var(--nebbia);display:flex;align-items:baseline;gap:10px}
 .zona-testa b{font-size:15px}
 .zona-testa span{font-size:13px;color:var(--grigio)}
 .stella{flex:0 0 auto;width:36px;height:36px;border-radius:11px;background:var(--indaco-chiaro);color:var(--indaco);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
@@ -213,14 +213,14 @@ tr.riga-ok{background:#F4FBF8}
 .avviso p:last-child{margin-bottom:0}
 .avviso ul{margin:7px 0 9px;padding-left:20px;font-size:14.5px;color:#5A4520}
 .avviso li{margin-bottom:5px}
-.avviso.info{background:var(--indaco-chiaro);border-color:#D6DBFB}
+.avviso.info{background:var(--indaco-chiaro);border-color:#F5D3D5}
 .avviso.info h3{color:var(--indaco)}
-.avviso.info p,.avviso.info li{color:#33395C}
-.avviso.info ul{color:#33395C}
+.avviso.info p,.avviso.info li{color:#5C2A2E}
+.avviso.info ul{color:#5C2A2E}
 
 #lettera{min-height:380px;font-size:14.5px;line-height:1.65}
 footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);font-size:13px;line-height:1.6}
-.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(90px);background:var(--ink);color:#fff;padding:13px 24px;border-radius:14px;font-size:14px;opacity:0;transition:all .26s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:60;box-shadow:0 14px 40px rgba(20,26,46,.32)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(90px);background:var(--ink);color:#fff;padding:13px 24px;border-radius:14px;font-size:14px;opacity:0;transition:all .26s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:60;box-shadow:0 14px 40px rgba(58,20,24,.34)}
 .toast.on{transform:translateX(-50%) translateY(0);opacity:1}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 @media(max-width:600px){
@@ -346,8 +346,8 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
     <div class="card pad" style="margin-top:18px">
       <div class="pillole"><span class="pill p-ok">terza strada, da chiedere</span></div>
       <h3 style="font-size:18px;margin-top:9px">I corsi singoli: pagare solo quello che ti manca</h3>
-      <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">Pegaso tiene aperti tutto l'anno i corsi singoli: ti iscrivi a un esame alla volta, senza fare un corso intero. Costano 120 € di iscrizione più 35 € a credito, quindi un esame da 6 crediti viene 330 €. Si possono prendere solo esami da 6, 9, 12 o 15 crediti.</p>
-      <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">A te mancano con certezza due cose: psicologia dello sviluppo e sociologia. Prese così sarebbero qualche centinaio di euro invece di milleseicento. <b>Il limite però c'è</b>: i corsi singoli sono esami, quindi non ti danno i laboratori e il tirocinio, che il decreto chiede lo stesso. Non è una scorciatoia già pronta, è una domanda da fare alla segreteria.</p>
+      <p style="margin:10px 0 0;font-size:14.5px;color:#4A3A3D">Pegaso tiene aperti tutto l'anno i corsi singoli: ti iscrivi a un esame alla volta, senza fare un corso intero. Costano 120 € di iscrizione più 35 € a credito, quindi un esame da 6 crediti viene 330 €. Si possono prendere solo esami da 6, 9, 12 o 15 crediti.</p>
+      <p style="margin:10px 0 0;font-size:14.5px;color:#4A3A3D">A te mancano con certezza due cose: psicologia dello sviluppo e sociologia. Prese così sarebbero qualche centinaio di euro invece di milleseicento. <b>Il limite però c'è</b>: i corsi singoli sono esami, quindi non ti danno i laboratori e il tirocinio, che il decreto chiede lo stesso. Non è una scorciatoia già pronta, è una domanda da fare alla segreteria.</p>
       <div style="margin-top:14px"><a class="b b-mini" href="https://www.unipegaso.it/corsi-singoli" target="_blank" rel="noopener">Come funzionano i corsi singoli</a></div>
     </div>
 
@@ -606,14 +606,14 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
         <div class="card pad">
           <div class="pillole"><span class="pill p-ora">da fare presto</span></div>
           <h3 style="font-size:18px;margin-top:9px">Scrivi alla FISM di Roma</h3>
-          <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">La Federazione Italiana Scuole Materne riunisce le scuole dell'infanzia non statali della provincia di Roma. È l'ombrello sotto cui stanno quasi tutte le paritarie della tua lista. Una mail sola può arrivare dove venti mail separate non arrivano. Chiedi se possono girare la tua candidatura alle scuole associate della zona est.</p>
+          <p style="margin:10px 0 0;font-size:14.5px;color:#4A3A3D">La Federazione Italiana Scuole Materne riunisce le scuole dell'infanzia non statali della provincia di Roma. È l'ombrello sotto cui stanno quasi tutte le paritarie della tua lista. Una mail sola può arrivare dove venti mail separate non arrivano. Chiedi se possono girare la tua candidatura alle scuole associate della zona est.</p>
           <p style="margin:10px 0 0;font-size:14px;color:var(--grigio)">Via della Pigna 13A, Roma. 06 39638185. info@fismroma.it</p>
           <div style="margin-top:14px"><button class="b b-mini" data-vai="lettere">La lettera è pronta in Lettere</button> <a class="b b-mini" href="http://www.fismroma.it/" target="_blank" rel="noopener">Sito FISM Roma</a></div>
         </div>
         <div class="card pad">
           <div class="pillole"><span class="pill p-ok">contatto che hai già</span></div>
           <h3 style="font-size:18px;margin-top:9px">Riapri la porta con Randstad</h3>
-          <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">Dal 2022 al 2024 hai lavorato nelle mense scolastiche tramite Randstad. Sei già nei loro archivi e hanno già visto che sei affidabile. Da allora però è cambiato tutto: adesso hai una laurea. Una telefonata alla filiale per aggiornare il profilo può farti ricontattare per posizioni che prima non ti avrebbero proposto.</p>
+          <p style="margin:10px 0 0;font-size:14.5px;color:#4A3A3D">Dal 2022 al 2024 hai lavorato nelle mense scolastiche tramite Randstad. Sei già nei loro archivi e hanno già visto che sei affidabile. Da allora però è cambiato tutto: adesso hai una laurea. Una telefonata alla filiale per aggiornare il profilo può farti ricontattare per posizioni che prima non ti avrebbero proposto.</p>
           <p style="margin:10px 0 0;font-size:14px;color:var(--grigio)">Vale lo stesso per le altre agenzie che lavorano con cooperative e servizi scolastici a Roma.</p>
           <div style="margin-top:14px"><a class="b b-mini" href="https://www.randstad.it/" target="_blank" rel="noopener">Sito Randstad</a></div>
         </div>
@@ -1163,7 +1163,7 @@ function renderAnnunci(){
       + '<h3>'+esc(a.titolo)+'</h3>'
       + '<div class="meta">'+esc(a.ente)+', '+esc(a.zona)+(a.tipo?', '+esc(a.tipo).toLowerCase():'')+'</div>'
       + '<div class="meta mono" style="font-size:11.5px;margin-top:2px">'+(a.pubb?'pubblicato il '+esc(a.pubb):'senza data')+(a.fonte?' su '+esc(a.fonte):'')+'</div>'
-      + (a.note?'<p style="margin:11px 0 0;font-size:14.5px;color:#39415A;max-width:78ch">'+esc(a.note)+'</p>':'')
+      + (a.note?'<p style="margin:11px 0 0;font-size:14.5px;color:#4A3A3D;max-width:78ch">'+esc(a.note)+'</p>':'')
       + '<div class="azioni">'
       + (a.url?'<a class="b b-mini" href="'+esc(a.url)+'" target="_blank" rel="noopener">Apri l\'annuncio</a>':'')
       + '<button class="b b-mini" data-tr="'+esc(a.id)+'">Aggiungi al tracker</button>'
@@ -1201,7 +1201,7 @@ function renderScuole(){
         + '<div class="ind">'+esc(s.ind)+'. '+esc(s.gradi)+'.</div>'
         + (s.cont?'<div class="cont">'+s.cont+'</div>':'')
         + (s.dubbio?'<div style="margin-top:7px"><span class="pill p-info">da verificare se paritaria o comunale</span></div>':'')
-        + (s.nota?'<p style="margin:9px 0 0;font-size:14px;color:#39415A;max-width:78ch">'+esc(s.nota)+'</p>':'')
+        + (s.nota?'<p style="margin:9px 0 0;font-size:14px;color:#4A3A3D;max-width:78ch">'+esc(s.nota)+'</p>':'')
         + '<div class="azioni">'
         + (s.url?'<a class="b b-mini" href="'+esc(s.url)+'" target="_blank" rel="noopener">Apri la scheda</a>':'')
         + '<a class="b b-mini" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(s.n+" "+s.ind+" Roma scuola contatti")+'">Cerca i contatti</a>'
@@ -1278,11 +1278,11 @@ $("#lista-canali").innerHTML = CANALI.map(c=>{
 /* ===== PROFILO ===== */
 $("#box-profilo").innerHTML =
   '<div class="mono" style="font-size:12.5px;color:var(--grigio)">Patente '+esc(PROFILO.patente)+'</div>'
-  + '<p style="margin:18px 0 5px"><b>Titolo</b></p><p style="margin:0;font-size:14.5px;color:#39415A">'+esc(PROFILO.laurea)+'</p>'
-  + '<p style="margin:18px 0 5px"><b>Esperienza nel settore</b></p><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#39415A">'+PROFILO.esperienze.map(e=>'<li style="margin-bottom:5px">'+esc(e)+'</li>').join("")+'</ul>'
-  + '<p style="margin:18px 0 5px"><b>Altro</b></p><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#39415A">'+PROFILO.altro.map(e=>'<li style="margin-bottom:5px">'+esc(e)+'</li>').join("")+'</ul>'
-  + '<p style="margin:18px 0 5px"><b>Lingue</b></p><p style="margin:0;font-size:14.5px;color:#39415A">'+esc(PROFILO.lingue)+'</p>'
-  + '<p style="margin:18px 0 5px"><b>Disponibilità</b></p><p style="margin:0;font-size:14.5px;color:#39415A">'+esc(PROFILO.disponibilita)+'</p>';
+  + '<p style="margin:18px 0 5px"><b>Titolo</b></p><p style="margin:0;font-size:14.5px;color:#4A3A3D">'+esc(PROFILO.laurea)+'</p>'
+  + '<p style="margin:18px 0 5px"><b>Esperienza nel settore</b></p><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#4A3A3D">'+PROFILO.esperienze.map(e=>'<li style="margin-bottom:5px">'+esc(e)+'</li>').join("")+'</ul>'
+  + '<p style="margin:18px 0 5px"><b>Altro</b></p><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#4A3A3D">'+PROFILO.altro.map(e=>'<li style="margin-bottom:5px">'+esc(e)+'</li>').join("")+'</ul>'
+  + '<p style="margin:18px 0 5px"><b>Lingue</b></p><p style="margin:0;font-size:14.5px;color:#4A3A3D">'+esc(PROFILO.lingue)+'</p>'
+  + '<p style="margin:18px 0 5px"><b>Disponibilità</b></p><p style="margin:0;font-size:14.5px;color:#4A3A3D">'+esc(PROFILO.disponibilita)+'</p>';
 
 /* ===== LETTERE ===== */
 function contatti(){
