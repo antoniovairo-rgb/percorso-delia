@@ -792,7 +792,7 @@ const TAPPE = [
       {id:"d", t:"Segna ogni mail che mandi nel tracker", s:"Serve per sapere chi ricontattare tra due settimane senza doverti fidare della memoria."}
     ]},
   { id:"t6", n:7, titolo:"Bussa ai nidi e alle scuole vicino casa",
-    perche:"Quasi tutti i nidi privati e le paritarie non pubblicano annunci: prendono chi si è fatto vivo. A fine agosto stanno chiudendo gli organici per settembre, ed è il momento in cui una candidatura spontanea vale di più.",
+    perche:"Quasi tutti i nidi privati e le paritarie non pubblicano annunci: prendono chi si è fatto vivo. Gli organici si chiudono tra fine agosto e settembre, ma i buchi si aprono tutto l'anno: una candidatura spontanea vale soprattutto quando sei già in archivio prima che serva.",
     link:{t:"Apri la lista delle scuole private", v:"private"},
     voci:[
       {id:"a", t:"Scrivi alla Cerioli, la scuola del tuo tirocinio", s:"È una paritaria in via Casilina 631, dentro il tuo quartiere, e ti hanno già vista lavorare per due mesi. È il contatto più caldo che hai."},
@@ -807,7 +807,7 @@ const TAPPE = [
       {id:"a", t:"Ogni lunedì guarda il tracker e chiudi le cose scadute", s:"Dieci minuti, solo le righe con una data già passata."},
       {id:"b", t:"Dopo dieci giorni ricontatta chi non ha risposto", s:"Basta una riga: le riscrivo per sapere se la mia candidatura è ancora in valutazione. Non è insistere, è normale."},
       {id:"c", t:"Aggiorna il CV ogni volta che finisci un incarico", s:"Anche tre giorni di supplenza sono esperienza in sezione, e vanno scritti."},
-      {id:"d", t:"Guarda la bacheca il lunedì e il giovedì", s:"Sono i giorni in cui arrivano gli annunci nuovi."}
+      {id:"d", t:"Dai un occhio alla bacheca ogni due o tre giorni", s:"Gli annunci nuovi arrivano a giorni alterni, e quelli buoni durano poco."}
     ]}
 ];
 
@@ -1101,10 +1101,10 @@ function renderOra(){
   const t = tappaCorrente();
   if(!t){
     $("#ora-titolo").textContent = "Hai completato tutto il percorso";
-    $("#ora-testo").textContent = "Non resta che tenere vivo quello che hai aperto: controlla il tracker il lunedì e la bacheca il lunedì e il giovedì. Se arriva un incarico, aggiorna il CV e riparti dalla tappa 7.";
+    $("#ora-testo").textContent = "Non resta che tenere vivo quello che hai aperto: controlla il tracker il lunedì e la bacheca il lunedì e il giovedì. Se arriva un incarico, aggiorna il CV e riparti dall'ultima tappa.";
     $("#ora-vai").textContent = "Apri il tracker";
     $("#ora-vai").onclick = ()=>vai("candidature");
-    $("#ora-conta").textContent = "7 tappe su 7";
+    $("#ora-conta").textContent = TAPPE.length + " tappe su " + TAPPE.length;
     return;
   }
   const prossima = t.voci.find(v=>!S.spunte[t.id+"."+v.id]);
