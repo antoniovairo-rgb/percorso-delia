@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il mio percorso, servizi educativi 0-6</title>
+<style>
+:root{
+  --ink:#141A2E;
+  --indaco:#4B5BD6;
+  --indaco-chiaro:#EEF0FE;
+  --menta:#12A992;
+  --menta-chiaro:#E4F6F2;
+  --ambra:#D98A1F;
+  --ambra-chiaro:#FDF3E2;
+  --rosa:#D4557E;
+  --sfondo:#F3F4FA;
+  --carta:#FFFFFF;
+  --nebbia:#E4E7F4;
+  --grigio:#5F6982;
+  --grad:linear-gradient(135deg,#4B5BD6 0%,#12A992 100%);
+  --om-s:0 1px 2px rgba(20,26,46,.04), 0 4px 12px -4px rgba(20,26,46,.10);
+  --om-m:0 2px 4px rgba(20,26,46,.04), 0 14px 34px -14px rgba(20,26,46,.20);
+  --r:18px; --r-s:12px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--sfondo); color:var(--ink);
+  font-family:Calibri, Carlito, "Segoe UI", Verdana, "Helvetica Neue", Arial, sans-serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:Calibri, Carlito, "Segoe UI", Verdana, "Helvetica Neue", Arial, sans-serif;font-weight:700;margin:0;letter-spacing:-.005em;line-height:1.2}
+.mono{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace}
+button{font:inherit;cursor:pointer}
+a{color:var(--indaco);text-decoration-thickness:1px;text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--indaco);outline-offset:3px;border-radius:6px}
+
+/* ============ barra superiore ============ */
+.bar{position:sticky;top:0;z-index:30;background:rgba(243,244,250,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--nebbia)}
+.bar-in{max-width:1140px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+.logo .pallino{width:32px;height:32px;border-radius:10px;background:var(--grad);flex:0 0 auto}
+.logo b{font-size:17px;font-weight:700;letter-spacing:0}
+.logo span{display:block;font-size:11.5px;color:var(--grigio);letter-spacing:0;font-weight:400;font-family:Calibri, Carlito, "Segoe UI", Verdana, "Helvetica Neue", Arial, sans-serif}
+.avanz{flex:1 1 200px;min-width:150px;display:flex;align-items:center;gap:10px}
+.barra{flex:1;height:7px;border-radius:99px;background:var(--nebbia);overflow:hidden}
+.barra i{display:block;height:100%;border-radius:99px;background:var(--grad);width:0;transition:width .45s cubic-bezier(.4,0,.2,1)}
+.avanz .q{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:12px;color:var(--grigio);white-space:nowrap}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.nav::-webkit-scrollbar{display:none}
+.nav button{background:transparent;border:0;color:var(--grigio);padding:8px 14px;border-radius:99px;font-size:14px;font-weight:500;white-space:nowrap}
+.nav button:hover{background:var(--carta);color:var(--ink)}
+.nav button[aria-current="true"]{background:var(--ink);color:#fff}
+@media(max-width:760px){.avanz{order:3;flex-basis:100%}}
+
+main{max-width:1140px;margin:0 auto;padding:26px 20px 90px}
+.vista[hidden]{display:none}
+.card{background:var(--carta);border:1px solid var(--nebbia);border-radius:var(--r);box-shadow:var(--om-s)}
+.pad{padding:22px}
+.tit{font-size:13px;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--grigio)}
+.sez{margin-top:34px}
+.sez>h2{font-size:24px;margin-bottom:6px}
+.sez>.desc{color:var(--grigio);font-size:14.5px;margin:0 0 18px;max-width:74ch}
+
+/* ============ card "adesso" ============ */
+.adesso{position:relative;overflow:hidden;border:0;border-radius:24px;background:var(--ink);color:#fff;padding:30px;box-shadow:var(--om-m)}
+.adesso::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:.94}
+.adesso::after{content:"";position:absolute;width:340px;height:340px;right:-110px;top:-150px;border-radius:50%;background:rgba(255,255,255,.13)}
+.adesso>*{position:relative;z-index:1}
+.adesso .tit{color:rgba(255,255,255,.82)}
+.adesso h2{font-size:30px;color:#fff;margin:10px 0 12px;max-width:20ch}
+.adesso p{color:rgba(255,255,255,.9);margin:0 0 20px;max-width:58ch;font-size:15.5px}
+.adesso .riga{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* ============ bottoni ============ */
+.b{border:1px solid var(--nebbia);background:var(--carta);color:var(--ink);padding:9px 16px;border-radius:11px;font-size:14px;font-weight:500;transition:.16s;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+.b:hover{border-color:var(--indaco);color:var(--indaco);transform:translateY(-1px)}
+.b-pri{background:var(--indaco);border-color:var(--indaco);color:#fff}
+.b-pri:hover{background:#3E4CC0;border-color:#3E4CC0;color:#fff}
+.b-luce{background:#fff;border-color:#fff;color:var(--indaco);font-weight:600}
+.b-luce:hover{background:#fff;color:var(--indaco);transform:translateY(-1px)}
+.b-vuoto{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.42);color:#fff}
+.b-vuoto:hover{background:rgba(255,255,255,.24);color:#fff;border-color:#fff}
+.b-mini{padding:6px 11px;font-size:13px;border-radius:9px}
+.b-no:hover{border-color:var(--rosa);color:var(--rosa)}
+
+/* ============ il percorso ============ */
+.rail{position:relative;padding-left:46px}
+.rail::before{content:"";position:absolute;left:15px;top:14px;bottom:14px;width:2px;background:var(--nebbia)}
+.rail>.riempi{position:absolute;left:15px;top:14px;width:2px;background:var(--grad);transition:height .5s cubic-bezier(.4,0,.2,1);border-radius:2px}
+.tappa{position:relative;margin-bottom:14px}
+.nodo{position:absolute;left:-46px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--carta);border:2px solid var(--nebbia);display:flex;align-items:center;justify-content:center;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:13px;color:var(--grigio);z-index:2;transition:.25s}
+.tappa.fatta .nodo{background:var(--grad);border-color:transparent;color:#fff}
+.tappa.corrente .nodo{border-color:var(--indaco);color:var(--indaco);box-shadow:0 0 0 5px var(--indaco-chiaro)}
+summary.tappa-testa{list-style:none}
+summary.tappa-testa::-webkit-details-marker{display:none}
+.tappa-testa{width:100%;cursor:pointer;text-align:left;background:var(--carta);border:1px solid var(--nebbia);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--om-s);transition:.18s}
+.tappa-testa:hover{border-color:#C9CFEC;transform:translateY(-1px);box-shadow:var(--om-m)}
+.tappa.corrente .tappa-testa{border-color:var(--indaco);box-shadow:0 0 0 3px var(--indaco-chiaro),var(--om-s)}
+.tappa-testa h3{font-size:17.5px;flex:1;min-width:0}
+.tappa.fatta .tappa-testa h3{color:var(--grigio);text-decoration:line-through;text-decoration-color:var(--nebbia)}
+.conta{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:12px;color:var(--grigio);white-space:nowrap}
+.frec{width:11px;height:11px;border-right:2px solid var(--grigio);border-bottom:2px solid var(--grigio);transform:rotate(45deg);transition:.22s;flex:0 0 auto;margin-left:2px}
+.tappa[open] .frec{transform:rotate(-135deg)}
+.tappa-corpo{padding:6px 20px 4px 20px;margin-top:2px}
+.tappa-corpo>.perche{color:var(--grigio);font-size:14.5px;margin:10px 0 14px;max-width:72ch}
+.voce{display:flex;gap:12px;padding:11px 0;border-top:1px dashed var(--nebbia);align-items:flex-start}
+.voce:first-of-type{border-top:0}
+.spunta{flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:2px solid var(--nebbia);background:var(--carta);margin-top:1px;position:relative;transition:.18s;padding:0}
+.spunta:hover{border-color:var(--indaco)}
+.spunta[aria-checked="true"]{background:var(--menta);border-color:var(--menta)}
+.spunta[aria-checked="true"]::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+.voce .txt{flex:1;min-width:0;font-size:14.5px}
+.voce[data-fatta="1"] .txt{color:var(--grigio);text-decoration:line-through;text-decoration-color:var(--nebbia)}
+.voce .txt small{display:block;color:var(--grigio);font-size:13px;margin-top:3px;text-decoration:none}
+.voce[data-fatta="1"] .txt small{text-decoration:line-through;text-decoration-color:var(--nebbia)}
+
+.pillole{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:2px}
+.pill{font-size:11.5px;font-weight:500;padding:3px 10px;border-radius:99px;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;letter-spacing:.02em}
+.p-ora{background:var(--ambra-chiaro);color:var(--ambra)}
+.p-ok{background:var(--menta-chiaro);color:#0C7D6C}
+.p-info{background:var(--indaco-chiaro);color:var(--indaco)}
+.p-no{background:#FBE9EF;color:var(--rosa)}
+
+/* ============ griglie / annunci / tabelle ============ */
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g3,.g2{grid-template-columns:1fr}}
+.kpi b{font-size:38px;font-weight:700;line-height:1;display:block;margin:8px 0 3px}
+.kpi span{color:var(--grigio);font-size:13.5px}
+
+.chip{background:var(--carta);border:1px solid var(--nebbia);border-radius:99px;padding:7px 15px;font-size:13.5px;color:var(--grigio);transition:.15s}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:500}
+.filtri{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+
+.ann{display:flex;gap:16px;padding:20px;border-bottom:1px solid var(--nebbia)}
+.ann:last-child{border-bottom:0}
+.ann h3{font-size:17px;margin-top:7px}
+.ann .meta{color:var(--grigio);font-size:13.5px;margin-top:4px}
+.ann .azioni{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap}
+.dist{flex:0 0 auto;width:52px;text-align:center}
+.dist .n{font-size:19px;font-weight:700;line-height:1}
+.dist .u{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:9.5px;color:var(--grigio);letter-spacing:.05em;text-transform:uppercase;margin-top:2px;display:block}
+.dist .box{border-radius:12px;padding:9px 4px;background:var(--menta-chiaro);color:#0C7D6C}
+.dist .box.d3{background:var(--indaco-chiaro);color:var(--indaco)}
+.dist .box.d4{background:var(--ambra-chiaro);color:var(--ambra)}
+.dist .box.d0{background:#F0F1F7;color:var(--grigio)}
+
+.tab-wrap{overflow-x:auto;border-radius:var(--r)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio);font-weight:400;padding:13px 16px;border-bottom:1px solid var(--nebbia);white-space:nowrap;background:#FAFBFE}
+td{padding:14px 16px;border-bottom:1px solid var(--nebbia);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.stato{font-size:11.5px;padding:4px 11px;border-radius:99px;font-weight:500;white-space:nowrap;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace}
+.s-dainviare{background:#F0F1F7;color:var(--grigio)}
+.s-inviata{background:var(--indaco-chiaro);color:var(--indaco)}
+.s-colloquio{background:var(--ambra-chiaro);color:var(--ambra)}
+.s-esito{background:var(--menta-chiaro);color:#0C7D6C}
+.s-chiusa{background:#FBE9EF;color:var(--rosa)}
+.vuoto{padding:44px 22px;text-align:center;color:var(--grigio);font-size:14.5px}
+
+label{display:block;font-size:12.5px;color:var(--grigio);margin-bottom:5px;font-weight:500}
+input,select,textarea{width:100%;padding:10px 13px;border:1px solid var(--nebbia);border-radius:11px;font:inherit;font-size:14.5px;background:#FAFBFE;color:var(--ink);transition:.15s}
+input:focus,select:focus,textarea:focus{background:#fff;border-color:var(--indaco);outline:none;box-shadow:0 0 0 3px var(--indaco-chiaro)}
+textarea{min-height:96px;resize:vertical}
+.campi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.campi{grid-template-columns:1fr}}
+.largo{grid-column:1/-1}
+
+/* ============ scadenze / esei ============ */
+.sc{padding:20px;border-bottom:1px solid var(--nebbia)}
+.sc:last-child{border-bottom:0}
+.sc h3{font-size:17px;margin:8px 0 0}
+.sc .quando{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:12.5px;color:var(--grigio);margin-top:5px}
+.sc p{margin:10px 0 0;font-size:14.5px;color:#39415A;max-width:80ch}
+
+.confronto{border:1px solid var(--nebbia);border-radius:var(--r);overflow:hidden;background:var(--carta)}
+.confronto .testa{background:#FAFBFE;padding:16px 20px;border-bottom:1px solid var(--nebbia)}
+.confronto .testa h3{font-size:17px}
+.confronto .testa .quanto{font-size:28px;font-weight:700;margin-top:6px;display:block}
+.confronto dl{margin:0;padding:6px 20px 18px}
+.confronto dt{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--grigio);margin-top:13px}
+.confronto dd{margin:3px 0 0;font-size:14.5px}
+
+
+.crediti{width:100%;border-collapse:collapse;font-size:14.5px}
+.crediti th{background:#FAFBFE;text-align:left;padding:12px 14px;border-bottom:1px solid var(--nebbia);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);font-weight:600}
+.crediti td{padding:14px;border-bottom:1px solid var(--nebbia);vertical-align:top}
+.crediti tr:last-child td{border-bottom:0}
+.crediti .amb{font-weight:600}
+.crediti .amb small{display:block;font-weight:400;color:var(--grigio);font-size:12.5px;margin-top:3px}
+.crediti .hai{color:#39415A}
+.crediti .n{white-space:nowrap;font-weight:600}
+tr.riga-manca{background:#FEF6F9}
+tr.riga-ok{background:#F4FBF8}
+.scuola{display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--nebbia);align-items:flex-start}
+.scuola:last-child{border-bottom:0}
+.scuola h4{font-size:16px;font-weight:600}
+.scuola .ind{color:var(--grigio);font-size:13.5px;margin-top:3px}
+.scuola .cont{font-size:13.5px;margin-top:6px}
+.scuola .azioni{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.zona-testa{padding:14px 20px;background:#FAFBFE;border-bottom:1px solid var(--nebbia);display:flex;align-items:baseline;gap:10px}
+.zona-testa b{font-size:15px}
+.zona-testa span{font-size:13px;color:var(--grigio)}
+.stella{flex:0 0 auto;width:36px;height:36px;border-radius:11px;background:var(--indaco-chiaro);color:var(--indaco);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.stella.top{background:var(--grad);color:#fff}
+.legenda{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;color:var(--grigio)}
+.avviso{border-radius:var(--r);padding:18px 20px;border:1px solid var(--nebbia);background:var(--ambra-chiaro);border-color:#F2E0C2}
+.avviso h3{font-size:16px;color:var(--ambra);margin-bottom:7px}
+.avviso p{margin:0 0 9px;font-size:14.5px;color:#5A4520}
+.avviso p:last-child{margin-bottom:0}
+.avviso ul{margin:7px 0 9px;padding-left:20px;font-size:14.5px;color:#5A4520}
+.avviso li{margin-bottom:5px}
+.avviso.info{background:var(--indaco-chiaro);border-color:#D6DBFB}
+.avviso.info h3{color:var(--indaco)}
+.avviso.info p,.avviso.info li{color:#33395C}
+.avviso.info ul{color:#33395C}
+
+#lettera{min-height:380px;font-size:14.5px;line-height:1.65}
+footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);font-size:13px;line-height:1.6}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(90px);background:var(--ink);color:#fff;padding:13px 24px;border-radius:14px;font-size:14px;opacity:0;transition:all .26s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:60;box-shadow:0 14px 40px rgba(20,26,46,.32)}
+.toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+@media(max-width:600px){
+  .adesso{padding:24px 20px;border-radius:20px}
+  .adesso h2{font-size:24px}
+  main{padding:20px 14px 80px}
+  .bar-in{padding:10px 14px;gap:12px}
+  .rail{padding-left:38px}
+  .rail::before,.rail>.riempi{left:12px}
+  .nodo{left:-38px;width:26px;height:26px;font-size:11.5px}
+  .tappa-testa{padding:14px 16px}
+  .tappa-corpo{padding:6px 4px 4px}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <div class="logo">
+      <div class="pallino" aria-hidden="true"></div>
+      <div><b id="logo-nome">Il mio percorso</b><span>Lavoro nei servizi educativi 0-6, Roma est</span></div>
+    </div>
+    <div class="avanz" title="Avanzamento del percorso">
+      <div class="barra"><i id="barra-i"></i></div>
+      <span class="q" id="barra-q">0%</span>
+    </div>
+    <nav class="nav" aria-label="Sezioni">
+      <button data-v="percorso" aria-current="true">Percorso</button>
+      <button data-v="esei">Corso ESEI</button>
+      <button data-v="annunci">Annunci</button>
+      <button data-v="private">Scuole private</button>
+      <button data-v="candidature">Candidature</button>
+      <button data-v="dove">Dove cercare</button>
+      <button data-v="canali">Canali</button>
+      <button data-v="lettere">Lettere</button>
+      <button data-v="profilo">Profilo</button>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== PERCORSO ===== -->
+<section class="vista" id="v-percorso">
+  <div class="avviso" id="avviso-dati" hidden style="margin-bottom:20px">
+    <h3>Prima cosa, trenta secondi</h3>
+    <p>Scrivi il tuo nome, il telefono e la mail: servono a firmare le lettere che trovi qui dentro. Restano su questo dispositivo e non li vede nessun altro.</p>
+    <div style="margin-top:12px"><button class="b b-mini" data-vai="profilo">Scrivili adesso</button></div>
+  </div>
+  <div class="adesso">
+    <div class="tit">Adesso tocca a questo</div>
+    <h2 id="ora-titolo">Un attimo...</h2>
+    <p id="ora-testo">Sto caricando il tuo percorso.</p>
+    <div class="riga">
+      <button class="b b-luce" id="ora-vai">Apri questa tappa</button>
+      <span class="mono" style="font-size:12.5px;color:rgba(255,255,255,.8)" id="ora-conta"></span>
+    </div>
+  </div>
+
+  <div class="sez">
+    <h2>Le tappe</h2>
+    <p class="desc">Non devi farle tutte insieme e non devi farle in ordine. Spunta quello che hai fatto: la barra in alto si muove da sola, e la scheda in cima ti ricorda sempre qual è la prossima cosa. Se una tappa non ti è chiara, aprila: dentro c'è scritto a cosa serve.</p>
+    <div class="rail" id="rail"><div class="riempi" id="riempi"></div></div>
+  </div>
+</section>
+
+<!-- ===== ESEI ===== -->
+<section class="vista" id="v-esei" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Il corso ESEI</h2>
+    <p class="desc">ESEI sta per Educatore dei Servizi Educativi per l'Infanzia. È il percorso che aggiunge alla tua laurea quello che manca per poter lavorare al nido. Qui trovi cos'è, quanto costa e soprattutto la cosa da fare prima di pagare qualsiasi iscrizione. Ricontrollato il 6 settembre 2026.</p>
+
+    <div class="avviso" style="margin-bottom:18px">
+      <h3>Come stanno le cose oggi, 6 settembre 2026</h3>
+      <p><b>Per l'anno accademico 2026 e 2027 non c'è nessuna edizione ESEI aperta.</b> Il catalogo dei corsi di perfezionamento di Pegaso in questo momento contiene due corsi soli, e l'ESEI non c'è. L'ultima edizione vera, quella con il codice PERF299, ha chiuso le iscrizioni il 27 febbraio 2026 ed è partita a gennaio: sta girando adesso, non ci si entra più.</p>
+      <p>Occhio a una trappola: su Pegaso c'è ancora online una pagina di un vecchio percorso da 55 crediti che dice iscrizioni aperte, ma in alto riporta l'anno accademico 2023 e 2024. È ferma da tre anni, e comunque quel percorso è riservato a chi è ancora iscritto alla laurea. Tu ti sei laureata a gennaio, quindi non ti riguarda.</p>
+      <p>Quindi ci sono tre strade, e le trovi qui sotto: chiamare Pegaso e farti avvisare quando esce la prossima edizione, guardare e-Campus che sembra sempre aperto, oppure prendere solo gli esami che ti mancano come corsi singoli.</p>
+    </div>
+
+    <div class="avviso info" style="margin-bottom:18px">
+      <h3>Il punto di partenza</h3>
+      <p>La norma non chiede di fare un corso. Chiede che nel tuo piano di studi ci siano crediti specifici sull'infanzia da zero a tre anni: pedagogia, psicologia, sociologia, area medica, laboratori e un tirocinio in un servizio per l'infanzia.</p>
+      <p>Il tuo certificato di laurea con la carriera ce l'abbiamo, quindi il conto l'ho già fatto: lo trovi qui sotto, riquadro per riquadro. <b>Tre requisiti ti mancano di sicuro, tre potresti giocarteli.</b> Quello che nessuno può stabilire al posto dell'università è quali dei tuoi esami valgono davvero per la fascia zero-tre: quella risposta si chiede alla segreteria, e la mail è già scritta in Lettere.</p>
+      <p>Vale la pena mandarla prima di iscriverti. Se ti riconoscono dei crediti il corso si accorcia, e sono soldi e mesi in meno.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="confronto">
+        <div class="testa">
+          <div class="pillole"><span class="pill p-info">stesso ateneo della laurea</span><span class="pill p-no">iscrizioni chiuse</span></div>
+          <h3 style="margin-top:8px">Pegaso, corso di perfezionamento ESEI</h3>
+          <span class="quanto">1.620 €</span>
+        </div>
+        <dl>
+          <dt>Crediti</dt><dd>60 crediti, 1500 ore, un anno, minimo otto mesi</dd>
+          <dt>Requisito</dt><dd>Laurea L-19, ce l'hai</dd>
+          <dt>Quanto si paga</dt><dd>1.500 € più 120 € di servizi. Si può pagare fino a sei rate da 250 €.</dd>
+          <dt>Il tirocinio</dt><dd>10 crediti, 250 ore, <b>tutte di persona</b>, con le convenzioni dell'ateneo. Un tirocinio già fatto lo riconoscono solo per intero, mai per metà: le tue 300 ore sono nella fascia 3-6, quindi vanno chieste espressamente.</dd>
+          <dt>Iscrizioni</dt><dd>L'ultima edizione, codice PERF299, si è chiusa il 27 febbraio 2026 ed è partita a gennaio. Quella per il 2026 e 2027 non è ancora uscita.</dd>
+          <dt>Quando riguardare</dt><dd>Le ultime due edizioni sono partite ad aprile 2025 e a gennaio 2026, con le domande a marzo e a febbraio. La finestra è l'inverno: tra dicembre e marzo. Chiama il numero verde 800.185.095 e chiedi di essere avvisata.</dd>
+        </dl>
+        <div style="padding:0 20px 20px;display:flex;gap:8px;flex-wrap:wrap"><a class="b b-pri" href="https://www.unipegaso.it/perfezionamenti" target="_blank" rel="noopener">I perfezionamenti di Pegaso</a><a class="b" href="https://www.cartesiocentrostudi.it/wp-content/uploads/2025/11/scheda-PERF299-1.pdf" target="_blank" rel="noopener">La scheda dell'ultima edizione</a></div>
+      </div>
+
+      <div class="confronto">
+        <div class="testa">
+          <div class="pillole"><span class="pill p-ok">l'unica che sembra sempre aperta</span></div>
+          <h3 style="margin-top:8px">e-Campus, corso integrativo L-19 prima infanzia</h3>
+          <span class="quanto">1.600 €</span>
+        </div>
+        <dl>
+          <dt>Crediti</dt><dd>60 crediti, un anno, tutto online e asincrono</dd>
+          <dt>Requisito</dt><dd>Laurea L-19, anche in corso</dd>
+          <dt>Il tirocinio</dt><dd>6 crediti di persona più 4 online. È il vantaggio vero rispetto a Pegaso: molte meno ore da incastrare con i bambini.</dd>
+          <dt>Iscrizioni</dt><dd>La pagina non indica nessun anno accademico e nessuna scadenza: sta tra le certificazioni, che di solito sono a iscrizione continua. Non l'ho però letto scritto da nessuna parte, quindi chiedilo.</dd>
+          <dt>Da controllare</dt><dd>Il prezzo non c'è sul sito dell'ateneo: i 1.600 € vengono da un centro convenzionato. Fatti confermare il totale e le rate al telefono, allo 031 7942500.</dd>
+          <dt>Riferimento</dt><dd>Decreto legislativo 65 del 2017 e decreto ministeriale 378 del 2018</dd>
+        </dl>
+        <div style="padding:0 20px 20px"><a class="b" href="https://www.uniecampus.it/didattica/certificazioni-e-alta-formazione-professionale/corso-integrativo-l-19-prima-infanzia" target="_blank" rel="noopener">Pagina e-Campus</a></div>
+      </div>
+    </div>
+
+    <div class="card pad" style="margin-top:18px">
+      <div class="pillole"><span class="pill p-ok">terza strada, da chiedere</span></div>
+      <h3 style="font-size:18px;margin-top:9px">I corsi singoli: pagare solo quello che ti manca</h3>
+      <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">Pegaso tiene aperti tutto l'anno i corsi singoli: ti iscrivi a un esame alla volta, senza fare un corso intero. Costano 120 € di iscrizione più 35 € a credito, quindi un esame da 6 crediti viene 330 €. Si possono prendere solo esami da 6, 9, 12 o 15 crediti.</p>
+      <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">A te mancano con certezza due cose: psicologia dello sviluppo e sociologia. Prese così sarebbero qualche centinaio di euro invece di milleseicento. <b>Il limite però c'è</b>: i corsi singoli sono esami, quindi non ti danno i laboratori e il tirocinio, che il decreto chiede lo stesso. Non è una scorciatoia già pronta, è una domanda da fare alla segreteria.</p>
+      <div style="margin-top:14px"><a class="b b-mini" href="https://www.unipegaso.it/corsi-singoli" target="_blank" rel="noopener">Come funzionano i corsi singoli</a></div>
+    </div>
+
+    <div class="avviso" style="margin-top:18px">
+      <h3>Le domande da fare, tutte nella stessa mail</h3>
+      <ul>
+        <li>Con il mio piano di studi, quanti crediti mi restano davvero da fare? Riconoscete qualcosa di quello che ho già?</li>
+        <li><b>Il tirocinio di 300 ore che ho fatto nella scuola dell'infanzia, quindi nella fascia 3-6, me lo riconoscete?</b> Chiedilo con queste parole: sulla scheda c'è scritto che il tirocinio pregresso si riconosce solo per intero, mai in parte. O vale tutto o niente, e sono 250 ore di differenza.</li>
+        <li><b>Quando apre l'edizione per il 2026 e 2027, e potete avvisarmi appena esce?</b></li>
+        <li>Se prendessi gli esami che mi mancano come corsi singoli, mi resterebbero solo i laboratori e il tirocinio? E quelli come si fanno?</li>
+        <li>Il tirocinio di persona dove si fa, e chi lo trova? Posso farlo in un nido o in una scuola dell'infanzia di Roma che scelgo io?</li>
+        <li>Quanto costa in tutto, rate comprese, e in quanto tempo si finisce davvero?</li>
+      </ul>
+      <p>Le stesse domande mandate a tutte e due ti danno un confronto vero nel giro di una settimana. Il testo è già scritto, lo trovi in Lettere.</p>
+    </div>
+
+
+    <div class="sez" id="conto-crediti">
+      <h2>Dove sei con i crediti</h2>
+      <p class="desc">Ho preso il tuo certificato di laurea con la carriera completa e l'ho messo accanto a quello che chiede il decreto 378 del 2018. Questa non è una risposta ufficiale, quella la può dare solo l'università. Ma ti dice in anticipo dove stai messa bene e dove no, e ti serve per fare le domande giuste.</p>
+
+      <div class="card" style="overflow:hidden">
+        <div class="tab-wrap">
+        <table class="crediti">
+          <thead><tr><th>Cosa chiede il decreto</th><th>Crediti</th><th>Cosa hai nel piano di studi</th><th>Come stai</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="amb">Pedagogia dell'infanzia<small>settori M-PED/01 e M-PED/02, con contenuti sui bambini da zero a tre anni</small></td>
+              <td class="n">10</td>
+              <td class="hai">45 crediti in quei settori: Pedagogia generale, Pedagogia dell'infanzia, Educazione degli adulti, Pedagogia interculturale, Storia delle istituzioni educative. Quello centrato sull'infanzia è uno solo, da 9 crediti.</td>
+              <td><span class="pill p-info">da far valutare</span></td>
+            </tr>
+            <tr>
+              <td class="amb">Didattica e pedagogia sperimentale<small>settori M-PED/03 e M-PED/04, sempre sulla fascia zero-tre</small></td>
+              <td class="n">10</td>
+              <td class="hai">51 crediti in quei settori: Didattica generale, Didattica speciale, Pedagogia sperimentale, Docimologia, Tecnologie dell'istruzione. Nessuno però è dedicato ai bambini piccolissimi.</td>
+              <td><span class="pill p-info">da far valutare</span></td>
+            </tr>
+            <tr class="riga-manca">
+              <td class="amb">Psicologia dello sviluppo<small>settori M-PSI/01 e M-PSI/04</small></td>
+              <td class="n">10</td>
+              <td class="hai">Hai Psicologia generale, 12 crediti. Manca del tutto la psicologia dello sviluppo, che è il settore M-PSI/04: è proprio quello che riguarda come cresce un bambino nei primi anni.</td>
+              <td><span class="pill p-no">manca un pezzo</span></td>
+            </tr>
+            <tr class="riga-manca">
+              <td class="amb">Sociologia<small>settori SPS/07 o SPS/08</small></td>
+              <td class="n">5</td>
+              <td class="hai">Non c'è nessun esame in questi settori.</td>
+              <td><span class="pill p-no">manca tutto</span></td>
+            </tr>
+            <tr class="riga-ok">
+              <td class="amb">Area medica<small>igiene, pediatria, neuropsichiatria infantile</small></td>
+              <td class="n">5</td>
+              <td class="hai">Igiene generale e applicata, 9 crediti. Il settore è quello giusto e i crediti abbondano.</td>
+              <td><span class="pill p-ok">dovrebbe bastare</span></td>
+            </tr>
+            <tr class="riga-manca">
+              <td class="amb">Laboratori<small>almeno 75 ore in ambito educativo o psicologico</small></td>
+              <td class="n">5</td>
+              <td class="hai">Nel piano di studi non risulta nessun laboratorio.</td>
+              <td><span class="pill p-no">manca tutto</span></td>
+            </tr>
+            <tr>
+              <td class="amb">Tirocinio nei servizi per l'infanzia<small>almeno 125 ore, nei servizi zero-tre</small></td>
+              <td class="n">10</td>
+              <td class="hai">Hai Tirocinio pedagogisti, 12 crediti, chiuso il 31 ottobre 2025. Le 300 ore però le hai fatte in una scuola dell'infanzia, quindi con bambini dai tre ai sei anni, non al nido.</td>
+              <td><span class="pill p-info">da far valutare</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="avviso" style="margin-top:18px">
+        <h3>Cosa vuol dire in pratica</h3>
+        <p>Tre cose mancano e su quelle non c'è discussione: la psicologia dello sviluppo, la sociologia e i laboratori. Sono i pezzi che il corso ESEI serve proprio a coprire, quindi la strada che hai scelto è quella giusta.</p>
+        <p>Su altre tre invece potresti giocartela. Hai una montagna di crediti in pedagogia e didattica, molti più dei dieci più dieci che il decreto chiede. Il punto è che il decreto non guarda solo il settore, guarda anche se il contenuto riguarda i bambini da zero a tre anni, e questo lo decide l'università leggendo i programmi degli esami. Vale lo stesso per il tirocinio: dodici crediti ce li hai, ma svolti nella fascia tre-sei.</p>
+        <p>Ecco perché la mail alla segreteria conta così tanto: se ti riconoscono anche solo una parte di quei crediti, il corso si accorcia e costa meno. Se non te ne riconoscono nessuno, almeno lo sai prima di iscriverti invece che dopo.</p>
+      </div>
+
+      <div class="avviso info" style="margin-top:14px">
+        <h3>Una cosa che invece è certa</h3>
+        <p>C'era una scappatoia per chi si è iscritto all'università entro l'anno accademico 2018 e 2019: quelle persone possono lavorare al nido con la L-19 così com'è, senza integrazioni. Tu ti sei iscritta il 9 novembre 2022, quindi quella strada non ti riguarda. Il corso ESEI serve davvero.</p>
+      </div>
+    </div>
+    <div class="sez">
+      <h2>Cosa cambia dopo</h2>
+      <p class="desc">Con l'ESEI in mano si apre tutta l'area da zero a tre anni, che a Roma è quella con più posti di tutte.</p>
+      <div class="grid g3">
+        <div class="card pad"><div class="tit">Si apre</div><p style="margin:9px 0 0;font-size:15px">Nidi privati, sezioni primavera, micronidi, spazi gioco e nidi comunali. È la fetta più grande di posti che ci sia in città.</p></div>
+        <div class="card pad"><div class="tit">Resta com'è</div><p style="margin:9px 0 0;font-size:15px">L'insegnamento nella scuola statale dipende da un titolo diverso, non dall'ESEI. Le MAD e gli interpelli continuano a funzionare come hanno funzionato per te finora.</p></div>
+        <div class="card pad"><div class="tit">Non serve per</div><p style="margin:9px 0 0;font-size:15px">Doposcuola, ludoteche, centri estivi, baby parking e scuole dell'infanzia paritarie. Lì la tua laurea basta già così. Non aspettare l'ESEI per candidarti.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ANNUNCI ===== -->
+<section class="vista" id="v-annunci" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Annunci</h2>
+    <p class="desc">Annunci veri, con la data in cui li abbiamo trovati e il link a dove sono. Il riquadro colorato a sinistra dice quanto è lontano da Torpignattara, più o meno. Niente qui è inventato: qualcuno può essere già stato coperto, il link serve proprio a controllare.</p>
+    <div class="filtri" id="filtri"></div>
+    <div class="card" id="lista-annunci"></div>
+    <div style="margin-top:16px"><button class="b" id="btn-nuovo-ann">Aggiungi un annuncio trovato altrove</button></div>
+    <div class="card pad" id="form-ann" hidden style="margin-top:16px">
+      <div class="campi">
+        <div><label for="an-titolo">Ruolo</label><input id="an-titolo" placeholder="Educatrice sezione primavera"></div>
+        <div><label for="an-ente">Struttura</label><input id="an-ente" placeholder="Nome del nido o della cooperativa"></div>
+        <div><label for="an-zona">Zona</label><input id="an-zona" placeholder="Centocelle"></div>
+        <div><label for="an-cat">Categoria</label><select id="an-cat"><option value="nido">Nido 0-3</option><option value="infanzia">Infanzia 3-6</option><option value="extra">Extrascolastico</option></select></div>
+        <div><label for="an-dist">Distanza</label><select id="an-dist"><option value="1">entro 3 km</option><option value="2">da 3 a 6 km</option><option value="3">da 6 a 12 km</option><option value="4">oltre 12 km</option><option value="0">da verificare</option></select></div>
+        <div><label for="an-url">Link</label><input id="an-url" placeholder="https://"></div>
+        <div class="largo"><label for="an-note">Note</label><input id="an-note" placeholder="Orario, requisiti, contatto"></div>
+      </div>
+      <div style="margin-top:14px"><button class="b b-pri" id="an-salva">Salva</button> <button class="b" id="an-annulla">Annulla</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCUOLE PRIVATE ===== -->
+<section class="vista" id="v-private" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Scuole private, il piano B</h2>
+    <p class="desc">Le scuole dell'infanzia paritarie assumono con regole loro. Non aspettano l'ESEI, non passano dalle graduatorie, e quando hanno un buco chiamano chi si è fatto vivo. Qui sotto ci sono venti scuole vere intorno a casa tua, in ordine di distanza.</p>
+
+    <div class="avviso info" style="margin-bottom:18px">
+      <h3>Perché questa strada è aperta anche adesso</h3>
+      <p>Per legge le paritarie devono assumere docenti abilitati. Ma le circolari ministeriali permettono di assumere personale non abilitato con contratti a tempo determinato quando la scuola dimostra di non riuscire a trovare abilitati, e succede spesso. Sul posto fisso invece l'abilitazione resta necessaria.</p>
+      <p>Vuol dire che una supplenza o un incarico annuale in paritaria è alla tua portata oggi, senza aspettare nessun corso. Non ti costruisce punteggio per la scuola statale, ma ti fa lavorare, ti fa esperienza in sezione e ti mette in contatto con un giro di scuole che si parlano tra loro.</p>
+    </div>
+
+    <div class="avviso" style="margin-bottom:18px">
+      <h3>Parti da qui: la scuola del tuo tirocinio</h3>
+      <p>Le 300 ore di tirocinio le hai fatte alla Santa Paola Elisabetta Cerioli, che sta in via Casilina 631, cioè dentro il tuo quartiere. È una paritaria con infanzia, primaria e medie. Ti hanno già vista lavorare per due mesi.</p>
+      <p>Di tutti i contatti di questa pagina, quello è il più caldo che hai. Prima di scrivere alle altre diciannove, scrivi a loro.</p>
+    </div>
+
+    <div class="card" id="lista-scuole"></div>
+
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">L'elenco viene dai dati ministeriali delle scuole di Roma per codice postale, controllati il 20 agosto 2026. Indirizzi e denominazioni possono essere cambiati, e in qualche caso non è chiaro dai dati se una scuola sia paritaria o comunale: dove c'è il dubbio l'ho scritto. Prima di scrivere, un controllo veloce sul sito della scuola non fa male.</p>
+  </div>
+</section>
+
+<!-- ===== CANDIDATURE ===== -->
+<section class="vista" id="v-candidature" hidden>
+  <div class="grid g3" style="margin-bottom:26px">
+    <div class="card pad kpi"><div class="tit">Aperte</div><b id="k-aperte">0</b><span>candidature in corso</span></div>
+    <div class="card pad kpi"><div class="tit">Colloqui</div><b id="k-colloqui">0</b><span>fissati o in attesa di esito</span></div>
+    <div class="card pad kpi"><div class="tit">Da fare</div><b id="k-dafare">0</b><span>ancora da inviare</span></div>
+  </div>
+  <div class="sez" style="margin-top:0">
+    <h2>Candidature</h2>
+    <p class="desc">Il campo che conta di più è la prossima azione. Una candidatura senza una prossima azione si spegne da sola: quasi tutte le risposte arrivano dopo il secondo contatto, non dopo il primo.</p>
+    <div style="margin-bottom:16px"><button class="b b-pri" id="btn-nuova-cand">Nuova candidatura</button></div>
+    <div class="card pad" id="form-cand" hidden style="margin-bottom:18px">
+      <div class="campi">
+        <div><label for="c-ente">Struttura o scuola</label><input id="c-ente"></div>
+        <div><label for="c-ruolo">Ruolo</label><input id="c-ruolo"></div>
+        <div><label for="c-canale">Come li hai contattati</label><select id="c-canale">
+          <option>Messa a disposizione</option><option>Candidatura spontanea</option><option>Annuncio online</option>
+          <option>Avviso pubblico</option><option>Passaparola</option><option>Agenzia</option></select></div>
+        <div><label for="c-data">Data invio</label><input id="c-data" type="date"></div>
+        <div><label for="c-stato">A che punto sei</label><select id="c-stato">
+          <option value="dainviare">Da inviare</option><option value="inviata">Inviata</option>
+          <option value="colloquio">Colloquio</option><option value="esito">In attesa di esito</option>
+          <option value="chiusa">Chiusa</option></select></div>
+        <div><label for="c-azione-data">Ricontattare il</label><input id="c-azione-data" type="date"></div>
+        <div class="largo"><label for="c-azione">Prossima azione</label><input id="c-azione" placeholder="Chiamare la segreteria per sapere se hanno ricevuto"></div>
+        <div class="largo"><label for="c-note">Note</label><textarea id="c-note" placeholder="Con chi hai parlato, che orario ti hanno proposto, come ti è sembrato"></textarea></div>
+      </div>
+      <div style="margin-top:14px"><button class="b b-pri" id="c-salva">Salva</button> <button class="b" id="c-annulla">Annulla</button></div>
+    </div>
+    <div class="card tab-wrap">
+      <table><thead><tr><th>Struttura</th><th>Ruolo</th><th>Canale</th><th>Inviata</th><th>Stato</th><th>Prossima azione</th><th></th></tr></thead>
+      <tbody id="tbody"></tbody></table>
+      <div class="vuoto" id="cand-vuoto">Ancora nessuna candidatura.<br>La prima si prepara in Lettere, poi la annoti qui.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOVE CERCARE ===== -->
+<section class="vista" id="v-dove" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Dove cercare</h2>
+    <p class="desc">I posti dove gli annunci escono davvero, con la ricerca già impostata su Roma e sul tuo profilo. Clicchi e sei dentro, senza dover reimpostare i filtri ogni volta.</p>
+
+    <div class="avviso" style="margin-bottom:18px">
+      <h3>Una cosa da sapere subito: InfoJobs non esiste più</h3>
+      <p>Era uno dei portali più usati in Italia e ha chiuso il 31 dicembre 2025. Se qualcuno te lo consiglia o trovi vecchi link, lascia perdere: la pagina è ferma e i profili sono stati cancellati.</p>
+    </div>
+
+    <div class="card" id="lista-dove"></div>
+
+    <div class="sez" id="blocco-linkedin">
+      <h2>Il tuo profilo LinkedIn</h2>
+      <p class="desc">Ho guardato il profilo il 20 agosto. È curato: hai la foto, 152 collegamenti, l'esperienza compilata bene e un post sulla laurea che ha fatto 173 visualizzazioni. Non serve rifarlo. Manca una cosa importante e ci sono tre interruttori spenti.</p>
+
+      <div class="avviso" style="margin-bottom:18px">
+        <h3>Le 31 giornate di supplenza sul profilo non ci sono</h3>
+        <p>Non compaiono né nell'esperienza né nella presentazione. È il lavoro più recente che hai fatto, l'unico in cui hai condotto tu una sezione, ed è invisibile. Chi apre il profilo pensa che con i bambini tu abbia fatto solo un tirocinio di due mesi e la mensa.</p>
+        <p>Aggiungila come prima voce dell'esperienza, sopra al tirocinio, con questi dati.</p>
+      </div>
+
+      <div class="card pad" style="margin-bottom:14px">
+        <div class="tit">Nuova voce di esperienza</div>
+        <p style="margin:10px 0 4px;font-size:14.5px"><b>Qualifica:</b> Docente di scuola dell'infanzia (supplenze)</p>
+        <p style="margin:0 0 4px;font-size:14.5px"><b>Società:</b> Istituti Comprensivi statali, Municipio V, Roma</p>
+        <p style="margin:0 0 4px;font-size:14.5px"><b>Periodo:</b> aprile 2026 a giugno 2026, in sede, Roma</p>
+        <p style="margin:0 0 10px;font-size:14.5px"><b>Descrizione:</b></p>
+        <textarea id="li-esp" rows="5" spellcheck="true">31 giornate di supplenza conferite tramite messa a disposizione. Conduzione della sezione dell'infanzia (3-6 anni) in sostituzione delle docenti titolari, attività educativo-didattiche, gestione delle routine della giornata (accoglienza, mensa, riposo, ricongiungimento), collaborazione con il team docente e rapporto quotidiano con le famiglie.</textarea>
+        <div style="margin-top:10px"><button class="b b-mini" data-copia="li-esp">Copia la descrizione</button></div>
+      </div>
+
+      <div class="card pad" style="margin-bottom:14px">
+        <div class="tit">Intestazione: una piccola correzione</div>
+        <p style="margin:8px 0 10px;font-size:14px;color:var(--grigio)">Adesso dice Educatrice Asilo Nido (0-3). Il problema è che il nido è proprio la fascia dove oggi non puoi ancora lavorare senza l'ESEI, mentre la 3-6 delle paritarie e delle supplenze, dove puoi lavorare subito, non compare. Allargala a tutta la fascia 0-6.</p>
+        <textarea id="li-titolo" rows="3" spellcheck="false">Educatrice e insegnante di scuola dell'infanzia | Laurea L-19 Scienze dell'Educazione | Servizi 0-6 | Roma</textarea>
+        <div style="margin-top:10px"><button class="b b-mini" data-copia="li-titolo">Copia</button></div>
+      </div>
+
+      <div class="card pad" style="margin-bottom:14px">
+        <div class="tit">Informazioni: riscritte partendo dalle supplenze</div>
+        <p style="margin:8px 0 10px;font-size:14px;color:var(--grigio)">Quella attuale apre con "neolaureata". È la parola che ti fa sembrare senza esperienza proprio adesso che ne hai. Parti da quello che hai fatto, non da quando ti sei laureata.</p>
+        <textarea id="li-info" rows="12" spellcheck="true">Educatrice, laureata in Scienze dell'Educazione e della Formazione (L-19) con 107 su 110.
+
+Da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia negli Istituti Comprensivi statali del Municipio V di Roma: conduzione della sezione 3-6 anni, attività educativo-didattiche, gestione delle routine della giornata e rapporto quotidiano con le famiglie. Prima ancora, un tirocinio curriculare di 300 ore in una scuola dell'infanzia paritaria, affiancando le insegnanti nella gestione della sezione.
+
+Ho lavorato per due anni nei servizi di mensa scolastica in nidi, scuole dell'infanzia ed elementari, con attestato HACCP di secondo livello: conosco i tempi e le regole della giornata educativa anche nei momenti di cura. Alle spalle ho inoltre dieci anni in ruoli di segreteria e supporto organizzativo, che oggi mi tornano utili nella parte pratica del lavoro educativo.
+
+Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servizi 0-6 a Roma, con preferenza per la zona est. Sono automunita e disponibile per part time, tempo pieno e supplenze.</textarea>
+        <div style="margin-top:10px"><button class="b b-mini" data-copia="li-info">Copia</button></div>
+      </div>
+
+      <div class="card pad" style="margin-bottom:14px">
+        <div class="tit">Competenze: adesso ne hai una sola</div>
+        <p style="margin:8px 0 10px;font-size:14px;color:var(--grigio)">Sul profilo c'è solo Comunicazione. LinkedIn usa le competenze per abbinarti alle ricerche di chi assume, quindi una sola vuol dire quasi nessun abbinamento. Aggiungi queste, una alla volta.</p>
+        <textarea id="li-skill" rows="3" spellcheck="false">Scuola dell'infanzia, Educazione 0-6, Osservazione educativa, Gestione della sezione, Lavoro in team educativo, Rapporto con le famiglie, HACCP</textarea>
+        <div style="margin-top:10px"><button class="b b-mini" data-copia="li-skill">Copia</button></div>
+      </div>
+
+      <div class="avviso info">
+        <h3>Tre interruttori spenti, si accendono in cinque minuti</h3>
+        <ul>
+          <li><b>Disponibile per il lavoro.</b> Non è attivo. Vuol dire che chi cerca personale filtrando per candidati disponibili non ti vede proprio. Accendilo scegliendo insegnante di scuola dell'infanzia ed educatrice.</li>
+          <li><b>L'indirizzo del profilo.</b> Adesso finisce con un codice automatico. Puoi cambiarlo in qualcosa di pulito da mettere sul CV e nelle mail.</li>
+          <li><b>La verifica dell'identità.</b> LinkedIn dice che i profili verificati vengono visti molto di più. È gratis e si fa con un documento.</li>
+        </ul>
+        <p>Il resto del profilo lascialo com'è: foto, collegamenti ed esperienze precedenti vanno già bene così.</p>
+      </div>
+    </div>
+
+    <div class="sez">
+      <h2>Due mosse che valgono più di cento clic</h2>
+      <div class="grid g2">
+        <div class="card pad">
+          <div class="pillole"><span class="pill p-ora">da fare presto</span></div>
+          <h3 style="font-size:18px;margin-top:9px">Scrivi alla FISM di Roma</h3>
+          <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">La Federazione Italiana Scuole Materne riunisce le scuole dell'infanzia non statali della provincia di Roma. È l'ombrello sotto cui stanno quasi tutte le paritarie della tua lista. Una mail sola può arrivare dove venti mail separate non arrivano. Chiedi se possono girare la tua candidatura alle scuole associate della zona est.</p>
+          <p style="margin:10px 0 0;font-size:14px;color:var(--grigio)">Via della Pigna 13A, Roma. 06 39638185. info@fismroma.it</p>
+          <div style="margin-top:14px"><button class="b b-mini" data-vai="lettere">La lettera è pronta in Lettere</button> <a class="b b-mini" href="http://www.fismroma.it/" target="_blank" rel="noopener">Sito FISM Roma</a></div>
+        </div>
+        <div class="card pad">
+          <div class="pillole"><span class="pill p-ok">contatto che hai già</span></div>
+          <h3 style="font-size:18px;margin-top:9px">Riapri la porta con Randstad</h3>
+          <p style="margin:10px 0 0;font-size:14.5px;color:#39415A">Dal 2022 al 2024 hai lavorato nelle mense scolastiche tramite Randstad. Sei già nei loro archivi e hanno già visto che sei affidabile. Da allora però è cambiato tutto: adesso hai una laurea. Una telefonata alla filiale per aggiornare il profilo può farti ricontattare per posizioni che prima non ti avrebbero proposto.</p>
+          <p style="margin:10px 0 0;font-size:14px;color:var(--grigio)">Vale lo stesso per le altre agenzie che lavorano con cooperative e servizi scolastici a Roma.</p>
+          <div style="margin-top:14px"><a class="b b-mini" href="https://www.randstad.it/" target="_blank" rel="noopener">Sito Randstad</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="avviso info" style="margin-top:22px">
+      <h3>Come impostare gli avvisi, che è la parte che conta</h3>
+      <p>Su Indeed e su LinkedIn, quando hai fatto una ricerca che ti piace, cerca il pulsante per salvarla o per attivare le notifiche. Da quel momento gli annunci nuovi ti arrivano per mail e non devi più tornare a controllare.</p>
+      <p>Fallo per tre ricerche, non per dieci: educatrice asilo nido a Roma, insegnante scuola dell'infanzia a Roma, e doposcuola o ludoteca a Roma. Dieci avvisi diventano rumore e finisci per non aprirli più.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CANALI ===== -->
+<section class="vista" id="v-canali" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Canali e scadenze</h2>
+    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato il 7 settembre 2026. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
+    <div class="card" id="lista-canali"></div>
+  </div>
+</section>
+
+<!-- ===== LETTERE ===== -->
+<section class="vista" id="v-lettere" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Lettere pronte</h2>
+    <p class="desc">I testi usano solo quello che c'è davvero nel tuo CV. Scegli a chi stai scrivendo, metti il nome della struttura e copia. Rileggi sempre prima di mandare: il nome giusto nella prima riga è la differenza tra una candidatura e una circolare.</p>
+    <div class="grid g2">
+      <div class="card pad">
+        <div style="display:grid;gap:14px">
+          <div><label for="l-tipo">A chi stai scrivendo</label><select id="l-tipo">
+            <option value="pegaso">Segreteria universitaria, per il corso ESEI</option>
+            <option value="mad">Scuola dell'infanzia statale, messa a disposizione</option>
+            <option value="ricontatto">Una scuola dove hai già lavorato</option>
+            <option value="nido">Nido privato o sezione primavera</option>
+            <option value="paritaria">Scuola dell'infanzia paritaria</option>
+            <option value="fism">FISM Roma, la federazione delle paritarie</option>
+            <option value="coop">Cooperativa, doposcuola, ludoteca o centro estivo</option>
+            <option value="annuncio">Risposta a un annuncio</option>
+          </select></div>
+          <div><label for="l-ente">Nome della struttura</label><input id="l-ente" placeholder="Istituto Comprensivo ..."></div>
+          <div><label for="l-extra">Dettaglio da citare (facoltativo)</label><input id="l-extra" placeholder="Annuncio del 20 luglio per educatrice part time"></div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap">
+          <button class="b b-pri" id="l-genera">Genera il testo</button>
+          <button class="b" id="l-copia">Copia</button>
+        </div>
+        <p style="font-size:13.5px;color:var(--grigio);margin:16px 0 0">Il testo cambia da solo quando cambi destinatario. Puoi ritoccarlo a mano prima di copiarlo.</p>
+      </div>
+      <div class="card pad">
+        <label for="lettera">Testo</label>
+        <textarea id="lettera" spellcheck="true"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROFILO ===== -->
+<section class="vista" id="v-profilo" hidden>
+  <div class="sez" style="margin-top:0" id="i-tuoi-dati">
+    <h2>I tuoi dati</h2>
+    <p class="desc">Servono solo a firmare le lettere. Restano su questo telefono o su questo computer, non vengono spediti da nessuna parte e non li vede nessun altro. Li scrivi una volta e non ci pensi più.</p>
+    <div class="card pad">
+      <div class="campi">
+        <div><label for="io-nome">Nome e cognome</label><input id="io-nome" placeholder="Come firmi le mail"></div>
+        <div><label for="io-tel">Telefono</label><input id="io-tel" placeholder="Il numero su cui ti chiamano"></div>
+        <div><label for="io-mail">Email</label><input id="io-mail" placeholder="La mail che controlli davvero"></div>
+        <div class="largo"><label for="io-zona">Zona e città in cui abiti</label><input id="io-zona" placeholder="Es. Torpignattara, Roma"></div>
+      </div>
+      <p style="font-size:13px;color:var(--grigio);margin:14px 0 0" id="io-stato"></p>
+    </div>
+  </div>
+
+  <div class="sez">
+    <h2>Il tuo profilo professionale</h2>
+    <p class="desc">Preso dal tuo CV aggiornato ad agosto 2026. È quello che le lettere raccontano di te: se cambi il CV, chiedimi di aggiornare anche questo.</p>
+    <div class="card pad" id="box-profilo"></div>
+  </div>
+  <div class="sez">
+    <h2>I dati salvati</h2>
+    <p class="desc">Spunte, candidature e annunci che aggiungi tu restano su questo dispositivo, in questo browser. Esportarli ogni tanto è l'unico modo per non perderli.</p>
+    <div class="card pad">
+      <div style="display:flex;gap:9px;flex-wrap:wrap;align-items:center">
+        <button class="b" id="btn-export">Copia i tuoi dati</button>
+        <button class="b" id="btn-import">Importa da file</button>
+        <input type="file" id="file-import" accept="application/json" hidden>
+        <button class="b b-no" id="btn-reset" style="margin-left:auto">Cancella tutto</button>
+      </div>
+      <p style="font-size:13px;color:var(--grigio);margin:16px 0 0" id="stato-storage"></p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <p>Costruita il 20 agosto 2026. Annunci e canali ricontrollati il 7 settembre 2026, sezione sul corso ESEI ricontrollata il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
+</footer>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+
+/* ===== PROFILO, dal CV reale ===== */
+const PROFILO = {
+  patente:"B, automunita",
+  laurea:"Laurea in Scienze dell'Educazione e della Formazione (L-19), Università Telematica Pegaso. Conseguita il 28 gennaio 2026 con 107 su 110. Tesi sulla valutazione delle competenze degli studenti con bisogni speciali nella scuola italiana.",
+  esperienze:[
+    "31 giornate di supplenza come docente di scuola dell'infanzia negli Istituti Comprensivi statali del Municipio V di Roma, da aprile a giugno 2026, con incarichi tramite messa a disposizione",
+    "Tirocinio curriculare di 300 ore nella scuola dell'infanzia, alla Scuola Santa Paola Elisabetta Cerioli di Roma, tra settembre e ottobre 2025",
+    "Addetta alla mensa scolastica in nidi, scuole dell'infanzia ed elementari, con Randstad ed Eutourist New, da aprile 2022 a giugno 2024"
+  ],
+  altro:["Attestato HACCP di secondo livello, marzo 2022",
+         "Dieci anni in segreteria e supporto organizzativo, tra DeA Capital, CDP Investimenti, Cerved e JAKALA",
+         "SPID attivo e richiesta di interpello per l'infanzia già presentata nel Municipio V"],
+  lingue:"Italiano madrelingua; inglese, francese e spagnolo a livello scolastico",
+  disponibilita:"Part time la mattina o il pomeriggio, tempo pieno e supplenze brevi. Preavviso di cinque giorni."
+};
+
+/* ===== LE TAPPE ===== */
+const TAPPE = [
+  { id:"t1", n:1, titolo:"Metti in ordine le carte",
+    perche:"Mezz'ora, una volta sola. Serve perché da qui in avanti ogni candidatura ti chiede sempre le stesse quattro cose, e averle pronte è la differenza tra rispondere a un annuncio in cinque minuti e rimandare a domani.",
+    voci:[
+      {id:"a", t:"Salva il CV in PDF, sul telefono e sul computer", s:"Il PDF si apre uguale su qualsiasi schermo. Il Word no: chi lo apre con un altro programma vede il testo sballato."},
+      {id:"b", t:"Fai una cartella Candidature con dentro CV, carta d'identità, codice fiscale e certificato di laurea", s:"Così quando ti chiedono un allegato ce l'hai già lì e non lo devi cercare."},
+      {id:"c", t:"Prova SPID adesso", s:"Ti serve per i portali del Comune e per inPA. Meglio scoprire oggi che non funziona, che il giorno della scadenza."},
+      {id:"d", t:"Scrivi l'elenco delle scuole del Municipio V dove hai lavorato", s:"Nomi e mail delle segreterie. È la lista di contatti più preziosa che hai: sono le uniche persone che ti hanno già vista lavorare."}
+    ]},
+  { id:"t2", n:2, titolo:"Scopri quanti crediti ti mancano davvero",
+    perche:"Dal tuo certificato di laurea si vede già molto: tre requisiti ti mancano di sicuro e tre potresti giocarteli con gli esami che hai. Il conto lo trovi nella sezione sul corso ESEI. Quello che manca è la parola dell'università, e quella si chiede con una mail.",
+    link:{t:"Guarda il conto dei crediti", v:"esei"},
+    voci:[
+      {id:"a", t:"Manda alla segreteria di Pegaso la mail con l'elenco dei tuoi esami", s:"È già scritta, la trovi in Lettere: elenca esame per esame quello che hai e chiede quali vengono riconosciuti. Allega il certificato di laurea con la carriera."},
+      {id:"b", t:"Manda la stessa mail anche a e-Campus", s:"Due risposte a confronto valgono molto più di una, e ti costa cinque minuti in più."},
+      {id:"c", t:"Chiedi anche il costo totale e dove si fa il tirocinio", s:"Il tirocinio è la parte che complica la vita: 7 crediti da fare di persona in un servizio educativo. Meglio sapere subito se te lo trova l'ateneo o se te lo devi cercare tu."},
+      {id:"d", t:"Segna sul calendario di risollecitare tra una settimana", s:"Le segreterie rispondono, ma non sempre al primo colpo."}
+    ]},
+  { id:"t3", n:3, titolo:"Iscriviti al corso ESEI",
+    perche:"Quando hai le risposte in mano la scelta diventa facile: vince chi ti riconosce più crediti, chi costa meno a parità di crediti e chi non ti lascia il tirocinio sulle spalle.",
+    link:{t:"Confronta i due corsi", v:"esei"},
+    voci:[
+      {id:"a", t:"Confronta le due risposte su tre numeri", s:"Crediti che ti restano da fare, costo totale, mesi di durata. Non il prezzo di listino: quello che paghi tu dopo i riconoscimenti."},
+      {id:"b", t:"Chiedi se ci sono sconti o rate", s:"Domanda diretta: c'è un'agevolazione per chi si è già laureato da voi? Si può pagare a rate senza interessi?"},
+      {id:"c", t:"Iscriviti e metti in agenda le date del tirocinio", s:"Il tirocinio in presenza va incastrato con i bambini. Prima sai quando, prima ti organizzi."},
+      {id:"d", t:"Intanto continua a candidarti", s:"Il corso dura mesi. Doposcuola, ludoteche, paritarie e supplenze non aspettano l'ESEI: quelle porte sono già aperte adesso."}
+    ]},
+  { id:"t4", n:4, titolo:"Apri i canali pubblici",
+    perche:"Sono gratis, si fanno una volta e poi restano lì. Non ti danno un lavoro domani, ma sono l'unico modo per farti chiamare da chi cerca personale senza pubblicare annunci.",
+    link:{t:"Vedi tutti i canali", v:"canali"},
+    voci:[
+      {id:"a", t:"Presenta la MAD negli elenchi del Municipio V", s:"Sono due voci separate, educatore asili nido e insegnante scuola dell'infanzia. Presentale tutte e due."},
+      {id:"b", t:"Presenta anche la MAD del Comune per nidi e scuole dell'infanzia comunali", s:"Copre tutti i municipi. Va fatta in aggiunta a quella del Municipio V, non al suo posto."},
+      {id:"c", t:"Registrati su inPA e attiva gli avvisi", s:"Imposta Roma come zona e l'area educativa e sociale. Poi gli avvisi ti arrivano per mail da soli."},
+      {id:"d", t:"Segna in agenda di ricontrollare le pagine ogni due settimane", s:"Gli avvisi del Comune escono senza preavviso e restano aperti poco."}
+    ]},
+  { id:"t8", n:5, titolo:"Fatti trovare, non solo cercare",
+    perche:"Finora hai bussato tu alle porte. Questa tappa serve a far bussare loro. Costa un pomeriggio e poi lavora da sola: gli annunci ti arrivano per mail e chi cerca personale ti trova senza che tu faccia niente. Il profilo LinkedIn ce l'hai già, quindi mezza tappa è fatta: va solo riscritto per il lavoro che cerchi ora.",
+    link:{t:"Apri la lista dei posti dove cercare", v:"dove"},
+    voci:[
+      {id:"a", t:"Aggiorna il profilo LinkedIn che hai già", s:"Non devi scrivere niente: in Dove cercare trovi intestazione, presentazione e competenze già pronte, con il pulsante per copiarle. Ti basta incollarle al posto di quelle vecchie."},
+      {id:"b", t:"Salva tre ricerche e attiva le notifiche", s:"Educatrice asilo nido a Roma, insegnante scuola dell'infanzia a Roma, doposcuola o ludoteca a Roma. Tre, non dieci: se ne attivi troppe smetti di aprirle."},
+      {id:"c", t:"Registrati a Porta Futuro Lazio e prendi un appuntamento", s:"È gratuito, è della Regione, e ti guardano il CV di persona. Se ti senti persa è il posto giusto dove andare."},
+      {id:"d", t:"Chiama la filiale Randstad e aggiorna il tuo profilo", s:"Ci hai lavorato dal 2022 al 2024 nelle mense scolastiche, sei già nei loro archivi. Da allora però ti sei laureata, e loro non lo sanno."},
+      {id:"e", t:"Scrivi alla FISM di Roma", s:"È la federazione delle scuole dell'infanzia non statali della provincia. Una mail sola può arrivare a molte scuole insieme. La lettera è pronta in Lettere."}
+    ]},
+  { id:"t5", n:6, titolo:"Ricontatta le scuole che ti conoscono già",
+    perche:"È la tappa che rende di più, e quella a cui si pensa di meno. Nelle scuole dove hai fatto le 31 giornate sanno già come lavori: non devi convincerle, devi solo farti ricordare prima che chiudano le liste di settembre.",
+    link:{t:"Apri la lettera di ricontatto", v:"lettere"},
+    voci:[
+      {id:"a", t:"Manda una mail corta a ogni segreteria dove hai lavorato", s:"Non una candidatura formale, un promemoria gentile: sono disponibile anche quest'anno, allego il CV aggiornato."},
+      {id:"b", t:"Chiedi se devi rinnovare la MAD per il nuovo anno", s:"Molti istituti azzerano gli elenchi ogni anno. Ed è anche un modo naturale per farti ricordare."},
+      {id:"c", t:"Se si sono trovati bene, chiedi se possono segnalarti ad altri istituti", s:"Nella scuola il passaparola tra segreterie e presidi conta più di qualsiasi portale."},
+      {id:"d", t:"Segna ogni mail che mandi nel tracker", s:"Serve per sapere chi ricontattare tra due settimane senza doverti fidare della memoria."}
+    ]},
+  { id:"t6", n:7, titolo:"Bussa ai nidi e alle scuole vicino casa",
+    perche:"Quasi tutti i nidi privati e le paritarie non pubblicano annunci: prendono chi si è fatto vivo. A fine agosto stanno chiudendo gli organici per settembre, ed è il momento in cui una candidatura spontanea vale di più.",
+    link:{t:"Apri la lista delle scuole private", v:"private"},
+    voci:[
+      {id:"a", t:"Scrivi alla Cerioli, la scuola del tuo tirocinio", s:"È una paritaria in via Casilina 631, dentro il tuo quartiere, e ti hanno già vista lavorare per due mesi. È il contatto più caldo che hai."},
+      {id:"b", t:"Poi cinque candidature a settimana alle altre scuole private", s:"La lista è già pronta nella sezione Scuole private, venti scuole in ordine di distanza. Cinque scritte con il nome giusto valgono più di venti copiate uguali."},
+      {id:"c", t:"Dove puoi, vai di persona", s:"In un nido piccolo la coordinatrice sta quasi sempre lì. Un CV consegnato a mano a fine mattinata pesa più di una mail."},
+      {id:"d", t:"Allarga a doposcuola, ludoteche e centri", s:"Non chiedono l'ESEI e partono a settembre. È la strada più corta per il primo contratto."}
+    ]},
+  { id:"t7", n:8, titolo:"Tieni vivo quello che hai aperto",
+    perche:"Quasi nessuno risponde al primo invio. Le risposte arrivano quando a una struttura salta qualcuno all'improvviso e vanno a riaprire la cartella delle candidature recenti. Bisogna essere lì dentro in quel momento.",
+    link:{t:"Apri il tracker", v:"candidature"},
+    voci:[
+      {id:"a", t:"Ogni lunedì guarda il tracker e chiudi le cose scadute", s:"Dieci minuti, solo le righe con una data già passata."},
+      {id:"b", t:"Dopo dieci giorni ricontatta chi non ha risposto", s:"Basta una riga: le riscrivo per sapere se la mia candidatura è ancora in valutazione. Non è insistere, è normale."},
+      {id:"c", t:"Aggiorna il CV ogni volta che finisci un incarico", s:"Anche tre giorni di supplenza sono esperienza in sezione, e vanno scritti."},
+      {id:"d", t:"Guarda la bacheca il lunedì e il giovedì", s:"Sono i giorni in cui arrivano gli annunci nuovi."}
+    ]}
+];
+
+/* ===== ANNUNCI, ricerca su Indeed aggiornata il 7 settembre 2026 ===== */
+const ANNUNCI = [
+  {id:"a07a", titolo:"Educatore o educatrice per l'infanzia", ente:"La Casa dei Chicchi di grano, cooperativa sociale",
+   zona:"Formello, fuori Roma, zona Cassia", cat:"infanzia", dist:4, tipo:"Tempo pieno, da metà novembre 2026 a fine gennaio 2027", pubb:"4 settembre 2026",
+   url:"https://to.indeed.com/aafxnlszvwgf", fonte:"Indeed",
+   note:"Nuovo, trovato il 7 settembre. Chiedono una laurea specifica del settore, e la tua lo è. Il problema sono le altre due richieste: esperienza già consolidata, e disponibilità a coprire turni a tempo pieno, che scrivono nero su bianco essere la condizione per fissare anche solo un colloquio. Il periodo è particolare, da metà novembre a fine gennaio, con la possibilità di restare poi tutto l'anno come sostituta del personale. Fino a 1.250 euro al mese, con mensa e parcheggio. La distanza però pesa parecchio: Formello sta fuori Roma, dalla parte opposta rispetto a Torpignattara. Nell'annuncio non c'è scritto se si tratta di nido o di scuola dell'infanzia: se chiami, chiedilo subito insieme agli orari."},
+  {id:"a05a", titolo:"Educatrice o educatore, servizio SISMIF di educativa domiciliare", ente:"Cooperativa Sociale Rifornimento in volo",
+   zona:"Roma, sede in zona 00161, interventi a domicilio", cat:"extra", dist:0, tipo:"Collaborazione, orario flessibile", pubb:"2 settembre 2026",
+   url:"https://to.indeed.com/aafdk2nckt66", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. Di tutta la bacheca è quello con il requisito più leggero: la L19 è scritta per prima nell'elenco dei titoli accettati, e l'anno di esperienza come educatrice è solo preferenziale, non obbligatorio. È educativa domiciliare per minori e famiglie, quindi si lavora a casa delle persone. Le candidature vanno mandate per mail a educativa@rifornimentoinvolo.it e a progettazione@rifornimentoinvolo.it, tutte e due. Il compenso dichiarato va da 300 a 800 euro al mese, quindi è un lavoro parziale: chiedi subito quante ore sono e in che zone si va."},
+  {id:"a05b", titolo:"Educatrice o educatore professionale", ente:"Cooperativa Sociale Famiglie Anziani Infanzia F.A.I.",
+   zona:"Roma, Municipi II, III e IV", cat:"extra", dist:0, tipo:"Part-time, 18 ore a settimana", pubb:"2 settembre 2026",
+   url:"https://to.indeed.com/aabqjzvy4829", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. Chiedono la Laurea in Scienze dell'Educazione o in Psicologia e non mettono nessun minimo di anni. CCNL cooperative sociali, livello D2, 18 ore a settimana, 816,75 euro lordi. Cercano una persona sola. Si lavora nei Municipi II, III e IV: il IV confina con il tuo, gli altri due sono più lontani. Occhio a un punto: chiedono di essere residenti in zona o limitrofe, quindi nella mail scrivi che sei automunita e da dove parti. Curriculum a risorseumane@coopfairoma.com."},
+  {id:"a05c", titolo:"Educatrice o psicologa, servizio SISMIF di educativa domiciliare", ente:"Cooperativa Sociale San Saturnino Onlus",
+   zona:"Roma, Municipi I, II, III e VI", cat:"extra", dist:0, tipo:"Part-time, 12-16 ore a settimana, di pomeriggio", pubb:"31 agosto 2026",
+   url:"https://to.indeed.com/aag2rcfyw4rs", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. Educativa domiciliare per minori: sostegno didattico, sostegno emotivo, attività ricreative e lavoro con i genitori. La laurea triennale è indicata come preferenziale, quindi la tua è più che sufficiente. Si va a casa delle famiglie del Municipio I, II, III e VI: il VI confina con il tuo ed è il più comodo dei quattro. Sono 12-16 ore a settimana di pomeriggio, da 500 a 900 euro al mese. Si risponde a Pierluigi Zeni, 333 7525962, oppure a sismif@yahoo.it."},
+  {id:"a05d", titolo:"Educatrice o educatore per asilo nido aziendale, Nido Enel", ente:"Frasi srl",
+   zona:"Roma, via Luigi Boccherini", cat:"nido", dist:3, tipo:"Tempo determinato, full time", pubb:"1 settembre 2026",
+   url:"https://to.indeed.com/aaw2rdflldvq", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. Frasi gestisce nidi privati e aziendali in tutta Italia. C'è una buona notizia dentro il testo: scrivono che va bene il gruppo di lavoro di asilo nido oppure di scuola dell'infanzia, quindi la tua esperienza 3-6 conta. Chiedono esperienza nel settore ma non dicono quanti anni. CCNL Aninsei quarto livello, 1.491 euro lordi al mese. La sede sta a nord, verso i Parioli: è un bel pezzo di strada, valutala con l'orario in mano."},
+  {id:"a05e", titolo:"Educatrice o educatore per asilo nido aziendale, Nido FAO", ente:"Frasi srl",
+   zona:"Roma, indirizzo del nido da chiedere", cat:"nido", dist:0, tipo:"Tempo determinato", pubb:"1 settembre 2026",
+   url:"https://to.indeed.com/aabnv2lcp92s", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. Stessa società dell'annuncio del Nido Enel e stesse condizioni, ma qui l'indirizzo non è scritto: la prima domanda è dove sta il nido. Anche qui accettano esperienza in nido oppure in scuola dell'infanzia. Se scrivi a Frasi, cita tutti e due gli annunci in una mail sola."},
+  {id:"a05f", titolo:"Educatrice o educatore di asilo nido", ente:"S&M srl",
+   zona:"Roma, EUR e Laurentina", cat:"nido", dist:4, tipo:"Tempo determinato full time, dal 14 settembre 2026 al 31 luglio 2027", pubb:"2 settembre 2026",
+   url:"https://to.indeed.com/aacxcn2gcylz", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. La L19 è scritta tra i titoli buoni, ma chiedono anche tre anni di esperienza come educatrice di nido, che tu non hai. Il contratto però è lungo: dal 14 settembre al 31 luglio, 36 ore a settimana, CCNL Aninsei quarto livello, 1.491,38 euro lordi al mese. Se ti va di provare, chiama e chiedi se i tre anni sono un muro. Resta comunque dall'altra parte della città."},
+  {id:"a05g", titolo:"Educatrice o educatore in casa famiglia per minori", ente:"I Paguri Onlus",
+   zona:"Roma, Casalotti", cat:"extra", dist:4, tipo:"Tempo pieno, tempo determinato", pubb:"1 settembre 2026",
+   url:"https://to.indeed.com/aa9cjhghz9zk", fonte:"Indeed",
+   note:"Nuovo, trovato il 5 settembre. Scrivono che la laurea in Scienze dell'Educazione o in Pedagogia è requisito indispensabile, e che la psicologia invece non vale: sul titolo sei esattamente quello che cercano, e l'esperienza è solo preferibile. Da 1.100 a 1.400 euro al mese. Due cose pesano: chiedono disponibilità anche nei giorni festivi, e Casalotti sta dall'altro capo di Roma rispetto a Torpignattara."},
+  {id:"a03a", titolo:"Educatore professionale, servizio SISMIF di educativa domiciliare", ente:"COTRAD Onlus",
+   zona:"Roma, zone da verificare", cat:"extra", dist:0, tipo:"Collaborazione, part time", pubb:"27 agosto 2026",
+   url:"https://to.indeed.com/aacs9yvdtbjw", fonte:"Indeed",
+   note:"Nuovo, trovato il 3 settembre. È l'annuncio con il requisito più leggero di tutta la lista: chiedono la laurea in Scienze dell'Educazione oppure in Psicologia, e non chiedono anni di esperienza. Il SISMIF è il servizio di sostegno educativo ai minori dentro la loro famiglia, quindi si lavora a domicilio, non in sezione. Scrivono 15 ore a settimana dal lunedì al venerdì, contratto iniziale di collaborazione a 13 euro lordi l'ora. Attenzione a due cose, chiediglielo subito: nella scheda dell'annuncio compare anche un monte ore di 36 a settimana, che con le 15 non torna, e non dicono in quali municipi si lavora. Parlano di trasferte frequenti, quindi la zona cambia tutto."},
+  {id:"a31b", titolo:"Educatrice o educatore, servizio EduNido 0-6", ente:"Antropos Cooperativa Sociale Onlus",
+   zona:"Roma, sede da verificare", cat:"nido", dist:0, tipo:"Tempo determinato 12 mesi, rinnovabile", pubb:"24 agosto 2026",
+   url:"https://to.indeed.com/aadyf7dpjyqv", fonte:"Indeed",
+   note:"Accettano il titolo triennale di educatrice nido e servizi per la prima infanzia L19. Chiedono però tre anni di esperienza nel settore, laboratori per la prima infanzia e supporto alla genitorialità: tu di anni ne hai meno. Vale la telefonata, per chiedere se i tre anni sono un requisito rigido. Sono 20-25 ore a settimana, con supervisione mensile."},
+  {id:"a31c", titolo:"Educatore o educatrice, servizio Mamma Bambino, L19", ente:"Antropos Cooperativa Sociale Onlus",
+   zona:"Roma, sede da verificare", cat:"nido", dist:0, tipo:"Part-time, 12 mesi rinnovabile", pubb:"6 agosto 2026",
+   url:"https://to.indeed.com/aatlnzf6jmk2", fonte:"Indeed",
+   note:"Stessa cooperativa, altro servizio. Anche qui chiedono tre anni di esperienza. Se chiami per l'altro annuncio, citali tutti e due: risponde la stessa persona, e una candidatura sola può coprire tutti e due i servizi."},
+  {id:"a31d", titolo:"Educatore o psicologo, assistenza domiciliare a minori con disabilità", ente:"AVI ONLUS",
+   zona:"Roma, Municipi V, VI e VII", cat:"extra", dist:0, tipo:"Part-time, da 8 a 20 ore a settimana", pubb:"24 agosto 2026",
+   url:"https://to.indeed.com/aaqnfzhsqdd9", fonte:"Indeed",
+   note:"Lavora proprio nei tuoi municipi, il V compreso. Accettano la Laurea in Scienze dell'Educazione, e l'esperienza con la disabilità è chiesta anche minima. Guarda bene le condizioni prima di dire sì: l'assunzione la fa direttamente la famiglia, con il contratto del lavoro domestico, 9,97 euro lordi l'ora, tra 350 e 850 euro al mese. Non è il lavoro che cerchi, ma è vicino casa e con orari corti."},
+  {id:"a31e", titolo:"Educatore professionale, équipe socio-educativa", ente:"Fondazione Xenìa",
+   zona:"Roma, sede da verificare", cat:"extra", dist:0, tipo:"Tempo indeterminato", pubb:"3 agosto 2026",
+   url:"https://to.indeed.com/aarrw9wnc6vq", fonte:"Indeed",
+   note:"Chiedono la Laurea L-19 e basta, l'esperienza è solo preferibile. CCNL UNEBA, da 1.600 a 1.700 euro netti, tredicesima e assistenza sanitaria. Il problema sono i turni: sulle 24 ore, notti, domeniche e festivi. Con due bambini piccoli è dura, quindi guardalo solo se trovi un incastro. Le candidature si mandano a personale@xeniafondazione.org."},
+  {id:"s2", titolo:"Educatore o educatrice bilingue in asilo nido (inglese)", ente:"Crescere Insieme",
+   zona:"Roma, sede da verificare", cat:"nido", dist:0, tipo:"Part-time", pubb:"16 luglio 2026",
+   url:"https://to.indeed.com/aax2n4hknssl", fonte:"Indeed",
+   note:"Chiedono l'inglese oltre il livello scolastico. Vale la pena chiamare e chiedere se il bilinguismo è un requisito vero o solo una preferenza: molto spesso è una preferenza."},
+  {id:"s3", titolo:"Educatore asilo nido, inglese bilingue", ente:"Baby 2000 servizi per l'infanzia, cooperativa sociale",
+   zona:"Roma, sede da verificare", cat:"nido", dist:0, tipo:"Part-time", pubb:"30 luglio 2026",
+   url:"https://to.indeed.com/aannybsdwfld", fonte:"Indeed",
+   note:"Dal 31 agosto questo annuncio non compare più tra i risultati della ricerca: può darsi che il posto sia stato coperto. È una cooperativa storica e gestisce più strutture, quindi mandale lo stesso una candidatura spontanea: quando si libera un turno chiamano chi hanno in archivio."},
+  {id:"s1", titolo:"Educatrice o educatore di asilo nido, laurea L-19", ente:"Per fare un albero srl",
+   zona:"Mezzocammino", cat:"nido", dist:4, tipo:"Part-time", pubb:"20 luglio 2026",
+   url:"https://to.indeed.com/aa6j9ql4h7vm", fonte:"Indeed",
+   note:"Chiedono proprio la L-19, ma dal 31 agosto non compare più nella ricerca. È comunque dall'altra parte di Roma: con i bambini piccoli il viaggio pesa, guardalo solo se l'orario lo giustifica."},
+  {id:"s5", titolo:"OEPAC, operatore educativo per l'autonomia e la comunicazione", ente:"Cooperativa Eureka I onlus",
+   zona:"Roma e provincia", cat:"infanzia", dist:0, tipo:"Part-time verticale", pubb:"29 luglio 2026",
+   url:"https://to.indeed.com/aaqxnpy2lgvd", fonte:"Indeed", escluso:true,
+   note:"A questo non candidarti: l'annuncio scrive nero su bianco che la laurea in Scienze dell'Educazione non basta, serve la qualifica OEPAC. Lo lasciamo qui perché è un segnale utile: con quella qualifica ci sarebbe lavoro tutto l'anno nelle scuole del Municipio V."},
+  {id:"s6", titolo:"Insegnante madrelingua inglese, progetto Kindergarten 3-5 anni", ente:"English Academy",
+   zona:"Roma", cat:"infanzia", dist:0, tipo:"Collaborazione", pubb:"31 luglio 2026",
+   url:"https://to.indeed.com/aawmg78hvg6c", fonte:"Indeed", escluso:true,
+   note:"Serve essere madrelingua inglese, quindi è fuori profilo. Resta in lista solo perché la ricerca sia completa e controllabile."}
+];
+
+/* ===== CANALI, ricontrollati il 7 settembre 2026 ===== */
+const CANALI = [
+  {t:"Elenchi MAD del Municipio V, educatore asili nido e insegnante scuola dell'infanzia",
+   stato:"ora", quando:"Canale del municipio, si aggiorna ogni tanto",
+   d:"È il canale più vicino a casa e quello dove hai già un precedente. Roma Capitale pubblica gli avvisi per formare e aggiornare gli elenchi MAD del Municipio V, con i due profili separati: presentali tutti e due.",
+   url:"https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1420060", link:"Apri l'avviso del Municipio V"},
+  {t:"MAD di Roma Capitale per nidi e scuole dell'infanzia comunali",
+   stato:"ora", quando:"Integrazione e aggiornamento degli elenchi municipali",
+   d:"È l'avviso del Comune per le domande di messa a disposizione nei nidi e nelle scuole dell'infanzia comunali. Copre tutti i municipi, quindi va presentato in aggiunta a quello del Municipio V, non al suo posto.",
+   url:"https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1421286", link:"Apri l'avviso del Comune"},
+  {t:"MAD mandata direttamente alle scuole statali",
+   stato:"ora", quando:"Il periodo buono è adesso, luglio e agosto",
+   d:"Non ha una scadenza ufficiale, ma le scuole preparano gli elenchi dei supplenti tra luglio e agosto per essere pronte al primo settembre. È il canale che ti ha già portato le 31 giornate da aprile a giugno: quelle stesse segreterie vanno ricontattate ora.",
+   url:"https://www.newsistruzione.it/2026/06/16/mad-2026-27-come-quando-inviare-messa-a-disposizione", link:"Come e quando si manda la MAD"},
+  {t:"Supplenze nei nidi e nell'infanzia comunali, da settembre si passa online",
+   stato:"info", quando:"Cambio annunciato a partire dal 1 settembre 2026",
+   d:"Roma Capitale ha cambiato il modo di assegnare le supplenze nei nidi e nelle scuole dell'infanzia comunali. Gli incarichi sono divisi in tre tipi: quelli oltre i cinque mesi, quelli lunghi ma part time o comunque sopra i venti giorni, e quelli sotto i venti giorni. Chi è in graduatoria indica su una piattaforma digitale quali tipi di incarico accetta, in quali strutture e in quali municipi. Nella fase di passaggio le chiamate arrivano ancora per telefono, mail o sms, entro le 14 del giorno prima. Riguarda chi è già negli elenchi, quindi per te oggi non cambia niente: serve saperlo per quando ci entrerai anche tu.",
+   url:"https://www.radioroma.it/2026/08/19/roma-nidi-e-scuole-dellinfanzia-via-alla-digitalizzazione-delle-supplenze/", link:"Leggi la notizia"},
+  {t:"Nuovi elenchi municipali per le supplenze nell'infanzia, da verificare",
+   stato:"info", quando:"Notizia di stampa, l'avviso ufficiale va ancora letto",
+   d:"Un articolo di RomaIT racconta di un accordo tra Roma Capitale e i sindacati: per le supplenze nelle scuole dell'infanzia nascono elenchi municipali che si usano dopo aver esaurito le graduatorie, e tra i criteri di posizione conta il servizio già svolto nelle scuole di Roma, contato in giornate. Se è così, le tue 31 giornate valgono. Attenzione però: questa è una notizia di giornale, non l'avviso ufficiale, e le date non ci sono. Anche il 7 settembre le pagine del Comune non si sono lasciate leggere da qui, quindi la verifica va fatta a mano sul sito di Roma Capitale prima di dare qualcosa per scontato.",
+   url:"https://www.romait.it/roma-supplenze-nelle-scuole-dellinfanzia-accordo-per-nuovi-elenchi-municipali.html", link:"Leggi l'articolo"},
+  {t:"Supplenze nell'infanzia 2026 e 2027, convocazione online per la scelta delle sedi",
+   stato:"info", quando:"Pagina del Comune, non leggibile da qui nemmeno il 7 settembre 2026",
+   d:"Roma Capitale ha pubblicato una pagina che si intitola Supplenze Infanzia 2026/27, convocazione online per la scelta delle sedi. È l'equivalente, per la scuola dell'infanzia, di quello che ad agosto è successo per i nidi. Da questa sessione la pagina del Comune non si riesce a leggere, quindi non so dirti né le date né chi può partecipare: aprila tu con il link qui sotto. Se anche stavolta vale solo per chi è già negli elenchi, per ora non ti riguarda, ma serve saperlo.",
+   url:"https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1633940", link:"Apri la pagina del Comune"},
+  {t:"inPA, il portale dei concorsi pubblici",
+   stato:"ok", quando:"Da tenere acceso con gli avvisi via mail",
+   d:"È il portale unico del reclutamento pubblico: qui escono gli avvisi di Roma Capitale e dei municipi per educatori e insegnanti. Imposta Roma come zona e l'area educativa e sociale, e poi lascia che gli avvisi arrivino da soli. Controllato di nuovo il 7 settembre: per l'area di Roma non c'è nessun bando nuovo per educatori o insegnanti dell'infanzia. Il concorso di Roma Capitale per 800 insegnanti di scuola dell'infanzia resta annunciato ma non ancora bandito.",
+   url:"https://www.inpa.gov.it/", link:"Vai su inPA"},
+  {t:"Supplenze nei nidi comunali 2026 e 2027, scelta delle sedi",
+   stato:"chiuso", quando:"La scelta online si è chiusa il 21 agosto 2026 alle 12",
+   d:"Valeva per chi è già negli elenchi, per gli incarichi lunghi dell'anno educativo 2026 e 2027, quindi per ora non ti riguarda. Leggila lo stesso: capire come funziona la convocazione e la scelta delle sedi ti serve per quando ci sarai dentro anche tu.",
+   url:"https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1630306", link:"Leggi la convocazione"},
+  {t:"Cosa serve per lavorare al nido, il D.M. 378 del 2018",
+   stato:"info", quando:"È il motivo per cui esiste il corso ESEI",
+   d:"La L-19 vale per il nido solo se dentro il piano di studi ci sono i crediti specifici sull'infanzia da zero a tre anni: pedagogia, psicologia, laboratori e tirocinio in servizi per l'infanzia. Se non ci sono, si aggiungono con il corso ESEI.",
+   url:"https://dissuf.uniss.it/it/i-nostri-corsi/cds-l-19-scienze-delleducazione/requisiti-l-19-servizi-educativi-linfanzia", link:"Cosa dice la norma"},
+  {t:"Graduatoria capitolina per le supplenze nella scuola dell'infanzia",
+   stato:"chiuso", quando:"Le domande si sono chiuse il 28 maggio 2026",
+   d:"È la selezione per titoli di Roma Capitale per il profilo di insegnante di scuola dell'infanzia. Per ora è chiusa. Tienila d'occhio su inPA e, quando riapre, leggi l'allegato 1: è lì che si vede se la L-19 rientra tra i titoli ammessi.",
+   url:"https://www.inpa.gov.it/bandi-e-avvisi/dettaglio-bando-avviso/?concorso_id=8f651cbc1f3b43e9a7d329c0a8e9276d", link:"Il bando su inPA"},
+  {t:"GPS, le graduatorie provinciali per le supplenze",
+   stato:"chiuso", quando:"Finestra chiusa a luglio 2026, si riapre nel 2028",
+   d:"Per il posto comune all'infanzia e alla primaria servono Scienze della Formazione Primaria oppure il diploma magistrale preso entro l'anno scolastico 2001 e 2002. La L-19 da sola non basta, ed è il motivo per cui oggi nella scuola statale si passa dalle MAD e dagli interpelli, non dalle graduatorie.",
+   url:"https://www.orizzontescuola.it/graduatorie-gps-2024-i-titoli-di-accesso-per-infanzia-e-primaria/", link:"I titoli che servono per le GPS"},
+  {t:"La qualifica OEPAC, un canale che si può aprire",
+   stato:"info", quando:"Non è un bando, è una scelta da fare con calma",
+   d:"Le cooperative che gestiscono l'assistenza scolastica a Roma cercano OEPAC tutto l'anno, e scrivono chiaramente che senza quella qualifica la laurea in Scienze dell'Educazione non basta. Sarebbe lavoro dentro le scuole del Municipio V, con l'orario della scuola. Da valutare dopo l'ESEI, non insieme.",
+   url:"https://to.indeed.com/aaqxnpy2lgvd", link:"Un annuncio che spiega i requisiti"}
+];
+
+/* ===== SCUOLE PRIVATE E PARITARIE, dati ministeriali per CAP, controllati il 20 agosto 2026 ===== */
+const ZONE = [
+  {cap:"00177", nome:"Torpignattara e Casilina", nota:"A piedi o in pochi minuti di macchina", scuole:[
+    {n:"Santa Paola Elisabetta Cerioli", ind:"Via Casilina 631/633", gradi:"Infanzia, primaria, secondaria di primo grado",
+     cont:"06 45426706 &middot; segreteria@scuolacerioli.it &middot; direzione@scuolacerioli.it",
+     url:"https://www.scuolacerioli.it/contatti/", top:true,
+     nota:"È la scuola dove hai fatto il tirocinio. Il contatto più caldo che hai: scrivi qui per primo."},
+    {n:"Sacro Cuore", ind:"Via Isabella De Rosis 8", gradi:"Infanzia e primaria"},
+    {n:"Dalmazio Birago", ind:"Via Collatina 103", gradi:"Infanzia", dubbio:true},
+    {n:"Istituto Cavanis", ind:"Via Casilina 600", gradi:"Medie e liceo scientifico",
+     nota:"Non ha l'infanzia, quindi non è per una supplenza in sezione. Ma è a duecento metri dalla Cerioli e fa doposcuola e attività: vale una candidatura per quello."}
+  ]},
+  {cap:"00176", nome:"Pigneto e Prenestino", nota:"Il quartiere accanto", scuole:[
+    {n:"Amore Misericordioso", ind:"Via Casilina 323", gradi:"Sezione primavera, infanzia e primaria",
+     url:"https://unica.istruzione.gov.it/cercalatuascuola/istituti/RM1A609002/scuola-materna-amore-misericordioso/",
+     nota:"Ha anche la sezione primavera, quindi bambini dai due anni. Codice della scuola dell'infanzia: RM1A609002."},
+    {n:"Lucia Noiret", ind:"Via Vincenzo Coronelli 43", gradi:"Infanzia e primaria", url:"https://www.lucianoiret.org"},
+    {n:"Sacro Cuore, Sorelle della Misericordia", ind:"Via Alberto da Giussano 89 e 93", gradi:"Infanzia e primaria"},
+    {n:"Giulia Billiart", ind:"Via F. Paciotti 21", gradi:"Infanzia e primaria"},
+    {n:"Alessandro Marcucci", ind:"Via G. Fondulo 58", gradi:"Infanzia", dubbio:true},
+    {n:"Renzo da Ceri", ind:"Via G. degli Ubertini", gradi:"Infanzia", dubbio:true}
+  ]},
+  {cap:"00171", nome:"Centocelle e Tor de' Schiavi", nota:"Dieci minuti di macchina", scuole:[
+    {n:"L'Ape Birichina", ind:"Via G. Perlasca 59", gradi:"Infanzia"},
+    {n:"Istituto Filippo Smaldone", ind:"Via Tor de' Schiavi 404", gradi:"Infanzia e primaria"},
+    {n:"Santa Francesca Cabrini", ind:"Via Anagni 1", gradi:"Infanzia e primaria"},
+    {n:"Sacro Cuore", ind:"Via Manduria 51", gradi:"Infanzia e primaria"},
+    {n:"Annibale Maria Di Francia", ind:"Circonvallazione Appia 146", gradi:"Primaria"}
+  ]},
+  {cap:"00172", nome:"Alessandrino e Villa De Sanctis", nota:"Sempre Municipio V, un po' più in là", scuole:[
+    {n:"Maria Immacolata", ind:"Via Tor de' Schiavi 150", gradi:"Infanzia e primaria"},
+    {n:"San Benedetto", ind:"Via Tor de' Schiavi 112 e 116", gradi:"Infanzia e primaria"},
+    {n:"Maria Santissima Incoronata", ind:"Viale Alessandrino 695", gradi:"Infanzia"},
+    {n:"San Vincenzo", ind:"Via delle Azalee 43", gradi:"Infanzia"},
+    {n:"Guglielmo Marconi", ind:"Via Francesco Bonafede 95", gradi:"Infanzia", dubbio:true},
+    {n:"Pio XII", ind:"Via Casilina 767", gradi:"Primaria"}
+  ]}
+];
+
+/* ===== PORTALI E CANALI DI RICERCA, controllati il 20 agosto 2026 ===== */
+const DOVE = [
+  {n:"Indeed", tipo:"portale", forza:"il più pieno per Roma",
+   d:"È da qui che arrivano gli annunci della tua bacheca. Le due ricerche che contano sono già impostate qui sotto. Apri i link, guarda i risultati e poi salva la ricerca, così le novità ti arrivano per mail.",
+   link:[{t:"Educatrice a Roma", u:"https://it.indeed.com/q-educatrice-l-roma,-lazio-offerte-lavoro.html"},
+         {t:"Asilo nido a Roma", u:"https://it.indeed.com/q-asilo-nido-l-roma,-lazio-offerte-lavoro.html"}]},
+  {n:"LinkedIn", tipo:"portale", forza:"233 offerte per educatrice a Roma il 20 agosto",
+   d:"Su LinkedIn non basta cercare, bisogna anche farsi trovare. Le cooperative e i gruppi che gestiscono nidi privati pubblicano qui e guardano il profilo di chi si candida. Il profilo ce l'hai già: il punto è che dica le cose giuste. Sotto al nome deve esserci Educatrice e la laurea, non un vecchio ruolo di segreteria, e le 31 giornate di supplenza vanno messe come esperienza vera. Poi attiva la spunta che dice ai selezionatori che stai cercando.",
+   link:[{t:"Educatrice a Roma", u:"https://it.linkedin.com/jobs/educatrice-offerte-di-lavoro-roma-lz"},
+         {t:"Asilo nido in Italia", u:"https://it.linkedin.com/jobs/asilo-nido-offerte-di-lavoro"},
+         {t:"Insegnante in Italia", u:"https://it.linkedin.com/jobs/insegnante-offerte-di-lavoro"}]},
+  {n:"Subito", tipo:"portale", forza:"dove pubblicano i piccoli",
+   d:"Sottovalutato, ma i nidi privati piccoli e le famiglie che cercano una tata qualificata pubblicano qui invece che sui portali seri. Controllalo una volta a settimana.",
+   link:[{t:"Educatrice asilo nido, Roma", u:"https://www.subito.it/annunci-lazio/vendita/offerte-lavoro/roma/?q=educatrice+asilo+nido"},
+         {t:"Educatrice, Roma e provincia", u:"https://www.subito.it/annunci-lazio/vendita/offerte-lavoro/roma/?q=educatrice"}]},
+  {n:"Jooble", tipo:"aggregatore", forza:"raccoglie da tutti gli altri",
+   d:"Non ha annunci suoi: pesca da decine di siti e li mette insieme. Utile per non perdere niente, ma aspettati doppioni e qualche annuncio vecchio.",
+   link:[{t:"Educatrice asilo nido, Roma", u:"https://it.jooble.org/lavoro-educatrice-asilo-nido/Roma"},
+         {t:"Educatore asilo, Roma", u:"https://it.jooble.org/lavoro-educatore-asilo/Roma"}]},
+  {n:"Bakeca", tipo:"portale", forza:"annunci locali",
+   d:"Bacheca di annunci con una sezione dedicata a scuola e formazione. Meno traffico degli altri, ma ogni tanto esce qualcosa di vicino.",
+   link:[{t:"Asilo nido, area docenti e formazione", u:"https://www.bakeca.it/annunci/docenti-formazion-risorsumane/?keyword=asilo+nido"}]},
+  {n:"Porta Futuro Lazio", tipo:"servizio pubblico gratuito", forza:"qualcuno che ti guarda il CV in faccia",
+   d:"Servizio gratuito della Regione Lazio: orientamento, bilancio delle competenze, revisione del curriculum, corsi, e una bacheca di offerte a cui candidarsi. Ha tre sedi a Roma, alla Sapienza, a Roma Tre e a Tor Vergata. Ti registri online e poi puoi prendere un appuntamento. Se ti senti persa, questo è il posto dove qualcuno ti ascolta di persona senza chiederti un euro.",
+   link:[{t:"Registrati e vedi i servizi", u:"https://portafuturolazio.it/cittadini/"}]},
+  {n:"Centro per l'Impiego e DID", tipo:"servizio pubblico gratuito", forza:"apre corsi e tirocini",
+   d:"La dichiarazione di immediata disponibilità al lavoro apre l'accesso ai corsi di formazione gratuiti, ai tirocini finanziati e alla preselezione per le aziende. Si fa online o allo sportello del centro per l'impiego di zona. Se pensi di fare l'ESEI, chiedi anche se esistono corsi finanziati per educatori: ogni tanto la Regione ne apre.",
+   link:[{t:"Guida ai centri per l'impiego di Roma", u:"https://www.informagiovaniroma.it/guide/i-centri-per-limpiego/"}]},
+  {n:"inPA", tipo:"servizio pubblico", forza:"i bandi di Roma Capitale",
+   d:"Il portale dei concorsi pubblici. È qui che escono gli avvisi di Roma Capitale e dei municipi per educatori e insegnanti. Imposta l'area su Roma e la famiglia professionale educativa e sociale.",
+   link:[{t:"Vai su inPA", u:"https://www.inpa.gov.it/"}]}
+];
+
+/* ===== STATO ===== */
+const CHIAVE = "percorso-delia-v2";
+let S = { spunte:{}, candidature:[], annunciMiei:[], nascosti:[], aperte:["t1"], io:{nome:"",tel:"",mail:"",zona:""} };
+let storageOk = true;
+
+function carica(){
+  try{ const g=localStorage.getItem(CHIAVE); if(g) S=Object.assign(S,JSON.parse(g)); }
+  catch(e){ storageOk=false; }
+  // se il salvataggio è vecchio o rovinato, rimetto in piedi la struttura
+  if(!S.io || typeof S.io!=="object") S.io = {};
+  ["nome","tel","mail","zona"].forEach(k=>{ if(typeof S.io[k]!=="string") S.io[k]=""; });
+  if(!S.spunte || typeof S.spunte!=="object") S.spunte = {};
+  if(!Array.isArray(S.candidature)) S.candidature = [];
+  if(!Array.isArray(S.annunciMiei)) S.annunciMiei = [];
+  if(!Array.isArray(S.nascosti))    S.nascosti = [];
+  if(!Array.isArray(S.aperte))      S.aperte = ["t1"];
+}
+function salva(){ try{ localStorage.setItem(CHIAVE, JSON.stringify(S)); }catch(e){ storageOk=false; statoStorage(); } }
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(t._x); t._x=setTimeout(()=>t.classList.remove("on"),2400); }
+function statoStorage(){
+  const el=$("#stato-storage"); if(!el) return;
+  el.textContent = storageOk
+    ? "Tutto resta salvato in questo browser, su questo dispositivo. Su un altro computer non lo ritrovi: per spostarlo usa Esporta e poi Importa."
+    : "Attenzione: questo browser non sta salvando niente. I dati restano solo finché la pagina è aperta, quindi esporta prima di chiuderla.";
+}
+
+/* ===== NAVIGAZIONE ===== */
+function vai(v){
+  document.querySelectorAll(".nav button").forEach(b=>b.setAttribute("aria-current", String(b.dataset.v===v)));
+  document.querySelectorAll(".vista").forEach(s=>{ s.hidden = s.id !== ("v-"+v); });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>vai(b.dataset.v)));
+
+/* ===== PERCORSO ===== */
+function fatta(t){ return t.voci.every(v=>S.spunte[t.id+"."+v.id]); }
+function quante(t){ return t.voci.filter(v=>S.spunte[t.id+"."+v.id]).length; }
+function tappaCorrente(){ return TAPPE.find(t=>!fatta(t)) || null; }
+
+function renderRail(){
+  const rail = $("#rail");
+  const corrente = tappaCorrente();
+  rail.querySelectorAll(".tappa").forEach(n=>n.remove());
+  TAPPE.forEach(t=>{
+    const f = fatta(t), c = corrente && corrente.id===t.id;
+    const d = document.createElement("details");
+    d.className = "tappa" + (f?" fatta":"") + (c?" corrente":"");
+    d.open = S.aperte.includes(t.id);
+    d.innerHTML =
+      '<summary class="tappa-testa"><span class="nodo">'+(f?"":t.n)+'</span>'
+      + '<h3>'+esc(t.titolo)+'</h3>'
+      + '<span class="conta">'+quante(t)+'/'+t.voci.length+'</span><span class="frec"></span></summary>'
+      + '<div class="tappa-corpo"><p class="perche">'+esc(t.perche)+'</p>'
+      + t.voci.map(v=>{
+          const on = !!S.spunte[t.id+"."+v.id];
+          return '<div class="voce" data-fatta="'+(on?1:0)+'">'
+            + '<button class="spunta" role="checkbox" aria-checked="'+on+'" aria-label="Segna come fatto: '+esc(v.t)+'" data-k="'+t.id+"."+v.id+'"></button>'
+            + '<span class="txt">'+esc(v.t)+'<small>'+esc(v.s)+'</small></span></div>';
+        }).join("")
+      + (t.link?'<div style="margin:14px 0 6px"><button class="b b-mini" data-vai="'+t.link.v+'">'+esc(t.link.t)+'</button></div>':'<div style="height:8px"></div>')
+      + '</div>';
+    // il summary è un <summary> con class tappa-testa: sostituiamo il tag
+    rail.appendChild(d);
+  });
+  rail.querySelectorAll("details.tappa").forEach((d,i)=>{
+    d.addEventListener("toggle",()=>{
+      const id = TAPPE[i].id;
+      const set = new Set(S.aperte);
+      if(d.open) set.add(id); else set.delete(id);
+      S.aperte = [...set]; salva(); requestAnimationFrame(riempiRail);
+    });
+  });
+  rail.querySelectorAll(".spunta").forEach(b=>b.addEventListener("click",ev=>{
+    ev.preventDefault(); ev.stopPropagation();
+    const k=b.dataset.k; S.spunte[k] = !S.spunte[k]; salva(); renderPercorso();
+  }));
+
+  requestAnimationFrame(riempiRail);
+}
+
+function riempiRail(){
+  const rail = $("#rail");
+  const det = [...rail.querySelectorAll("details.tappa")];
+  const fatte = TAPPE.filter(fatta).length;
+  let h = 0;
+  if(fatte > 0 && det.length){
+    const primoNodo = det[0].querySelector(".nodo");
+    const ultimo = det[Math.min(fatte, det.length) - 1];
+    const ultimoNodo = ultimo.querySelector(".nodo");
+    const y0 = det[0].offsetTop + primoNodo.offsetTop + primoNodo.offsetHeight/2;
+    const y1 = ultimo.offsetTop + ultimoNodo.offsetTop + ultimoNodo.offsetHeight/2;
+    h = Math.max(0, y1 - y0);
+  }
+  $("#riempi").style.height = h + "px";
+}
+
+function renderOra(){
+  const t = tappaCorrente();
+  if(!t){
+    $("#ora-titolo").textContent = "Hai completato tutto il percorso";
+    $("#ora-testo").textContent = "Non resta che tenere vivo quello che hai aperto: controlla il tracker il lunedì e la bacheca il lunedì e il giovedì. Se arriva un incarico, aggiorna il CV e riparti dalla tappa 7.";
+    $("#ora-vai").textContent = "Apri il tracker";
+    $("#ora-vai").onclick = ()=>vai("candidature");
+    $("#ora-conta").textContent = "7 tappe su 7";
+    return;
+  }
+  const prossima = t.voci.find(v=>!S.spunte[t.id+"."+v.id]);
+  $("#ora-titolo").textContent = t.titolo;
+  $("#ora-testo").textContent = prossima ? prossima.t + ". " + prossima.s : t.perche;
+  $("#ora-vai").textContent = "Vai alla tappa " + t.n;
+  $("#ora-vai").onclick = ()=>{
+    if(!S.aperte.includes(t.id)) S.aperte.push(t.id);
+    salva(); renderPercorso();
+    const el = document.querySelectorAll("#rail details.tappa")[t.n-1];
+    if(el){ el.open = true; el.scrollIntoView({behavior:"smooth", block:"center"}); }
+  };
+  $("#ora-conta").textContent = "Tappa " + t.n + " di " + TAPPE.length;
+}
+
+function renderBarra(){
+  const tot = TAPPE.reduce((a,t)=>a+t.voci.length,0);
+  const f = TAPPE.reduce((a,t)=>a+quante(t),0);
+  const p = tot? Math.round(f/tot*100) : 0;
+  $("#barra-i").style.width = p+"%";
+  $("#barra-q").textContent = p+"%";
+}
+function renderPercorso(){ renderRail(); renderOra(); renderBarra(); }
+
+/* ===== ANNUNCI ===== */
+let filtro = "tutti";
+const CATS = [["tutti","Tutti"],["nido","Nido 0-3"],["infanzia","Infanzia 3-6"],["extra","Extrascolastico"]];
+const ETI = {0:["?","da verif."],1:["3","km o meno"],2:["6","km circa"],3:["12","km circa"],4:["12+","km"]};
+
+function tutti(){ return ANNUNCI.concat(S.annunciMiei).filter(a=>!S.nascosti.includes(a.id)); }
+
+function renderFiltri(){
+  $("#filtri").innerHTML = CATS.map(([k,l])=>'<button class="chip" data-c="'+k+'" aria-pressed="'+(filtro===k)+'">'+l+'</button>').join("")
+    + '<span style="margin-left:auto;font-size:13px;color:var(--grigio)" id="conta"></span>';
+  document.querySelectorAll("[data-c]").forEach(b=>b.addEventListener("click",()=>{ filtro=b.dataset.c; renderFiltri(); renderAnnunci(); }));
+}
+function renderAnnunci(){
+  const l = tutti().filter(a=>filtro==="tutti"||a.cat===filtro)
+    .sort((a,b)=>(a.escluso?1:0)-(b.escluso?1:0) || (a.dist||3.5)-(b.dist||3.5));
+  const el = $("#lista-annunci");
+  el.innerHTML = l.length ? l.map(a=>{
+    const [n,u] = ETI[a.dist||0];
+    const cls = "box d"+(a.dist||0);
+    const cat = a.cat==="nido"?'<span class="pill p-ok">Nido 0-3</span>':a.cat==="infanzia"?'<span class="pill p-info">Infanzia 3-6</span>':'<span class="pill p-info">Extrascolastico</span>';
+    return '<div class="ann"><div class="dist"><div class="'+cls+'"><div class="n">'+n+'</div><span class="u">'+u+'</span></div></div>'
+      + '<div style="flex:1;min-width:0"><div class="pillole">'+cat+(a.escluso?'<span class="pill p-no">non fa per te</span>':'')+'</div>'
+      + '<h3>'+esc(a.titolo)+'</h3>'
+      + '<div class="meta">'+esc(a.ente)+', '+esc(a.zona)+(a.tipo?', '+esc(a.tipo).toLowerCase():'')+'</div>'
+      + '<div class="meta mono" style="font-size:11.5px;margin-top:2px">'+(a.pubb?'pubblicato il '+esc(a.pubb):'senza data')+(a.fonte?' su '+esc(a.fonte):'')+'</div>'
+      + (a.note?'<p style="margin:11px 0 0;font-size:14.5px;color:#39415A;max-width:78ch">'+esc(a.note)+'</p>':'')
+      + '<div class="azioni">'
+      + (a.url?'<a class="b b-mini" href="'+esc(a.url)+'" target="_blank" rel="noopener">Apri l\'annuncio</a>':'')
+      + '<button class="b b-mini" data-tr="'+esc(a.id)+'">Aggiungi al tracker</button>'
+      + '<button class="b b-mini b-no" data-hd="'+esc(a.id)+'">Non mi interessa</button>'
+      + '</div></div></div>';
+  }).join("") : '<div class="vuoto">Niente in questa categoria.<br>Il prossimo aggiornamento automatico ne porterà altri, oppure aggiungine uno tu.</div>';
+  const c = document.getElementById("conta"); if(c) c.textContent = l.length + (l.length===1?" annuncio":" annunci");
+  el.querySelectorAll("[data-hd]").forEach(b=>b.addEventListener("click",()=>{ S.nascosti.push(b.dataset.hd); salva(); renderAnnunci(); toast("Tolto dalla bacheca"); }));
+  el.querySelectorAll("[data-tr]").forEach(b=>b.addEventListener("click",()=>{
+    const a = tutti().find(x=>x.id===b.dataset.tr);
+    S.candidature.push({id:"c"+Date.now(), ente:a.ente, ruolo:a.titolo, canale:"Annuncio online", data:"", stato:"dainviare", azione:"Inviare CV e lettera", azioneData:"", note:a.url||""});
+    salva(); renderCand(); toast("Aggiunta al tracker, da inviare");
+  }));
+}
+$("#btn-nuovo-ann").addEventListener("click",()=>{ $("#form-ann").hidden=false; $("#an-titolo").focus(); });
+$("#an-annulla").addEventListener("click",()=>{ $("#form-ann").hidden=true; });
+$("#an-salva").addEventListener("click",()=>{
+  const t=$("#an-titolo").value.trim(); if(!t){ toast("Manca il ruolo"); return; }
+  S.annunciMiei.push({id:"m"+Date.now(), titolo:t, ente:$("#an-ente").value.trim()||"-", zona:$("#an-zona").value.trim()||"-",
+    cat:$("#an-cat").value, dist:Number($("#an-dist").value), tipo:"", pubb:"", url:$("#an-url").value.trim(), fonte:"aggiunto a mano", note:$("#an-note").value.trim()});
+  salva(); ["an-titolo","an-ente","an-zona","an-url","an-note"].forEach(i=>document.getElementById(i).value="");
+  $("#form-ann").hidden=true; renderAnnunci(); toast("Annuncio salvato");
+});
+
+/* ===== SCUOLE PRIVATE ===== */
+function renderScuole(){
+  const el = $("#lista-scuole"); if(!el) return;
+  el.innerHTML = ZONE.map(z =>
+    '<div class="zona-testa"><b>'+esc(z.nome)+'</b><span>'+esc(z.cap)+', '+esc(z.nota)+'</span></div>'
+    + z.scuole.map(s => {
+      const iniz = s.n.replace(/^(L'|Il |La )/,'').charAt(0).toUpperCase();
+      return '<div class="scuola"><div class="stella'+(s.top?' top':'')+'">'+esc(iniz)+'</div>'
+        + '<div style="flex:1;min-width:0">'
+        + '<h4>'+esc(s.n)+'</h4>'
+        + '<div class="ind">'+esc(s.ind)+'. '+esc(s.gradi)+'.</div>'
+        + (s.cont?'<div class="cont">'+s.cont+'</div>':'')
+        + (s.dubbio?'<div style="margin-top:7px"><span class="pill p-info">da verificare se paritaria o comunale</span></div>':'')
+        + (s.nota?'<p style="margin:9px 0 0;font-size:14px;color:#39415A;max-width:78ch">'+esc(s.nota)+'</p>':'')
+        + '<div class="azioni">'
+        + (s.url?'<a class="b b-mini" href="'+esc(s.url)+'" target="_blank" rel="noopener">Apri la scheda</a>':'')
+        + '<a class="b b-mini" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(s.n+" "+s.ind+" Roma scuola contatti")+'">Cerca i contatti</a>'
+        + '<button class="b b-mini" data-sc="'+esc(s.n)+'|'+esc(s.ind)+'">Aggiungi al tracker</button>'
+        + '</div></div></div>';
+    }).join("")
+  ).join("");
+  el.querySelectorAll("[data-sc]").forEach(b=>b.addEventListener("click",()=>{
+    const [nome, ind] = b.dataset.sc.split("|");
+    S.candidature.push({id:"c"+Date.now(), ente:nome, ruolo:"Insegnante scuola dell'infanzia", canale:"Candidatura spontanea",
+      data:"", stato:"dainviare", azione:"Trovare la mail della segreteria e mandare CV e lettera", azioneData:"", note:ind});
+    salva(); renderCand(); toast("Aggiunta al tracker, da inviare");
+  }));
+}
+
+/* ===== DOVE CERCARE ===== */
+function renderDove(){
+  const el = $("#lista-dove"); if(!el) return;
+  el.innerHTML = DOVE.map(c =>
+    '<div class="sc"><div class="pillole"><span class="pill '+(c.tipo.indexOf("pubblico")>=0?"p-ok":"p-info")+'">'+esc(c.tipo)+'</span></div>'
+    + '<h3>'+esc(c.n)+'</h3><div class="quando">'+esc(c.forza)+'</div>'
+    + '<p>'+esc(c.d)+'</p>'
+    + '<div style="margin-top:13px;display:flex;gap:8px;flex-wrap:wrap">'
+    + c.link.map(l=>'<a class="b b-mini" href="'+esc(l.u)+'" target="_blank" rel="noopener">'+esc(l.t)+'</a>').join("")
+    + '</div></div>'
+  ).join("");
+}
+
+/* ===== CANDIDATURE ===== */
+const NOMI = {dainviare:"Da inviare", inviata:"Inviata", colloquio:"Colloquio", esito:"In attesa", chiusa:"Chiusa"};
+let modId = null;
+function dIt(s){ if(!s) return "-"; const p=s.split("-"); return p.length===3? p[2]+"/"+p[1]+"/"+p[0] : s; }
+function renderCand(){
+  $("#tbody").innerHTML = S.candidature.map(c=>
+    '<tr><td><b>'+esc(c.ente)+'</b></td><td>'+esc(c.ruolo)+'</td><td>'+esc(c.canale)+'</td>'
+    + '<td class="mono" style="font-size:12.5px">'+dIt(c.data)+'</td>'
+    + '<td><span class="stato s-'+esc(c.stato)+'">'+esc(NOMI[c.stato]||c.stato)+'</span></td>'
+    + '<td>'+esc(c.azione||"-")+(c.azioneData?'<div class="mono" style="font-size:11.5px;color:var(--grigio);margin-top:2px">entro il '+dIt(c.azioneData)+'</div>':'')+'</td>'
+    + '<td style="white-space:nowrap"><button class="b b-mini" data-ed="'+esc(c.id)+'">Modifica</button> <button class="b b-mini b-no" data-dl="'+esc(c.id)+'">Elimina</button></td></tr>').join("");
+  $("#cand-vuoto").hidden = S.candidature.length>0;
+  $("#tbody").querySelectorAll("[data-dl]").forEach(b=>b.addEventListener("click",()=>{ S.candidature=S.candidature.filter(x=>x.id!==b.dataset.dl); salva(); renderCand(); toast("Eliminata"); }));
+  $("#tbody").querySelectorAll("[data-ed]").forEach(b=>b.addEventListener("click",()=>apriCand(b.dataset.ed)));
+  $("#k-aperte").textContent = S.candidature.filter(c=>c.stato!=="chiusa").length;
+  $("#k-colloqui").textContent = S.candidature.filter(c=>c.stato==="colloquio"||c.stato==="esito").length;
+  $("#k-dafare").textContent = S.candidature.filter(c=>c.stato==="dainviare").length;
+}
+function apriCand(id){
+  modId = id||null; const c = id? S.candidature.find(x=>x.id===id):null;
+  $("#c-ente").value=c?c.ente:""; $("#c-ruolo").value=c?c.ruolo:""; $("#c-canale").value=c?c.canale:"Messa a disposizione";
+  $("#c-data").value=c?c.data:""; $("#c-stato").value=c?c.stato:"dainviare"; $("#c-azione").value=c?c.azione:"";
+  $("#c-azione-data").value=c?(c.azioneData||""):""; $("#c-note").value=c?c.note:"";
+  $("#form-cand").hidden=false; $("#c-ente").focus();
+}
+$("#btn-nuova-cand").addEventListener("click",()=>apriCand(null));
+$("#c-annulla").addEventListener("click",()=>{ $("#form-cand").hidden=true; modId=null; });
+$("#c-salva").addEventListener("click",()=>{
+  const ente=$("#c-ente").value.trim(); if(!ente){ toast("Manca il nome della struttura"); return; }
+  const d={ente, ruolo:$("#c-ruolo").value.trim()||"-", canale:$("#c-canale").value, data:$("#c-data").value,
+    stato:$("#c-stato").value, azione:$("#c-azione").value.trim(), azioneData:$("#c-azione-data").value, note:$("#c-note").value.trim()};
+  if(modId) Object.assign(S.candidature.find(x=>x.id===modId), d);
+  else S.candidature.push(Object.assign({id:"c"+Date.now()}, d));
+  salva(); $("#form-cand").hidden=true; modId=null; renderCand(); toast("Salvata");
+});
+
+/* ===== CANALI ===== */
+const PILL = {ora:["p-ora","fallo ora"], ok:["p-ok","sempre attivo"], info:["p-info","da sapere"], chiuso:["p-no","chiuso"]};
+$("#lista-canali").innerHTML = CANALI.map(c=>{
+  const [cl,tx]=PILL[c.stato];
+  return '<div class="sc"><div class="pillole"><span class="pill '+cl+'">'+tx+'</span></div>'
+    + '<h3>'+esc(c.t)+'</h3><div class="quando">'+esc(c.quando)+'</div><p>'+esc(c.d)+'</p>'
+    + '<div style="margin-top:13px"><a class="b b-mini" href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.link)+'</a></div></div>';
+}).join("");
+
+/* ===== PROFILO ===== */
+$("#box-profilo").innerHTML =
+  '<div class="mono" style="font-size:12.5px;color:var(--grigio)">Patente '+esc(PROFILO.patente)+'</div>'
+  + '<p style="margin:18px 0 5px"><b>Titolo</b></p><p style="margin:0;font-size:14.5px;color:#39415A">'+esc(PROFILO.laurea)+'</p>'
+  + '<p style="margin:18px 0 5px"><b>Esperienza nel settore</b></p><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#39415A">'+PROFILO.esperienze.map(e=>'<li style="margin-bottom:5px">'+esc(e)+'</li>').join("")+'</ul>'
+  + '<p style="margin:18px 0 5px"><b>Altro</b></p><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#39415A">'+PROFILO.altro.map(e=>'<li style="margin-bottom:5px">'+esc(e)+'</li>').join("")+'</ul>'
+  + '<p style="margin:18px 0 5px"><b>Lingue</b></p><p style="margin:0;font-size:14.5px;color:#39415A">'+esc(PROFILO.lingue)+'</p>'
+  + '<p style="margin:18px 0 5px"><b>Disponibilità</b></p><p style="margin:0;font-size:14.5px;color:#39415A">'+esc(PROFILO.disponibilita)+'</p>';
+
+/* ===== LETTERE ===== */
+function contatti(){
+  const v = k => (S.io[k]||"").trim();
+  return { n: v("nome") || "[il tuo nome e cognome]",
+           t: v("tel")  || "[il tuo telefono]",
+           m: v("mail") || "[la tua mail]",
+           z: v("zona") || "[la tua zona]" };
+}
+function FIRMA(){
+  const c = contatti();
+  return "\n\nResto a disposizione per un colloquio o per un periodo di prova.\nCordiali saluti,\n\n"+c.n+"\n"+c.t+", "+c.m+"\n"+c.z+", automunita\n\nAutorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).";
+}
+function FIRMA_BREVE(){
+  const c = contatti();
+  return "\n\nGrazie per l'attenzione.\nCordiali saluti,\n\n"+c.n+"\n"+c.t+", "+c.m;
+}
+
+function lettera(tipo, ente, extra){
+  const E = ente || "[nome della struttura]";
+  const N = (S.io.nome||"").trim() || "[il tuo nome e cognome]";
+  const Z = (S.io.zona||"").trim() || "[la tua zona]";
+  const rif = extra ? ("\n\nRiferimento: " + extra + ".") : "";
+  if(tipo==="pegaso"){
+    return "Oggetto: Verifica dei requisiti del D.M. 378/2018 e informazioni sul percorso ESEI\n\n"
+      + "Spett.le Segreteria didattica di " + (ente||"[nome dell'ateneo]") + ",\n\n"
+      + "sono "+N+", laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso il 28 gennaio 2026 con votazione 107/110.\n\n"
+      + "Vorrei lavorare come educatrice nei servizi educativi per l'infanzia da zero a tre anni e ho bisogno di capire la mia posizione rispetto ai requisiti del D.Lgs. 65/2017 art. 4 e del D.M. 9 maggio 2018 n. 378.\n\n"
+      + "Ho confrontato la mia carriera con i requisiti e mi risulta questa situazione:\n\n"
+      + "1. M-PED/01 e M-PED/02: ho Pedagogia generale (12 CFU), Pedagogia dell'infanzia (9), Educazione degli adulti (9), Pedagogia interculturale (6) e Storia delle istituzioni educative (9).\n"
+      + "2. M-PED/03 e M-PED/04: ho Didattica generale (12), Didattica speciale (9), Pedagogia sperimentale (12), Docimologia (9) e Tecnologie dell'istruzione e dell'apprendimento (9).\n"
+      + "3. M-PSI/01 e M-PSI/04: ho solo Psicologia generale (12 CFU), non ho esami di M-PSI/04.\n"
+      + "4. SPS/07 o SPS/08: non ho esami in questi settori.\n"
+      + "5. Area medica: ho Igiene generale ed applicata, MED/42 (9 CFU).\n"
+      + "6. Laboratori: nel mio piano di studi non risultano laboratori.\n"
+      + "7. Tirocinio: ho Tirocinio pedagogisti (12 CFU), svolto per 300 ore presso una scuola dell'infanzia, quindi nella fascia tre-sei anni.\n\n"
+      + "Vi chiedo cortesemente:\n\n"
+      + "a) Quali di questi esami vengono riconosciuti come validi ai fini del D.M. 378/2018, tenuto conto che il decreto richiede contenuti riferiti alla fascia zero-tre.\n"
+      + "b) Quanti CFU mi restano quindi da acquisire e se il percorso ESEI da voi erogato prevede il riconoscimento di quelli che ho già.\n"
+      + "c) Se il tirocinio svolto nella scuola dell'infanzia possa essere considerato in tutto o in parte, o se debba essere rifatto in un servizio zero-tre.\n"
+      + "d) Il costo totale del percorso nella mia situazione, l'eventuale rateizzazione, la durata effettiva, e se il tirocinio in presenza posso svolgerlo in un servizio educativo di Roma individuato da me.\n"
+      + "e) Quando apre l'edizione per l'anno accademico 2026/2027 e se posso essere avvisata all'apertura delle iscrizioni.\n"
+      + "f) Se, in alternativa al percorso completo, posso acquisire i CFU mancanti tramite corsi singoli, e in quel caso come assolvo ai laboratori e al tirocinio.\n\n"
+      + "Allego il certificato di laurea con la carriera universitaria. Resto in attesa di un riscontro anche indicativo, per poter programmare l'iscrizione."
+      + FIRMA_BREVE();
+  }
+
+  const T = {
+    mad:
+"Oggetto: Messa a disposizione per incarichi di supplenza nella scuola dell'infanzia\n\nAlla cortese attenzione della Dirigenza e della Segreteria di "+E+","+rif+"\n\nmi chiamo "+N+" e presento la mia disponibilità per incarichi di supplenza nella scuola dell'infanzia per l'anno scolastico 2026/2027.\n\nDa aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia presso Istituti Comprensivi statali del Municipio V, con incarichi conferiti tramite messa a disposizione. In quelle settimane ho condotto la sezione, seguito le routine della giornata, dall'accoglienza alla mensa al ricongiungimento, e lavorato in collaborazione con il team docente e con le famiglie.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso con votazione 107/110, e ho alle spalle un tirocinio curriculare di 300 ore nella scuola dell'infanzia.\n\nAbito a "+Z+", sono automunita e raggiungo rapidamente le sedi del Municipio V e dei municipi limitrofi. Sono disponibile per supplenze brevi e lunghe, con un preavviso di cinque giorni.\n\nAllego il curriculum vitae.",
+    ricontatto:
+"Oggetto: Disponibilità per supplenze anno scolastico 2026/2027\n\nGentile Segreteria di "+E+","+rif+"\n\nsono "+N+": ho svolto alcune giornate di supplenza presso il vostro istituto tra aprile e giugno di quest'anno, nella scuola dell'infanzia.\n\nVi scrivo per confermare la mia disponibilità anche per l'anno scolastico 2026/2027, per supplenze brevi e lunghe. Se è necessario rinnovare la messa a disposizione per il nuovo anno, ditemi pure come procedere e provvedo subito.\n\nAllego il curriculum vitae aggiornato. Abito a "+Z+", sono automunita e posso raggiungere la sede in tempi rapidi.\n\nGrazie per la collaborazione di quest'anno: mi è stato utile e mi farebbe piacere ritrovarvi.",
+    nido:
+"Oggetto: Candidatura come educatrice nei servizi per l'infanzia\n\nAlla cortese attenzione della Direzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi come educatrice presso la vostra struttura.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107/110. Nel 2026 ho svolto 31 giornate di supplenza come docente nelle scuole dell'infanzia statali del Municipio V e, nel 2025, un tirocinio curriculare di 300 ore nella scuola dell'infanzia: conduzione del gruppo, gestione delle routine, predisposizione di materiali e spazi, osservazione educativa.\n\nHo inoltre lavorato per due anni in contesti scolastici, tra nidi, scuole dell'infanzia ed elementari, nel servizio mensa, e ho l'attestato HACCP di secondo livello: conosco da vicino i tempi e le regole della giornata educativa, anche nei momenti di cura.\n\nAbito a "+Z+" e sono automunita. Sono disponibile per il turno del mattino o del pomeriggio e per il tempo pieno.\n\nAllego il curriculum vitae.",
+    paritaria:
+"Oggetto: Candidatura come insegnante di scuola dell'infanzia\n\nAlla cortese attenzione della Coordinazione didattica di "+E+","+rif+"\n\nmi chiamo "+N+" e desidero propormi per un incarico nella vostra scuola dell'infanzia.\n\nDa aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia presso Istituti Comprensivi statali del Municipio V. Prima ancora, tra settembre e ottobre 2025, ho completato un tirocinio curriculare di 300 ore nella scuola dell'infanzia della Scuola Santa Paola Elisabetta Cerioli, affiancando le insegnanti nella gestione della sezione dei bambini da tre a sei anni.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107/110.\n\nQuello che porto con me è la capacità di stare dentro le routine senza perdere di vista la relazione con il singolo bambino, e una solida abitudine all'organizzazione maturata anche in dieci anni di lavoro in ruoli di segreteria e coordinamento.\n\nAbito a "+Z+", sono automunita e disponibile con un preavviso di cinque giorni.\n\nAllego il curriculum vitae.",
+    fism:
+"Oggetto: Candidatura come insegnante di scuola dell'infanzia, zona est di Roma\n\nAlla cortese attenzione della FISM Roma,\n\nmi chiamo "+N+" e vi scrivo per propormi come insegnante nelle scuole dell'infanzia associate alla vostra federazione, in particolare nella zona est della città: Municipio V e municipi confinanti.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107 su 110. Da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia presso Istituti Comprensivi statali del Municipio V, e nel 2025 ho completato un tirocinio curriculare di 300 ore nella scuola dell'infanzia paritaria Santa Paola Elisabetta Cerioli di via Casilina.\n\nAbito a "+Z+", sono automunita e disponibile per supplenze brevi, incarichi annuali, turno del mattino o del pomeriggio.\n\nSe la federazione raccoglie candidature o può segnalare il mio nominativo alle scuole associate che stanno cercando personale, ve ne sarei molto grata. Allego il curriculum vitae.\n\nResto a disposizione per qualsiasi informazione.",
+    coop:
+"Oggetto: Candidatura per servizi educativi ed extrascolastici\n\nAlla cortese attenzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per i vostri servizi educativi: doposcuola, ludoteca, centri estivi o attività di supporto scolastico.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con 107/110. Nel 2026 ho svolto 31 giornate di supplenza come docente nelle scuole dell'infanzia statali del Municipio V; nel 2025 un tirocinio di 300 ore nella scuola dell'infanzia. Ho lavorato per due anni in contesti scolastici nel servizio mensa e ho l'attestato HACCP di secondo livello.\n\nA questo aggiungo dieci anni in ruoli di segreteria e supporto organizzativo: gestione di agende, documenti e rapporti con l'utenza. È un'esperienza che torna utile in un servizio educativo, dove la parte organizzativa pesa quanto quella relazionale.\n\nAbito a "+Z+", sono automunita e disponibile sia al mattino sia al pomeriggio.\n\nAllego il curriculum vitae.",
+    annuncio:
+"Oggetto: Candidatura per "+(extra||"[titolo della posizione]")+"\n\nAlla cortese attenzione di "+E+",\n\nmi chiamo "+N+" e vi scrivo in risposta al vostro annuncio.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107/110, conseguita a gennaio 2026. Da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia presso Istituti Comprensivi statali del Municipio V di Roma: conduzione della sezione dei bambini da tre a sei anni, attività educativo-didattiche, gestione delle routine quotidiane e collaborazione con il team docente e le famiglie. Nel 2025 ho completato un tirocinio curriculare di 300 ore nella scuola dell'infanzia.\n\nAbito a "+Z+", sono automunita e disponibile per part-time mattutino o pomeridiano, tempo pieno e sostituzioni brevi.\n\nAllego il curriculum vitae e resto a disposizione per ogni chiarimento."
+  };
+  return T[tipo] + FIRMA();
+}
+function generaLettera(){ $("#lettera").value = lettera($("#l-tipo").value, $("#l-ente").value.trim(), $("#l-extra").value.trim()); }
+$("#l-genera").addEventListener("click",()=>{ generaLettera(); toast("Testo pronto, rileggilo prima di inviarlo"); });
+$("#l-tipo").addEventListener("change", generaLettera);
+$("#l-ente").addEventListener("input", generaLettera);
+$("#l-extra").addEventListener("input", generaLettera);
+$("#l-copia").addEventListener("click", async ()=>{
+  const t=$("#lettera"); if(!t.value){ toast("Genera prima il testo"); return; }
+  try{ await navigator.clipboard.writeText(t.value); toast("Copiato"); }
+  catch(e){ t.select(); toast("Seleziona e copia a mano"); }
+});
+
+/* ===== I TUOI DATI ===== */
+document.addEventListener("click", ev=>{
+  const b = ev.target.closest("[data-vai]");
+  if(b){ ev.preventDefault(); vai(b.dataset.vai); }
+});
+const CAMPI_IO = [["io-nome","nome"],["io-tel","tel"],["io-mail","mail"],["io-zona","zona"]];
+
+/* scrive nei campi: solo all'avvio e dopo un'importazione, mai mentre si digita */
+function riempiCampiIo(){
+  CAMPI_IO.forEach(([id,k])=>{
+    const el = document.getElementById(id);
+    if(el && document.activeElement !== el) el.value = S.io[k] || "";
+  });
+}
+
+/* aggiorna quello che dipende dai dati, senza toccare i campi */
+function aggiornaIo(){
+  const v = k => (S.io[k]||"").trim();
+  const pieno = !!(v("nome") && v("tel") && v("mail"));
+  const st = document.getElementById("io-stato");
+  if(st) st.textContent = pieno
+    ? "Tutto a posto: le lettere escono già firmate."
+    : "Finché questi campi restano vuoti, nelle lettere trovi delle parentesi quadre al posto dei tuoi dati.";
+  const logo = document.getElementById("logo-nome");
+  if(logo) logo.textContent = v("nome") ? ("Il percorso di " + v("nome").split(/\s+/)[0]) : "Il mio percorso";
+  const av = document.getElementById("avviso-dati");
+  if(av) av.hidden = pieno;
+}
+
+function renderIo(){ riempiCampiIo(); aggiornaIo(); }
+
+CAMPI_IO.forEach(([id,k])=>{
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.addEventListener("input", ()=>{
+    S.io[k] = el.value;          // niente trim qui: mangerebbe gli spazi mentre scrivi
+    salva(); aggiornaIo(); generaLettera();
+  });
+  el.addEventListener("blur", ()=>{
+    S.io[k] = el.value.trim();   // ripulisco solo quando esci dal campo
+    el.value = S.io[k];
+    salva(); aggiornaIo(); generaLettera();
+  });
+});
+
+/* copia dai riquadri di testo */
+document.addEventListener("click", async ev=>{
+  const b = ev.target.closest("[data-copia]"); if(!b) return;
+  const t = document.getElementById(b.dataset.copia); if(!t) return;
+  try{ await navigator.clipboard.writeText(t.value); toast("Copiato"); }
+  catch(e){ t.select(); toast("Seleziona e copia a mano"); }
+});
+
+/* ===== DATI ===== */
+$("#btn-export").addEventListener("click", async ev=>{
+  const testo = JSON.stringify(S,null,2);
+  try{
+    await navigator.clipboard.writeText(testo);
+    toast("Copiato. Incollalo in una mail o in una nota e conservalo.");
+  }catch(e){
+    const b=new Blob([testo],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="percorso-backup.json"; a.click();
+    URL.revokeObjectURL(a.href); toast("File scaricato");
+  }
+});
+$("#btn-import").addEventListener("click",()=>$("#file-import").click());
+$("#file-import").addEventListener("change",ev=>{
+  const f=ev.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{
+    const d=JSON.parse(r.result);
+    S.spunte = (d.spunte && typeof d.spunte==="object")? d.spunte : {};
+    S.candidature = Array.isArray(d.candidature)? d.candidature:[];
+    S.annunciMiei = Array.isArray(d.annunciMiei)? d.annunciMiei:[];
+    S.nascosti = Array.isArray(d.nascosti)? d.nascosti:[];
+    S.aperte = Array.isArray(d.aperte)? d.aperte : ["t1"];
+    S.io = (d.io && typeof d.io==="object")? d.io : {nome:"",tel:"",mail:"",zona:""};
+    salva(); tuttoIlRender(); riempiCampiIo(); generaLettera(); toast("Dati importati");
+  }catch(e){ toast("Il file non è leggibile"); } };
+  r.readAsText(f); ev.target.value="";
+});
+let armato=false, tmr=null;
+$("#btn-reset").addEventListener("click",ev=>{
+  const b=ev.currentTarget;
+  if(!armato){ armato=true; b.textContent="Premi ancora per cancellare"; clearTimeout(tmr); tmr=setTimeout(()=>{armato=false;b.textContent="Cancella tutto";},5000); return; }
+  clearTimeout(tmr); armato=false; b.textContent="Cancella tutto";
+  S={spunte:{},candidature:[],annunciMiei:[],nascosti:[],aperte:["t1"],io:{nome:"",tel:"",mail:"",zona:""}}; salva(); tuttoIlRender(); riempiCampiIo(); generaLettera(); toast("Azzerato");
+});
+
+/* ===== AVVIO ===== */
+function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderDove(); renderCand(); renderIo(); statoStorage(); }
+carica();
+tuttoIlRender();
+generaLettera();
+window.addEventListener("resize", ()=>{ clearTimeout(window._rz); window._rz=setTimeout(riempiRail, 180); });
+</script>
+</body>
+</html>
