@@ -204,6 +204,14 @@ tr.riga-ok{background:#EFF6F2}
 .scuola .ind{color:var(--grigio);font-size:13.5px;margin-top:3px}
 .scuola .cont{font-size:13.5px;margin-top:6px}
 .scuola .azioni{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.porta{padding:20px;border-bottom:1px solid var(--nebbia)}
+.porta:last-child{border-bottom:0}
+.porta h3{font-size:17px;margin:8px 0 0}
+.porta .meta{color:var(--grigio);font-size:13.5px;margin-top:4px}
+.porta .data{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11.5px;color:var(--grigio);margin-top:3px}
+.porta p{margin:11px 0 0;font-size:14.5px;color:#4A3A3D;max-width:80ch}
+.porta .fonte{font-size:12.5px;color:var(--grigio);margin-top:9px;max-width:80ch}
+.porta .azioni{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap}
 .zona-testa{padding:14px 20px;background:#FDF8F8;border-bottom:1px solid var(--nebbia);display:flex;align-items:baseline;gap:10px}
 .zona-testa b{font-size:15px}
 .zona-testa span{font-size:13px;color:var(--grigio)}
@@ -255,6 +263,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
       <button data-v="esei">Corso ESEI</button>
       <button data-v="annunci">Annunci</button>
       <button data-v="private">Scuole private</button>
+      <button data-v="porte">Altre porte</button>
       <button data-v="candidature">Candidature</button>
       <button data-v="dove">Dove cercare</button>
       <button data-v="canali">Canali</button>
@@ -495,6 +504,25 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
   </div>
 </section>
 
+
+<!-- ===== ALTRE PORTE ===== -->
+<section class="vista" id="v-porte" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Altre porte</h2>
+    <p class="desc">Due elenchi. Sopra, il lavoro di segreteria part time entro dieci chilometri da casa: quello che sai fare da dieci anni e che nessuno ti può contestare. Sotto, i lavori che la tua laurea apre fuori dalla sezione, dove non ti chiedono né l'ESEI né le graduatorie. Annunci veri, controllati il 7 settembre 2026, con la data e il link per verificarli tu.</p>
+
+    <div class="avviso" style="margin-bottom:18px">
+      <h3>Prima di scorrere, una cosa</h3>
+      <p>Il fatto che la strada dell'infanzia sia lenta non vuol dire che tu sia ferma. Vuol dire solo che quella porta ha una fila davanti. Tu di porte ne hai tre, non una: dieci anni di segreteria con un diploma di ragioniere alle spalle, una laurea che vale in posti dove non hai mai guardato, e l'esperienza in sezione che continui a costruire.</p>
+      <p>Questa pagina non sostituisce le altre. Sta accanto. Puoi mandare una candidatura da qui stasera e continuare domani con la scuola, senza rinunciare a niente.</p>
+    </div>
+
+    <div class="card" id="lista-porte"></div>
+
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Gli annunci vengono da Indeed e sono stati letti uno per uno il 7 settembre 2026: quello che c'è scritto qui sopra è quello che c'è scritto nell'annuncio, non una mia interpretazione. Dove l'annuncio non dice l'indirizzo, ho scritto da verificare invece di indovinare. Le distanze sono stime in linea d'aria da Torpignattara, servono a farti un'idea, non a pianificare il tragitto. Qualcuno può essere già stato coperto: il link serve proprio a controllare.</p>
+  </div>
+</section>
+
 <!-- ===== CANDIDATURE ===== -->
 <section class="vista" id="v-candidature" hidden>
   <div class="grid g3" style="margin-bottom:26px">
@@ -656,6 +684,9 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
             <option value="paritaria">Scuola dell'infanzia paritaria</option>
             <option value="fism">FISM Roma, la federazione delle paritarie</option>
             <option value="coop">Cooperativa, doposcuola, ludoteca o centro estivo</option>
+            <option value="segreteria">Segreteria o amministrazione, azienda o studio</option>
+            <option value="segreteriascuola">Segreteria di una scuola o di un ente di formazione</option>
+            <option value="oepac">Ente accreditato per il servizio OEPAC</option>
             <option value="annuncio">Risposta a un annuncio</option>
           </select></div>
           <div><label for="l-ente">Nome della struttura</label><input id="l-ente" placeholder="Istituto Comprensivo ..."></div>
@@ -728,8 +759,12 @@ const PROFILO = {
     "Tirocinio curriculare di 300 ore nella scuola dell'infanzia, alla Scuola Santa Paola Elisabetta Cerioli di Roma, tra settembre e ottobre 2025",
     "Addetta alla mensa scolastica in nidi, scuole dell'infanzia ed elementari, con Randstad ed Eutourist New, da aprile 2022 a giugno 2024"
   ],
-  altro:["Attestato HACCP di secondo livello, marzo 2022",
-         "Dieci anni in segreteria e supporto organizzativo, tra DeA Capital, CDP Investimenti, Cerved e JAKALA",
+  altro:["Diploma di ragioniere per l'amministrazione e il controllo delle piccole e medie aziende, Istituto Tecnico Commerciale di via Rocca di Papa, 81 su 100",
+         "Dieci anni in segreteria e supporto amministrativo: quattro come assistente di direzione dell'area legale in DeA Capital Real Estate SGR, poi Cassa Depositi e Prestiti Investimenti SGR, Cerved Credit Management, JAKALA, Domo Progetti, Gruppo Ferrital, Vitaldent e Blu Dental",
+         "Attestato di operatrice di paghe e contributi, Orienta 2019",
+         "Attestato di addetta al back office informatizzato, Forma.Temp 2018",
+         "Attestato di receptionist per cliniche odontoiatriche, Vitaldent 2011",
+         "Attestato HACCP di secondo livello, marzo 2022",
          "SPID attivo e richiesta di interpello per l'infanzia già presentata nel Municipio V"],
   lingue:"Italiano madrelingua; inglese, francese e spagnolo a livello scolastico",
   disponibilita:"Part time la mattina o il pomeriggio, tempo pieno e supplenze brevi. Preavviso di cinque giorni."
@@ -921,10 +956,93 @@ const CANALI = [
    stato:"chiuso", quando:"Finestra chiusa a luglio 2026, si riapre nel 2028",
    d:"Per il posto comune all'infanzia e alla primaria servono Scienze della Formazione Primaria oppure il diploma magistrale preso entro l'anno scolastico 2001 e 2002. La L-19 da sola non basta, ed è il motivo per cui oggi nella scuola statale si passa dalle MAD e dagli interpelli, non dalle graduatorie.",
    url:"https://www.orizzontescuola.it/graduatorie-gps-2024-i-titoli-di-accesso-per-infanzia-e-primaria/", link:"I titoli che servono per le GPS"},
-  {t:"La qualifica OEPAC, un canale che si può aprire",
-   stato:"info", quando:"Non è un bando, è una scelta da fare con calma",
-   d:"Le cooperative che gestiscono l'assistenza scolastica a Roma cercano OEPAC tutto l'anno, e scrivono chiaramente che senza quella qualifica la laurea in Scienze dell'Educazione non basta. Sarebbe lavoro dentro le scuole del Municipio V, con l'orario della scuola. Da valutare dopo l'ESEI, non insieme.",
-   url:"https://to.indeed.com/aaqxnpy2lgvd", link:"Un annuncio che spiega i requisiti"}
+  {t:"OEPAC, e la tua laurea basta gia\u0300",
+   stato:"ora", quando:"Non ha scadenze, si mandano candidature tutto l'anno",
+   d:"Correzione rispetto a quello che c'era scritto qui prima. Il Regolamento di Roma Capitale sugli OEPAC, all'articolo 12, elenca fra i titoli di formazione iniziale la laurea in Scienze dell'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. Quindi il titolo per candidarti ce l'hai gia\u0300, senza ESEI e senza corso OEPAC. Molti annunci delle cooperative chiedono comunque l'attestato: e\u0300 una scelta loro, non un obbligo del regolamento. Trovi tutto, con il link all'elenco degli enti accreditati e una lettera pronta, nella sezione Altre porte.",
+   url:"https://www.aipd.it/site/scheda-scuola/687-nuovo-regolamento-di-roma-capitale-per-gli-oepac-deliberazione-20-22/", link:"Cosa dice il regolamento"}
+];
+
+/* ===== ALTRE PORTE =====
+   Due famiglie: quello che sai già fare (segreteria) e quello che il titolo apre fuori dalla sezione.
+   Annunci trovati su Indeed il 7 settembre 2026. Distanze stimate in linea d'aria da Torpignattara. */
+const PORTE = [
+{fam:"A", id:"p-mg", t:"Segretaria di studio legale", ente:"Studio Legale MG", zona:"Piazza Bologna", km:6, kmt:"6 km circa",
+ tipo:"Part time, 650-1300 euro al mese", pubb:"1 settembre 2026", stato:"top",
+ d:"Questo è il tuo lavoro, scritto da qualcun altro. L'annuncio elenca: agenda e appuntamenti, centralino, accoglienza clienti, posta elettronica ordinaria e PEC, corrispondenza in entrata e uscita, organizzazione viaggi, apertura e registrazione incarichi, archiviazione cartacea e digitale, parcelle e fatture elettroniche. È parola per parola quello che hai fatto per quattro anni come assistente di direzione dell'area legale in DeA Capital, e prima ancora in Cassa Depositi e Prestiti. Non chiedono titoli di studio, chiedono che tu lo sappia fare.",
+ url:"https://to.indeed.com/aamxcjnkrhlm"},
+{fam:"A", id:"p-massafra", t:"Segretaria di studio legale, tempo indeterminato", ente:"Studio legale Massafra", zona:"Parioli", km:9, kmt:"9 km circa",
+ tipo:"Part time pomeridiano, 15 alle 19, dal lunedì al venerdì", pubb:"2 settembre 2026", stato:"top",
+ d:"L'unico di tutta la lista che offre un tempo indeterminato, con il CCNL Studi professionali. Orario 15 alle 19 dal lunedì al venerdì, e valutano anche un part time più lungo. Le mansioni sono le stesse dell'altro studio legale, più il fascicolo telematico del processo civile, amministrativo e tributario: quello non l'hai mai fatto, ma è una procedura, si impara. Il curriculum va mandato direttamente a cv@studiomassafra.com, quindi non passi da nessun portale. Di tutta la pagina, questa è la mail da scrivere per prima.",
+ url:"https://to.indeed.com/aar6wxhzbfc8"},
+{fam:"A", id:"p-123", t:"Segreteria organizzativa con contabilità", ente:"Associazione 123 stella", zona:"Roma, due sedi, non indicate nell'annuncio", km:0, kmt:"da verificare",
+ tipo:"Part time, 644-1200 euro al mese", pubb:"1 settembre 2026", stato:"buono",
+ d:"Pratiche amministrative, emissione e registrazione fatture, scritture contabili, cassetto fiscale, archiviazione, fogli firma, rapporti con enti e collaboratori. Chiedono due anni di esperienza in segreteria organizzativa come requisito obbligatorio: tu ne hai dieci, quindi il filtro lo passi largamente. Il tuo diploma di ragioniere qui conta più della laurea. Prima di candidarti chiedi dove sono le due sedi, perché nell'annuncio non c'è scritto.",
+ url:"https://to.indeed.com/aaxyf9lkbfgc"},
+{fam:"A", id:"p-fisio", t:"Segretaria di centro di fisioterapia, sostituzione maternità", ente:"Fisioaniene", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
+ tipo:"Part time, circa 12 mesi, fino a 950 euro al mese", pubb:"31 agosto 2026", stato:"buono",
+ d:"Reception, agenda dei fisioterapisti, pratiche amministrative sanitarie, rapporti con assicurazioni e fondi sanitari, supporto alla fatturazione. Chiedono esperienza in segreteria o reception, meglio se in ambito sanitario: tu hai due anni tra Vitaldent e Blu Dental più l'attestato da receptionist di cliniche odontoiatriche. Offrono orario flessibile e parcheggio libero, due cose che con due bambini piccoli pesano. Il nome fa pensare alla zona dell'Aniene, ma nell'annuncio l'indirizzo non c'è: chiedilo subito.",
+ url:"https://to.indeed.com/aal4gmjw87wc"},
+{fam:"A", id:"p-scln", t:"Segretaria part time pomeridiana, sostituzione maternità", ente:"SCLN Legal Network", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
+ tipo:"Part time, 15 alle 19, da dicembre 2026", pubb:"27 agosto 2026", stato:"buono",
+ d:"Annuncio corto: cercano una segretaria part time pomeridiano dalle 15 alle 19, con competenze informatiche e conoscenze amministrative di base, disponibile da dicembre 2026. Poco altro. Proprio perché parte a dicembre vale la pena scrivere adesso e non all'ultimo: quando cercheranno davvero, il tuo nome ce l'hanno già.",
+ url:"https://to.indeed.com/aa42xdpffmkf"},
+{fam:"A", id:"p-omai", t:"Impiegata di segreteria e amministrazione", ente:"OMAI Service", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
+ tipo:"Part time, valutano anche il tempo pieno, 741-1000 euro al mese", pubb:"4 settembre 2026", stato:"buono",
+ d:"Segreteria, gestione pratiche amministrative e supporto organizzativo. Chiedono disponibilità immediata e di essere automunita, e scrivono che va bene anche la prima esperienza: quindi non ti confrontano con profili senior. È l'annuncio più recente della pagina. Nell'annuncio non c'è l'indirizzo: chiedilo prima di muoverti.",
+ url:"https://to.indeed.com/aafkr9s8x42k"},
+{fam:"A", id:"p-dicastro", t:"Impiegata amministrativa in impresa edile", ente:"Di Castro Società Cooperativa", zona:"Torrenova, zona Tor Vergata", km:8, kmt:"8 km circa",
+ tipo:"Tempo pieno, 700-1500 euro al mese", pubb:"24 agosto 2026", stato:"buono",
+ d:"Contabilità generale, documentazione per gare d'appalto e lavori pubblici, rapporti con clienti, fornitori, banche ed enti, fatture e archivio. Il requisito è il diploma di ragioneria oppure una laurea economica: il tuo diploma è esattamente quello, ragioniere per l'amministrazione e il controllo delle piccole e medie aziende. E hai già fatto fatturazione attiva e passiva in un'impresa edile, in Domo Progetti. L'unico problema è l'orario, perché è tempo pieno.",
+ url:"https://to.indeed.com/aak6kyp6tb7v"},
+{fam:"A", id:"p-marchetti", t:"Addetta alla segreteria con mansioni contabili", ente:"Marchetti e C.", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
+ tipo:"Tempo pieno, tempo determinato, 1300-1600 euro al mese", pubb:"25 agosto 2026", stato:"buono",
+ d:"Impresa edile, segreteria con contabilità e amministrazione. Un anno di esperienza come preferenziale, quindi il filtro è leggero. Anche qui il precedente in Domo Progetti parla da solo. È lo stipendio più alto della pagina, ma è a tempo pieno.",
+ url:"https://to.indeed.com/aaq9pxdnhxn4"},
+{fam:"A", id:"p-caputo", t:"Receptionist di clinica odontoiatrica", ente:"Angela Caputo Odontoiatrica Digitale", zona:"Via Casilina, dentro il centro commerciale Casilino", km:3, kmt:"3 km circa",
+ tipo:"Part time, solo domeniche e festivi, 10 alle 20:30, 430-450 euro al mese", pubb:"2 settembre 2026", stato:"attenzione",
+ d:"È il più vicino a casa di tutti, sulla Casilina, e sulla carta sei perfetta: due anni da receptionist in Vitaldent, sei mesi in Blu Dental e l'attestato di receptionist per cliniche odontoiatriche. Ma va detto chiaro prima che tu ci perda tempo: si lavora solo la domenica e nei giorni festivi, dalle 10 alle 20:30, per 430 o 450 euro al mese. Con due bambini piccoli vuol dire rinunciare a tutte le domeniche. Guardalo, ma decidi in famiglia prima di rispondere.",
+ url:"https://to.indeed.com/aacfzm6qsz6s"},
+{fam:"A", id:"p-molinari", t:"Front office in un centro di formazione professionale", ente:"Molinari Art Center", zona:"Roma, sede non indicata nell'annuncio", km:0, kmt:"da verificare",
+ tipo:"Part time, dal lunedì al venerdì più due sabati al mese, 700-800 euro al mese", pubb:"26 agosto 2026", stato:"attenzione",
+ d:"È un centro di formazione professionale per la danza e lo spettacolo, quindi segreteria dentro un ente di formazione: il punto dove i tuoi dieci anni di ufficio e la tua laurea si incontrano invece di darsi le spalle. Due cose da sapere prima: chiedono il curriculum con la foto, e chiedono una discreta conoscenza dell'inglese, mentre il tuo è scolastico. Non è un no automatico, ma scrivilo tu con onestà invece di farti scoprire al colloquio.",
+ url:"https://to.indeed.com/aajvsrssk2lj"},
+{fam:"A", id:"p-bg", t:"Addetta alla segreteria e assistenza clienti", ente:"Officina di pneumatici", zona:"Casal Monastero, uscita del Grande Raccordo", km:13, kmt:"13 km circa",
+ tipo:"Part time o tempo pieno da concordare, fino a 1500 euro al mese", pubb:"12 agosto 2026", stato:"attenzione",
+ d:"Accoglienza clienti, telefono e mail, agenda dell'officina, documenti fiscali con software di fatturazione, cassa. Scrivono nero su bianco che non serve nessuna esperienza e che l'orario, part time o pieno, si concorda. Il difetto è la distanza: Casal Monastero sta fuori dai dieci chilometri, dalla parte opposta della città rispetto a casa tua. Tienilo come riserva, non come prima scelta.",
+ url:"https://to.indeed.com/aa4cwdxc7gs4"},
+
+{fam:"B", id:"p-oepac", t:"OEPAC, l'operatrice educativa dentro le scuole di Roma", ente:"Roma Capitale, tramite gli enti accreditati", zona:"Le scuole del tuo municipio", km:1, kmt:"scuola sotto casa",
+ tipo:"Orario della scuola, contratti degli enti accreditati", pubb:"", stato:"top",
+ d:"Questa è la porta più grande che nessuno ti ha mai indicato, e la apre la laurea che hai già in mano. L'OEPAC affianca a scuola i bambini con disabilità per l'autonomia e la comunicazione. Il regolamento di Roma Capitale, all'articolo 12, elenca i titoli validi: diploma magistrale o dei servizi socio sanitari, oppure laurea in Scienze dell'Educazione e della Formazione, Servizio Sociale, Scienze e Tecniche Psicologiche o similari, oppure diploma più corso di qualifica OEPAC. La laurea è una delle tre strade, in alternativa al corso, non in aggiunta. Attenzione a un punto che ti può confondere: molti annunci delle cooperative chiedono comunque l'attestato OEPAC. Non è il regolamento a chiederlo, è l'ente che alza l'asticella. Se ti dicono di no per quello, non stanno applicando una legge, stanno scegliendo. Dal 2023 il servizio non va più ad appalto: gli enti si accreditano in un registro chiamato RUAS e sono le famiglie a scegliere l'ente. Vuol dire che i nomi a cui mandare il curriculum stanno in un elenco pubblico.",
+ url:"https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF1131252&pagina=5", link:"Apri l'elenco degli enti accreditati",
+ fonte:"Regolamento OEPAC di Roma Capitale, deliberazioni di Assemblea Capitolina 20 del 2022 e 19 del 23 gennaio 2023, articolo 12. Le pagine del Comune da qui non si lasciano leggere, quindi l'elenco aprilo tu."},
+{fam:"B", id:"p-socioped", t:"Educatrice professionale socio pedagogica, fuori dalla scuola", ente:"Cooperative sociali e servizi del territorio", zona:"Tutta Roma", km:0, kmt:"varia",
+ tipo:"Di solito CCNL cooperative sociali, part time", pubb:"", stato:"top",
+ d:"La legge 205 del 2017, al comma 595, dice che la qualifica di educatore professionale socio pedagogico si ottiene con la laurea L-19. La tua. E il comma 594 elenca dove si lavora: ambito educativo e formativo, scolastico, socio assistenziale per la parte educativa, socio sanitario per la parte educativa, genitorialità e famiglia, culturale, giudiziario, ambientale, sportivo e motorio, cooperazione internazionale. Non è un elenco di possibilità vaghe: sono comunità per minori, centri diurni, servizi per la disabilità, centri per anziani, doposcuola, servizi educativi dei musei, area penale. In quasi tutti questi posti non ti chiedono l'ESEI e non ti chiedono le graduatorie, ti chiedono la laurea che hai.",
+ url:"https://www.gianvincenzonicodemo.it/normativa-educatore-professionale-e-pedagogista/educatore-professionale-sociopedagogico-e-pedagogista/legge-205-2017-pedagogista-ed-educatore-professionale-sociopedagogico/", link:"Leggi i commi 594 e 595",
+ fonte:"Legge 27 dicembre 2017 numero 205, commi 594 e 601."},
+{fam:"B", id:"p-blu", t:"Educatrice in una comunità per detenuti", ente:"Consorzio Blu", zona:"Via Labicana 45, vicino al Colosseo", km:4, kmt:"4 km circa",
+ tipo:"Part time 36 ore, CCNL cooperative sociali livello D2, 1637 euro lordi al mese", pubb:"15 giugno 2026", stato:"attenzione",
+ d:"È l'esempio concreto dell'ambito giudiziario del comma 594. Chiedono la laurea in Scienze dell'Educazione, punto: nessun anno minimo di esperienza, nessuna qualifica in più. Lo stipendio è il più alto di tutta questa pagina. Due avvertenze oneste: l'annuncio è del 15 giugno, quindi ha quasi tre mesi e può essere già chiuso, e lavorare in una comunità filtro per detenuti non è un contesto per tutti. Anche se questo è scaduto, il Consorzio Blu resta un ente a cui mandare una candidatura spontanea.",
+ url:"https://to.indeed.com/aat4nq8n9pcx"},
+{fam:"B", id:"p-ata", t:"Assistente amministrativa nelle scuole, il profilo ATA", ente:"Ministero dell'Istruzione, graduatorie di terza fascia", zona:"Le scuole che scegli tu", km:1, kmt:"scegli tu le sedi",
+ tipo:"Supplenze nelle segreterie scolastiche", pubb:"", stato:"prepara",
+ d:"Qui la tua vita di prima e la scuola si incontrano davvero: è il lavoro di segreteria, dentro un istituto. Il titolo richiesto è un diploma di scuola superiore di qualunque tipo, e il tuo di ragioniere va benissimo. Ma c'è un requisito nuovo da conoscere subito: il decreto ministeriale 89 del 2024 ha reso la certificazione digitale CIAD obbligatoria per l'accesso, non più solo un punteggio in più. Senza, la domanda non viene accettata. Le graduatorie di terza fascia si aggiornano ogni tre anni e la prossima finestra è attesa nella primavera del 2027. Non è una cosa da fare oggi, ma la CIAD si prende adesso, con calma e senza corsa, così quando apre la domanda tu sei già pronta. Le date esatte usciranno con il decreto: vanno controllate nei primi mesi del 2027.",
+ url:"https://www.tecnicadellascuola.it/graduatorie-ata", link:"Come funzionano le graduatorie ATA",
+ fonte:"Decreto ministeriale 89 del 2024 per la CIAD. Sulla finestra di primavera 2027 le fonti sono giornalistiche e sindacali, non c'è ancora il decreto: la data va riverificata."},
+{fam:"B", id:"p-inpa", t:"Concorsi pubblici, con il diploma e con la laurea", ente:"inPA, il portale unico del reclutamento", zona:"Roma e Lazio", km:0, kmt:"varia",
+ tipo:"Tempo indeterminato", pubb:"", stato:"prepara",
+ d:"Nei comuni e negli enti locali i profili amministrativi si dividono in due: l'area degli istruttori, dove di solito basta il diploma, e l'area dei funzionari, dove serve la laurea. Tu hai tutti e due i titoli, e in più dieci anni di lavoro amministrativo vero. È l'unica strada di questa pagina che porta a un posto fisso. È anche la più lenta, perché si passa da una prova. Non è un piano per domani mattina, è un piano per l'anno prossimo: intanto registrati su inPA, metti Roma come zona e lascia arrivare gli avvisi da soli.",
+ url:"https://www.inpa.gov.it/", link:"Registrati su inPA",
+ fonte:"I requisiti cambiano da bando a bando: quello che conta è sempre l'articolo sui titoli di accesso del singolo bando."},
+{fam:"B", id:"p-segrscuola", t:"Segreteria didattica nelle paritarie e negli enti di formazione", ente:"Le venti scuole che hai già in questa app, più gli enti accreditati del Lazio", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
+ tipo:"Varia, spesso part time", pubb:"", stato:"prepara",
+ d:"Questa non è un annuncio, è una mossa che puoi fare da sola stasera. Alle venti scuole paritarie che stanno nella sezione Scuole private hai scritto, o stai per scrivere, per la sezione. Scrivi alle stesse anche per la segreteria: iscrizioni, rette, registri, comunicazioni alle famiglie, rapporti con gli enti. Una scuola piccola cerca esattamente quella persona lì, e trovare qualcuno che sappia fare segreteria e che capisca anche la scuola è raro. Tu sei tutte e due le cose in una. Lo stesso vale per gli enti di formazione accreditati dalla Regione Lazio, dove la figura si chiama segreteria didattica o tutor d'aula. Nella sezione Lettere trovi due testi già pronti per questo.",
+ url:"", link:"", fonte:""},
+{fam:"B", id:"p-visioncom", t:"Coordinatrice della formazione e selezione formatori", ente:"Vision Com", zona:"Villa Adriana, Tivoli", km:25, kmt:"25 km circa",
+ tipo:"Part time, 400-600 euro al mese", pubb:"27 agosto 2026", stato:"attenzione",
+ d:"Lo metto perché è l'esempio più chiaro di cosa vuol dire segreteria didattica: organizzare i calendari dei corsi, cercare e selezionare i formatori, tenere il database, gestire le sostituzioni. Fra i titoli preferenziali c'è l'esperienza in segreteria didattica e scrivono che conoscere il mondo della scuola è un valore aggiunto: tu hai tutte e due. Ma va detto: Villa Adriana è a Tivoli, ben oltre i dieci chilometri, e lo stipendio dichiarato è 400 o 600 euro al mese. Guardalo per capire il ruolo, poi cerca lo stesso ruolo più vicino a casa.",
+ url:"https://to.indeed.com/aas9m76v47kn"}
 ];
 
 /* ===== SCUOLE PRIVATE E PARITARIE, dati ministeriali per CAP, controllati il 20 agosto 2026 ===== */
@@ -1190,6 +1308,51 @@ $("#an-salva").addEventListener("click",()=>{
   $("#form-ann").hidden=true; renderAnnunci(); toast("Annuncio salvato");
 });
 
+/* ===== ALTRE PORTE ===== */
+const PILLP = {top:["p-ok","guarda questo per primo"], buono:["p-info","in linea con te"],
+               attenzione:["p-ora","leggi bene prima"], prepara:["p-info","da preparare"]};
+const TESTE = {
+  A:["Segreteria part time, vicino casa","Quello che sai già fare. Annunci veri, in ordine di distanza da Torpignattara"],
+  B:["Porte che la tua laurea apre","Lavori fuori dalla sezione dove il titolo che hai già basta"]
+};
+function renderPorte(){
+  const el = document.getElementById("lista-porte"); if(!el) return;
+  const ordine = {top:0, buono:1, prepara:2, attenzione:3};
+  let html = "";
+  ["A","B"].forEach(f=>{
+    const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id))
+      .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.km||99)-(b.km||99)));
+    if(!gruppo.length) return;
+    const [tit,sot] = TESTE[f];
+    html += '<div class="zona-testa"><b>'+tit+'</b><span>'+sot+'</span></div>';
+    html += gruppo.map(x=>{
+      const [cl,tx] = PILLP[x.stato] || PILLP.buono;
+      return '<div class="porta"><div class="pillole"><span class="pill '+cl+'">'+tx+'</span>'
+        + '<span class="pill p-no">'+esc(x.kmt)+'</span></div>'
+        + '<h3>'+esc(x.t)+'</h3>'
+        + '<div class="meta">'+esc(x.ente)+', '+esc(x.zona)+(x.tipo?'. '+esc(x.tipo):'')+'</div>'
+        + (x.pubb?'<div class="data">annuncio pubblicato il '+esc(x.pubb)+' su Indeed</div>':'')
+        + '<p>'+esc(x.d)+'</p>'
+        + (x.fonte?'<p class="fonte">'+esc(x.fonte)+'</p>':'')
+        + '<div class="azioni">'
+        + (x.url?'<a class="b b-mini" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.link||"Apri l'annuncio")+'</a>':'')
+        + '<button class="b b-mini" data-trp="'+esc(x.id)+'">Aggiungi al tracker</button>'
+        + '<button class="b b-mini b-no" data-hdp="'+esc(x.id)+'">Non mi interessa</button>'
+        + '</div></div>';
+    }).join("");
+  });
+  el.innerHTML = html || '<div class="vuoto">Hai tolto tutto da questa pagina.<br>Il prossimo aggiornamento automatico ne portera\u0300 altre.</div>';
+  el.querySelectorAll("[data-hdp]").forEach(b=>b.addEventListener("click",()=>{
+    S.nascosti.push(b.dataset.hdp); salva(); renderPorte(); toast("Tolto da questa pagina");
+  }));
+  el.querySelectorAll("[data-trp]").forEach(b=>b.addEventListener("click",()=>{
+    const x = PORTE.find(y=>y.id===b.dataset.trp); if(!x) return;
+    S.candidature.push({id:"c"+Date.now(), ente:x.ente, ruolo:x.t, canale:"Altre porte", data:"",
+      stato:"dainviare", azione:"Inviare CV e lettera", azioneData:"", note:x.url||""});
+    salva(); renderCand(); toast("Aggiunta al tracker, da inviare");
+  }));
+}
+
 /* ===== SCUOLE PRIVATE ===== */
 function renderScuole(){
   const el = $("#lista-scuole"); if(!el) return;
@@ -1345,6 +1508,12 @@ function lettera(tipo, ente, extra){
 "Oggetto: Candidatura come insegnante di scuola dell'infanzia, zona est di Roma\n\nAlla cortese attenzione della FISM Roma,\n\nmi chiamo "+N+" e vi scrivo per propormi come insegnante nelle scuole dell'infanzia associate alla vostra federazione, in particolare nella zona est della città: Municipio V e municipi confinanti.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107 su 110. Da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia presso Istituti Comprensivi statali del Municipio V, e nel 2025 ho completato un tirocinio curriculare di 300 ore nella scuola dell'infanzia paritaria Santa Paola Elisabetta Cerioli di via Casilina.\n\nAbito a "+Z+", sono automunita e disponibile per supplenze brevi, incarichi annuali, turno del mattino o del pomeriggio.\n\nSe la federazione raccoglie candidature o può segnalare il mio nominativo alle scuole associate che stanno cercando personale, ve ne sarei molto grata. Allego il curriculum vitae.\n\nResto a disposizione per qualsiasi informazione.",
     coop:
 "Oggetto: Candidatura per servizi educativi ed extrascolastici\n\nAlla cortese attenzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per i vostri servizi educativi: doposcuola, ludoteca, centri estivi o attività di supporto scolastico.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con 107/110. Nel 2026 ho svolto 31 giornate di supplenza come docente nelle scuole dell'infanzia statali del Municipio V; nel 2025 un tirocinio di 300 ore nella scuola dell'infanzia. Ho lavorato per due anni in contesti scolastici nel servizio mensa e ho l'attestato HACCP di secondo livello.\n\nA questo aggiungo dieci anni in ruoli di segreteria e supporto organizzativo: gestione di agende, documenti e rapporti con l'utenza. È un'esperienza che torna utile in un servizio educativo, dove la parte organizzativa pesa quanto quella relazionale.\n\nAbito a "+Z+", sono automunita e disponibile sia al mattino sia al pomeriggio.\n\nAllego il curriculum vitae.",
+    segreteria:
+"Oggetto: Candidatura per un ruolo di segreteria e supporto amministrativo\n\nAlla cortese attenzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per un ruolo di segreteria o di supporto amministrativo.\n\nHo dieci anni di esperienza in questo lavoro. Per quattro anni sono stata assistente di direzione dell'area legale in DeA Capital Real Estate SGR: gestione delle agende del team, organizzazione di riunioni, comitati e assemblee dei fondi, protocollo, archivio, comunicazione telematica in entrata e in uscita, organizzazione dei viaggi di lavoro. Prima e dopo ho lavorato in Cassa Depositi e Prestiti Investimenti SGR come segretaria amministrativa, in Cerved Credit Management, in JAKALA come segretaria part time con front office e inserimento di dati contabili, e in aziende più piccole dove seguivo anche la fatturazione attiva e passiva.\n\nHo il diploma di ragioniere per l'amministrazione e il controllo delle piccole e medie aziende, un attestato in paghe e contributi e uno di addetta al back office informatizzato. Uso quotidianamente il pacchetto Office, la posta elettronica e la PEC, e sono abituata a lavorare su scadenze e su documenti riservati.\n\nNel 2026 ho conseguito la laurea in Scienze dell'Educazione e della Formazione, che ho preso studiando mentre lavoravo.\n\nAbito a "+Z+", sono automunita e sono disponibile per il part time, del mattino o del pomeriggio.\n\nAllego il curriculum vitae.",
+    segreteriascuola:
+"Oggetto: Candidatura per la segreteria didattica e amministrativa\n\nAlla cortese attenzione della Direzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per un ruolo nella vostra segreteria.\n\nHo una combinazione che nel mondo della scuola non è frequente: dieci anni di segreteria e amministrazione veri, e una laurea in Scienze dell'Educazione e della Formazione con l'esperienza in sezione che ne è seguita.\n\nSul lato amministrativo: quattro anni come assistente di direzione dell'area legale in DeA Capital Real Estate SGR, poi Cassa Depositi e Prestiti Investimenti SGR e JAKALA. Agende, protocollo in entrata e in uscita, archivio cartaceo e digitale, PEC, fatturazione attiva e passiva, rapporti con fornitori ed enti. Ho il diploma di ragioniere e un attestato in paghe e contributi.\n\nSul lato scuola: laurea L-19 con 107 su 110, un tirocinio di 300 ore nella scuola dell'infanzia e 31 giornate di supplenza come docente negli Istituti Comprensivi statali del Municipio V nel 2026. So come funziona una giornata scolastica dall'interno, e questo in segreteria si sente: nelle iscrizioni, nelle comunicazioni alle famiglie, nel rapporto con le insegnanti.\n\nAbito a "+Z+", sono automunita e disponibile per il part time.\n\nAllego il curriculum vitae.",
+    oepac:
+"Oggetto: Candidatura come operatrice educativa per l'autonomia e la comunicazione\n\nAlla cortese attenzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi come OEPAC nelle scuole di Roma in cui operate.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107 su 110. Il Regolamento di Roma Capitale in materia di OEPAC, all'articolo 12, indica la laurea in Scienze dell'Educazione e della Formazione tra i titoli di formazione iniziale validi per il profilo, in alternativa al diploma con corso di qualifica: è su questo che fondo la mia candidatura.\n\nQuanto all'esperienza diretta con i bambini: da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia negli Istituti Comprensivi statali del Municipio V, e nel 2025 un tirocinio curriculare di 300 ore nella scuola dell'infanzia. La mia tesi di laurea riguarda la valutazione delle competenze degli studenti con bisogni educativi speciali nella scuola italiana.\n\nSono disponibile a frequentare l'aggiornamento annuale previsto dal Regolamento presso un ente accreditato dalla Regione Lazio.\n\nAbito a "+Z+", sono automunita e conosco bene le scuole del Municipio V e dei municipi confinanti.\n\nAllego il curriculum vitae.",
     annuncio:
 "Oggetto: Candidatura per "+(extra||"[titolo della posizione]")+"\n\nAlla cortese attenzione di "+E+",\n\nmi chiamo "+N+" e vi scrivo in risposta al vostro annuncio.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107/110, conseguita a gennaio 2026. Da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia presso Istituti Comprensivi statali del Municipio V di Roma: conduzione della sezione dei bambini da tre a sei anni, attività educativo-didattiche, gestione delle routine quotidiane e collaborazione con il team docente e le famiglie. Nel 2025 ho completato un tirocinio curriculare di 300 ore nella scuola dell'infanzia.\n\nAbito a "+Z+", sono automunita e disponibile per part-time mattutino o pomeridiano, tempo pieno e sostituzioni brevi.\n\nAllego il curriculum vitae e resto a disposizione per ogni chiarimento."
   };
@@ -1451,7 +1620,7 @@ $("#btn-reset").addEventListener("click",ev=>{
 });
 
 /* ===== AVVIO ===== */
-function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderDove(); renderCand(); renderIo(); statoStorage(); }
+function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); }
 carica();
 tuttoIlRender();
 generaLettera();
