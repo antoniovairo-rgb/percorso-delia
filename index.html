@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Il mio percorso, servizi educativi 0-6</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#C0242E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Il mio percorso">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
 :root{
   --ink:#241419;
@@ -738,6 +746,30 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
     <p class="desc">Preso dal tuo CV aggiornato ad agosto 2026. È quello che le lettere raccontano di te: se cambi il CV, chiedimi di aggiornare anche questo.</p>
     <div class="card pad" id="box-profilo"></div>
   </div>
+  <div class="sez" id="installa">
+    <h2>Tieni l'app sul telefono</h2>
+    <p class="desc">Installandola diventa un'icona nella schermata come le altre app: si apre senza barra del browser, parte più in fretta e continua a funzionare anche quando non hai campo. I tuoi dati restano dove sono, non si perde niente.</p>
+    <div class="card pad">
+      <div id="inst-si" hidden>
+        <p style="margin:0 0 12px;font-size:14.5px">Il tuo telefono può installarla adesso. Un tocco e finisce nella schermata home.</p>
+        <button class="b b-pri" id="btn-installa">Installa sul telefono</button>
+      </div>
+      <div id="inst-fatto" hidden>
+        <p style="margin:0;font-size:14.5px"><b>Fatto, la stai già usando come app.</b> La trovi nella schermata home con le altre, e da qui in avanti si apre da lì.</p>
+      </div>
+      <div id="inst-come" hidden>
+        <p style="margin:0 0 10px;font-size:14.5px">Il pulsante automatico qui non compare, ma si installa lo stesso a mano. Su Android, con Chrome:</p>
+        <ol style="margin:0;padding-left:20px;font-size:14.5px;color:#4A3A3D">
+          <li style="margin-bottom:5px">Tocca i tre puntini in alto a destra.</li>
+          <li style="margin-bottom:5px">Scegli <b>Installa app</b>, oppure <b>Aggiungi a schermata Home</b> se scrive così.</li>
+          <li style="margin-bottom:5px">Conferma. L'icona compare fra le tue app.</li>
+        </ol>
+        <p style="margin:10px 0 0;font-size:14.5px;color:var(--grigio)">Su iPhone si fa con Safari: il quadrato con la freccia in su, poi <b>Aggiungi alla schermata Home</b>.</p>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;color:var(--grigio)" id="inst-nota"></p>
+    </div>
+  </div>
+
   <div class="sez">
     <h2>I dati salvati</h2>
     <p class="desc">Spunte, candidature e annunci che aggiungi tu restano su questo dispositivo, in questo browser. Esportarli ogni tanto è l'unico modo per non perderli.</p>
@@ -1643,8 +1675,54 @@ $("#btn-reset").addEventListener("click",ev=>{
   S={spunte:{},candidature:[],annunciMiei:[],nascosti:[],aperte:["t1"],io:{nome:"",tel:"",mail:"",zona:""}}; salva(); tuttoIlRender(); riempiCampiIo(); generaLettera(); toast("Azzerato");
 });
 
+/* ===== INSTALLAZIONE SUL TELEFONO ===== */
+/* Il service worker serve solo alla copia vera sul sito. Dentro l'anteprima
+   di un artifact la pagina gira in un riquadro: lì non si registra niente. */
+const inCornice = (function(){ try{ return window.top !== window.self; }catch(e){ return true; } })();
+if(!inCornice && "serviceWorker" in navigator && window.isSecureContext){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js", {scope:"./"}).catch(()=>{});
+  });
+}
+
+let promptInstalla = null;
+function statoInstalla(){
+  const gia = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const si = document.getElementById("inst-si");
+  const fatto = document.getElementById("inst-fatto");
+  const come = document.getElementById("inst-come");
+  const nota = document.getElementById("inst-nota");
+  if(!si || !fatto || !come) return;
+  si.hidden = true; fatto.hidden = true; come.hidden = true;
+  if(gia){ fatto.hidden = false; }
+  else if(promptInstalla){ si.hidden = false; }
+  else { come.hidden = false; }
+  if(nota) nota.textContent = inCornice
+    ? "Stai guardando l'app dentro una finestra di anteprima: da qui non si installa. Apri l'indirizzo del sito nel browser del telefono e riprova da questa stessa pagina."
+    : "Se l'hai già installata e la apri di nuovo dal browser, qui continuerai a vedere il pulsante: non è un errore, è la stessa app.";
+}
+window.addEventListener("beforeinstallprompt", ev=>{
+  ev.preventDefault(); promptInstalla = ev; statoInstalla();
+});
+window.addEventListener("appinstalled", ()=>{ promptInstalla = null; statoInstalla(); toast("Installata, la trovi fra le tue app"); });
+document.addEventListener("click", async ev=>{
+  const b = ev.target.closest("#btn-installa"); if(!b) return;
+  if(!promptInstalla){ statoInstalla(); return; }
+  promptInstalla.prompt();
+  try{ await promptInstalla.userChoice; }catch(e){}
+  promptInstalla = null; statoInstalla();
+});
+
+/* Scorciatoie del telefono: ?vai=porte apre direttamente quella scheda */
+(function(){
+  try{
+    const v = new URLSearchParams(location.search).get("vai");
+    if(v && document.getElementById("v-"+v)) setTimeout(()=>vai(v), 0);
+  }catch(e){}
+})();
+
 /* ===== AVVIO ===== */
-function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); }
+function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); }
 carica();
 tuttoIlRender();
 generaLettera();

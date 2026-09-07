@@ -1,0 +1,24 @@
+{
+  "id": "/percorso-delia/",
+  "name": "Il mio percorso",
+  "short_name": "Il mio percorso",
+  "description": "Il percorso per il lavoro nei servizi educativi 0-6 a Roma: tappe, annunci, candidature e lettere pronte.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF4F4",
+  "theme_color": "#C0242E",
+  "lang": "it",
+  "dir": "ltr",
+  "categories": ["productivity", "education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Altre porte", "url": "./?vai=porte", "description": "Segreteria vicino casa e lavori aperti dal titolo" },
+    { "name": "Candidature", "url": "./?vai=candidature", "description": "Il tracker delle candidature" }
+  ]
+}
