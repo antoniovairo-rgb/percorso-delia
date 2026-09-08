@@ -240,6 +240,14 @@ tr.riga-ok{background:#EFF6F2}
 .avviso .chiudi{position:absolute;top:12px;right:12px;width:26px;height:26px;border:0;border-radius:8px;background:transparent;color:var(--ambra);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:.6;transition:.15s;padding:0}
 .avviso .chiudi:hover{opacity:1;background:rgba(0,0,0,.07)}
 .avviso.info .chiudi{color:var(--indaco)}
+.instbar{display:flex;align-items:center;gap:14px;padding:14px 44px 14px 16px;margin-bottom:18px;background:var(--carta);border:1px solid var(--nebbia);border-radius:var(--r);box-shadow:var(--om-s);position:relative}
+.instbar .ico{flex:0 0 auto;width:40px;height:40px;border-radius:12px;background:var(--grad)}
+.instbar .txt{flex:1;min-width:0}
+.instbar .txt b{display:block;font-size:15px}
+.instbar .txt span{display:block;font-size:13.5px;color:var(--grigio);margin-top:2px}
+.instbar .chiudi{position:absolute;top:9px;right:9px;width:26px;height:26px;border:0;border-radius:8px;background:transparent;color:var(--grigio);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:.55;padding:0}
+.instbar .chiudi:hover{opacity:1;background:rgba(0,0,0,.06)}
+@media(max-width:600px){.instbar{flex-wrap:wrap}.instbar .txt{flex-basis:calc(100% - 54px)}.instbar .b{flex-basis:100%;justify-content:center;margin-top:2px}}
 .sep-socio{padding:18px 20px;background:var(--ambra-chiaro);border-top:1px solid #F2E0C2;border-bottom:1px solid #F2E0C2}
 .sep-socio b{font-size:15px;display:block;margin-bottom:5px;color:var(--ambra)}
 .sep-socio p{margin:0 0 8px;font-size:13.5px;color:#5A4520;max-width:80ch}
@@ -294,6 +302,11 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 
 <!-- ===== PERCORSO ===== -->
 <section class="vista" id="v-percorso">
+  <div class="instbar" id="instbar" hidden>
+    <div class="ico" aria-hidden="true"></div>
+    <div class="txt"><b>Tienila sul telefono</b><span id="instbar-sotto">Diventa un'icona come le altre app e funziona anche senza campo.</span></div>
+    <button class="b b-pri" id="instbar-b">Installa</button>
+  </div>
   <div class="avviso" id="avviso-dati" hidden style="margin-bottom:20px" data-chiudi="dati">
     <h3>Prima cosa, trenta secondi</h3>
     <p>Scrivi il tuo nome, il telefono e la mail: servono a firmare le lettere che trovi qui dentro. Restano su questo dispositivo e non li vede nessun altro.</p>
@@ -1764,13 +1777,50 @@ function statoInstalla(){
     ? "Stai guardando l'app dentro una finestra di anteprima: da qui non si installa. Apri l'indirizzo del sito nel browser del telefono e riprova da questa stessa pagina."
     : "Se l'hai già installata e la apri di nuovo dal browser, qui continuerai a vedere il pulsante: non è un errore, è la stessa app.";
 }
-window.addEventListener("beforeinstallprompt", ev=>{
-  ev.preventDefault(); promptInstalla = ev; statoInstalla();
+function statoBarra(){
+  const bar = document.getElementById("instbar"); if(!bar) return;
+  const gia = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  if(gia || inCornice || S.chiusi.includes("instbar")){ bar.hidden = true; return; }
+  bar.hidden = false;
+  const b = document.getElementById("instbar-b");
+  const sotto = document.getElementById("instbar-sotto");
+  if(promptInstalla){
+    b.textContent = "Installa";
+    sotto.textContent = "Un tocco e la trovi fra le tue app. Funziona anche senza campo.";
+  }else{
+    b.textContent = "Come si fa";
+    sotto.textContent = "Si aggiunge dal menu del browser, in venti secondi. Ti spiego come.";
+  }
+  if(!bar.querySelector(".chiudi")){
+    const x = document.createElement("button");
+    x.className = "chiudi"; x.type = "button"; x.textContent = "\u00D7";
+    x.setAttribute("aria-label","Nascondi questo avviso");
+    x.title = "Nascondi";
+    x.addEventListener("click", ()=>{
+      if(!S.chiusi.includes("instbar")) S.chiusi.push("instbar");
+      salva(); bar.hidden = true; aggiornaRiapri();
+    });
+    bar.appendChild(x);
+  }
+}
+document.addEventListener("click", async ev=>{
+  if(!ev.target.closest("#instbar-b")) return;
+  if(promptInstalla){
+    promptInstalla.prompt();
+    try{ await promptInstalla.userChoice; }catch(e){}
+    promptInstalla = null; statoInstalla(); statoBarra();
+  }else{
+    vai("profilo");
+    setTimeout(()=>{ const el=document.getElementById("installa"); if(el) el.scrollIntoView({behavior:"smooth",block:"start"}); }, 120);
+  }
 });
-window.addEventListener("appinstalled", ()=>{ promptInstalla = null; statoInstalla(); toast("Installata, la trovi fra le tue app"); });
+window.addEventListener("beforeinstallprompt", ev=>{
+  ev.preventDefault(); promptInstalla = ev; statoInstalla(); statoBarra();
+});
+window.addEventListener("appinstalled", ()=>{ promptInstalla = null; statoInstalla(); statoBarra(); toast("Installata, la trovi fra le tue app"); });
 document.addEventListener("click", ev=>{
   if(!ev.target.closest("#btn-riapri")) return;
-  S.chiusi = []; salva(); applicaChiusi(); renderIo();
+  S.chiusi = []; salva(); applicaChiusi(); statoBarra(); renderIo();
   toast("Rimessi tutti");
 });
 document.addEventListener("click", async ev=>{
@@ -1790,7 +1840,7 @@ document.addEventListener("click", async ev=>{
 })();
 
 /* ===== AVVIO ===== */
-function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); applicaChiusi(); }
+function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); statoBarra(); applicaChiusi(); }
 carica();
 tuttoIlRender();
 generaLettera();
