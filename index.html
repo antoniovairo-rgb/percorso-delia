@@ -158,6 +158,31 @@ summary.tappa-testa::-webkit-details-marker{display:none}
 .dist .box.d0{background:#F3EDED;color:var(--grigio)}
 
 .tab-wrap{overflow-x:auto;border-radius:var(--r)}
+.cand-schede{display:none}
+.cand-c{padding:16px 18px;border-bottom:1px solid var(--nebbia)}
+.cand-c:last-child{border-bottom:0}
+.cand-c .azioni{display:flex;gap:8px;margin-bottom:12px}
+.cand-c h4{font-size:17px;font-weight:700}
+.cand-c .ruolo{font-size:14.5px;color:#4A3A3D;margin-top:3px}
+.cand-c .righe{margin-top:11px;display:grid;gap:6px}
+.cand-c .r{display:flex;gap:8px;font-size:13.5px;align-items:baseline}
+.cand-c .r .et{flex:0 0 84px;color:var(--grigio);font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.cand-c .r .vl{flex:1;min-width:0;color:#4A3A3D}
+.cand-c .prossima{margin-top:12px;padding:11px 13px;border-radius:var(--r-s);background:var(--ambra-chiaro);border:1px solid #F2E0C2}
+.cand-c .prossima .et{display:block;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ambra);margin-bottom:3px}
+.cand-c .prossima .vl{font-size:14.5px;color:#5A4520}
+.cand-c .prossima .quando{font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11.5px;color:var(--ambra);margin-top:4px}
+@media(max-width:860px){
+  .cand-tabella{display:none}
+  .cand-schede{display:block}
+  /* i tre contatori restano in riga: in colonna si mangiavano mezzo schermo
+     prima di far vedere la prima candidatura */
+  .kpi-riga{grid-template-columns:repeat(3,1fr);gap:9px}
+  .kpi-riga .pad{padding:12px 9px}
+  .kpi-riga .tit{font-size:10px;letter-spacing:.04em}
+  .kpi-riga .kpi b{font-size:25px;margin:5px 0 2px}
+  .kpi-riga .kpi span{font-size:10.5px;line-height:1.25;display:block}
+}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{text-align:left;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio);font-weight:400;padding:13px 16px;border-bottom:1px solid var(--nebbia);white-space:nowrap;background:#FDF8F8}
 td{padding:14px 16px;border-bottom:1px solid var(--nebbia);vertical-align:top}
@@ -567,7 +592,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 
 <!-- ===== CANDIDATURE ===== -->
 <section class="vista" id="v-candidature" hidden>
-  <div class="grid g3" style="margin-bottom:26px">
+  <div class="grid g3 kpi-riga" style="margin-bottom:22px">
     <div class="card pad kpi"><div class="tit">Aperte</div><b id="k-aperte">0</b><span>candidature in corso</span></div>
     <div class="card pad kpi"><div class="tit">Colloqui</div><b id="k-colloqui">0</b><span>fissati o in attesa di esito</span></div>
     <div class="card pad kpi"><div class="tit">Da fare</div><b id="k-dafare">0</b><span>ancora da inviare</span></div>
@@ -594,9 +619,12 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
       </div>
       <div style="margin-top:14px"><button class="b b-pri" id="c-salva">Salva</button> <button class="b" id="c-annulla">Annulla</button></div>
     </div>
-    <div class="card tab-wrap">
-      <table><thead><tr><th>Struttura</th><th>Ruolo</th><th>Canale</th><th>Inviata</th><th>Stato</th><th>Prossima azione</th><th></th></tr></thead>
-      <tbody id="tbody"></tbody></table>
+    <div class="card">
+      <div class="tab-wrap cand-tabella">
+        <table><thead><tr><th>Azioni</th><th>Struttura</th><th>Ruolo</th><th>Stato</th><th>Prossima azione</th><th>Canale</th><th>Inviata</th></tr></thead>
+        <tbody id="tbody"></tbody></table>
+      </div>
+      <div class="cand-schede" id="cand-schede"></div>
       <div class="vuoto" id="cand-vuoto">Ancora nessuna candidatura.<br>La prima si prepara in Lettere, poi la annoti qui.</div>
     </div>
   </div>
@@ -1499,15 +1527,56 @@ const NOMI = {dainviare:"Da inviare", inviata:"Inviata", colloquio:"Colloquio", 
 let modId = null;
 function dIt(s){ if(!s) return "-"; const p=s.split("-"); return p.length===3? p[2]+"/"+p[1]+"/"+p[0] : s; }
 function renderCand(){
+  const azioni = c =>
+    '<button class="b b-mini" data-ed="'+esc(c.id)+'">Modifica</button>'
+    + ' <button class="b b-mini b-no" data-dl="'+esc(c.id)+'">Elimina</button>';
+
+  /* schermo largo: tabella, con le azioni nella prima colonna */
   $("#tbody").innerHTML = S.candidature.map(c=>
-    '<tr><td><b>'+esc(c.ente)+'</b></td><td>'+esc(c.ruolo)+'</td><td>'+esc(c.canale)+'</td>'
-    + '<td class="mono" style="font-size:12.5px">'+dIt(c.data)+'</td>'
+    '<tr><td style="white-space:nowrap">'+azioni(c)+'</td>'
+    + '<td><b>'+esc(c.ente)+'</b></td><td>'+esc(c.ruolo)+'</td>'
     + '<td><span class="stato s-'+esc(c.stato)+'">'+esc(NOMI[c.stato]||c.stato)+'</span></td>'
     + '<td>'+esc(c.azione||"-")+(c.azioneData?'<div class="mono" style="font-size:11.5px;color:var(--grigio);margin-top:2px">entro il '+dIt(c.azioneData)+'</div>':'')+'</td>'
-    + '<td style="white-space:nowrap"><button class="b b-mini" data-ed="'+esc(c.id)+'">Modifica</button> <button class="b b-mini b-no" data-dl="'+esc(c.id)+'">Elimina</button></td></tr>').join("");
+    + '<td>'+esc(c.canale)+'</td>'
+    + '<td class="mono" style="font-size:12.5px">'+dIt(c.data)+'</td></tr>').join("");
+
+  /* telefono: una scheda per candidatura, niente da scorrere di lato */
+  $("#cand-schede").innerHTML = S.candidature.map(c=>
+    '<div class="cand-c"><div class="azioni">'+azioni(c)+'</div>'
+    + '<h4>'+esc(c.ente)+'</h4>'
+    + '<div class="ruolo">'+esc(c.ruolo)+'</div>'
+    + '<div style="margin-top:9px"><span class="stato s-'+esc(c.stato)+'">'+esc(NOMI[c.stato]||c.stato)+'</span></div>'
+    + '<div class="prossima"><span class="et">Prossima azione</span>'
+    + '<span class="vl">'+esc(c.azione||"Non hai ancora deciso la prossima mossa")+'</span>'
+    + (c.azioneData?'<div class="quando">entro il '+dIt(c.azioneData)+'</div>':'')+'</div>'
+    + '<div class="righe">'
+    + '<div class="r"><span class="et">Canale</span><span class="vl">'+esc(c.canale)+'</span></div>'
+    + '<div class="r"><span class="et">Inviata</span><span class="vl">'+dIt(c.data)+'</span></div>'
+    + (c.note?'<div class="r"><span class="et">Note</span><span class="vl">'+esc(c.note)+'</span></div>':'')
+    + '</div></div>').join("");
+
   $("#cand-vuoto").hidden = S.candidature.length>0;
-  $("#tbody").querySelectorAll("[data-dl]").forEach(b=>b.addEventListener("click",()=>{ S.candidature=S.candidature.filter(x=>x.id!==b.dataset.dl); salva(); renderCand(); toast("Eliminata"); }));
-  $("#tbody").querySelectorAll("[data-ed]").forEach(b=>b.addEventListener("click",()=>apriCand(b.dataset.ed)));
+
+  /* Elimina chiede conferma: su un telefono si tocca troppo facilmente per sbaglio */
+  document.querySelectorAll("#tbody [data-dl], #cand-schede [data-dl]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      if(b.dataset.pronto !== "1"){
+        b.dataset.pronto = "1";
+        const prima = b.textContent;
+        b.textContent = "Tocca ancora";
+        clearTimeout(b._t);
+        b._t = setTimeout(()=>{ b.dataset.pronto = "0"; b.textContent = prima; }, 4000);
+        toast("Tocca ancora Elimina per cancellarla");
+        return;
+      }
+      clearTimeout(b._t);
+      S.candidature = S.candidature.filter(x=>x.id!==b.dataset.dl);
+      salva(); renderCand(); toast("Eliminata");
+    });
+  });
+  document.querySelectorAll("#tbody [data-ed], #cand-schede [data-ed]").forEach(b=>
+    b.addEventListener("click",()=>apriCand(b.dataset.ed)));
+
   $("#k-aperte").textContent = S.candidature.filter(c=>c.stato!=="chiusa").length;
   $("#k-colloqui").textContent = S.candidature.filter(c=>c.stato==="colloquio"||c.stato==="esito").length;
   $("#k-dafare").textContent = S.candidature.filter(c=>c.stato==="dainviare").length;
