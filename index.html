@@ -63,6 +63,7 @@ a{color:var(--indaco);text-decoration-thickness:1px;text-underline-offset:2px}
 @media(max-width:760px){.avanz{order:3;flex-basis:100%}}
 
 main{max-width:1140px;margin:0 auto;padding:26px 20px 90px}
+[hidden]{display:none !important}
 .vista[hidden]{display:none}
 .card{background:var(--carta);border:1px solid var(--nebbia);border-radius:var(--r);box-shadow:var(--om-s)}
 .pad{padding:22px}
@@ -1779,6 +1780,17 @@ function statoInstalla(){
 }
 function statoBarra(){
   const bar = document.getElementById("instbar"); if(!bar) return;
+  if(!bar.querySelector(".chiudi")){
+    const x = document.createElement("button");
+    x.className = "chiudi"; x.type = "button"; x.textContent = "\u00D7";
+    x.setAttribute("aria-label","Nascondi questo avviso");
+    x.title = "Nascondi";
+    x.addEventListener("click", ()=>{
+      if(!S.chiusi.includes("instbar")) S.chiusi.push("instbar");
+      salva(); bar.hidden = true; aggiornaRiapri();
+    });
+    bar.appendChild(x);
+  }
   const gia = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
   if(gia || inCornice || S.chiusi.includes("instbar")){ bar.hidden = true; return; }
   bar.hidden = false;
@@ -1790,17 +1802,6 @@ function statoBarra(){
   }else{
     b.textContent = "Come si fa";
     sotto.textContent = "Si aggiunge dal menu del browser, in venti secondi. Ti spiego come.";
-  }
-  if(!bar.querySelector(".chiudi")){
-    const x = document.createElement("button");
-    x.className = "chiudi"; x.type = "button"; x.textContent = "\u00D7";
-    x.setAttribute("aria-label","Nascondi questo avviso");
-    x.title = "Nascondi";
-    x.addEventListener("click", ()=>{
-      if(!S.chiusi.includes("instbar")) S.chiusi.push("instbar");
-      salva(); bar.hidden = true; aggiornaRiapri();
-    });
-    bar.appendChild(x);
   }
 }
 document.addEventListener("click", async ev=>{
