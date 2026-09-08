@@ -226,7 +226,7 @@ tr.riga-ok{background:#EFF6F2}
 .stella{flex:0 0 auto;width:36px;height:36px;border-radius:11px;background:var(--indaco-chiaro);color:var(--indaco);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
 .stella.top{background:var(--grad);color:#fff}
 .legenda{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;color:var(--grigio)}
-.avviso{border-radius:var(--r);padding:18px 20px;border:1px solid var(--nebbia);background:var(--ambra-chiaro);border-color:#F2E0C2}
+.avviso{position:relative;border-radius:var(--r);padding:18px 20px;border:1px solid var(--nebbia);background:var(--ambra-chiaro);border-color:#F2E0C2}
 .avviso h3{font-size:16px;color:var(--ambra);margin-bottom:7px}
 .avviso p{margin:0 0 9px;font-size:14.5px;color:#5A4520}
 .avviso p:last-child{margin-bottom:0}
@@ -236,6 +236,15 @@ tr.riga-ok{background:#EFF6F2}
 .avviso.info h3{color:var(--indaco)}
 .avviso.info p,.avviso.info li{color:#5C2A2E}
 .avviso.info ul{color:#5C2A2E}
+.avviso[data-chiudi]{padding-right:46px}
+.avviso .chiudi{position:absolute;top:12px;right:12px;width:26px;height:26px;border:0;border-radius:8px;background:transparent;color:var(--ambra);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;opacity:.6;transition:.15s;padding:0}
+.avviso .chiudi:hover{opacity:1;background:rgba(0,0,0,.07)}
+.avviso.info .chiudi{color:var(--indaco)}
+.sep-socio{padding:18px 20px;background:var(--ambra-chiaro);border-top:1px solid #F2E0C2;border-bottom:1px solid #F2E0C2}
+.sep-socio b{font-size:15px;display:block;margin-bottom:5px;color:var(--ambra)}
+.sep-socio p{margin:0 0 8px;font-size:13.5px;color:#5A4520;max-width:80ch}
+.sep-socio p:last-of-type{margin-bottom:0}
+.sep-socio .fonti{margin-top:11px;display:flex;gap:8px;flex-wrap:wrap}
 
 #lettera{min-height:380px;font-size:14.5px;line-height:1.65}
 footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);font-size:13px;line-height:1.6}
@@ -285,7 +294,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 
 <!-- ===== PERCORSO ===== -->
 <section class="vista" id="v-percorso">
-  <div class="avviso" id="avviso-dati" hidden style="margin-bottom:20px">
+  <div class="avviso" id="avviso-dati" hidden style="margin-bottom:20px" data-chiudi="dati">
     <h3>Prima cosa, trenta secondi</h3>
     <p>Scrivi il tuo nome, il telefono e la mail: servono a firmare le lettere che trovi qui dentro. Restano su questo dispositivo e non li vede nessun altro.</p>
     <div style="margin-top:12px"><button class="b b-mini" data-vai="profilo">Scrivili adesso</button></div>
@@ -313,14 +322,14 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
     <h2>Il corso ESEI</h2>
     <p class="desc">ESEI sta per Educatore dei Servizi Educativi per l'Infanzia. È il percorso che aggiunge alla tua laurea quello che manca per poter lavorare al nido. Qui trovi cos'è, quanto costa e soprattutto la cosa da fare prima di pagare qualsiasi iscrizione. Ricontrollato il 6 settembre 2026.</p>
 
-    <div class="avviso" style="margin-bottom:18px">
+    <div class="avviso" style="margin-bottom:18px" data-chiudi="esei-oggi">
       <h3>Come stanno le cose oggi, 6 settembre 2026</h3>
       <p><b>Per l'anno accademico 2026 e 2027 non c'è nessuna edizione ESEI aperta.</b> Il catalogo dei corsi di perfezionamento di Pegaso in questo momento contiene due corsi soli, e l'ESEI non c'è. L'ultima edizione vera, quella con il codice PERF299, ha chiuso le iscrizioni il 27 febbraio 2026 ed è partita a gennaio: sta girando adesso, non ci si entra più.</p>
       <p>Occhio a una trappola: su Pegaso c'è ancora online una pagina di un vecchio percorso da 55 crediti che dice iscrizioni aperte, ma in alto riporta l'anno accademico 2023 e 2024. È ferma da tre anni, e comunque quel percorso è riservato a chi è ancora iscritto alla laurea. Tu ti sei laureata a gennaio, quindi non ti riguarda.</p>
       <p>Quindi ci sono tre strade, e le trovi qui sotto: chiamare Pegaso e farti avvisare quando esce la prossima edizione, guardare e-Campus che sembra sempre aperto, oppure prendere solo gli esami che ti mancano come corsi singoli.</p>
     </div>
 
-    <div class="avviso info" style="margin-bottom:18px">
+    <div class="avviso info" style="margin-bottom:18px" data-chiudi="esei-partenza">
       <h3>Il punto di partenza</h3>
       <p>La norma non chiede di fare un corso. Chiede che nel tuo piano di studi ci siano crediti specifici sull'infanzia da zero a tre anni: pedagogia, psicologia, sociologia, area medica, laboratori e un tirocinio in un servizio per l'infanzia.</p>
       <p>Il tuo certificato di laurea con la carriera ce l'abbiamo, quindi il conto l'ho già fatto: lo trovi qui sotto, riquadro per riquadro. <b>Tre requisiti ti mancano di sicuro, tre potresti giocarteli.</b> Quello che nessuno può stabilire al posto dell'università è quali dei tuoi esami valgono davvero per la fascia zero-tre: quella risposta si chiede alla segreteria, e la mail è già scritta in Lettere.</p>
@@ -371,7 +380,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
       <div style="margin-top:14px"><a class="b b-mini" href="https://www.unipegaso.it/corsi-singoli" target="_blank" rel="noopener">Come funzionano i corsi singoli</a></div>
     </div>
 
-    <div class="avviso" style="margin-top:18px">
+    <div class="avviso" style="margin-top:18px" data-chiudi="esei-domande">
       <h3>Le domande da fare, tutte nella stessa mail</h3>
       <ul>
         <li>Con il mio piano di studi, quanti crediti mi restano davvero da fare? Riconoscete qualcosa di quello che ho già?</li>
@@ -441,14 +450,14 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
         </div>
       </div>
 
-      <div class="avviso" style="margin-top:18px">
+      <div class="avviso" style="margin-top:18px" data-chiudi="esei-pratica">
         <h3>Cosa vuol dire in pratica</h3>
         <p>Tre cose mancano e su quelle non c'è discussione: la psicologia dello sviluppo, la sociologia e i laboratori. Sono i pezzi che il corso ESEI serve proprio a coprire, quindi la strada che hai scelto è quella giusta.</p>
         <p>Su altre tre invece potresti giocartela. Hai una montagna di crediti in pedagogia e didattica, molti più dei dieci più dieci che il decreto chiede. Il punto è che il decreto non guarda solo il settore, guarda anche se il contenuto riguarda i bambini da zero a tre anni, e questo lo decide l'università leggendo i programmi degli esami. Vale lo stesso per il tirocinio: dodici crediti ce li hai, ma svolti nella fascia tre-sei.</p>
         <p>Ecco perché la mail alla segreteria conta così tanto: se ti riconoscono anche solo una parte di quei crediti, il corso si accorcia e costa meno. Se non te ne riconoscono nessuno, almeno lo sai prima di iscriverti invece che dopo.</p>
       </div>
 
-      <div class="avviso info" style="margin-top:14px">
+      <div class="avviso info" style="margin-top:14px" data-chiudi="esei-certa">
         <h3>Una cosa che invece è certa</h3>
         <p>C'era una scappatoia per chi si è iscritto all'università entro l'anno accademico 2018 e 2019: quelle persone possono lavorare al nido con la L-19 così com'è, senza integrazioni. Tu ti sei iscritta il 9 novembre 2022, quindi quella strada non ti riguarda. Il corso ESEI serve davvero.</p>
       </div>
@@ -494,13 +503,13 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
     <h2>Scuole private, il piano B</h2>
     <p class="desc">Le scuole dell'infanzia paritarie assumono con regole loro. Non aspettano l'ESEI, non passano dalle graduatorie, e quando hanno un buco chiamano chi si è fatto vivo. Qui sotto ci sono venti scuole vere intorno a casa tua, in ordine di distanza.</p>
 
-    <div class="avviso info" style="margin-bottom:18px">
+    <div class="avviso info" style="margin-bottom:18px" data-chiudi="priv-perche">
       <h3>Perché questa strada è aperta anche adesso</h3>
       <p>Per legge le paritarie devono assumere docenti abilitati. Ma le circolari ministeriali permettono di assumere personale non abilitato con contratti a tempo determinato quando la scuola dimostra di non riuscire a trovare abilitati, e succede spesso. Sul posto fisso invece l'abilitazione resta necessaria.</p>
       <p>Vuol dire che una supplenza o un incarico annuale in paritaria è alla tua portata oggi, senza aspettare nessun corso. Non ti costruisce punteggio per la scuola statale, ma ti fa lavorare, ti fa esperienza in sezione e ti mette in contatto con un giro di scuole che si parlano tra loro.</p>
     </div>
 
-    <div class="avviso" style="margin-bottom:18px">
+    <div class="avviso" style="margin-bottom:18px" data-chiudi="priv-cerioli">
       <h3>Parti da qui: la scuola del tuo tirocinio</h3>
       <p>Le 300 ore di tirocinio le hai fatte alla Santa Paola Elisabetta Cerioli, che sta in via Casilina 631, cioè dentro il tuo quartiere. È una paritaria con infanzia, primaria e medie. Ti hanno già vista lavorare per due mesi.</p>
       <p>Di tutti i contatti di questa pagina, quello è il più caldo che hai. Prima di scrivere alle altre diciannove, scrivi a loro.</p>
@@ -517,20 +526,20 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 <section class="vista" id="v-porte" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Altre porte</h2>
-    <p class="desc">Lavoro di segreteria vicino casa, e lavori che la tua laurea apre fuori dalla sezione. Tengo solo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Controllato il 7 settembre 2026.</p>
+    <p class="desc">Qui c'è il lavoro d'ufficio: segreteria e amministrazione, cioè il mestiere che fai da dieci anni. Il lavoro da educatrice, OEPAC compreso, non sta più qui: è tornato dov'è giusto che stia, negli Annunci, in un gruppo suo. Tengo solo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Controllato l'8 settembre 2026, con le date vere delle graduatorie ATA e una scheda sulla certificazione CIAD.</p>
 
-    <div class="avviso" style="margin-bottom:18px">
+    <div class="avviso" style="margin-bottom:18px" data-chiudi="porte-testa">
       <h3>Fermati un secondo e leggi questo</h3>
       <p>Se in questi mesi ti sei sentita ferma, non è perché non vali abbastanza. La strada dei nidi è lenta per un motivo burocratico, un decreto che chiede certi crediti nel piano di studi, e basta. Non è un giudizio su di te.</p>
       <p>E intanto tu, in mano, hai tre cose e non una: una laurea presa a 107 studiando mentre lavoravi, un diploma di ragioniere, e dieci anni veri di segreteria in società serie. Non sei una che comincia adesso. Sei una che sa già fare due mestieri diversi.</p>
-      <p>Qui sotto ci sono due studi legali che descrivono, riga per riga, il lavoro che facevi in DeA Capital. E c'è una porta, l'OEPAC, che il regolamento di Roma Capitale ti apre oggi con la laurea che hai già, senza aspettare nessun corso. Non è poco. Comincia da una sola cosa, e falla oggi.</p>
+      <p>Qui sotto ci sono due studi legali che descrivono, riga per riga, il lavoro che facevi in DeA Capital. E negli Annunci, in fondo, c'è un gruppo nuovo con l'OEPAC e il lavoro educativo nel sociale: quella porta il regolamento di Roma Capitale te la apre oggi, con la laurea che hai già, senza aspettare nessun corso. Non è poco. Comincia da una sola cosa, e falla oggi.</p>
     </div>
 
-    <div class="avviso info" style="margin-bottom:18px">
+    <div class="avviso info" style="margin-bottom:18px" data-chiudi="porte-tre">
       <h3>Se oggi fai solo tre cose, fai queste</h3>
       <ul>
         <li><b>Manda il curriculum a cv@studiomassafra.com.</b> Part time dalle 15 alle 19, tempo indeterminato, e si scrive direttamente allo studio senza passare da nessun portale. In Lettere scegli il testo per la segreteria in azienda o studio.</li>
-        <li><b>Scrivi a ISKRA e a Obiettivo Uomo per l'OEPAC.</b> Sono due enti veri, con nome e indirizzo, e Obiettivo Uomo dice apertamente che si entra in banca dati anche senza annunci aperti. In Lettere c'è il testo già pronto per l'OEPAC.</li>
+        <li><b>Scrivi a ISKRA e a Obiettivo Uomo per l'OEPAC.</b> Li trovi negli Annunci, nel gruppo con la fascia gialla in fondo. Sono due enti veri, con nome e indirizzo, e Obiettivo Uomo dice apertamente che si entra in banca dati anche senza annunci aperti. In Lettere c'è il testo già pronto per l'OEPAC.</li>
         <li><b>Rispondi a Fisioaniene.</b> Reception in un centro di fisioterapia, orario flessibile e parcheggio, e tu hai già lavorato in due cliniche.</li>
       </ul>
       <p>Tre mail. Mezz'ora in tutto. Quando le hai mandate, aggiungile al tracker e chiudi il telefono.</p>
@@ -538,7 +547,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 
     <div class="card" id="lista-porte"></div>
 
-    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di sei chilometri circa nel quadrante est, cioè Municipio V e VII e quelli attaccati, oppure raggiungibile senza cambi complicati con la metro C o con la A dopo San Giovanni. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Sei annunci su undici non dicevano dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri pubblici, e dove l'ho fatto è scritto nella scheda. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di sei chilometri circa nel quadrante est, cioè Municipio V e VII e quelli attaccati, oppure raggiungibile senza cambi complicati con la metro C o con la A dopo San Giovanni. Questa pagina tiene solo il lavoro amministrativo: tutto quello che si fa con i bambini sta negli Annunci. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Sei annunci su undici non dicevano dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri pubblici, e dove l'ho fatto è scritto nella scheda. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
   </div>
 </section>
 
@@ -585,7 +594,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
     <h2>Dove cercare</h2>
     <p class="desc">I posti dove gli annunci escono davvero, con la ricerca già impostata su Roma e sul tuo profilo. Clicchi e sei dentro, senza dover reimpostare i filtri ogni volta.</p>
 
-    <div class="avviso" style="margin-bottom:18px">
+    <div class="avviso" style="margin-bottom:18px" data-chiudi="dove-infojobs">
       <h3>Una cosa da sapere subito: InfoJobs non esiste più</h3>
       <p>Era uno dei portali più usati in Italia e ha chiuso il 31 dicembre 2025. Se qualcuno te lo consiglia o trovi vecchi link, lascia perdere: la pagina è ferma e i profili sono stati cancellati.</p>
     </div>
@@ -596,7 +605,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
       <h2>Il tuo profilo LinkedIn</h2>
       <p class="desc">Ho guardato il profilo il 20 agosto. È curato: hai la foto, 152 collegamenti, l'esperienza compilata bene e un post sulla laurea che ha fatto 173 visualizzazioni. Non serve rifarlo. Manca una cosa importante e ci sono tre interruttori spenti.</p>
 
-      <div class="avviso" style="margin-bottom:18px">
+      <div class="avviso" style="margin-bottom:18px" data-chiudi="li-supplenze">
         <h3>Le 31 giornate di supplenza sul profilo non ci sono</h3>
         <p>Non compaiono né nell'esperienza né nella presentazione. È il lavoro più recente che hai fatto, l'unico in cui hai condotto tu una sezione, ed è invisibile. Chi apre il profilo pensa che con i bambini tu abbia fatto solo un tirocinio di due mesi e la mensa.</p>
         <p>Aggiungila come prima voce dell'esperienza, sopra al tirocinio, con questi dati.</p>
@@ -639,7 +648,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
         <div style="margin-top:10px"><button class="b b-mini" data-copia="li-skill">Copia</button></div>
       </div>
 
-      <div class="avviso info">
+      <div class="avviso info" data-chiudi="li-interruttori">
         <h3>Tre interruttori spenti, si accendono in cinque minuti</h3>
         <ul>
           <li><b>Disponibile per il lavoro.</b> Non è attivo. Vuol dire che chi cerca personale filtrando per candidati disponibili non ti vede proprio. Accendilo scegliendo insegnante di scuola dell'infanzia ed educatrice.</li>
@@ -670,7 +679,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
       </div>
     </div>
 
-    <div class="avviso info" style="margin-top:22px">
+    <div class="avviso info" style="margin-top:22px" data-chiudi="li-avvisi">
       <h3>Come impostare gli avvisi, che è la parte che conta</h3>
       <p>Su Indeed e su LinkedIn, quando hai fatto una ricerca che ti piace, cerca il pulsante per salvarla o per attivare le notifiche. Da quel momento gli annunci nuovi ti arrivano per mail e non devi più tornare a controllare.</p>
       <p>Fallo per tre ricerche, non per dieci: educatrice asilo nido a Roma, insegnante scuola dell'infanzia a Roma, e doposcuola o ludoteca a Roma. Dieci avvisi diventano rumore e finisci per non aprirli più.</p>
@@ -682,7 +691,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 <section class="vista" id="v-canali" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Canali e scadenze</h2>
-    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato il 7 settembre 2026. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
+    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato il 7 settembre 2026, con la voce sulle graduatorie ATA aggiunta l'8 settembre. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
     <div class="card" id="lista-canali"></div>
   </div>
 </section>
@@ -746,6 +755,15 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
     <p class="desc">Preso dal tuo CV aggiornato ad agosto 2026. È quello che le lettere raccontano di te: se cambi il CV, chiedimi di aggiornare anche questo.</p>
     <div class="card pad" id="box-profilo"></div>
   </div>
+  <div class="sez" id="riapri-riga" hidden>
+    <h2>I riquadri che hai chiuso</h2>
+    <p class="desc" id="riapri-testo"></p>
+    <div class="card pad">
+      <p style="margin:0 0 12px;font-size:14.5px">Sono le spiegazioni con la x che hai tolto di mezzo per leggere più comodo. Non hai perso niente: se ti servono, tornano tutte insieme.</p>
+      <button class="b" id="btn-riapri">Rimetti tutti i riquadri</button>
+    </div>
+  </div>
+
   <div class="sez" id="installa">
     <h2>Tieni l'app sul telefono</h2>
     <p class="desc">Installandola diventa un'icona nella schermata come le altre app: si apre senza barra del browser, parte più in fretta e continua a funzionare anche quando non hai campo. I tuoi dati restano dove sono, non si perde niente.</p>
@@ -787,7 +805,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 
 </main>
 <footer>
-  <p>Costruita il 20 agosto 2026. Annunci e canali ricontrollati il 7 settembre 2026, sezione sul corso ESEI ricontrollata il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
+  <p>Costruita il 20 agosto 2026. Annunci e canali ricontrollati il 7 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
 </footer>
 <div class="toast" id="toast"></div>
 <script>
@@ -891,6 +909,18 @@ const TAPPE = [
 
 /* ===== ANNUNCI, ricerca su Indeed aggiornata il 7 settembre 2026 ===== */
 const ANNUNCI = [
+  {id:"e-iskra", titolo:"OEPAC, candidatura spontanea a una cooperativa del tuo quadrante", ente:"ISKRA società cooperativa",
+   zona:"Via delle Avocette 16, Torre Maura", cat:"socio", dist:2, tipo:"Non è un annuncio: si manda quando vuoi", pubb:"",
+   url:"https://iskra.coop/oepac/", fonte:"sito della cooperativa, letto il 7 settembre 2026",
+   note:"Nome vero, indirizzo vero, quattro chilometri da casa. ISKRA gestisce il servizio OEPAC nel Municipio VI, che confina con il tuo. Qui non c'è un bando aperto: si manda una candidatura spontanea, ed è il modo normale in cui si entra in questo giro. Telefono 06 2315248, mail iskraroma@iskra.coop, PEC iskra@pec.iskra.coop. Nella mail scrivi che hai la laurea L-19 e cita l'articolo 12 del regolamento: in due righe fai capire che sai di cosa parli. Il testo pronto sta in Lettere, voce OEPAC."},
+  {id:"e-obiettivouomo", titolo:"OEPAC ed educatori, banca dati sempre aperta", ente:"Obiettivo Uomo società cooperativa sociale ETS",
+   zona:"Sede in via Ostiense, ma si lavora nelle scuole", cat:"socio", dist:0, tipo:"Banca dati aperta tutto l'anno", pubb:"",
+   url:"https://www.obiettivouomo.it/?page_id=5770", fonte:"sito della cooperativa, letto il 7 settembre 2026",
+   note:"Questa è ancora più comoda, perché lo dicono loro: si entra nella banca dati anche quando non ci sono annunci aperti, per le occasioni future. Fra i profili che cercano ci sono espressamente OEPAC ed educatori. Curriculum a curriculum.obiettivo@gmail.com e a protocollo@obiettivouomo.it, telefono 06 57177653. La sede sta in via Ostiense, a sette chilometri, ma non è lì che lavori: il posto di lavoro è la scuola. Nella mail chiedi esplicitamente le scuole del Municipio V."},
+  {id:"e-blu", titolo:"Educatrice in una comunità filtro per detenuti", ente:"Consorzio Blu",
+   zona:"Via Labicana 45, a piedi da San Giovanni", cat:"socio", dist:2, tipo:"Part time 36 ore, CCNL cooperative sociali D2, 1637 euro lordi", pubb:"15 giugno 2026",
+   url:"https://to.indeed.com/aat4nq8n9pcx", fonte:"Indeed",
+   note:"Chiedono la laurea in Scienze dell'Educazione e basta: nessun anno minimo di esperienza, nessuna qualifica in più. È lo stipendio più alto di tutta la bacheca. Due avvertenze oneste: l'annuncio è del 15 giugno, quindi ha quasi tre mesi e può essere già chiuso, e una comunità filtro per detenuti non è un contesto per tutti. Anche se il posto è andato, il Consorzio Blu resta un nome buono per una candidatura spontanea."},
   {id:"a07a", titolo:"Educatore o educatrice per l'infanzia", ente:"La Casa dei Chicchi di grano, cooperativa sociale",
    zona:"Formello, fuori Roma, zona Cassia", cat:"infanzia", dist:4, tipo:"Tempo pieno, da metà novembre 2026 a fine gennaio 2027", pubb:"4 settembre 2026",
    url:"https://to.indeed.com/aafxnlszvwgf", fonte:"Indeed",
@@ -900,7 +930,7 @@ const ANNUNCI = [
    url:"https://to.indeed.com/aafdk2nckt66", fonte:"Indeed",
    note:"Nuovo, trovato il 5 settembre. Di tutta la bacheca è quello con il requisito più leggero: la L19 è scritta per prima nell'elenco dei titoli accettati, e l'anno di esperienza come educatrice è solo preferenziale, non obbligatorio. È educativa domiciliare per minori e famiglie, quindi si lavora a casa delle persone. Le candidature vanno mandate per mail a educativa@rifornimentoinvolo.it e a progettazione@rifornimentoinvolo.it, tutte e due. Il compenso dichiarato va da 300 a 800 euro al mese, quindi è un lavoro parziale: chiedi subito quante ore sono e in che zone si va. Hai detto che il lavoro a domicilio non fa per te, quindi resta qui in fondo."},
   {id:"a05b", titolo:"Educatrice o educatore professionale", ente:"Cooperativa Sociale Famiglie Anziani Infanzia F.A.I.",
-   zona:"Roma, Municipi II, III e IV", cat:"extra", dist:0, tipo:"Part-time, 18 ore a settimana", pubb:"2 settembre 2026",
+   zona:"Roma, Municipi II, III e IV", cat:"socio", dist:0, tipo:"Part-time, 18 ore a settimana", pubb:"2 settembre 2026",
    url:"https://to.indeed.com/aabqjzvy4829", fonte:"Indeed",
    note:"Nuovo, trovato il 5 settembre. Chiedono la Laurea in Scienze dell'Educazione o in Psicologia e non mettono nessun minimo di anni. CCNL cooperative sociali, livello D2, 18 ore a settimana, 816,75 euro lordi. Cercano una persona sola. Si lavora nei Municipi II, III e IV: il IV confina con il tuo, gli altri due sono più lontani. Occhio a un punto: chiedono di essere residenti in zona o limitrofe, quindi nella mail scrivi che sei automunita e da dove parti. Curriculum a risorseumane@coopfairoma.com."},
   {id:"a05c", titolo:"Educatrice o psicologa, servizio SISMIF di educativa domiciliare", ente:"Cooperativa Sociale San Saturnino Onlus",
@@ -920,7 +950,7 @@ const ANNUNCI = [
    url:"https://to.indeed.com/aacxcn2gcylz", fonte:"Indeed",
    note:"Nuovo, trovato il 5 settembre. La L19 è scritta tra i titoli buoni, ma chiedono anche tre anni di esperienza come educatrice di nido, che tu non hai. Il contratto però è lungo: dal 14 settembre al 31 luglio, 36 ore a settimana, CCNL Aninsei quarto livello, 1.491,38 euro lordi al mese. Se ti va di provare, chiama e chiedi se i tre anni sono un muro. Resta comunque dall'altra parte della città."},
   {id:"a05g", titolo:"Educatrice o educatore in casa famiglia per minori", ente:"I Paguri Onlus",
-   zona:"Roma, Casalotti", cat:"extra", dist:4, tipo:"Tempo pieno, tempo determinato", pubb:"1 settembre 2026",
+   zona:"Roma, Casalotti", cat:"socio", dist:4, tipo:"Tempo pieno, tempo determinato", pubb:"1 settembre 2026",
    url:"https://to.indeed.com/aa9cjhghz9zk", fonte:"Indeed",
    note:"Nuovo, trovato il 5 settembre. Scrivono che la laurea in Scienze dell'Educazione o in Pedagogia è requisito indispensabile, e che la psicologia invece non vale: sul titolo sei esattamente quello che cercano, e l'esperienza è solo preferibile. Da 1.100 a 1.400 euro al mese. Due cose pesano: chiedono disponibilità anche nei giorni festivi, e Casalotti sta dall'altro capo di Roma rispetto a Torpignattara."},
   {id:"a03a", titolo:"Educatore professionale, servizio SISMIF di educativa domiciliare", ente:"COTRAD Onlus",
@@ -940,7 +970,7 @@ const ANNUNCI = [
    url:"https://to.indeed.com/aaqnfzhsqdd9", fonte:"Indeed",
    note:"Lavora proprio nei tuoi municipi, il V compreso. Accettano la Laurea in Scienze dell'Educazione, e l'esperienza con la disabilità è chiesta anche minima. Guarda bene le condizioni prima di dire sì: l'assunzione la fa direttamente la famiglia, con il contratto del lavoro domestico, 9,97 euro lordi l'ora, tra 350 e 850 euro al mese. Non è il lavoro che cerchi, ma è vicino casa e con orari corti. Si lavora a casa delle famiglie, quindi sta in fondo insieme agli altri domiciliari."},
   {id:"a31e", titolo:"Educatore professionale, équipe socio-educativa", ente:"Fondazione Xenìa",
-   zona:"Roma, sede da verificare", cat:"extra", dist:0, tipo:"Tempo indeterminato", pubb:"3 agosto 2026",
+   zona:"Roma, sede da verificare", cat:"socio", dist:0, tipo:"Tempo indeterminato", pubb:"3 agosto 2026",
    url:"https://to.indeed.com/aarrw9wnc6vq", fonte:"Indeed",
    note:"Chiedono la Laurea L-19 e basta, l'esperienza è solo preferibile. CCNL UNEBA, da 1.600 a 1.700 euro netti, tredicesima e assistenza sanitaria. Il problema sono i turni: sulle 24 ore, notti, domeniche e festivi. Con due bambini piccoli è dura, quindi guardalo solo se trovi un incastro. Le candidature si mandano a personale@xeniafondazione.org."},
   {id:"s1", titolo:"Educatrice o educatore di asilo nido, laurea L-19", ente:"Per fare un albero srl",
@@ -948,12 +978,12 @@ const ANNUNCI = [
    url:"https://to.indeed.com/aa6j9ql4h7vm", fonte:"Indeed",
    note:"Chiedono proprio la L-19, ma dal 31 agosto non compare più nella ricerca. È comunque dall'altra parte di Roma: con i bambini piccoli il viaggio pesa, guardalo solo se l'orario lo giustifica."},
   {id:"s5", titolo:"OEPAC, operatore educativo per l'autonomia e la comunicazione", ente:"Cooperativa Eureka I onlus",
-   zona:"Roma e provincia", cat:"infanzia", dist:0, tipo:"Part-time verticale", pubb:"29 luglio 2026",
-   url:"https://to.indeed.com/aaqxnpy2lgvd", fonte:"Indeed", escluso:true,
-   note:"A questo non candidarti: l'annuncio scrive nero su bianco che la laurea in Scienze dell'Educazione non basta, serve la qualifica OEPAC. Lo lasciamo qui perché è un segnale utile: con quella qualifica ci sarebbe lavoro tutto l'anno nelle scuole del Municipio V."},
+   zona:"Roma e provincia", cat:"socio", dist:0, tipo:"Part-time verticale", pubb:"29 luglio 2026",
+   url:"https://to.indeed.com/aaqxnpy2lgvd", fonte:"Indeed",
+   note:"Correzione rispetto a quello che c'era scritto qui prima. L'annuncio dice che la laurea in Scienze dell'Educazione non basta e che serve la qualifica OEPAC: è una richiesta della cooperativa, non della norma. Il Regolamento di Roma Capitale, all'articolo 12, mette la tua laurea fra i titoli validi, in alternativa al corso. Quindi candidati lo stesso e citalo, ma sapendo che possono risponderti di no comunque, perché sull'asticella in più decidono loro. Se ti dicono di no, prova con gli altri enti accreditati: non applicano tutti la stessa regola."},
 ];
 
-/* ===== CANALI, ricontrollati il 7 settembre 2026 ===== */
+/* ===== CANALI, ricontrollati il 7 settembre 2026, voce ATA aggiunta l'8 settembre 2026 ===== */
 const CANALI = [
   {t:"Elenchi MAD del Municipio V, educatore asili nido e insegnante scuola dell'infanzia",
    stato:"ora", quando:"Canale del municipio, si aggiorna ogni tanto",
@@ -999,6 +1029,10 @@ const CANALI = [
    stato:"chiuso", quando:"Finestra chiusa a luglio 2026, si riapre nel 2028",
    d:"Per il posto comune all'infanzia e alla primaria servono Scienze della Formazione Primaria oppure il diploma magistrale preso entro l'anno scolastico 2001 e 2002. La L-19 da sola non basta, ed è il motivo per cui oggi nella scuola statale si passa dalle MAD e dagli interpelli, non dalle graduatorie.",
    url:"https://www.orizzontescuola.it/graduatorie-gps-2024-i-titoli-di-accesso-per-infanzia-e-primaria/", link:"I titoli che servono per le GPS"},
+  {t:"Graduatorie ATA di terza fascia, si riaprono nel 2027",
+   stato:"info", quando:"Finestra attesa nella primavera del 2027, il bando non c'è ancora",
+   d:"Sono le graduatorie da cui escono le supplenze nelle segreterie scolastiche. Per l'assistente amministrativo servono un diploma di scuola superiore di qualunque indirizzo, che tu hai, e la certificazione informatica CIAD. Quelle valide adesso vengono dal decreto ministeriale 89 del 2024: le domande si sono chiuse il 28 giugno 2024 e coprono gli anni scolastici 2024/25, 2025/26 e 2026/27. Quindi oggi non c'è niente da presentare, e gli elenchi che le scuole stanno pubblicando in questi giorni sono quelli già formati nel 2024, non una riapertura. Il prossimo aggiornamento è quello per il triennio 2027/2030, atteso nella primavera del 2027, ma il decreto non è ancora uscito: la data va ricontrollata a inizio 2027. Intanto la CIAD si può prendere quando vuoi, e conviene farlo con calma. Il quadro completo, con i costi, sta nella sezione Altre porte.",
+   url:"https://www.flcgil.it/speciali/graduatorie_di_istituto_ata/anno-2024-2027.flc", link:"Lo speciale sulle graduatorie ATA"},
   {t:"OEPAC, e la tua laurea basta gia\u0300",
    stato:"ora", quando:"Non ha scadenze, si mandano candidature tutto l'anno",
    d:"Correzione rispetto a quello che c'era scritto qui prima. Il Regolamento di Roma Capitale sugli OEPAC, all'articolo 12, elenca fra i titoli di formazione iniziale la laurea in Scienze dell'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. Quindi il titolo per candidarti ce l'hai gia\u0300, senza ESEI e senza corso OEPAC. Molti annunci delle cooperative chiedono comunque l'attestato: e\u0300 una scelta loro, non un obbligo del regolamento. Trovi tutto, con il link all'elenco degli enti accreditati e una lettera pronta, nella sezione Altre porte.",
@@ -1041,37 +1075,20 @@ const PORTE = [
  d:"È il più vicino di tutti, praticamente sulla Casilina, e sulla carta sei perfetta: un anno in Vitaldent, sei mesi in Blu Dental, l'attestato di receptionist odontoiatrica. Ma te lo dico prima che tu ci perda tempo: si lavora solo la domenica e nei festivi, dalle 10 alle 20:30, per 430 o 450 euro al mese. Vuol dire tutte le domeniche fuori casa. Non è una bocciatura, è una cosa da decidere in famiglia prima di rispondere.",
  url:"https://to.indeed.com/aacfzm6qsz6s"},
 
-{fam:"B", id:"p-oepac", t:"OEPAC: la porta più grande, e la tua laurea basta già", ente:"Roma Capitale, tramite gli enti accreditati", zona:"Le scuole del tuo municipio", km:1, kmt:"scuola sotto casa",
- tipo:"Orario della scuola, contratti degli enti accreditati", pubb:"", stato:"top",
- d:"Se leggi una sola scheda di questa pagina, leggi questa. L'OEPAC affianca a scuola i bambini con disabilità per l'autonomia e la comunicazione. Il Regolamento di Roma Capitale, articolo 12, elenca i titoli validi in alternativa fra loro: diploma magistrale o dei servizi socio sanitari; oppure laurea in Scienze dell'Educazione e della Formazione, Servizio Sociale, Scienze e Tecniche Psicologiche o similari; oppure diploma più corso di qualifica OEPAC. La laurea è una delle tre strade, non un pezzo da aggiungere al corso. Vuol dire che questa porta è aperta adesso: niente ESEI, niente graduatorie, niente attesa. Attenzione a una cosa che ti può confondere: parecchi annunci di cooperative chiedono comunque l'attestato OEPAC. Non lo chiede il regolamento, lo chiede l'ente. Se ti dicono di no per quello non stanno applicando una legge, stanno scegliendo, e la cooperativa dopo può dire di sì. Dal 2023 il servizio non va più ad appalto: gli enti si accreditano a un registro pubblico chiamato RUAS e sono le famiglie a scegliere l'ente. I nomi a cui scrivere stanno in quell'elenco.",
- url:"https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF1131252&pagina=5", link:"Apri l'elenco degli enti accreditati",
- fonte:"Regolamento OEPAC di Roma Capitale, deliberazioni di Assemblea Capitolina 20 del 2022 e 19 del 23 gennaio 2023, articolo 12. Le pagine del Comune da questa sessione non si lasciano leggere, quindi l'elenco aprilo tu."},
-{fam:"B", id:"p-iskra", t:"ISKRA, cooperativa che gestisce l'OEPAC nel Municipio VI", ente:"ISKRA società cooperativa", zona:"Via delle Avocette 16, zona Torre Maura", km:4.0, kmt:"4 km",
- tipo:"Candidatura spontanea, si manda quando vuoi", pubb:"", stato:"top",
- d:"Nome vero, indirizzo vero, a quattro chilometri da casa. ISKRA gestisce il servizio OEPAC nel Municipio VI, che confina con il tuo. Non c'è un annuncio aperto: si manda una candidatura spontanea, ed è il modo normale in cui si entra in questo giro. Telefono 06 2315248, mail iskraroma@iskra.coop, PEC iskra@pec.iskra.coop. Nella mail scrivi che hai la laurea L-19 e cita l'articolo 12 del regolamento: fa capire in due righe che sai di cosa parli. La lettera pronta sta in Lettere, voce OEPAC.",
- url:"https://iskra.coop/oepac/", link:"Il loro servizio OEPAC"},
-{fam:"B", id:"p-obiettivouomo", t:"Obiettivo Uomo, accreditata OEPAC al Comune di Roma", ente:"Obiettivo Uomo società cooperativa sociale ETS", zona:"Via Ostiense 131/L, ma si lavora nelle scuole", km:7.1, kmt:"sede lontana, scuole vicine",
- tipo:"Banca dati aperta tutto l'anno", pubb:"", stato:"top",
- d:"Questa è ancora più comoda, perché lo dicono loro: si può entrare nella loro banca dati anche quando non ci sono annunci aperti, per le occasioni future. Fra i profili che cercano ci sono espressamente OEPAC ed educatori. Curriculum a curriculum.obiettivo@gmail.com e a protocollo@obiettivouomo.it, telefono 06 57177653. La sede sta in via Ostiense, a sette chilometri, ma non è lì che lavori: il posto di lavoro è la scuola, quindi nella mail chiedi esplicitamente l'assegnazione nelle scuole del Municipio V.",
- url:"https://www.obiettivouomo.it/?page_id=5770", link:"La loro pagina Lavora con noi"},
-{fam:"B", id:"p-socioped", t:"Educatrice professionale socio pedagogica, fuori dalla scuola", ente:"Cooperative sociali e servizi del territorio", zona:"Tutta Roma", km:5, kmt:"varia",
- tipo:"Di solito CCNL cooperative sociali, spesso part time", pubb:"", stato:"buono",
- d:"La legge 205 del 2017, al comma 595, dice che la qualifica di educatore professionale socio pedagogico si ottiene con la laurea L-19. La tua, senza aggiunte. E il comma 594 elenca dove si lavora: ambito educativo e formativo, scolastico, socio assistenziale per la parte educativa, socio sanitario per la parte educativa, genitorialità e famiglia, culturale, giudiziario, ambientale, sportivo e motorio, cooperazione internazionale. Tradotto: comunità per minori, centri diurni, servizi per la disabilità, centri anziani, doposcuola, servizi educativi dei musei, area penale. In quasi tutti questi posti non ti chiedono né l'ESEI né le graduatorie. Ti chiedono la laurea che hai già.",
- url:"https://www.gianvincenzonicodemo.it/normativa-educatore-professionale-e-pedagogista/educatore-professionale-sociopedagogico-e-pedagogista/legge-205-2017-pedagogista-ed-educatore-professionale-sociopedagogico/", link:"Leggi i commi 594 e 595",
- fonte:"Legge 27 dicembre 2017 numero 205, commi 594 e 601."},
-{fam:"B", id:"p-blu", t:"Educatrice in una comunità per detenuti", ente:"Consorzio Blu", zona:"Via Labicana 45, a piedi da San Giovanni", km:5.3, kmt:"metro C e A",
- tipo:"Part time 36 ore, CCNL cooperative sociali livello D2, 1637 euro lordi al mese", pubb:"15 giugno 2026", stato:"attenzione",
- d:"È l'esempio concreto dell'ambito giudiziario del comma 594, e si arriva a piedi da San Giovanni, dove ti porta la tua metro. Chiedono la laurea in Scienze dell'Educazione e basta: nessun anno minimo, nessuna qualifica in più. Lo stipendio è il più alto di tutta la pagina. Due avvertenze oneste: l'annuncio è del 15 giugno, quindi ha quasi tre mesi e può essere già chiuso, e una comunità filtro per detenuti non è un contesto per tutti. Anche se questo posto è andato, il Consorzio Blu resta un nome a cui mandare una spontanea.",
- url:"https://to.indeed.com/aat4nq8n9pcx"},
 {fam:"B", id:"p-segrscuola", t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Le venti scuole che hai già in questa app", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
  tipo:"Varia, spesso part time", pubb:"", stato:"buono",
  d:"Questa non è un annuncio, è una mossa che puoi fare stasera senza chiedere il permesso a nessuno. Alle venti scuole paritarie della sezione Scuole private hai scritto, o stai per scrivere, per la sezione. Scrivi alle stesse anche per la segreteria: iscrizioni, rette, registri, comunicazioni alle famiglie, rapporti con gli enti. Una scuola piccola cerca esattamente quella persona, e trovare qualcuno che sappia fare segreteria per davvero e che capisca anche come funziona una giornata scolastica è raro. Tu sei tutte e due le cose nella stessa persona, e sono tutte a pochi chilometri da casa. In Lettere c'è il testo già pronto.",
  url:"", link:"", fonte:""},
-{fam:"B", id:"p-ata", t:"Assistente amministrativa nelle scuole, il profilo ATA", ente:"Ministero dell'Istruzione, graduatorie di terza fascia", zona:"Le scuole che scegli tu", km:1, kmt:"scegli tu le sedi",
+{fam:"B", id:"p-ata", pri:1, t:"Assistente amministrativa nelle scuole, il profilo ATA", ente:"Ministero dell'Istruzione, graduatorie di terza fascia", zona:"Le scuole che scegli tu", km:1, kmt:"scegli tu le sedi",
  tipo:"Supplenze nelle segreterie scolastiche", pubb:"", stato:"prepara",
- d:"Qui la tua vita di prima e la scuola si incontrano per davvero: è lavoro di segreteria, dentro un istituto, e le sedi le scegli tu. Il titolo richiesto è un diploma di scuola superiore di qualunque tipo, quindi il tuo di ragioniere è più che sufficiente. Un requisito nuovo però c'è: il decreto ministeriale 89 del 2024 ha reso la certificazione digitale CIAD obbligatoria per l'accesso, non più un semplice punteggio in più. Senza, la domanda non viene accettata. Le graduatorie si aggiornano ogni tre anni e la prossima finestra è attesa nella primavera del 2027. Non è roba di domani, ma la CIAD si prende adesso con calma, e quando apre la domanda tu sei già pronta mentre gli altri corrono.",
- url:"https://www.tecnicadellascuola.it/graduatorie-ata", link:"Come funzionano le graduatorie ATA",
- fonte:"Decreto ministeriale 89 del 2024 per la CIAD. Sulla finestra di primavera 2027 le fonti sono giornalistiche e sindacali, il decreto non è ancora uscito: la data va riverificata nei primi mesi del 2027."},
+ d:"Qui la tua vita di prima e la scuola si incontrano per davvero: è lavoro di segreteria, dentro un istituto, e le sedi le scegli tu. Il titolo richiesto è un diploma di scuola superiore di qualunque indirizzo, quindi il tuo di ragioniere basta e avanza. Adesso però ti dico con precisione quando si entra, perché su questo si fa confusione. Le graduatorie di terza fascia si rifanno ogni tre anni. Quelle in vigore oggi nascono dal decreto ministeriale 89 del 21 maggio 2024: le domande si sono presentate dal 28 maggio al 28 giugno 2024, e valgono per gli anni scolastici 2024/25, 2025/26 e 2026/27. Quello che comincia adesso è l'ultimo anno del giro. Occhio a una cosa che in questi giorni si legge dappertutto: le scuole stanno pubblicando le graduatorie ATA per il 2026/27, ma non è una riapertura. Sono gli elenchi già formati nel 2024, che vengono soltanto resi pubblici. Oggi non c'è niente da presentare. Il tuo appuntamento è il rinnovo per il triennio 2027/2030: le fonti sindacali e di settore lo danno nella primavera del 2027, e Tecnica della Scuola parla di maggio. Il decreto però non è ancora uscito, quindi la data va riguardata nei primi mesi del 2027. Una cosa da fare c'è comunque, ed è adesso: la certificazione informatica CIAD, senza la quale la domanda non viene nemmeno accettata. Te la spiego nella scheda qui sotto.",
+ url:"https://www.flcgil.it/speciali/graduatorie_di_istituto_ata/anno-2024-2027.flc", link:"Lo speciale sulle graduatorie 2024-2027",
+ fonte:"Decreto ministeriale 89 del 21 maggio 2024, articolo 2, per i titoli di accesso e per l'obbligo della CIAD. Le date del 2024 e la durata del triennio vengono dallo speciale della FLC CGIL. Sulla finestra del 2027 le fonti sono giornalistiche e sindacali: il bando del Ministero non è ancora stato pubblicato, quindi quella data non è ufficiale."},
+{fam:"B", id:"p-ciad", pri:2, t:"La CIAD, l'unica cosa dell'ATA che puoi fare già adesso", ente:"Enti di certificazione accreditati Accredia", zona:"Si fa online, da casa", km:0, kmt:"da casa",
+ tipo:"Costo indicativo tra 200 e 350 euro, nessuna scadenza", pubb:"", stato:"prepara",
+ d:"La CIAD è la Certificazione Internazionale di Alfabetizzazione Digitale: attesta le competenze digitali di base, cioè computer, internet, posta elettronica e scrittura al computer. Per l'assistente amministrativo, dal decreto 89 del 2024, non è più un punteggio in più: è un requisito di accesso, e senza la domanda non entra proprio. Le certificazioni che valgono sono quelle riferite al quadro europeo DigComp 2.2: EIPASS 7 moduli standard, ICDL Full Standard, EDSC, Eirsaf European Digital Pass e PEKIT Expert. Devono essere rilasciate da un ente di certificazione accreditato Accredia. Il costo indicativo che riportano le guide sta tra 200 e 350 euro, si fa tutto online e i tempi li decidi tu. Ecco perché te la metto qui adesso e non nella primavera del 2027: prenderla con calma nei prossimi mesi costa poco e non ti mette fretta, mentre farla di corsa quando escono le domande è il modo migliore per arrivare tardi. Prima di pagare qualsiasi cosa controlla due punti: che l'ente sia accreditato Accredia, e che la certificazione sia riferita a DigComp 2.2. Se chi te la vende non ti risponde chiaro su questi due, cambia venditore.",
+ url:"https://www.ticonsiglio.com/certificazione-internazionale-alfabetizzazione-digitale-ciad-ata/", link:"Cos'è la CIAD e come si prende",
+ fonte:"L'obbligo viene dall'articolo 2 del decreto ministeriale 89 del 2024. L'elenco delle certificazioni valide e il costo indicativo vengono dalla guida di Ticonsiglio: sono cifre di mercato, non un prezzo ufficiale. Prima di iscriverti fatti confermare per iscritto dall'ente che quella certificazione vale per le graduatorie ATA."},
 {fam:"B", id:"p-inpa", t:"Concorsi pubblici, con il diploma e con la laurea", ente:"inPA, il portale unico del reclutamento", zona:"Roma e Lazio", km:5, kmt:"varia",
  tipo:"Tempo indeterminato", pubb:"", stato:"prepara",
  d:"Nei comuni e negli enti locali i profili amministrativi si dividono in due: l'area degli istruttori, dove di solito basta il diploma, e quella dei funzionari, dove serve la laurea. Tu hai tutti e due i titoli, più dieci anni di lavoro amministrativo vero. È l'unica strada di questa pagina che porta a un posto fisso, ed è anche la più lenta, perché si passa da una prova. Non è un piano per domani mattina, è un piano per l'anno prossimo: intanto registrati, metti Roma come zona, e lascia che gli avvisi arrivino da soli mentre fai altro.",
@@ -1174,7 +1191,7 @@ const DOVE = [
 
 /* ===== STATO ===== */
 const CHIAVE = "percorso-delia-v2";
-let S = { spunte:{}, candidature:[], annunciMiei:[], nascosti:[], aperte:["t1"], io:{nome:"",tel:"",mail:"",zona:""} };
+let S = { spunte:{}, candidature:[], annunciMiei:[], nascosti:[], aperte:["t1"], chiusi:[], io:{nome:"",tel:"",mail:"",zona:""} };
 let storageOk = true;
 
 function carica(){
@@ -1185,6 +1202,7 @@ function carica(){
   ["nome","tel","mail","zona"].forEach(k=>{ if(typeof S.io[k]!=="string") S.io[k]=""; });
   if(!S.spunte || typeof S.spunte!=="object") S.spunte = {};
   if(!Array.isArray(S.candidature)) S.candidature = [];
+  if(!Array.isArray(S.chiusi)) S.chiusi = [];
   if(!Array.isArray(S.annunciMiei)) S.annunciMiei = [];
   if(!Array.isArray(S.nascosti))    S.nascosti = [];
   if(!Array.isArray(S.aperte))      S.aperte = ["t1"];
@@ -1304,8 +1322,8 @@ function renderPercorso(){ renderRail(); renderOra(); renderBarra(); }
 
 /* ===== ANNUNCI ===== */
 let filtro = "tutti";
-const CATS = [["tutti","Tutti"],["nido","Nido 0-3"],["infanzia","Infanzia 3-6"],["extra","Extrascolastico"],["dom","A domicilio"]];
-const ETICAT = {nido:["p-ok","Nido 0-3"], infanzia:["p-info","Infanzia 3-6"], extra:["p-info","Extrascolastico"], dom:["p-no","A domicilio"]};
+const CATS = [["tutti","Tutti"],["nido","Nido 0-3"],["infanzia","Infanzia 3-6"],["socio","OEPAC e sociale"],["extra","Extrascolastico"],["dom","A domicilio"]];
+const ETICAT = {nido:["p-ok","Nido 0-3"], infanzia:["p-info","Infanzia 3-6"], socio:["p-ora","OEPAC e sociale"], extra:["p-info","Extrascolastico"], dom:["p-no","A domicilio"]};
 const ETI = {0:["?","da verif."],1:["3","km o meno"],2:["6","km circa"],3:["12","km circa"],4:["12+","km"]};
 
 function tutti(){ return ANNUNCI.concat(S.annunciMiei).filter(a=>!S.nascosti.includes(a.id)); }
@@ -1316,9 +1334,26 @@ function renderFiltri(){
   document.querySelectorAll("[data-c]").forEach(b=>b.addEventListener("click",()=>{ filtro=b.dataset.c; renderFiltri(); renderAnnunci(); }));
 }
 function renderAnnunci(){
+  const RANGO = {socio:1, dom:2};
   const l = tutti().filter(a=>filtro==="tutti"||a.cat===filtro)
-    .sort((a,b)=>(a.cat==="dom"?1:0)-(b.cat==="dom"?1:0) || (a.escluso?1:0)-(b.escluso?1:0) || (a.dist||3.5)-(b.dist||3.5));
-  let primoDom = true;
+    .sort((a,b)=>((RANGO[a.cat]||0)-(RANGO[b.cat]||0)) || (a.escluso?1:0)-(b.escluso?1:0) || (a.dist||3.5)-(b.dist||3.5));
+  const BANDE = {
+    socio: '<div class="sep-socio"><b>Qui sotto: OEPAC ed educatrice nel sociale</b>'
+      + '<p>Sono i posti da educatrice fuori dalla sezione: affiancare a scuola i bambini con disabilit\u00E0, comunit\u00E0 per minori, centri diurni, servizi socio educativi. '
+      + 'Li tengo separati perch\u00E9 hanno una cosa in comune che cambia tutto: <b>qui il titolo che serve ce l\'hai gi\u00E0.</b> Niente ESEI, niente graduatorie, niente attesa.</p>'
+      + '<p>Per l\'OEPAC lo dice il Regolamento di Roma Capitale, articolo 12: fra i titoli validi c\'\u00E8 la laurea in Scienze dell\'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. '
+      + 'Per gli altri ruoli lo dice la legge 205 del 2017, comma 595: la L-19 attribuisce la qualifica di educatore professionale socio pedagogico, e il comma 594 elenca gli ambiti, dal sociale al giudiziario.</p>'
+      + '<p>Se una cooperativa chiede lo stesso l\'attestato OEPAC, \u00E8 una scelta sua e non un obbligo di legge: candidati citando l\'articolo 12, e se ti dicono di no prova con un altro ente accreditato.</p>'
+      + '<div class="fonti">'
+      + '<a class="b b-mini" href="https://www.aipd.it/site/scheda-scuola/687-nuovo-regolamento-di-roma-capitale-per-gli-oepac-deliberazione-20-22/" target="_blank" rel="noopener">Cosa dice il regolamento</a>'
+      + '<a class="b b-mini" href="https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF1131252&pagina=5" target="_blank" rel="noopener">Elenco degli enti accreditati</a>'
+      + '</div></div>',
+    dom: '<div class="sep-dom"><b>Qui sotto: lavoro a domicilio</b>'
+      + '<span>Sono i servizi tipo SISMIF e l\'educativa domiciliare: si va a casa delle famiglie, non si sta in sezione. '
+      + 'Hai detto che non fa per te, quindi stanno da parte e non ti tolgono spazio in cima. '
+      + 'Li tengo solo perch\u00E9 la ricerca resti completa e controllabile.</span></div>'
+  };
+  let bandaFatta = {};
   const el = $("#lista-annunci");
   el.innerHTML = l.length ? l.map(a=>{
     const [n,u] = ETI[a.dist||0];
@@ -1326,25 +1361,19 @@ function renderAnnunci(){
     const [clc,txc] = ETICAT[a.cat] || ETICAT.extra;
     const cat = '<span class="pill '+clc+'">'+txc+'</span>';
     let sep = "";
-    if(a.cat==="dom" && primoDom){
-      primoDom = false;
-      sep = '<div class="sep-dom"><b>Qui sotto: lavoro a domicilio</b>'
-        + '<span>Sono i servizi tipo SISMIF e l\'educativa domiciliare: si va a casa delle famiglie, non si sta in sezione. '
-        + 'Hai detto che non fa per te, quindi stanno da parte e non ti tolgono spazio in cima. '
-        + 'Li tengo solo perché la ricerca resti completa e controllabile.</span></div>';
-    }
+    if(BANDE[a.cat] && !bandaFatta[a.cat]){ bandaFatta[a.cat] = true; sep = BANDE[a.cat]; }
     return sep + '<div class="ann"><div class="dist"><div class="'+cls+'"><div class="n">'+n+'</div><span class="u">'+u+'</span></div></div>'
       + '<div style="flex:1;min-width:0"><div class="pillole">'+cat+(a.escluso?'<span class="pill p-no">non fa per te</span>':'')+'</div>'
       + '<h3>'+esc(a.titolo)+'</h3>'
       + '<div class="meta">'+esc(a.ente)+', '+esc(a.zona)+(a.tipo?', '+esc(a.tipo).toLowerCase():'')+'</div>'
-      + '<div class="meta mono" style="font-size:11.5px;margin-top:2px">'+(a.pubb?'pubblicato il '+esc(a.pubb):'senza data')+(a.fonte?' su '+esc(a.fonte):'')+'</div>'
+      + '<div class="meta mono" style="font-size:11.5px;margin-top:2px">'+(a.pubb ? 'pubblicato il '+esc(a.pubb)+(a.fonte?' su '+esc(a.fonte):'') : (a.fonte?esc(a.fonte):'senza data'))+'</div>'
       + (a.note?'<p style="margin:11px 0 0;font-size:14.5px;color:#4A3A3D;max-width:78ch">'+esc(a.note)+'</p>':'')
       + '<div class="azioni">'
       + (a.url?'<a class="b b-mini" href="'+esc(a.url)+'" target="_blank" rel="noopener">Apri l\'annuncio</a>':'')
       + '<button class="b b-mini" data-tr="'+esc(a.id)+'">Aggiungi al tracker</button>'
       + '<button class="b b-mini b-no" data-hd="'+esc(a.id)+'">Non mi interessa</button>'
       + '</div></div></div>';
-  }).join("") : '<div class="vuoto">Niente in questa categoria.<br>Il prossimo aggiornamento automatico ne porterà altri, oppure aggiungine uno tu.</div>';
+  }).join("") : '<div class="vuoto">Niente in questa categoria.<br>Il prossimo aggiornamento automatico ne porter\u00E0 altri, oppure aggiungine uno tu.</div>';
   const c = document.getElementById("conta"); if(c) c.textContent = l.length + (l.length===1?" annuncio":" annunci");
   el.querySelectorAll("[data-hd]").forEach(b=>b.addEventListener("click",()=>{ S.nascosti.push(b.dataset.hd); salva(); renderAnnunci(); toast("Tolto dalla bacheca"); }));
   el.querySelectorAll("[data-tr]").forEach(b=>b.addEventListener("click",()=>{
@@ -1368,7 +1397,7 @@ const PILLP = {top:["p-ok","guarda questo per primo"], buono:["p-info","in linea
                attenzione:["p-ora","leggi bene prima"], prepara:["p-info","da preparare"]};
 const TESTE = {
   A:["Segreteria part time, vicino casa","Quello che sai già fare, entro il raggio. In ordine di quanto ti somigliano"],
-  B:["Porte che la tua laurea apre","Lavori fuori dalla sezione dove il titolo che hai già basta"],
+  B:["Segreteria dentro la scuola e nel pubblico","Le stesse mani, in un altro posto. Non sono annunci: sono strade da aprire tu"],
   C:["Fuori dal raggio, guardali solo se vuoi","Buoni lavori, ma lontani o senza un mezzo diretto. Li tengo per non nasconderti niente"]
 };
 function renderPorte(){
@@ -1612,7 +1641,7 @@ function aggiornaIo(){
   const logo = document.getElementById("logo-nome");
   if(logo) logo.textContent = v("nome") ? ("Il percorso di " + v("nome").split(/\s+/)[0]) : "Il mio percorso";
   const av = document.getElementById("avviso-dati");
-  if(av) av.hidden = pieno;
+  if(av) av.hidden = pieno || S.chiusi.includes("dati");
 }
 
 function renderIo(){ riempiCampiIo(); aggiornaIo(); }
@@ -1662,6 +1691,7 @@ $("#file-import").addEventListener("change",ev=>{
     S.annunciMiei = Array.isArray(d.annunciMiei)? d.annunciMiei:[];
     S.nascosti = Array.isArray(d.nascosti)? d.nascosti:[];
     S.aperte = Array.isArray(d.aperte)? d.aperte : ["t1"];
+    S.chiusi = Array.isArray(d.chiusi)? d.chiusi : [];
     S.io = (d.io && typeof d.io==="object")? d.io : {nome:"",tel:"",mail:"",zona:""};
     salva(); tuttoIlRender(); riempiCampiIo(); generaLettera(); toast("Dati importati");
   }catch(e){ toast("Il file non è leggibile"); } };
@@ -1672,8 +1702,41 @@ $("#btn-reset").addEventListener("click",ev=>{
   const b=ev.currentTarget;
   if(!armato){ armato=true; b.textContent="Premi ancora per cancellare"; clearTimeout(tmr); tmr=setTimeout(()=>{armato=false;b.textContent="Cancella tutto";},5000); return; }
   clearTimeout(tmr); armato=false; b.textContent="Cancella tutto";
-  S={spunte:{},candidature:[],annunciMiei:[],nascosti:[],aperte:["t1"],io:{nome:"",tel:"",mail:"",zona:""}}; salva(); tuttoIlRender(); riempiCampiIo(); generaLettera(); toast("Azzerato");
+  S={spunte:{},candidature:[],annunciMiei:[],nascosti:[],aperte:["t1"],chiusi:[],io:{nome:"",tel:"",mail:"",zona:""}}; salva(); tuttoIlRender(); riempiCampiIo(); generaLettera(); toast("Azzerato");
 });
+
+/* ===== AVVISI CHIUDIBILI =====
+   Ogni riquadro giallo o rosa ha una x in alto a destra. Quello che chiudi
+   resta chiuso, anche dopo aver riaperto l'app, finche non premi Riapri. */
+function applicaChiusi(){
+  document.querySelectorAll("[data-chiudi]").forEach(box=>{
+    const id = box.dataset.chiudi;
+    if(!box.querySelector(".chiudi")){
+      const b = document.createElement("button");
+      b.className = "chiudi"; b.type = "button";
+      b.setAttribute("aria-label","Chiudi questo riquadro");
+      b.title = "Chiudi questo riquadro";
+      b.textContent = "\u00D7";
+      b.addEventListener("click", ()=>{
+        if(!S.chiusi.includes(id)) S.chiusi.push(id);
+        salva(); box.hidden = true; aggiornaRiapri();
+        toast("Chiuso. Lo riapri dal Profilo, in fondo.");
+      });
+      box.appendChild(b);
+    }
+    if(S.chiusi.includes(id)) box.hidden = true;
+    else if(id !== "dati") box.hidden = false;
+  });
+  aggiornaRiapri();
+}
+function aggiornaRiapri(){
+  const r = document.getElementById("riapri-riga"); if(!r) return;
+  const n = S.chiusi.length;
+  r.hidden = n === 0;
+  const t = document.getElementById("riapri-testo");
+  if(t) t.textContent = n === 1 ? "Hai chiuso un riquadro di spiegazione."
+                                : "Hai chiuso " + n + " riquadri di spiegazione.";
+}
 
 /* ===== INSTALLAZIONE SUL TELEFONO ===== */
 /* Il service worker serve solo alla copia vera sul sito. Dentro l'anteprima
@@ -1705,6 +1768,11 @@ window.addEventListener("beforeinstallprompt", ev=>{
   ev.preventDefault(); promptInstalla = ev; statoInstalla();
 });
 window.addEventListener("appinstalled", ()=>{ promptInstalla = null; statoInstalla(); toast("Installata, la trovi fra le tue app"); });
+document.addEventListener("click", ev=>{
+  if(!ev.target.closest("#btn-riapri")) return;
+  S.chiusi = []; salva(); applicaChiusi(); renderIo();
+  toast("Rimessi tutti");
+});
 document.addEventListener("click", async ev=>{
   const b = ev.target.closest("#btn-installa"); if(!b) return;
   if(!promptInstalla){ statoInstalla(); return; }
@@ -1722,7 +1790,7 @@ document.addEventListener("click", async ev=>{
 })();
 
 /* ===== AVVIO ===== */
-function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); }
+function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); applicaChiusi(); }
 carica();
 tuttoIlRender();
 generaLettera();
