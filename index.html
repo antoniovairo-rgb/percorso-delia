@@ -238,6 +238,15 @@ tr.riga-ok{background:#EFF6F2}
 .scuola .ind{color:var(--grigio);font-size:13.5px;margin-top:3px}
 .scuola .cont{font-size:13.5px;margin-top:6px}
 .scuola .azioni{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.scuola .contatti{margin-top:9px;display:grid;gap:3px;grid-template-columns:minmax(0,1fr);white-space:normal}
+.riga-cont{display:flex;gap:8px;font-size:13.5px;align-items:baseline;flex-wrap:wrap;min-width:0}
+.riga-cont .eti{color:var(--grigio);min-width:88px;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+.riga-cont a,.riga-cont>span:not(.eti){min-width:0;flex:1 1 auto;overflow-wrap:anywhere}
+.riga-cont a{word-break:break-all}
+.riga-cont a{color:var(--rosa);text-decoration:none;border-bottom:1px solid rgba(142,43,74,.3)}
+.riga-cont a:hover{border-bottom-color:var(--rosa)}
+.scuola .fonte{margin:8px 0 0;font-size:12.5px;color:var(--grigio);max-width:74ch;font-style:italic}
+@media(max-width:560px){.riga-cont .eti{min-width:0;flex-basis:100%}}
 .porta{padding:20px;border-bottom:1px solid var(--nebbia)}
 .porta:last-child{border-bottom:0}
 .porta h3{font-size:17px;margin:8px 0 0}
@@ -540,7 +549,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 <section class="vista" id="v-private" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Scuole private, il piano B</h2>
-    <p class="desc">Le scuole dell'infanzia paritarie assumono con regole loro. Non aspettano l'ESEI, non passano dalle graduatorie, e quando hanno un buco chiamano chi si è fatto vivo. Qui sotto ci sono venti scuole vere intorno a casa tua, in ordine di distanza.</p>
+    <p class="desc">Le scuole dell'infanzia paritarie assumono con regole loro. Non aspettano l'ESEI, non passano dalle graduatorie, e quando hanno un buco chiamano chi si è fatto vivo. Qui sotto ci sono quindici scuole vere intorno a casa tua, con la mail della segreteria trovata una per una. E a ognuna puoi scrivere per due cose diverse.</p>
 
     <div class="avviso info" style="margin-bottom:18px" data-chiudi="priv-perche">
       <h3>Perché questa strada è aperta anche adesso</h3>
@@ -548,15 +557,41 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
       <p>Vuol dire che una supplenza o un incarico annuale in paritaria è alla tua portata oggi, senza aspettare nessun corso. Non ti costruisce punteggio per la scuola statale, ma ti fa lavorare, ti fa esperienza in sezione e ti mette in contatto con un giro di scuole che si parlano tra loro.</p>
     </div>
 
+    <div class="avviso ok" style="margin-bottom:18px" data-chiudi="priv-doppia">
+      <h3>A ogni scuola scrivi due volte, per due lavori diversi</h3>
+      <p>La prima mail è quella che già sai: ti proponi per la sezione, come insegnante. La seconda è per la <b>segreteria</b>: iscrizioni, rette, registri, comunicazioni alle famiglie, rapporti con gli enti. Sono due caselle diverse nella testa di chi legge, e tu puoi entrare da tutte e due.</p>
+      <p>Su questa seconda non stai chiedendo un favore. Dieci anni di segreteria in DeA Capital, in Cassa Depositi e Prestiti e in JAKALA, il diploma di ragioniere, la certificazione digitale: una scuola piccola questa persona la cerca e fatica a trovarla. E chi arriva di solito non ha mai messo piede in una sezione. Tu sì.</p>
+      <p>In Lettere trovi tutti e due i testi già pronti: <i>Scuola dell'infanzia paritaria</i> per la sezione, <i>Segreteria di una scuola o di un ente di formazione</i> per l'altra. Non mandarle lo stesso giorno: prima la segreteria, dopo una settimana quella per la sezione, o viceversa. Due mail lo stesso giorno sembrano una circolare.</p>
+    </div>
+
     <div class="avviso" style="margin-bottom:18px" data-chiudi="priv-cerioli">
       <h3>Parti da qui: la scuola del tuo tirocinio</h3>
       <p>Le 300 ore di tirocinio le hai fatte alla Santa Paola Elisabetta Cerioli, che sta in via Casilina 631, cioè dentro il tuo quartiere. È una paritaria con infanzia, primaria e medie. Ti hanno già vista lavorare per due mesi.</p>
-      <p>Di tutti i contatti di questa pagina, quello è il più caldo che hai. Prima di scrivere alle altre diciannove, scrivi a loro.</p>
+      <p>Di tutti i contatti di questa pagina, quello è il più caldo che hai. Prima di scrivere alle altre quattordici, scrivi a loro. E scrivi due volte: una per la sezione, una per la segreteria.</p>
     </div>
 
     <div class="card" id="lista-scuole"></div>
 
-    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">L'elenco viene dai dati ministeriali delle scuole di Roma per codice postale, controllati il 20 agosto 2026. Indirizzi e denominazioni possono essere cambiati, e in qualche caso non è chiaro dai dati se una scuola sia paritaria o comunale: dove c'è il dubbio l'ho scritto. Prima di scrivere, un controllo veloce sul sito della scuola non fa male.</p>
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">L'elenco parte dai dati ministeriali delle scuole di Roma per codice postale, del 20 agosto 2026. I contatti li ho verificati uno per uno il 9 settembre 2026 sui siti delle scuole, sugli elenchi dell'Ufficio Scolastico Regionale del Lazio e sui siti delle congregazioni: nessuna mail è stata indovinata. Dove il dato non viene dal sito della scuola l'ho scritto nella scheda. Gli indirizzi possono comunque cambiare: se una mail torna indietro, telefona.</p>
+
+    <div class="sez">
+      <h2>Le cinque che ho tolto dalla lista</h2>
+      <p class="desc">Nell'elenco di agosto c'erano sei scuole in più. La verifica dei contatti ha detto che non sono scuole a cui puoi scrivere una candidatura spontanea. Meglio saperlo adesso che dopo sei mail senza risposta.</p>
+      <div class="card pad" id="lista-comunali"></div>
+    </div>
+
+    <div class="sez">
+      <h2>Gli enti di formazione, l'altra metà di questa strada</h2>
+      <p class="desc">Non solo scuole. Gli enti accreditati dalla Regione Lazio gestiscono corsi di formazione professionale finanziati con denaro pubblico, e ogni corso finanziato porta con sé iscrizioni, registri delle presenze, fascicoli degli allievi e rendicontazione alla Regione. È lavoro di segreteria puro, e assomiglia molto a quello che facevi in SGR: scadenze, documenti, un ente che controlla.</p>
+
+      <div class="avviso info" style="margin-bottom:18px" data-chiudi="enti-perche">
+        <h3>Perché questa porta è più aperta di quanto sembri</h3>
+        <p>Un ente di formazione non cerca una persona con la laurea in Scienze dell'Educazione per la segreteria: cerca una che sappia tenere in ordine i fascicoli. Ma quando la trova e scopre che ha anche il titolo, quella persona può servire su due fronti, perché in certi corsi il titolo di studio del personale conta ai fini dell'accreditamento. Non è una promessa, è un motivo in più per leggere il tuo curriculum fino in fondo.</p>
+        <p>Questi otto li ho verificati sull'albo regionale degli enti accreditati e sulla vetrina della formazione della Regione Lazio, il 9 settembre 2026. L'albo non si riesce a scaricare tutto insieme, quindi ce ne sono certamente altri a Roma est che qui non compaiono: questi sono quelli che ho potuto confermare.</p>
+      </div>
+
+      <div class="card" id="lista-enti"></div>
+    </div>
   </div>
 </section>
 
@@ -1123,10 +1158,10 @@ const PORTE = [
  d:"È il più vicino di tutti, praticamente sulla Casilina, e sulla carta sei perfetta: un anno in Vitaldent, sei mesi in Blu Dental, l'attestato di receptionist odontoiatrica. Ma te lo dico prima che tu ci perda tempo: si lavora solo la domenica e nei festivi, dalle 10 alle 20:30, per 430 o 450 euro al mese. Vuol dire tutte le domeniche fuori casa. Non è una bocciatura, è una cosa da decidere in famiglia prima di rispondere.",
  url:"https://to.indeed.com/aacfzm6qsz6s"},
 
-{fam:"B", id:"p-segrscuola", t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Le venti scuole che hai già in questa app", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
- tipo:"Varia, spesso part time", pubb:"", stato:"buono",
- d:"Questa non è un annuncio, è una mossa che puoi fare stasera senza chiedere il permesso a nessuno. Alle venti scuole paritarie della sezione Scuole private hai scritto, o stai per scrivere, per la sezione. Scrivi alle stesse anche per la segreteria: iscrizioni, rette, registri, comunicazioni alle famiglie, rapporti con gli enti. Una scuola piccola cerca esattamente quella persona, e trovare qualcuno che sappia fare segreteria per davvero e che capisca anche come funziona una giornata scolastica è raro. Tu sei tutte e due le cose nella stessa persona, e sono tutte a pochi chilometri da casa. In Lettere c'è il testo già pronto.",
- url:"", link:"", fonte:""},
+{fam:"B", id:"p-segrscuola", pri:0, t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Quindici scuole e otto enti, con le mail gia trovate", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
+ tipo:"Varia, spesso part time", pubb:"", stato:"top",
+ d:"Questa non e un annuncio, e una mossa che puoi fare stasera senza chiedere il permesso a nessuno. Nella sezione Scuole private ci sono quindici scuole paritarie con la mail della segreteria trovata una per una, e otto enti di formazione accreditati dalla Regione. Alle scuole scrivi due volte, per due lavori diversi: una per la sezione, una per la segreteria. Iscrizioni, rette, registri, comunicazioni alle famiglie, rendicontazione dei corsi. Una scuola piccola cerca esattamente quella persona, e chi sa fare segreteria per davvero e capisce anche come funziona una giornata scolastica e raro: tu sei tutte e due le cose nella stessa persona. In Lettere il testo e gia pronto, alla voce Segreteria di una scuola o di un ente di formazione. Ogni scheda ha il tasto per copiare la mail e quello per metterla nel tracker.",
+ url:"", link:"", fonte:"Contatti verificati il 9 settembre 2026 sui siti delle scuole, sugli elenchi USR Lazio e sull'albo regionale degli enti accreditati."},
 {fam:"B", id:"p-ata", pri:1, t:"Assistente amministrativa nelle scuole, il profilo ATA", ente:"Ministero dell'Istruzione, graduatorie di terza fascia", zona:"Le scuole che scegli tu", km:1, kmt:"scegli tu le sedi",
  tipo:"Supplenze nelle segreterie scolastiche", pubb:"", stato:"prepara",
  d:"Qui la tua vita di prima e la scuola si incontrano per davvero: è lavoro di segreteria, dentro un istituto, e le sedi le scegli tu. Il titolo richiesto è un diploma di scuola superiore di qualunque indirizzo, quindi il tuo di ragioniere basta e avanza. Adesso però ti dico con precisione quando si entra, perché su questo si fa confusione. Le graduatorie di terza fascia si rifanno ogni tre anni. Quelle in vigore oggi nascono dal decreto ministeriale 89 del 21 maggio 2024: le domande si sono presentate dal 28 maggio al 28 giugno 2024, e valgono per gli anni scolastici 2024/25, 2025/26 e 2026/27. Quello che comincia adesso è l'ultimo anno del giro. Occhio a una cosa che in questi giorni si legge dappertutto: le scuole stanno pubblicando le graduatorie ATA per il 2026/27, ma non è una riapertura. Sono gli elenchi già formati nel 2024, che vengono soltanto resi pubblici. Oggi non c'è niente da presentare. Il tuo appuntamento è il rinnovo per il triennio 2027/2030: le fonti sindacali e di settore lo danno nella primavera del 2027, e Tecnica della Scuola parla di maggio. Il decreto però non è ancora uscito, quindi la data va riguardata nei primi mesi del 2027. Resta la certificazione informatica CIAD, senza la quale la domanda non verrebbe nemmeno accettata: quella pero\u0300 ce l'hai gia\u0300 dall'ottobre 2024, ed e\u0300 valida fino al 2028. Te lo spiego nella scheda qui sotto. E non e\u0300 finita: hai anche l'attestato di dattilografia, che in queste graduatorie vale un punto ed e\u0300 valido solo per il profilo di assistente amministrativo. Vuol dire che da qui alla primavera del 2027 non devi prendere niente e non devi spendere niente: devi solo ricordarti di esserci, quando apre.",
@@ -1170,43 +1205,120 @@ const PORTE = [
  url:"https://to.indeed.com/aas9m76v47kn"}
 ];
 
-/* ===== SCUOLE PRIVATE E PARITARIE, dati ministeriali per CAP, controllati il 20 agosto 2026 ===== */
+/* ===== SCUOLE PRIVATE E PARITARIE =====
+   Elenco di partenza: dati ministeriali per CAP, controllati il 20 agosto 2026.
+   Contatti verificati uno per uno il 9 settembre 2026 su siti ufficiali delle scuole,
+   elenchi USR Lazio delle paritarie e siti delle congregazioni. Le fonti sono in nota
+   dove il dato non viene dal sito della scuola. ===== */
 const ZONE = [
   {cap:"00177", nome:"Torpignattara e Casilina", nota:"A piedi o in pochi minuti di macchina", scuole:[
     {n:"Santa Paola Elisabetta Cerioli", ind:"Via Casilina 631/633", gradi:"Infanzia, primaria, secondaria di primo grado",
-     cont:"06 45426706 &middot; segreteria@scuolacerioli.it &middot; direzione@scuolacerioli.it",
+     mail:"segreteria@scuolacerioli.it", mail2:"direzione@scuolacerioli.it", tel:"06 45426706",
      url:"https://www.scuolacerioli.it/contatti/", top:true,
-     nota:"È la scuola dove hai fatto il tirocinio. Il contatto più caldo che hai: scrivi qui per primo."},
-    {n:"Sacro Cuore", ind:"Via Isabella De Rosis 8", gradi:"Infanzia e primaria"},
-    {n:"Dalmazio Birago", ind:"Via Collatina 103", gradi:"Infanzia", dubbio:true},
+     nota:"\u00C8 la scuola dove hai fatto il tirocinio. Il contatto pi\u00F9 caldo che hai: scrivi qui per prima, sia per la sezione sia per la segreteria."},
+    {n:"Sacro Cuore, Suore Riparatrici", ind:"Via Isabella De Rosis 8", gradi:"Infanzia e primaria",
+     mail:"ist.isabelladerosis@libero.it", tel:"06 24401750",
+     fonte:"Elenco USR Lazio delle primarie paritarie. La scuola non ha un sito.",
+     nota:"Non ha sito n\u00E9 pagina contatti: la mail viene dall'elenco dell'Ufficio Scolastico Regionale. Se non risponde entro una settimana, telefona."},
     {n:"Istituto Cavanis", ind:"Via Casilina 600", gradi:"Medie e liceo scientifico",
-     nota:"Non ha l'infanzia, quindi non è per una supplenza in sezione. Ma è a duecento metri dalla Cerioli e fa doposcuola e attività: vale una candidatura per quello."}
+     mail:"segreteria@scuolaparitariacavanis.it", tel:"06 86927541", tel2:"342 5207179",
+     url:"https://www.scuolaparitariacavanis.com/contattaci",
+     nota:"Non ha l'infanzia, quindi non \u00E8 per una supplenza in sezione. Ma \u00E8 a duecento metri dalla Cerioli, ha medie e liceo, e una scuola con due ordini ha una segreteria vera. Per la segreteria \u00E8 uno dei nomi migliori della lista."}
   ]},
   {cap:"00176", nome:"Pigneto e Prenestino", nota:"Il quartiere accanto", scuole:[
     {n:"Amore Misericordioso", ind:"Via Casilina 323", gradi:"Sezione primavera, infanzia e primaria",
-     url:"https://unica.istruzione.gov.it/cercalatuascuola/istituti/RM1A609002/scuola-materna-amore-misericordioso/",
-     nota:"Ha anche la sezione primavera, quindi bambini dai due anni. Codice della scuola dell'infanzia: RM1A609002."},
-    {n:"Lucia Noiret", ind:"Via Vincenzo Coronelli 43", gradi:"Infanzia e primaria", url:"https://www.lucianoiret.org"},
-    {n:"Sacro Cuore, Sorelle della Misericordia", ind:"Via Alberto da Giussano 89 e 93", gradi:"Infanzia e primaria"},
-    {n:"Giulia Billiart", ind:"Via F. Paciotti 21", gradi:"Infanzia e primaria"},
-    {n:"Alessandro Marcucci", ind:"Via G. Fondulo 58", gradi:"Infanzia", dubbio:true},
-    {n:"Renzo da Ceri", ind:"Via G. degli Ubertini", gradi:"Infanzia", dubbio:true}
+     mail:"segreteria@scuolaamoremisericordioso.it", mail2:"scuola.amore.m@pcn.net", tel:"06 278601",
+     url:"https://www.scuolaamoremisericordioso.com",
+     nota:"Ha anche la sezione primavera, quindi bambini dai due anni. Ingresso anche da via Zenodossio 3. Il sito a settembre risultava in manutenzione: usa la mail."},
+    {n:"Lucia Noiret", ind:"Via Vincenzo Coronelli 43", gradi:"Infanzia e primaria",
+     mail:"info@lucianoiret.org", tel:"06 290332",
+     fonte:"Mail e telefono confermati da due fonti: elenco USR Lazio e scheda del quartiere.",
+     nota:"Il sito lucianoiret.org non \u00E8 pi\u00F9 raggiungibile, ma la mail risulta attiva e confermata da due elenchi. Restano attivi i canali social della scuola."},
+    {n:"Sacro Cuore, Sorelle della Misericordia", ind:"Via Alberto da Giussano 89 e 93", gradi:"Infanzia, primaria e secondaria di primo grado",
+     mail:"segreteria@sacrocuoregiussano.it", tel:"06 21701549",
+     url:"https://www.sacrocuoreroma.it/",
+     nota:"Tre ordini di scuola nello stesso istituto: significa una segreteria strutturata. Allo stesso civico ci sono anche una casa di riposo e un pensionato con numeri diversi, non usarli."},
+    {n:"Giulia Billiart", ind:"Via F. Paciotti 21", gradi:"Infanzia e primaria",
+     tel:"06 24402009",
+     nota:"Questa \u00E8 l'unica della lista senza mail. Il vecchio dominio della scuola \u00E8 spento e la congregazione non la elenca. Qui serve una telefonata: chiedi a chi mandare il curriculum e fatti dare l'indirizzo a voce."}
   ]},
   {cap:"00171", nome:"Centocelle e Tor de' Schiavi", nota:"Dieci minuti di macchina", scuole:[
-    {n:"L'Ape Birichina", ind:"Via G. Perlasca 59", gradi:"Infanzia"},
-    {n:"Istituto Filippo Smaldone", ind:"Via Tor de' Schiavi 404", gradi:"Infanzia e primaria"},
-    {n:"Santa Francesca Cabrini", ind:"Via Anagni 1", gradi:"Infanzia e primaria"},
-    {n:"Sacro Cuore", ind:"Via Manduria 51", gradi:"Infanzia e primaria"},
-    {n:"Annibale Maria Di Francia", ind:"Circonvallazione Appia 146", gradi:"Primaria"}
+    {n:"Istituto Filippo Smaldone", ind:"Via Tor de' Schiavi 404", gradi:"Infanzia e primaria",
+     mail:"segreteria@scuolafilipposmaldoneroma.it", mail2:"presidenza@scuolafilipposmaldoneroma.it", tel:"06 2594079",
+     url:"https://www.scuolafilipposmaldoneroma.it/segreteria/",
+     nota:"La segreteria riceve luned\u00EC, mercoled\u00EC e venerd\u00EC dalle 9 alle 14, marted\u00EC e gioved\u00EC dalle 14.30 alle 15.30, sabato solo su appuntamento. Se telefoni, chiedi della signora Pultrone."},
+    {n:"Santa Francesca Cabrini", ind:"Via Anagni 1", gradi:"Sezione primavera, infanzia, primaria e secondaria di primo grado",
+     mail:"sfscabrini_roma@cabriniroma.it", tel:"06 2596324",
+     url:"https://www.cabriniroma.it/",
+     nota:"Dai due anni fino alla terza media, tutto in una sede. \u00C8 fra le pi\u00F9 grandi della tua lista, e le pi\u00F9 grandi sono quelle che una segreteria la tengono aperta tutto l'anno."},
+    {n:"Sacro Cuore, Suore Battistine", ind:"Via Manduria 51", gradi:"Infanzia e primaria",
+     mail:"suore_battistine@libero.it", tel:"06 2598941",
+     url:"https://sacrocuorebattistineroma.it/contatti/"}
   ]},
-  {cap:"00172", nome:"Alessandrino e Villa De Sanctis", nota:"Sempre Municipio V, un po' più in là", scuole:[
-    {n:"Maria Immacolata", ind:"Via Tor de' Schiavi 150", gradi:"Infanzia e primaria"},
-    {n:"San Benedetto", ind:"Via Tor de' Schiavi 112 e 116", gradi:"Infanzia e primaria"},
-    {n:"Maria Santissima Incoronata", ind:"Viale Alessandrino 695", gradi:"Infanzia"},
-    {n:"San Vincenzo", ind:"Via delle Azalee 43", gradi:"Infanzia"},
-    {n:"Guglielmo Marconi", ind:"Via Francesco Bonafede 95", gradi:"Infanzia", dubbio:true},
-    {n:"Pio XII", ind:"Via Casilina 767", gradi:"Primaria"}
+  {cap:"00172", nome:"Alessandrino e Villa De Sanctis", nota:"Sempre Municipio V, un po' pi\u00F9 in l\u00E0", scuole:[
+    {n:"Maria Immacolata", ind:"Via Tor de' Schiavi 150", gradi:"Infanzia, primaria, medie e liceo delle scienze umane",
+     mail:"segreteriaimi.1949@gmail.com", mail2:"presidenza@mariaimmacolata.com", tel:"06 2417200",
+     url:"https://istitutomariaimmacolata.edu.it/contact-us/",
+     nota:"Dall'infanzia al liceo: \u00E8 la scuola pi\u00F9 grande della lista e quella con la segreteria pi\u00F9 impegnata. Apri il sito senza www davanti, altrimenti d\u00E0 errore di sicurezza."},
+    {n:"San Benedetto", ind:"Via Tor de' Schiavi 112 e 116", gradi:"Infanzia e primaria",
+     mail:"scuolasanbenedettorm@gmail.com", tel:"06 23230086", tel2:"06 2303913",
+     url:"https://www.scuolasanbenedetto.com/contatti/"},
+    {n:"Maria Santissima Incoronata", ind:"Viale Alessandrino 695", gradi:"Infanzia",
+     mail:"economato@ssincoronata.it", tel:"06 2184255",
+     fonte:"Il sito non pubblica mail: questa viene dal documento contatti 2024 ospitato sul sito stesso della scuola.",
+     nota:"La mail \u00E8 dell'economato della congregazione, allo stesso indirizzo della scuola. Scrivendo, specifica nella prima riga che ti riferisci alla scuola dell'infanzia paritaria di viale Alessandrino."},
+    {n:"Pio XII", ind:"Via Casilina 767", gradi:"Primaria",
+     mail:"segreteriapioxii@maristimediterranea.com", mail2:"direzionepioxii@maristimediterranea.com", tel:"06 2419305",
+     url:"https://pioxii.it/contatti/",
+     nota:"Istituto dei Maristi. Attenzione a non confonderlo con l'Istituto Pio XII di via Galla Placidia, che \u00E8 un'altra scuola dall'altra parte di Roma."}
+  ]},
+  {cap:"00179", nome:"Appio e Tuscolano", nota:"Quattro chilometri, ma vale il viaggio", scuole:[
+    {n:"Annibale Maria Di Francia", ind:"Circonvallazione Appia 146", gradi:"Infanzia, primaria e secondaria di primo grado",
+     mail:"segreteria.amministrativa@scuolaannibaledifrancia.it", mail2:"segreteria.didattica@scuolaannibaledifrancia.it", tel:"06 7809092", tel2:"331 3320520",
+     url:"https://scuolaannibaledifrancia.it/contact/",
+     nota:"\u00C8 l'unica della lista che pubblica due mail distinte, una per la segreteria didattica e una per l'amministrativa. Vuol dire che sono due ruoli separati e che la struttura c'\u00E8. Per la segreteria scrivi all'amministrativa."}
   ]}
+];
+
+/* Scuole dell'infanzia comunali di Roma Capitale, verificate il 9 settembre 2026.
+   Erano nella lista come paritarie da verificare: la verifica ha detto comunali. */
+const COMUNALI = [
+  {n:"Dalmazio Birago", ind:"Via Collatina 103"},
+  {n:"Alessandro Marcucci", ind:"Via G. Fondulo 58"},
+  {n:"Renzo da Ceri", ind:"Via G. degli Ubertini"},
+  {n:"L'Ape Birichina", ind:"Via G. Perlasca 59"},
+  {n:"Guglielmo Marconi, denominazione ufficiale Bonafede", ind:"Via Francesco Bonafede 95"}
+];
+
+/* ===== ENTI DI FORMAZIONE ACCREDITATI REGIONE LAZIO, quadrante est, verificati il 9 settembre 2026 ===== */
+const ENTI = [
+  {n:"CNOS-FAP, Borgo Ragazzi Don Bosco", ind:"Via Prenestina 468", zona:"Prenestino, Municipio V",
+   mail:"direzione.borgo@cnos-fap.it", tel:"06 2521251", url:"https://www.cnos-fap.it/cfp/roma-borgo-ragazzi-don-bosco",
+   forte:true, d:"Centro di formazione professionale salesiano, storico e strutturato. \u00C8 il pi\u00F9 vicino a casa tua di tutta questa lista.",
+   acc:"Accreditamento confermato dal portale INAPP per l'ente regionale CNOS-FAP Lazio."},
+  {n:"CIOFS FP Lazio", ind:"Viale Palmiro Togliatti 167", zona:"Cinecitt\u00E0, Municipio VII",
+   mail:"direzione@ciofslazio.it", tel:"06 71543068", url:"https://www.regione.lazio.it/enti/formazione/enti-accreditati/1260",
+   forte:true, d:"Ente delle Figlie di Maria Ausiliatrice, con corsi finanziati dalla Regione. Dove ci sono corsi finanziati c'\u00E8 rendicontazione, e la rendicontazione \u00E8 lavoro di segreteria.",
+   acc:"Scheda dell'albo regionale degli enti accreditati: attivit\u00E0 finanziata e autorizzata."},
+  {n:"CNOS-FAP, Teresa Gerini", ind:"Via Tiburtina 994", zona:"Tiburtino, Municipio IV",
+   mail:"direzione.gerini@cnos-fap.it", tel:"06 4090031", url:"https://www.cnos-fap.it/cfp/roma-istituto-teresa-gerini",
+   forte:true, d:"L'altro grande centro salesiano di Roma est, sulla Tiburtina.",
+   acc:"Sede indicata dalla vetrina della formazione della Regione Lazio."},
+  {n:"Fondazione Et Labora", ind:"Via dei Mamili 13", zona:"Quadraro, Municipio VII",
+   mail:"roma@fondazioneetlabora.org", tel:"06 8555807", url:"https://www.regione.lazio.it/cittadini/formazione/offerta-formativa/ente/749",
+   acc:"Vetrina della formazione della Regione Lazio, presente anche nell'elenco regionale del programma GOL."},
+  {n:"A.L.E.SS. Don Milani", ind:"Via Diana 35", zona:"Tuscolano, Municipio VII",
+   mail:"info@alessdonmilani.it", tel:"06 70306840", url:"https://www.regione.lazio.it/cittadini/formazione/offerta-formativa/ente/341",
+   acc:"Vetrina della formazione della Regione Lazio, presente anche nell'elenco regionale del programma GOL."},
+  {n:"Centro Manuela Mezzelani", ind:"Via Tuscolana 388", zona:"Tuscolano, Municipio VII",
+   mail:"info@mezzelani.it", tel:"06 7858010", url:"https://www.regione.lazio.it/enti/formazione/enti-accreditati/1864",
+   acc:"Scheda dell'albo regionale degli enti accreditati: attivit\u00E0 finanziata e autorizzata."},
+  {n:"Consorzio ELIS", ind:"Via Sandro Sandri 79", zona:"Casal Bertone, Municipio IV",
+   mail:"consel@elis.org", tel:"06 459241", url:"https://www.regione.lazio.it/cittadini/formazione/offerta-formativa/ente/819",
+   acc:"Vetrina della formazione della Regione Lazio."},
+  {n:"Fondazione E.RI.FO.", ind:"Via Giuseppe Pianell 8/10", zona:"Municipio IV",
+   mail:"erifo@erifo.it", tel:"06 69320850", url:"https://www.regione.lazio.it/cittadini/formazione/offerta-formativa/ente/565",
+   acc:"Ente sulla vetrina regionale. La sede di via Pianell risulta da un allegato regionale del 2022: prima di andarci di persona, telefona per conferma."}
 ];
 
 /* ===== PORTALI E CANALI DI RICERCA, controllati il 20 agosto 2026 ===== */
@@ -1492,32 +1604,105 @@ function renderPorte(){
 }
 
 /* ===== SCUOLE PRIVATE ===== */
+function riga(eti, val, href){
+  if(!val) return "";
+  return '<div class="riga-cont"><span class="eti">'+esc(eti)+'</span>'
+    + (href ? '<a href="'+esc(href)+'">'+esc(val)+'</a>' : '<span>'+esc(val)+'</span>')
+    + '</div>';
+}
+
+function alTracker(nome, ind, ruolo, azione){
+  S.candidature.push({id:"c"+Date.now()+Math.floor(Math.random()*99), ente:nome, ruolo:ruolo,
+    canale:"Candidatura spontanea", data:"", stato:"dainviare",
+    azione:azione, azioneData:"", note:ind});
+  salva(); renderCand();
+}
+
 function renderScuole(){
   const el = $("#lista-scuole"); if(!el) return;
   el.innerHTML = ZONE.map(z =>
     '<div class="zona-testa"><b>'+esc(z.nome)+'</b><span>'+esc(z.cap)+', '+esc(z.nota)+'</span></div>'
     + z.scuole.map(s => {
-      const iniz = s.n.replace(/^(L'|Il |La )/,'').charAt(0).toUpperCase();
+      const iniz = s.n.replace(/^(L'|Il |La )/,"").charAt(0).toUpperCase();
+      const primaMail = s.mail || "";
       return '<div class="scuola"><div class="stella'+(s.top?' top':'')+'">'+esc(iniz)+'</div>'
         + '<div style="flex:1;min-width:0">'
         + '<h4>'+esc(s.n)+'</h4>'
         + '<div class="ind">'+esc(s.ind)+'. '+esc(s.gradi)+'.</div>'
-        + (s.cont?'<div class="cont">'+s.cont+'</div>':'')
-        + (s.dubbio?'<div style="margin-top:7px"><span class="pill p-info">da verificare se paritaria o comunale</span></div>':'')
+        + '<div class="contatti">'
+        + riga("Segreteria", s.mail || "nessuna mail pubblicata, va telefonato", s.mail?("mailto:"+s.mail):null)
+        + riga("Altra mail", s.mail2, s.mail2?("mailto:"+s.mail2):null)
+        + riga("Telefono", s.tel, s.tel?("tel:"+s.tel.replace(/ /g,"")):null)
+        + riga("Altro numero", s.tel2, s.tel2?("tel:"+s.tel2.replace(/ /g,"")):null)
+        + '</div>'
+        + (s.fonte?'<p class="fonte">'+esc(s.fonte)+'</p>':'')
         + (s.nota?'<p style="margin:9px 0 0;font-size:14px;color:#4A3A3D;max-width:78ch">'+esc(s.nota)+'</p>':'')
         + '<div class="azioni">'
-        + (s.url?'<a class="b b-mini" href="'+esc(s.url)+'" target="_blank" rel="noopener">Apri la scheda</a>':'')
-        + '<a class="b b-mini" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(s.n+" "+s.ind+" Roma scuola contatti")+'">Cerca i contatti</a>'
-        + '<button class="b b-mini" data-sc="'+esc(s.n)+'|'+esc(s.ind)+'">Aggiungi al tracker</button>'
+        + (primaMail?'<button class="b b-mini b-pri" data-cp="'+esc(primaMail)+'">Copia la mail</button>':'')
+        + '<button class="b b-mini" data-tr="segreteria|'+esc(s.n)+'|'+esc(s.ind)+'">Al tracker: segreteria</button>'
+        + '<button class="b b-mini" data-tr="sezione|'+esc(s.n)+'|'+esc(s.ind)+'">Al tracker: sezione</button>'
+        + (s.url?'<a class="b b-mini" href="'+esc(s.url)+'" target="_blank" rel="noopener">Sito</a>':'')
         + '</div></div></div>';
     }).join("")
   ).join("");
-  el.querySelectorAll("[data-sc]").forEach(b=>b.addEventListener("click",()=>{
-    const [nome, ind] = b.dataset.sc.split("|");
-    S.candidature.push({id:"c"+Date.now(), ente:nome, ruolo:"Insegnante scuola dell'infanzia", canale:"Candidatura spontanea",
-      data:"", stato:"dainviare", azione:"Trovare la mail della segreteria e mandare CV e lettera", azioneData:"", note:ind});
-    salva(); renderCand(); toast("Aggiunta al tracker, da inviare");
+
+  el.querySelectorAll("[data-cp]").forEach(b=>b.addEventListener("click", async ()=>{
+    try{ await navigator.clipboard.writeText(b.dataset.cp); toast("Mail copiata"); }
+    catch(e){ toast("Copia a mano: "+b.dataset.cp); }
   }));
+
+  el.querySelectorAll("[data-tr]").forEach(b=>b.addEventListener("click",()=>{
+    const [che, nome, ind] = b.dataset.tr.split("|");
+    if(che === "segreteria"){
+      alTracker(nome, ind, "Segreteria didattica e amministrativa",
+        "Mandare CV amministrativo e lettera Segreteria di una scuola");
+      toast("Aggiunta: candidatura per la segreteria");
+    }else{
+      alTracker(nome, ind, "Insegnante scuola dell'infanzia",
+        "Mandare CV e lettera Scuola dell'infanzia paritaria");
+      toast("Aggiunta: candidatura per la sezione");
+    }
+  }));
+
+  const c = $("#lista-comunali");
+  if(c) c.innerHTML =
+    '<p style="margin:0 0 12px;font-size:15px">Queste cinque risultano <b>scuole dell\'infanzia comunali di Roma Capitale</b>, non paritarie private. Non hanno una segreteria che assume: il personale passa dai concorsi e dalle graduatorie del Comune, e la mail che compare nei dati ministeriali e quella di un referente di Roma Capitale, non della scuola. Scrivere una candidatura spontanea li non serve a niente.</p>'
+    + '<ul style="margin:0 0 14px;padding-left:20px;font-size:14.5px;color:#4A3A3D">'
+    + COMUNALI.map(x=>'<li><b>'+esc(x.n)+'</b>, '+esc(x.ind)+'</li>').join("")
+    + '</ul>'
+    + '<p style="margin:0 0 12px;font-size:15px">La sesta era la <b>San Vincenzo di via delle Azalee 43</b>. Quella scuola non esiste piu: l\'edificio e stato demolito a marzo del 2024 e al suo posto sono state costruite due palazzine. L\'ho tolta.</p>'
+    + '<p style="margin:0;font-size:14px;color:var(--grigio)">Se vuoi lavorare nelle comunali la strada c\'e, ma e un\'altra: sono i bandi di Roma Capitale per educatore ed insegnante di scuola dell\'infanzia. Li trovi nella sezione Canali, alla voce dei concorsi pubblici.</p>';
+
+  const e = $("#lista-enti");
+  if(e) e.innerHTML = ENTI.map(x =>
+    '<div class="scuola"><div class="stella'+(x.forte?' top':'')+'">'+esc(x.n.charAt(0))+'</div>'
+    + '<div style="flex:1;min-width:0">'
+    + '<h4>'+esc(x.n)+'</h4>'
+    + '<div class="ind">'+esc(x.ind)+'. '+esc(x.zona)+'.</div>'
+    + '<div class="contatti">'
+    + riga("Mail", x.mail, "mailto:"+x.mail)
+    + riga("Telefono", x.tel, "tel:"+x.tel.replace(/ /g,""))
+    + '</div>'
+    + (x.d?'<p style="margin:9px 0 0;font-size:14px;color:#4A3A3D;max-width:78ch">'+esc(x.d)+'</p>':'')
+    + '<p class="fonte">'+esc(x.acc)+'</p>'
+    + '<div class="azioni">'
+    + '<button class="b b-mini b-pri" data-cpe="'+esc(x.mail)+'">Copia la mail</button>'
+    + '<button class="b b-mini" data-tre="'+esc(x.n)+'|'+esc(x.ind)+'">Al tracker</button>'
+    + '<a class="b b-mini" href="'+esc(x.url)+'" target="_blank" rel="noopener">Scheda</a>'
+    + '</div></div></div>').join("");
+
+  if(e){
+    e.querySelectorAll("[data-cpe]").forEach(b=>b.addEventListener("click", async ()=>{
+      try{ await navigator.clipboard.writeText(b.dataset.cpe); toast("Mail copiata"); }
+      catch(err){ toast("Copia a mano: "+b.dataset.cpe); }
+    }));
+    e.querySelectorAll("[data-tre]").forEach(b=>b.addEventListener("click",()=>{
+      const [nome, ind] = b.dataset.tre.split("|");
+      alTracker(nome, ind, "Segreteria didattica e amministrativa",
+        "Mandare CV amministrativo e lettera Segreteria di una scuola");
+      toast("Aggiunto al tracker");
+    }));
+  }
 }
 
 /* ===== DOVE CERCARE ===== */
@@ -1690,7 +1875,7 @@ function lettera(tipo, ente, extra){
     segreteria:
 "Oggetto: Candidatura per un ruolo di segreteria e supporto amministrativo\n\nAlla cortese attenzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per un ruolo di segreteria o di supporto amministrativo.\n\nHo dieci anni di esperienza in questo lavoro. Per quattro anni sono stata assistente di direzione dell'area legale in DeA Capital Real Estate SGR: gestione delle agende del team, organizzazione di riunioni, comitati e assemblee dei fondi, protocollo, archivio, comunicazione telematica in entrata e in uscita, organizzazione dei viaggi di lavoro. Prima e dopo ho lavorato in Cassa Depositi e Prestiti Investimenti SGR come segretaria amministrativa, in Cerved Credit Management, in JAKALA come segretaria part time con front office e inserimento di dati contabili, e in aziende più piccole dove seguivo anche la fatturazione attiva e passiva.\n\nHo il diploma di ragioniere per l'amministrazione e il controllo delle piccole e medie aziende, un attestato in paghe e contributi e uno di addetta al back office informatizzato. Uso quotidianamente il pacchetto Office, la posta elettronica e la PEC, e sono abituata a lavorare su scadenze e su documenti riservati.\n\nNel 2026 ho conseguito la laurea in Scienze dell'Educazione e della Formazione, che ho preso studiando mentre lavoravo.\n\nAbito a "+Z+", sono automunita e sono disponibile per il part time, del mattino o del pomeriggio.\n\nAllego il curriculum vitae.",
     segreteriascuola:
-"Oggetto: Candidatura per la segreteria didattica e amministrativa\n\nAlla cortese attenzione della Direzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per un ruolo nella vostra segreteria.\n\nHo una combinazione che nel mondo della scuola non è frequente: dieci anni di segreteria e amministrazione veri, e una laurea in Scienze dell'Educazione e della Formazione con l'esperienza in sezione che ne è seguita.\n\nSul lato amministrativo: quattro anni come assistente di direzione dell'area legale in DeA Capital Real Estate SGR, poi Cassa Depositi e Prestiti Investimenti SGR e JAKALA. Agende, protocollo in entrata e in uscita, archivio cartaceo e digitale, PEC, fatturazione attiva e passiva, rapporti con fornitori ed enti. Ho il diploma di ragioniere e un attestato in paghe e contributi.\n\nSul lato scuola: laurea L-19 con 107 su 110, un tirocinio di 300 ore nella scuola dell'infanzia e 31 giornate di supplenza come docente negli Istituti Comprensivi statali del Municipio V nel 2026. So come funziona una giornata scolastica dall'interno, e questo in segreteria si sente: nelle iscrizioni, nelle comunicazioni alle famiglie, nel rapporto con le insegnanti.\n\nAbito a "+Z+", sono automunita e disponibile per il part time.\n\nAllego il curriculum vitae.",
+"Oggetto: Candidatura per la segreteria didattica e amministrativa\n\nAlla cortese attenzione della Direzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi per un ruolo nella vostra segreteria, anche part time.\n\nHo una combinazione che nella scuola non e frequente: dieci anni di segreteria e amministrazione veri, e una laurea in Scienze dell'Educazione e della Formazione con l'esperienza in sezione che ne e seguita.\n\nSul lato amministrativo: quattro anni come assistente di direzione dell'area legale in DeA Capital Real Estate SGR, poi Cassa Depositi e Prestiti Investimenti SGR, Cerved Credit Management e JAKALA. Agende, protocollo in entrata e in uscita, archivio cartaceo e digitale, PEC, fatturazione attiva e passiva, organizzazione di riunioni e comitati, rapporti con fornitori ed enti. Ho il diploma di ragioniere per l'amministrazione e il controllo, un attestato in paghe e contributi e uno di addetta al back office informatizzato. Nel 2024 ho conseguito la certificazione delle competenze digitali DigComp 2.2 rilasciata da ente accreditato ACCREDIA, e nel 2026 un attestato di dattilografia di 200 ore con esame finale.\n\nSul lato scuola: laurea L-19 con 107 su 110, un tirocinio di 300 ore nella scuola dell'infanzia e 31 giornate di supplenza come docente negli Istituti Comprensivi statali del Municipio V nel 2026. So come funziona una giornata scolastica dall'interno, e in segreteria si sente: nelle iscrizioni, nelle comunicazioni alle famiglie, nel rapporto quotidiano con le insegnanti e con chi accompagna i bambini.\n\nAbito a "+Z+", a pochi minuti dalla vostra sede, sono automunita e disponibile per il part time del mattino o del pomeriggio.\n\nAllego il curriculum vitae. Se in questo momento non avete posizioni aperte, vi chiedo di tenere la mia candidatura in archivio: so che in segreteria le sostituzioni e i picchi di lavoro arrivano all'improvviso.",
     oepac:
 "Oggetto: Candidatura come operatrice educativa per l'autonomia e la comunicazione\n\nAlla cortese attenzione di "+E+","+rif+"\n\nmi chiamo "+N+" e vi scrivo per propormi come OEPAC nelle scuole di Roma in cui operate.\n\nSono laureata in Scienze dell'Educazione e della Formazione (L-19) presso l'Università Telematica Pegaso, con votazione 107 su 110. Il Regolamento di Roma Capitale in materia di OEPAC, all'articolo 12, indica la laurea in Scienze dell'Educazione e della Formazione tra i titoli di formazione iniziale validi per il profilo, in alternativa al diploma con corso di qualifica: è su questo che fondo la mia candidatura.\n\nQuanto all'esperienza diretta con i bambini: da aprile a giugno 2026 ho svolto 31 giornate di supplenza come docente di scuola dell'infanzia negli Istituti Comprensivi statali del Municipio V, e nel 2025 un tirocinio curriculare di 300 ore nella scuola dell'infanzia. La mia tesi di laurea riguarda la valutazione delle competenze degli studenti con bisogni educativi speciali nella scuola italiana.\n\nSono disponibile a frequentare l'aggiornamento annuale previsto dal Regolamento presso un ente accreditato dalla Regione Lazio.\n\nAbito a "+Z+", sono automunita e conosco bene le scuole del Municipio V e dei municipi confinanti.\n\nAllego il curriculum vitae.",
     annuncio:
