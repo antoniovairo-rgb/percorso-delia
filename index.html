@@ -572,7 +572,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 
     <div class="card" id="lista-scuole"></div>
 
-    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">L'elenco parte dai dati ministeriali delle scuole di Roma per codice postale, del 20 agosto 2026. I contatti li ho verificati uno per uno il 9 settembre 2026 sui siti delle scuole, sugli elenchi dell'Ufficio Scolastico Regionale del Lazio e sui siti delle congregazioni: nessuna mail è stata indovinata. Dove il dato non viene dal sito della scuola l'ho scritto nella scheda. Gli indirizzi possono comunque cambiare: se una mail torna indietro, telefona.</p>
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">L'elenco parte dai dati ministeriali delle scuole di Roma per codice postale, del 20 agosto 2026. I contatti li ho verificati uno per uno il 9 settembre 2026 sui siti delle scuole, sugli elenchi dell'Ufficio Scolastico Regionale del Lazio e sui siti delle congregazioni: nessuna mail è stata indovinata. Dove il dato non viene dal sito della scuola l'ho scritto nella scheda. Il 10 settembre 2026 ho ricontrollato ogni casella anche a livello di server di posta, cioè ho verificato che il dominio esista davvero e abbia un server che riceve: tutte rispondono, tranne quella della Lucia Noiret, che infatti ha fatto tornare indietro una mail. Questo non garantisce che qualcuno legga, ma esclude che la mail rimbalzi. Se una torna indietro lo stesso, telefona e dimmelo, così la correggo.</p>
 
     <div class="sez">
       <h2>Le cinque che ho tolto dalla lista</h2>
@@ -1231,9 +1231,10 @@ const ZONE = [
      url:"https://www.scuolaamoremisericordioso.com",
      nota:"Ha anche la sezione primavera, quindi bambini dai due anni. Ingresso anche da via Zenodossio 3. Il sito a settembre risultava in manutenzione: usa la mail."},
     {n:"Lucia Noiret", ind:"Via Vincenzo Coronelli 43", gradi:"Infanzia e primaria",
-     mail:"info@lucianoiret.org", tel:"06 290332",
-     fonte:"Mail e telefono confermati da due fonti: elenco USR Lazio e scheda del quartiere.",
-     nota:"Il sito lucianoiret.org non \u00E8 pi\u00F9 raggiungibile, ma la mail risulta attiva e confermata da due elenchi. Restano attivi i canali social della scuola."},
+     tel:"06 290332", pec:"istituto.lucianoiret@pec.it",
+     url:"https://www.facebook.com/istitutolucianoiret/", urlt:"Pagina Facebook",
+     fonte:"La PEC viene dall'elenco degli istituti paritari approvati della Regione Lazio. Il telefono è confermato da più elenchi.",
+     nota:"Attenzione, questa è diversa dalle altre. La mail info@lucianoiret.org non esiste più: il dominio è stato spento e le mail tornano indietro, provato il 10 settembre 2026. Qui si telefona, oppure si scrive un messaggio dalla pagina Facebook, che è il canale che una scuola tiene vivo anche quando perde il sito. La PEC funziona ma va mandata da un'altra PEC, non da una mail normale. Una cosa da sapere prima di insistere: la cooperativa che gestiva la scuola, A Braccia Aperte, risulta in liquidazione al Registro Imprese. La scuola compare ancora nell'anagrafe ministeriale delle paritarie per il 2025 e 2026, quindi non ha chiuso, ma il gestore potrebbe essere cambiato. La prima domanda al telefono è proprio questa."},
     {n:"Sacro Cuore, Sorelle della Misericordia", ind:"Via Alberto da Giussano 89 e 93", gradi:"Infanzia, primaria e secondaria di primo grado",
      mail:"segreteria@sacrocuoregiussano.it", tel:"06 21701549",
      url:"https://www.sacrocuoreroma.it/",
@@ -1633,6 +1634,7 @@ function renderScuole(){
         + riga("Segreteria", s.mail || "nessuna mail pubblicata, va telefonato", s.mail?("mailto:"+s.mail):null)
         + riga("Altra mail", s.mail2, s.mail2?("mailto:"+s.mail2):null)
         + riga("Telefono", s.tel, s.tel?("tel:"+s.tel.replace(/ /g,"")):null)
+        + riga("PEC", s.pec, s.pec?("mailto:"+s.pec):null)
         + riga("Altro numero", s.tel2, s.tel2?("tel:"+s.tel2.replace(/ /g,"")):null)
         + '</div>'
         + (s.fonte?'<p class="fonte">'+esc(s.fonte)+'</p>':'')
@@ -1641,7 +1643,7 @@ function renderScuole(){
         + (primaMail?'<button class="b b-mini b-pri" data-cp="'+esc(primaMail)+'">Copia la mail</button>':'')
         + '<button class="b b-mini" data-tr="segreteria|'+esc(s.n)+'|'+esc(s.ind)+'">Al tracker: segreteria</button>'
         + '<button class="b b-mini" data-tr="sezione|'+esc(s.n)+'|'+esc(s.ind)+'">Al tracker: sezione</button>'
-        + (s.url?'<a class="b b-mini" href="'+esc(s.url)+'" target="_blank" rel="noopener">Sito</a>':'')
+        + (s.url?'<a class="b b-mini" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.urlt||"Sito")+'</a>':'')
         + '</div></div></div>';
     }).join("")
   ).join("");
