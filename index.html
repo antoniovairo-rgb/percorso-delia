@@ -140,6 +140,20 @@ summary.tappa-testa::-webkit-details-marker{display:none}
 .kpi b{font-size:38px;font-weight:700;line-height:1;display:block;margin:8px 0 3px}
 .kpi span{color:var(--grigio);font-size:13.5px}
 
+.scelta{display:flex;flex-direction:column;gap:7px;cursor:pointer;transition:.16s}
+.scelta:hover{border-color:var(--indaco);transform:translateY(-2px);box-shadow:var(--om-m)}
+.scelta:focus-visible{outline:2.5px solid var(--indaco);outline-offset:3px}
+.scelta h3{font-size:17.5px}
+.scelta p{margin:0;font-size:14px;color:var(--grigio);min-height:19px}
+.scelta .va{margin-top:2px;font-size:13.5px;font-weight:600;color:var(--indaco)}
+
+.wiz-card{background:var(--carta);border:1px solid var(--nebbia);border-top:4px solid var(--indaco);border-radius:var(--r);box-shadow:var(--om-m);padding:24px}
+.wiz-passo{font-size:12px;font-family:Consolas, "DejaVu Sans Mono", Menlo, monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--indaco);font-weight:600}
+.wiz-domanda{font-size:21px;margin:8px 0 16px}
+.wiz-indietro{margin-top:16px;background:transparent;border:0;color:var(--grigio);font-size:13.5px;font-weight:500;padding:6px 0;display:inline-flex;align-items:center;gap:5px}
+.wiz-indietro:hover{color:var(--indaco)}
+@media(max-width:600px){.wiz-card{padding:18px}.wiz-domanda{font-size:19px}}
+
 .chip{background:var(--carta);border:1px solid var(--nebbia);border-radius:99px;padding:7px 15px;font-size:13.5px;color:var(--grigio);transition:.15s}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:500}
 .filtri{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
@@ -175,8 +189,6 @@ summary.tappa-testa::-webkit-details-marker{display:none}
 @media(max-width:860px){
   .cand-tabella{display:none}
   .cand-schede{display:block}
-  /* i tre contatori restano in riga: in colonna si mangiavano mezzo schermo
-     prima di far vedere la prima candidatura */
   .kpi-riga{grid-template-columns:repeat(3,1fr);gap:9px}
   .kpi-riga .pad{padding:12px 9px}
   .kpi-riga .tit{font-size:10px;letter-spacing:.04em}
@@ -238,7 +250,14 @@ tr.riga-ok{background:#EFF6F2}
 .scuola .ind{color:var(--grigio);font-size:13.5px;margin-top:3px}
 .scuola .cont{font-size:13.5px;margin-top:6px}
 .scuola .azioni{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-.scuola .contatti{margin-top:9px;display:grid;gap:3px;grid-template-columns:minmax(0,1fr);white-space:normal}
+.scuola .contatti,.conc .contatti{margin-top:9px;display:grid;gap:3px;grid-template-columns:minmax(0,1fr);white-space:normal}
+.conc{padding:20px;border-bottom:1px solid var(--nebbia)}
+.conc:last-child{border-bottom:0}
+.conc h3{font-size:17px;margin:8px 0 0}
+.conc .meta{color:var(--grigio);font-size:13.5px;margin-top:4px}
+.conc p{margin:11px 0 0;font-size:14.5px;color:#4A3A3D;max-width:80ch}
+.conc .fonte{font-size:12.5px;color:var(--grigio);margin-top:9px;max-width:80ch;font-style:italic}
+.conc .azioni{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap}
 .riga-cont{display:flex;gap:8px;font-size:13.5px;align-items:baseline;flex-wrap:wrap;min-width:0}
 .riga-cont .eti{color:var(--grigio);min-width:88px;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
 .riga-cont a,.riga-cont>span:not(.eti){min-width:0;flex:1 1 auto;overflow-wrap:anywhere}
@@ -305,38 +324,137 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
   .tappa-testa{padding:14px 16px}
   .tappa-corpo{padding:6px 4px 4px}
 }
+
+
+/* ============ zone, pagine, testata (29 settembre 2026) ============ */
+.nav button{display:inline-flex;align-items:center;gap:7px}
+.nav button svg{width:18px;height:18px;flex:0 0 auto}
+.avanz-et{font-size:12px;color:var(--grigio);white-space:nowrap;font-weight:600}
+#testa-vista{margin-bottom:6px}
+.subnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 0 20px;padding:4px;background:#F2E6E7;border-radius:14px}
+.subnav::-webkit-scrollbar{display:none}
+.subnav button{flex:1 0 auto;border:0;background:transparent;padding:10px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--grigio);white-space:nowrap}
+.subnav button:hover{color:var(--ink)}
+.subnav button[aria-selected="true"]{background:var(--carta);color:var(--ink);box-shadow:var(--om-s)}
+.testata{display:flex;gap:15px;align-items:flex-start;margin:0 0 24px}
+.testata-ico{flex:0 0 auto;width:48px;height:48px;border-radius:15px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--om-s)}
+.testata-ico svg{width:25px;height:25px}
+.briciole{font-size:12px;color:var(--indaco);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.testata h1{font-size:27px;margin:3px 0 5px}
+.testata p{margin:0;color:#4A3A3D;font-size:15px;max-width:64ch}
+.titolo-doppio{display:none}
+.desc.nascosta{display:none}
+.leggi{background:transparent;border:0;padding:0;margin:-6px 0 18px;color:var(--indaco);font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* riquadri di spiegazione che si aprono con un tocco */
+.avviso.comp{padding-top:15px;padding-bottom:15px}
+.avviso.comp>h3{cursor:pointer;display:flex;align-items:center;gap:10px;margin:0;user-select:none}
+.avviso.comp>h3::before{content:"";flex:0 0 auto;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+.avviso.comp.aperto>h3::before{transform:rotate(45deg)}
+.avviso.comp .avviso-corpo{display:none;margin-top:10px}
+.avviso.comp.aperto .avviso-corpo{display:block}
+
+/* etichette che si spiegano */
+.pill,.stato{cursor:pointer}
+.pill::after,.stato::after{content:"?";display:inline-block;margin-left:6px;width:13px;height:13px;line-height:11px;border-radius:50%;border:1.3px solid currentColor;font-size:9px;font-weight:700;text-align:center;vertical-align:1px;box-sizing:border-box;opacity:.8}
+.dist{cursor:pointer}
+.foglio{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center}
+.foglio[hidden]{display:none!important}
+.foglio-velo{position:absolute;inset:0;background:rgba(36,20,25,.42)}
+.foglio-box{position:relative;background:var(--carta);width:100%;max-width:520px;border-radius:22px 22px 0 0;padding:22px 22px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(36,20,25,.25)}
+@media(min-width:761px){.foglio{align-items:center}.foglio-box{border-radius:22px}}
+.foglio-tit{font-size:12px;color:var(--grigio);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.foglio-et{margin:10px 0 8px}
+.foglio-box p{margin:0 0 18px;font-size:16px;line-height:1.55}
+.foglio-az{display:flex;gap:8px;flex-wrap:wrap}
+
+/* pagina Oggi */
+.adesso-oggi{padding:24px 26px}
+.adesso-oggi h2{font-size:28px;margin:6px 0 8px}
+.adesso-oggi p{margin:0}
+.wiz-posto{margin-top:18px}
+.primavolta{display:flex;gap:14px;align-items:center;margin-top:34px;flex-wrap:wrap}
+.primavolta-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:var(--indaco-chiaro);color:var(--indaco);display:flex;align-items:center;justify-content:center}
+.primavolta-ico svg{width:22px;height:22px}
+.primavolta b{display:block;font-size:15.5px}
+.primavolta span{display:block;font-size:14px;color:var(--grigio);margin-top:2px}
+
+/* guida */
+.guida-ico{width:40px;height:40px;border-radius:12px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center}
+.guida-ico svg{width:21px;height:21px}
+.glos{margin-bottom:10px;overflow:hidden}
+details.glos>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:16px 20px}
+details.glos>summary::-webkit-details-marker{display:none}
+details.glos>summary::before{content:"";flex:0 0 auto;width:7px;height:7px;border-right:2px solid var(--indaco);border-bottom:2px solid var(--indaco);transform:rotate(-45deg);transition:transform .2s}
+details.glos[open]>summary::before{transform:rotate(45deg)}
+details.glos>summary b{font-size:15.5px;flex:1}
+details.glos>summary span{font-size:12.5px;color:var(--grigio)}
+.glos-riga{display:flex;gap:14px;padding:14px 20px;border-top:1px solid var(--nebbia);align-items:flex-start}
+.glos-et{flex:0 0 170px}
+.glos-riga p{margin:0;font-size:14.5px;color:#4A3A3D}
+@media(max-width:600px){.glos-riga{flex-direction:column;gap:6px}.glos-et{flex-basis:auto}}
+
+/* elenchi che si aprono: chiusi, fuori profilo, fonti */
+details.archivio{border-top:1px solid var(--nebbia)}
+details.archivio>summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:14.5px;color:var(--grigio);list-style:none;background:#FDF8F8}
+details.archivio>summary::-webkit-details-marker{display:none}
+details.archivio>summary::before{content:"+ ";color:var(--indaco);font-weight:700}
+details.archivio[open]>summary::before{content:"- "}
+details.piede>summary{cursor:pointer;font-weight:600;color:var(--grigio);padding:6px 0}
+
+/* testi lunghi nelle schede: tre righe, il resto con un tocco */
+.lungo:not(.aperto){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.leggi-tutto{display:block;background:none;border:0;padding:0;margin-top:5px;color:var(--indaco);font-weight:600;font-size:13.5px}
+
+/* telefono: le cinque zone in basso, come un'app */
+@media(max-width:760px){
+  .nav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--nebbia);justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom));gap:2px;overflow:visible;max-width:none}
+  .nav button{flex:1 1 0;flex-direction:column;padding:6px 2px;font-size:11px;border-radius:12px;gap:3px;min-width:0;white-space:normal;line-height:1.15;text-align:center}
+  .nav button svg{width:23px;height:23px}
+  .nav button[aria-current="true"]{background:var(--indaco-chiaro);color:var(--indaco)}
+  .bar{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(250,244,244,.98)}
+  .subnav{flex-wrap:wrap}
+  .subnav button{flex:1 1 40%;padding:10px 8px;font-size:13.5px}
+  main{padding-bottom:120px}
+  footer{padding-bottom:120px}
+  .toast{bottom:96px}
+  .testata h1{font-size:23px}
+  .testata-ico{width:42px;height:42px;border-radius:13px}
+}
 </style>
 </head>
 <body>
+
 <div class="bar">
   <div class="bar-in">
     <div class="logo">
       <div class="pallino" aria-hidden="true"></div>
       <div><b id="logo-nome">Il mio percorso</b><span>Lavoro nei servizi educativi 0-6, Roma est</span></div>
     </div>
-    <div class="avanz" title="Avanzamento del percorso">
+    <div class="avanz" title="Quanta parte del percorso hai completato">
+      <span class="avanz-et">Percorso fatto</span>
       <div class="barra"><i id="barra-i"></i></div>
       <span class="q" id="barra-q">0%</span>
     </div>
-    <nav class="nav" aria-label="Sezioni">
-      <button data-v="percorso" aria-current="true">Percorso</button>
-      <button data-v="esei">Corso ESEI</button>
-      <button data-v="annunci">Annunci</button>
-      <button data-v="private">Scuole private</button>
-      <button data-v="porte">Altre porte</button>
-      <button data-v="candidature">Candidature</button>
-      <button data-v="dove">Dove cercare</button>
-      <button data-v="canali">Canali</button>
-      <button data-v="lettere">Lettere</button>
-      <button data-v="profilo">Profilo</button>
+    <nav class="nav" aria-label="Zone dell'app">
+      <button data-g="home" aria-current="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Oggi</span></button>
+      <button data-g="percorso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4h11l-2 4 2 4H5"/></svg><span>Percorso</span></button>
+      <button data-g="lavoro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Trova lavoro</span></button>
+      <button data-g="candidati"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Candidati</span></button>
+      <button data-g="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17.5v.01"/></svg><span>Guida e dati</span></button>
     </nav>
   </div>
 </div>
 
 <main>
 
-<!-- ===== PERCORSO ===== -->
-<section class="vista" id="v-percorso">
+<div id="testa-vista" hidden>
+  <div class="subnav" id="subnav" role="tablist" aria-label="Pagine di questa zona"></div>
+  <div class="testata" id="testata"></div>
+</div>
+
+<!-- ===== OGGI (wizard) ===== -->
+<section class="vista" id="v-home">
   <div class="instbar" id="instbar" hidden>
     <div class="ico" aria-hidden="true"></div>
     <div class="txt"><b>Tienila sul telefono</b><span id="instbar-sotto">Diventa un'icona come le altre app e funziona anche senza campo.</span></div>
@@ -347,6 +465,29 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
     <p>Scrivi il tuo nome, il telefono e la mail: servono a firmare le lettere che trovi qui dentro. Restano su questo dispositivo e non li vede nessun altro.</p>
     <div style="margin-top:12px"><button class="b b-mini" data-vai="profilo">Scrivili adesso</button></div>
   </div>
+  <div class="adesso adesso-oggi">
+    <div class="tit" id="oggi-data">Oggi</div>
+    <h2 id="oggi-ciao">Ciao!</h2>
+    <p>Rispondi a una domanda alla volta: ti porto io dove serve. Se ti perdi, tocca <b>Oggi</b> e si riparte da qui.</p>
+  </div>
+
+  <div id="wizard-oggi" class="wiz-posto"></div>
+
+  <div class="sez">
+    <h2>Le notizie di oggi</h2>
+    <p class="desc">Annunci nuovi e scadenze vicine. Si aggiornano da sole, ogni giorno.</p>
+    <div class="card" id="lista-notizie"></div>
+  </div>
+
+  <div class="card pad primavolta">
+    <div class="primavolta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17.5v.01"/></svg></div>
+    <div style="flex:1;min-width:0"><b>Prima volta qui, o ti senti persa?</b><span>In due minuti ti spiego come è fatta l'app e cosa vuol dire ogni etichetta colorata.</span></div>
+    <button class="b" data-vai="aiuto">Apri la guida</button>
+  </div>
+</section>
+
+<!-- ===== PERCORSO ===== -->
+<section class="vista" id="v-percorso" hidden>
   <div class="adesso">
     <div class="tit">Adesso tocca a questo</div>
     <h2 id="ora-titolo">Un attimo...</h2>
@@ -545,6 +686,24 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
   </div>
 </section>
 
+<!-- ===== CONCORSI ===== -->
+<section class="vista" id="v-concorsi" hidden>
+  <div class="sez" style="margin-top:0">
+    <h2>Concorsi</h2>
+    <p class="desc">Un concorso è diverso da un annuncio: ha una scadenza fissa, una domanda formale da fare quasi sempre su inPA, spesso una tassa e delle prove da superare, non basta il curriculum. Qui sotto ci sono solo i concorsi veri che ho trovato, letti nel bando, con scritto se il titolo che chiedono è quello che hai già oppure no. Aggiornato il 15 settembre 2026.</p>
+
+    <div class="avviso info" style="margin-bottom:18px" data-chiudi="conc-quadro">
+      <h3>Il quadro generale su Roma città</h3>
+      <p>Il concorso grande, quello per insegnanti di scuola dell'infanzia di Roma Capitale, resta solo annunciato: è stato inserito nell'aggiornamento del piano del Comune, ma un bando vero non è stato ancora pubblicato. Controllato di nuovo il 15 settembre 2026, nessuna novità. Se un giorno uscirà, occhio comunque ai titoli richiesti: le selezioni di questo tipo di solito chiedono Scienze della Formazione Primaria o un vecchio diploma magistrale abilitante, gli stessi titoli delle GPS, non la tua L-19 da sola.</p>
+      <p>Quello che invece è già reale e concreto sono i due concorsi qui sotto, uno dei quali ti riguarda davvero.</p>
+    </div>
+
+    <div class="card" id="lista-concorsi"></div>
+
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Questa pagina raccoglie solo bandi di concorso veri, letti per intero nel testo ufficiale o nella fonte più precisa trovata su di essi. Non ci metto le graduatorie generiche o gli avvisi per messa a disposizione: quelli restano nella sezione Canali. Un concorso può chiudersi da un giorno all'altro: se il link non si apre più o dice scaduto, è normale, vuol dire che la finestra si è chiusa.</p>
+  </div>
+</section>
+
 <!-- ===== SCUOLE PRIVATE ===== -->
 <section class="vista" id="v-private" hidden>
   <div class="sez" style="margin-top:0">
@@ -600,7 +759,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 <section class="vista" id="v-porte" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Altre porte</h2>
-    <p class="desc">Qui c'è il lavoro d'ufficio: segreteria e amministrazione, cioè il mestiere che fai da dieci anni. Il lavoro da educatrice, OEPAC compreso, non sta più qui: è tornato dov'è giusto che stia, negli Annunci, in un gruppo suo. Tengo solo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Controllato l'8 settembre 2026, con le date vere delle graduatorie ATA e una scheda sulla certificazione CIAD.</p>
+    <p class="desc">Qui c'è il lavoro d'ufficio: segreteria e amministrazione, cioè il mestiere che fai da dieci anni. Il lavoro da educatrice, OEPAC compreso, non sta più qui: è tornato dov'è giusto che stia, negli Annunci, in un gruppo suo. Tengo solo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Ricontrollato l'11 settembre 2026: quattro annunci nuovi, uno dentro il raggio e tre in fondo, nel gruppo dei lontani.</p>
 
     <div class="avviso" style="margin-bottom:18px" data-chiudi="porte-testa">
       <h3>Fermati un secondo e leggi questo</h3>
@@ -621,7 +780,7 @@ footer{max-width:1140px;margin:0 auto;padding:0 20px 46px;color:var(--grigio);fo
 
     <div class="card" id="lista-porte"></div>
 
-    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di sei chilometri circa nel quadrante est, cioè Municipio V e VII e quelli attaccati, oppure raggiungibile senza cambi complicati con la metro C o con la A dopo San Giovanni. Questa pagina tiene solo il lavoro amministrativo: tutto quello che si fa con i bambini sta negli Annunci. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Sei annunci su undici non dicevano dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri pubblici, e dove l'ho fatto è scritto nella scheda. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di sei chilometri circa nel quadrante est, cioè Municipio V e VII e quelli attaccati, oppure raggiungibile senza cambi complicati con la metro C o con la A dopo San Giovanni. Questa pagina tiene solo il lavoro amministrativo: tutto quello che si fa con i bambini sta negli Annunci. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Parecchi annunci non dicono dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri camerali, e dove l'ho fatto c'e scritto nella scheda, cosi puoi controllarlo tu. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
   </div>
 </section>
 
@@ -768,7 +927,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 <section class="vista" id="v-canali" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Canali e scadenze</h2>
-    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato il 9 settembre 2026, con la voce sulle graduatorie ATA aggiunta l'8 settembre. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
+    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato il 27 settembre 2026, con la voce sulle graduatorie ATA aggiunta l'8 settembre. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
     <div class="card" id="lista-canali"></div>
   </div>
 </section>
@@ -812,6 +971,11 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 </section>
 
 <!-- ===== PROFILO ===== -->
+<!-- ===== GUIDA ===== -->
+<section class="vista" id="v-aiuto" hidden>
+  <div id="guida"></div>
+</section>
+
 <section class="vista" id="v-profilo" hidden>
   <div class="sez" style="margin-top:0" id="i-tuoi-dati">
     <h2>I tuoi dati</h2>
@@ -882,8 +1046,19 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 
 </main>
 <footer>
-  <p>Costruita il 20 agosto 2026. Annunci e canali ricontrollati il 9 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
+  <details class="piede"><summary>Da dove vengono le informazioni</summary>
+  <p>Costruita il 20 agosto 2026. Schermata Oggi con le domande guidate, zone e guida alle etichette rifatte il 29 settembre 2026. Sezione Concorsi creata il 15 settembre 2026, avviso ASMEL aggiunto lo stesso giorno. Annunci e canali ricontrollati il 27 settembre 2026, Lavoro d'ufficio l'11 settembre 2026, contatti delle scuole il 10 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
+  </details>
 </footer>
+<div class="foglio" id="foglio" hidden role="dialog" aria-modal="true" aria-labelledby="foglio-tit">
+  <div class="foglio-velo" data-chiudi-foglio></div>
+  <div class="foglio-box">
+    <div class="foglio-tit" id="foglio-tit">Cosa vuol dire</div>
+    <div class="foglio-et" id="foglio-et"></div>
+    <p id="foglio-d"></p>
+    <div class="foglio-az"><button class="b b-pri" data-chiudi-foglio>Ho capito</button><button class="b" id="foglio-guida">Tutte le etichette</button></div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 <script>
 "use strict";
@@ -986,7 +1161,7 @@ const TAPPE = [
     ]}
 ];
 
-/* ===== ANNUNCI, ricerca su Indeed aggiornata il 9 settembre 2026 ===== */
+/* ===== ANNUNCI, ricerca su Indeed aggiornata il 27 settembre 2026 ===== */
 const ANNUNCI = [
   {id:"e-iskra", titolo:"OEPAC, candidatura spontanea a una cooperativa del tuo quadrante", ente:"ISKRA società cooperativa",
    zona:"Via delle Avocette 16, Torre Maura", cat:"socio", dist:2, tipo:"Non è un annuncio: si manda quando vuoi", pubb:"",
@@ -996,10 +1171,42 @@ const ANNUNCI = [
    zona:"Sede in via Ostiense, ma si lavora nelle scuole", cat:"socio", dist:0, tipo:"Banca dati aperta tutto l'anno", pubb:"",
    url:"https://www.obiettivouomo.it/?page_id=5770", fonte:"sito della cooperativa, letto il 7 settembre 2026",
    note:"Questa è ancora più comoda, perché lo dicono loro: si entra nella banca dati anche quando non ci sono annunci aperti, per le occasioni future. Fra i profili che cercano ci sono espressamente OEPAC ed educatori. Curriculum a curriculum.obiettivo@gmail.com e a protocollo@obiettivouomo.it, telefono 06 57177653. La sede sta in via Ostiense, a sette chilometri, ma non è lì che lavori: il posto di lavoro è la scuola. Nella mail chiedi esplicitamente le scuole del Municipio V."},
-  {id:"e-blu", titolo:"Educatrice in una comunità filtro per detenuti", ente:"Consorzio Blu",
-   zona:"Via Labicana 45, a piedi da San Giovanni", cat:"socio", dist:2, tipo:"Part time 36 ore, CCNL cooperative sociali D2, 1637 euro lordi", pubb:"15 giugno 2026",
-   url:"https://to.indeed.com/aat4nq8n9pcx", fonte:"Indeed",
-   note:"Chiedono la laurea in Scienze dell'Educazione e basta: nessun anno minimo di esperienza, nessuna qualifica in più. È lo stipendio più alto di tutta la bacheca. Due avvertenze oneste: l'annuncio è del 15 giugno, quindi ha quasi tre mesi e può essere già chiuso, e una comunità filtro per detenuti non è un contesto per tutti. Anche se il posto è andato, il Consorzio Blu resta un nome buono per una candidatura spontanea."},
+  {id:"a27a", titolo:"Educatrice o educatore per asilo nido, zona Balduina", ente:"Asilo Bimbi a Bordo",
+   zona:"Roma, Balduina, via Giorgio Franceschi 26", cat:"nido", dist:3, tipo:"Part-time, contratto ANINSEI a tempo determinato, assunzione da dicembre 2026 o gennaio 2027", pubb:"23 settembre 2026",
+   url:"https://to.indeed.com/aa7jyyrmdmsm", fonte:"Indeed",
+   note:"Nuovo, trovato il 27 settembre. Sul titolo e netto: chiedono la laurea in Scienze dell'Educazione e della Formazione L-19 e scrivono esplicitamente di non mandare il curriculum senza questo titolo. L'inglese e chiesto solo come titolo preferenziale, non come obbligo, quindi non scatta il filtro del bilinguismo: il nido si presenta come una realta bilingue, ma per il posto in se basta il tuo inglese scolastico. Cercano anche interesse per l'ambito musicale. Contratto ANINSEI a tempo determinato, con assunzione prevista da dicembre 2026 o gennaio 2027, quindi c'e tempo per un colloquio con calma. La sede e in zona Balduina, a nord ovest della citta, circa dieci chilometri da Torpignattara: si arriva ma non e dietro l'angolo. Curriculum a asilobimbiabordo@gmail.com."},
+  {id:"a25a", titolo:"Educatore o educatrice professionale per un gruppo appartamento minori", ente:"Cooperativa Sociale Spes Contra Spem Onlus",
+   zona:"Roma, zona Bufalotta, indirizzo esatto da chiedere", cat:"socio", dist:0, tipo:"Part-time 25 ore a settimana piu una reperibilita notturna a settimana, tempo determinato di sei mesi", pubb:"22 settembre 2026",
+   url:"https://to.indeed.com/aar4fhqwmwnb", fonte:"Indeed",
+   note:"Nuovo, trovato il 25 settembre. Cercano due educatori o educatrici per il gruppo appartamento per minori della cooperativa, in zona Bufalotta. Chiedono la laurea triennale o magistrale in Scienze dell'educazione come requisito, e l'esperienza pregressa e solo preferenziale, non obbligatoria. Il contratto e a tempo determinato di sei mesi con possibilita di proroga, 25 ore a settimana piu una notte di reperibilita in struttura ogni settimana: la prima persona comincia dal 1 novembre, la seconda dal 1 dicembre. La cooperativa lavora nei Municipi II, III, IV, V e VI, quindi il quadrante e quello giusto, ma l'annuncio non scrive l'indirizzo esatto della zona Bufalotta: la distanza resta da verificare al telefono, insieme a come funziona in pratica la reperibilita notturna."},
+  {id:"a23a", titolo:"Educatore o educatrice per nido, zona EUR", ente:"I Giardini di Zeus",
+   zona:"Roma, EUR, via Armellini", cat:"nido", dist:0, tipo:"Part-time, CCNL ANINSEI, disponibilita immediata", pubb:"17 settembre 2026",
+   url:"https://to.indeed.com/aa7tjg24kl78", fonte:"Indeed",
+   note:"Nuovo, trovato il 23 settembre. Nido in zona EUR, via Armellini. Sul titolo va bene: chiedono un titolo valido per il ruolo educativo 0-3, tra cui la laurea in Scienze dell'Educazione, o titoli equipollenti. A differenza di molti altri annunci in bacheca qui pero l'esperienza pregressa nei servizi per la prima infanzia e scritta come requisito, non solo preferenziale. Contratto CCNL ANINSEI, disponibilita immediata richiesta. La paga scritta va da 5,08 a 24,34 euro all'ora, una forbice cosi larga da non dire quasi niente: e la stima automatica di Indeed, non una cifra decisa dal nido. L'indirizzo esatto di via Armellini non si e potuto controllare su una mappa da qui, quindi la distanza resta da verificare: chiedilo alla prima telefonata."},
+  {id:"a17a", titolo:"Educatore o educatrice di asilo nido, la L-19 basta da sola", ente:"Leonardo Societa Cooperativa Sociale",
+   zona:"Lariano, Castelli Romani, fuori Roma", cat:"nido", dist:4, tipo:"Part-time, di persona", pubb:"14 settembre 2026",
+   url:"https://to.indeed.com/aa7xjxshx46b", fonte:"Indeed",
+   note:"Nuovo, trovato il 17 settembre. Sul titolo e pulito: chiedono la laurea in Scienze dell'Educazione e della Formazione L-19, o un titolo equivalente e idoneo, e non mettono nessun anno fisso di esperienza, basta anche minima nei servizi per la prima infanzia. Il problema e la distanza: la sede e a Lariano, nei Castelli Romani, molto oltre i dodici chilometri da Torpignattara, ed e lavoro di persona, senza nessuna parte da remoto. La paga scritta va da 694 a 1.893 euro al mese, una forbice cosi larga che non dice quasi niente: e la stima automatica di Indeed, non una cifra decisa dalla cooperativa. Lo tengo per completezza, ma il viaggio pesa piu di quanto renda l'offerta."},
+  {id:"a15a", titolo:"Educatore o educatrice di asilo nido", ente:"Job Italia SpA, agenzia per il lavoro",
+   zona:"Roma, indirizzo non indicato nell'annuncio", cat:"nido", dist:0, tipo:"Part-time, 25 ore a settimana dal lunedi al venerdi, somministrazione a tempo determinato, dal 1 ottobre 2026", pubb:"1 settembre 2026",
+   url:"https://to.indeed.com/aawc7l986bxl", fonte:"Indeed",
+   note:"Nuovo, trovato il 15 settembre. E un'agenzia per il lavoro che cerca per un ente non nominato nell'annuncio. Chiedono un diploma di laurea in Scienze dell'Educazione L-19 o titoli attinenti, e l'esperienza pregressa e solo preferenziale, non obbligatoria. Part time, 25 ore a settimana dal lunedi al venerdi, contratto in somministrazione a tempo determinato, disponibilita immediata, con inizio dal primo ottobre 2026. Non dicono ne per chi assumono ne l'indirizzo: la prima domanda al telefono e proprio questa."},
+  {id:"a14a", titolo:"Educatrice o educatore nei servizi per l'infanzia", ente:"Crescere Insieme",
+   zona:"Roma, indirizzo non indicato nell'annuncio", cat:"nido", dist:0, tipo:"Part-time, 1.449 euro al mese", pubb:"11 settembre 2026",
+   url:"https://to.indeed.com/aaymk2y4lgyg", fonte:"Indeed",
+   note:"Nuovo, trovato il 14 settembre. Crescere Insieme gestisce asili nido e servizi per l'infanzia a Roma dal 1993. L'annuncio parla di attivita educative e ludico didattiche, progettazione dei percorsi, lavoro in equipe e rapporto con le famiglie. Part time a 1.449 euro al mese, che per un part time e una cifra buona. Due cose da chiarire subito al telefono. La prima: chiedono un titolo abilitante conforme alla normativa regionale, ma non dicono quale ne per quale fascia di eta, quindi se il posto e al nido serve l'ESEI che ancora non hai, mentre se e nella 3-6 la tua laurea basta gia cosi. La seconda: non scrivono dove si lavora. Una avvertenza: questa societa ha in giro anche un altro annuncio, quello per il nido bilingue inglese, che resta fuori dal tuo profilo. Questo invece l'inglese non lo chiede."},
+  {id:"a14b", titolo:"Educatrice di asilo nido, chiedono proprio la laurea L-19", ente:"Asilo Nido Piccolo Blu",
+   zona:"Guidonia Montecelio, fuori Roma a nord est", cat:"nido", dist:4, tipo:"Part-time, con turni", pubb:"10 settembre 2026",
+   url:"https://to.indeed.com/aazn2plhtjzs", fonte:"Indeed",
+   note:"Nuovo, trovato il 14 settembre. Sul titolo e l'annuncio piu netto di tutta la bacheca: scrivono esclusivamente laurea in Scienze dell'Educazione L-19, e segnano la laurea triennale come obbligatoria. Chiedono anche esperienza nel settore e la conoscenza dell'inglese, che qui pero e indicata come preferenziale e non come madrelingua, quindi non ti taglia fuori. I curriculum si mandano a piccoloblu.asilonido@gmail.com. I problemi sono due. Il primo e la distanza: Guidonia sta fuori Roma verso nord est, oltre i venti chilometri, e nell'annuncio scrivono che accettano candidati con domicilio in zone limitrofe, e Torpignattara limitrofa non e. Il secondo e il solito nodo del titolo: loro chiedono la L-19 e basta, ma per lavorare al nido il decreto chiede anche i crediti in piu. Se il viaggio te lo senti, chiama e fatti dire tutte e due le cose, gli orari dei turni e se la L-19 gli basta davvero."},
+  {id:"a11a", titolo:"Educatrice o educatore professionale, la laurea L-19 chiesta per nome", ente:"Cooperativa Sorriso per Tutti",
+   zona:"Castelli Romani, con una parte del lavoro da remoto", cat:"socio", dist:4, tipo:"Part-time, CCNL cooperative sociali", pubb:"8 settembre 2026",
+   url:"https://to.indeed.com/aazszl2mrklc", fonte:"Indeed",
+   note:"Nuovo, trovato l'11 settembre. Sul titolo e il piu pulito di tutta la bacheca: scrivono Laurea L-19 o titolo equivalente, e non chiedono nessun anno di esperienza. Il resto sono qualita, non requisiti: ascolto, lavoro in equipe, progettazione educativa. Contratto CCNL cooperative sociali, orario flessibile, da 200 a 1.300 euro al mese, quindi il monte ore e tutto da chiarire. Il punto debole e la sede: Castelli Romani, fuori Roma a sud est, ben oltre i dodici chilometri. L'annuncio pero scrive ibrido e da remoto, quindi la prima domanda al telefono e quanti giorni si va di persona e dove."},
+  {id:"a11b", titolo:"Educatrice o educatore per servizi ludico-educativi", ente:"Cooperativa Apriti Sesamo",
+   zona:"Roma nord, centri aggregativi, indirizzo da chiedere", cat:"extra", dist:0, tipo:"Part-time, di pomeriggio", pubb:"8 settembre 2026",
+   url:"https://to.indeed.com/aal97vxz8ym9", fonte:"Indeed",
+   note:"Nuovo, trovato l'11 settembre. E lavoro in centri aggregativi per minori, di pomeriggio: la fascia extrascolastica, quella dove la tua laurea basta gia cosi. L'annuncio e corto e dice poco: cercano educatori con esperienza in servizi ludico-educativi, retribuzione a partire da 501 euro al mese. Non dicono quale titolo serve e non dicono dove sono i centri, scrivono solo Roma nord. Due domande al telefono: in quale zona si lavora e quante ore sono. L'esperienza in ludoteca non ce l'hai, ma hai la sezione dell'infanzia e il tirocinio: la chiamata vale la pena."},
   {id:"a07a", titolo:"Educatore o educatrice per l'infanzia", ente:"La Casa dei Chicchi di grano, cooperativa sociale",
    zona:"Formello, fuori Roma, zona Cassia", cat:"infanzia", dist:4, tipo:"Tempo pieno, da metà novembre 2026 a fine gennaio 2027", pubb:"4 settembre 2026",
    url:"https://to.indeed.com/aafxnlszvwgf", fonte:"Indeed",
@@ -1066,7 +1273,52 @@ const ANNUNCI = [
    note:"Correzione rispetto a quello che c'era scritto qui prima. L'annuncio dice che la laurea in Scienze dell'Educazione non basta e che serve la qualifica OEPAC: è una richiesta della cooperativa, non della norma. Il Regolamento di Roma Capitale, all'articolo 12, mette la tua laurea fra i titoli validi, in alternativa al corso. Quindi candidati lo stesso e citalo, ma sapendo che possono risponderti di no comunque, perché sull'asticella in più decidono loro. Se ti dicono di no, prova con gli altri enti accreditati: non applicano tutti la stessa regola."},
 ];
 
-/* ===== CANALI, ricontrollati il 7 settembre 2026, voce ATA aggiunta l'8 settembre 2026 ===== */
+/* ===== CONCORSI, sezione creata il 15 settembre 2026 =====
+   adatto: true = il titolo che hai basta, false = fuori profilo, null = da verificare.
+   Qui stanno solo bandi di concorso veri, con una domanda formale e una scadenza.
+   Le graduatorie generiche e gli avvisi di messa a disposizione restano in CANALI. */
+const CONCORSI = [
+  {id:"c-isma-2026", adatto:true, postiN:1,
+   titolo:"Concorso pubblico, un posto di educatore professionale socio-pedagogico, tempo pieno e indeterminato",
+   ente:"ASP Istituti di Santa Maria in Aquiro (ISMA), bando n. 2/2026",
+   zona:"Via della Guglia 69/b, centro storico", dist:3,
+   tipo:"Concorso per titoli ed esami",
+   titoloRichiesto:"Laurea triennale L-19 in Scienze dell'educazione e della formazione, scritta per nome tra i titoli ammessi: la tua laurea rientra senza bisogno di equipollenze e senza l'ESEI, perché il ruolo è educatore professionale socio-pedagogico, non educatore di nido. Non è richiesto nessun anno di esperienza per essere ammessi.",
+   prove:"Eventuale preselezione a risposta multipla se i candidati superano i 50. Poi due prove scritte, una teorica generale e una teorico-pratica con l'elaborazione di un progetto di intervento educativo territoriale, e una prova orale che verifica anche inglese e informatica. In ognuna delle tre serve almeno 21 su 30. I titoli valgono fino a 10 punti in più, di cui 5 per gli anni di servizio.",
+   scadenza:"2 ottobre 2026", pubb:"3 settembre 2026",
+   tassa:"10 euro", vincolo:"Obbligo di restare in servizio almeno cinque anni dopo l'assunzione, e un periodo di prova di sei mesi.",
+   come:"Solo online sul portale inPA, con SPID, CIE o CNS.",
+   url:"https://www.ismaroma.it/wp-content/uploads/2026/09/Bando-concorso-n.-1-posto-Educatore-professionale-Socio-Pedagogico_signed_Marcato.pdf",
+   fonte:"Bando ufficiale ISMA, letto integralmente il 15 settembre 2026. La data di scadenza qui sopra viene da EduNews24, che riporta pubblicazione il 3 settembre 2026 e scadenza il 2 ottobre 2026: il sito di ISMA indicava invece il 3 ottobre alle ore 12. Le due fonti non tornano di un giorno esatto: verifica l'ora precisa su inPA prima di mandare la domanda, non fidarti solo di questa scheda.",
+   note:"È un concorso vero, non basta il curriculum: le prove vanno preparate, non solo la domanda mandata all'ultimo momento."},
+  {id:"c-ciampino-infanzia", adatto:false, postiN:null,
+   titolo:"Concorso pubblico, insegnanti di scuola dell'infanzia",
+   ente:"Comune di Ciampino",
+   zona:"Ciampino, fuori Roma, zona Castelli Romani", dist:4,
+   tipo:"Concorso per titoli ed esami",
+   titoloRichiesto:"Scienze della Formazione Primaria (LM-85 bis), oppure laurea più diploma magistrale o liceo socio-psico-pedagogico abilitante conseguito entro l'anno scolastico 2001 e 2002: sono gli stessi titoli delle GPS. La tua laurea L-19 da sola non basta.",
+   prove:"Prova scritta e prova orale, minimo 21 su 30 in ognuna.",
+   scadenza:"9 ottobre 2026", pubb:"11 settembre 2026",
+   stipendio:"25.114,11 euro lordi annui, retribuzione tabellare",
+   url:"https://ameve.eu/insegnanti-scuola-dellinfanzia-scoccano-le-graduatorie-a-ciampino/",
+   fonte:"Articolo letto l'11 settembre 2026.",
+   note:"Lo tengo in questa pagina solo per completezza e perché dice una cosa utile: anche i comuni della cintura di Roma stanno bandendo, e per la scuola statale il titolo che serve resta sempre quello della formazione primaria, non la tua laurea da sola. Con il titolo che hai oggi non conviene candidarsi."},
+  {id:"c-asmel-2026", adatto:true, postiN:null,
+   titolo:"Avviso pubblico per la formazione e l'aggiornamento di elenchi di idonei, profili Educatore Asilo Nido ed Educatore Professionale Socio Pedagogico",
+   ente:"ASMEL, ente capofila Comune di Altavilla Silentina",
+   zona:"Elenco valido per tutti i Comuni aderenti ad ASMEL in Italia, nessuna sede fissa", dist:0,
+   tipo:"Non e un concorso con assunzione garantita: e un avviso per formare 39 elenchi di idonei per varie figure professionali, validi tre anni, da cui i Comuni aderenti ad ASMEL possono attingere quando hanno un posto da coprire, senza certezza che questo avvenga.",
+   titoloRichiesto:"Laurea triennale classe L-19 in Scienze dell'educazione e della formazione conseguita dopo il 31 maggio 2017, per i profili Educatore Asilo Nido ed Educatore Professionale Socio Pedagogico, entrambi nell'Area Funzionari, ex categoria D. La tua laurea rientra. Non ho potuto rileggere riga per riga la Tabella A del bando per queste due voci: prima di fare domanda controlla personalmente il testo esatto su asmelab.it o inPA, per eventuali clausole aggiuntive.",
+   prove:"Prova scritta a distanza, quiz a risposta multipla, con procedure di identificazione da seguire. Nelle edizioni precedenti 60 domande in 60 minuti. Istruzioni ufficiali su trasparenza.asmel.eu.",
+   scadenza:"30 settembre 2026, ore 12", pubb:"15 settembre 2026, apertura delle domande",
+   tassa:"Quota di partecipazione, nell'edizione precedente circa 15 euro a profilo, da pagare solo con PagoPA sul portale ufficiale",
+   come:"Solo sulla piattaforma ufficiale asmelab.it, con SPID o CIE personale. Pubblicato anche su inPA. Il post Instagram che ha segnalato questo avviso indicava un numero di cellulare privato per assistenza alla compilazione della domanda: quel numero non risulta tra i contatti ufficiali di ASMEL, che nelle edizioni precedenti erano un telefono fisso e una mail istituzionale. Non usare quel canale, e non condividere mai lo SPID con nessuno.",
+   url:"https://avellino.ordingegneri.it/wp-content/uploads/sites/41/2026/09/bando_-_maxi_avviso_asmel_formazione_e_aggiornamento_elenchi_di_idonei_2026_signed_signed.pdf",
+   fonte:"Bando letto tramite una copia pubblicata dall'Ordine degli Ingegneri di Avellino, con estrazione automatica del testo, non riletta manualmente riga per riga: non sono riuscito a raggiungere direttamente asmel.eu o asmelab.it. Il profilo Educatore Asilo Nido con requisito L-19 e confermato anche da un bando gemello del circuito ASMEL, quello del Comune di Malnate, pubblicato su inPA. ASMEL e un'associazione di diritto privato tra Comuni, non un ente pubblico in senso stretto: il suo ruolo come centrale di committenza per gli appalti e stato giudicato illegittimo dalla Corte di Giustizia UE nel 2020, anche se questo riguarda gli appalti e non la selezione del personale.",
+   note:"Verificato il 15 e il 16 settembre 2026, a partire da un'inserzione Instagram dei profili lavoroesocial e asmel_comuni. Aggiornamento del 16 settembre, importante: Roma Capitale risulta, con buona probabilita, NON fra i Comuni aderenti ad ASMEL. Non sono riuscito a raggiungere direttamente asmel.eu, che ha risposto con un errore di accesso negato, quindi questo non e l'elenco ufficiale letto di persona: viene da un articolo di un sito specializzato in concorsi, Simone Concorsi, che elenca i Comuni del Lazio aderenti a questo stesso concorso ASMEL per provincia. Roma Capitale non compare in quell'elenco. Compaiono invece, in provincia di Roma, Cervara di Roma, Formello, Manziana, Mentana, Monterotondo, Nemi, Rocca Canterano, Roccagiovine, Vicovaro e Vivaro Romano: sono tutti Comuni fuori Roma, dai venti chilometri in su, alcuni anche molto piu lontani. Significa che l'elenco di idonei ASMEL, per te che abiti a Torpignattara e non vuoi trasferirti, oggi vale poco: al massimo potrebbe farti chiamare da uno di quei Comuni della provincia, non da Roma. Prima di fare la domanda, che tra l'altro ha anche una piccola quota da pagare, vale la pena chiedere conferma diretta ad ASMEL, oppure aprire personalmente l'elenco ufficiale degli enti sottoscrittori su asmel.eu/servizi/assunzioni-e-personale/enti-locali-sottoscrittori-accordo-aggregato, che da questa sessione non sono riuscito ad aprire."}
+];
+
+/* ===== CANALI, ricontrollati il 27 settembre 2026, voce ATA aggiunta l'8 settembre 2026 ===== */
 const CANALI = [
   {t:"Elenchi MAD del Municipio V, educatore asili nido e insegnante scuola dell'infanzia",
    stato:"ora", quando:"Canale del municipio, si aggiorna ogni tanto",
@@ -1086,15 +1338,15 @@ const CANALI = [
    url:"https://www.radioroma.it/2026/08/19/roma-nidi-e-scuole-dellinfanzia-via-alla-digitalizzazione-delle-supplenze/", link:"Leggi la notizia"},
   {t:"Nuovi elenchi municipali per le supplenze nell'infanzia, da verificare",
    stato:"info", quando:"Notizia di stampa, l'avviso ufficiale va ancora letto",
-   d:"Un articolo di RomaIT racconta di un accordo tra Roma Capitale e i sindacati: per le supplenze nelle scuole dell'infanzia nascono elenchi municipali che si usano dopo aver esaurito le graduatorie, e tra i criteri di posizione conta il servizio già svolto nelle scuole di Roma, contato in giornate. Se è così, le tue 31 giornate valgono. Attenzione però: questa è una notizia di giornale, non l'avviso ufficiale, e le date non ci sono. Anche il 7 settembre le pagine del Comune non si sono lasciate leggere da qui, quindi la verifica va fatta a mano sul sito di Roma Capitale prima di dare qualcosa per scontato.",
+   d:"Un articolo di RomaIT racconta di un accordo tra Roma Capitale e i sindacati: per le supplenze nelle scuole dell'infanzia nascono elenchi municipali che si usano dopo aver esaurito le graduatorie, e tra i criteri di posizione conta il servizio già svolto nelle scuole di Roma, contato in giornate. Se è così, le tue 31 giornate valgono. Attenzione però: questa è una notizia di giornale, non l'avviso ufficiale, e le date non ci sono. Anche il 14 settembre le pagine del Comune non si sono lasciate leggere da qui, quindi la verifica va fatta a mano sul sito di Roma Capitale prima di dare qualcosa per scontato.",
    url:"https://www.romait.it/roma-supplenze-nelle-scuole-dellinfanzia-accordo-per-nuovi-elenchi-municipali.html", link:"Leggi l'articolo"},
   {t:"Supplenze nell'infanzia 2026 e 2027, convocazione online per la scelta delle sedi",
-   stato:"info", quando:"Pagina del Comune, non leggibile da qui nemmeno il 7 settembre 2026",
+   stato:"info", quando:"Pagina del Comune, non leggibile da qui nemmeno il 14 settembre 2026",
    d:"Roma Capitale ha pubblicato una pagina che si intitola Supplenze Infanzia 2026/27, convocazione online per la scelta delle sedi. È l'equivalente, per la scuola dell'infanzia, di quello che ad agosto è successo per i nidi. Da questa sessione la pagina del Comune non si riesce a leggere, quindi non so dirti né le date né chi può partecipare: aprila tu con il link qui sotto. Se anche stavolta vale solo per chi è già negli elenchi, per ora non ti riguarda, ma serve saperlo.",
    url:"https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1633940", link:"Apri la pagina del Comune"},
   {t:"inPA, il portale dei concorsi pubblici",
    stato:"ok", quando:"Da tenere acceso con gli avvisi via mail",
-   d:"È il portale unico del reclutamento pubblico: qui escono gli avvisi di Roma Capitale e dei municipi per educatori e insegnanti. Imposta Roma come zona e l'area educativa e sociale, e poi lascia che gli avvisi arrivino da soli. Controllato di nuovo il 9 settembre: per l'area di Roma non c'è nessun bando nuovo per educatori o insegnanti dell'infanzia. Il concorso di Roma Capitale per 800 insegnanti di scuola dell'infanzia resta annunciato ma non ancora bandito.",
+   d:"È il portale unico del reclutamento pubblico: qui escono gli avvisi di Roma Capitale e dei municipi per educatori e insegnanti. Imposta Roma come zona e l'area educativa e sociale, e poi lascia che gli avvisi arrivino da soli. Controllato di nuovo il 15 settembre: per il nido e per l'infanzia non c'è nessun bando nuovo, e il concorso di Roma Capitale per 800 insegnanti di scuola dell'infanzia resta annunciato ma non ancora bandito. Questa volta però una novità vera c'è, e riguarda te da vicino: ISMA, Istituti di Santa Maria in Aquiro, ha aperto un concorso pubblico per un posto di educatore professionale socio-pedagogico, tempo pieno e indeterminato, con la L-19 scritta per nome tra i titoli ammessi. Lo trovi descritto per intero nella sezione Concorsi, non qui: è una candidatura vera, con domanda entro il 2 ottobre 2026. Resta anche quanto già sapevi sul Comune di Ciampino, anche lui nella sezione Concorsi: ha aperto l'11 settembre un concorso per insegnanti di scuola dell'infanzia, domande entro il 9 ottobre 2026, ma chiede Scienze della Formazione Primaria, la LM-85 bis oppure il diploma magistrale abilitante preso entro il 2001 e 2002, gli stessi titoli delle GPS: la L-19 da sola non basta, quindi resta fuori profilo.",
    url:"https://www.inpa.gov.it/", link:"Vai su inPA"},
   {t:"Supplenze nei nidi comunali 2026 e 2027, scelta delle sedi",
    stato:"chiuso", quando:"La scelta online si è chiusa il 21 agosto 2026 alle 12",
@@ -1114,11 +1366,11 @@ const CANALI = [
    url:"https://www.orizzontescuola.it/graduatorie-gps-2024-i-titoli-di-accesso-per-infanzia-e-primaria/", link:"I titoli che servono per le GPS"},
   {t:"Graduatorie ATA di terza fascia, si riaprono nel 2027",
    stato:"info", quando:"Finestra attesa nella primavera del 2027, il bando non c'è ancora",
-   d:"Sono le graduatorie da cui escono le supplenze nelle segreterie scolastiche. Per l'assistente amministrativo servono un diploma di scuola superiore di qualunque indirizzo, che tu hai, e la certificazione informatica CIAD. Quelle valide adesso vengono dal decreto ministeriale 89 del 2024: le domande si sono chiuse il 28 giugno 2024 e coprono gli anni scolastici 2024/25, 2025/26 e 2026/27. Quindi oggi non c'è niente da presentare, e gli elenchi che le scuole stanno pubblicando in questi giorni sono quelli già formati nel 2024, non una riapertura. Il prossimo aggiornamento è quello per il triennio 2027/2030, atteso nella primavera del 2027, ma il decreto non è ancora uscito: la data va ricontrollata a inizio 2027. La certificazione CIAD che serve per accedere ce l'hai gia\u0300 dall'ottobre 2024 ed e\u0300 valida fino al 2028, quindi da questo lato sei a posto. Il dettaglio sta nella sezione Altre porte.",
+   d:"Sono le graduatorie da cui escono le supplenze nelle segreterie scolastiche. Per l'assistente amministrativo servono un diploma di scuola superiore di qualunque indirizzo, che tu hai, e la certificazione informatica CIAD. Quelle valide adesso vengono dal decreto ministeriale 89 del 2024: le domande si sono chiuse il 28 giugno 2024 e coprono gli anni scolastici 2024/25, 2025/26 e 2026/27. Quindi oggi non c'è niente da presentare, e gli elenchi che le scuole stanno pubblicando in questi giorni sono quelli già formati nel 2024, non una riapertura. Il prossimo aggiornamento è quello per il triennio 2027/2030, atteso nella primavera del 2027, ma il decreto non è ancora uscito: la data va ricontrollata a inizio 2027. La certificazione CIAD che serve per accedere ce l'hai gia\u0300 dall'ottobre 2024 ed e\u0300 valida fino al 2028, quindi da questo lato sei a posto. Il dettaglio sta nella pagina Lavoro d'ufficio.",
    url:"https://www.flcgil.it/speciali/graduatorie_di_istituto_ata/anno-2024-2027.flc", link:"Lo speciale sulle graduatorie ATA"},
   {t:"OEPAC, e la tua laurea basta gia\u0300",
    stato:"ora", quando:"Non ha scadenze, si mandano candidature tutto l'anno",
-   d:"Correzione rispetto a quello che c'era scritto qui prima. Il Regolamento di Roma Capitale sugli OEPAC, all'articolo 12, elenca fra i titoli di formazione iniziale la laurea in Scienze dell'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. Quindi il titolo per candidarti ce l'hai gia\u0300, senza ESEI e senza corso OEPAC. Molti annunci delle cooperative chiedono comunque l'attestato: e\u0300 una scelta loro, non un obbligo del regolamento. Trovi tutto, con il link all'elenco degli enti accreditati e una lettera pronta, nella sezione Altre porte.",
+   d:"Correzione rispetto a quello che c'era scritto qui prima. Il Regolamento di Roma Capitale sugli OEPAC, all'articolo 12, elenca fra i titoli di formazione iniziale la laurea in Scienze dell'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. Quindi il titolo per candidarti ce l'hai gia\u0300, senza ESEI e senza corso OEPAC. Molti annunci delle cooperative chiedono comunque l'attestato: e\u0300 una scelta loro, non un obbligo del regolamento. Trovi tutto negli Annunci, nel gruppo OEPAC e sociale, con il link all'elenco degli enti accreditati; la lettera pronta sta in Lettere.",
    url:"https://www.aipd.it/site/scheda-scuola/687-nuovo-regolamento-di-roma-capitale-per-gli-oepac-deliberazione-20-22/", link:"Cosa dice il regolamento"}
 ];
 
@@ -1157,6 +1409,11 @@ const PORTE = [
  tipo:"Part time, solo domeniche e giorni festivi, 10 alle 20:30, 430-450 euro al mese", pubb:"2 settembre 2026", stato:"attenzione",
  d:"È il più vicino di tutti, praticamente sulla Casilina, e sulla carta sei perfetta: un anno in Vitaldent, sei mesi in Blu Dental, l'attestato di receptionist odontoiatrica. Ma te lo dico prima che tu ci perda tempo: si lavora solo la domenica e nei festivi, dalle 10 alle 20:30, per 430 o 450 euro al mese. Vuol dire tutte le domeniche fuori casa. Non è una bocciatura, è una cosa da decidere in famiglia prima di rispondere.",
  url:"https://to.indeed.com/aacfzm6qsz6s"},
+
+{fam:"A", id:"p-artigiana", t:"Amministrazione in un laboratorio alimentare", ente:"L'Artigiana Fritti", zona:"Via Pietro Crostarosa 38, zona Torre Maura", km:4.4, kmt:"4,4 km",
+ tipo:"18-20 ore a settimana, dal lunedi al sabato, si comincia alle 7.00", pubb:"1 settembre 2026", stato:"attenzione",
+ d:"Il lavoro e proprio il tuo: documenti di trasporto, fatturazione, prima nota, gestione delle scadenze, archiviazione cartacea ed elettronica, verifica dei pagamenti e solleciti ai clienti. Chiedono esperienza, e tu ne hai dieci anni. E anche vicino, quattro chilometri scarsi, dentro il quadrante est. Il problema e l'orario, e non e piccolo: sono sei giorni a settimana, sabato compreso, e si comincia alle 7.00 o 7.30 del mattino. Con due bambini piccoli va deciso prima in famiglia, non dopo il colloquio. Scrivono assunzione immediata e chiedono di farsi vivi solo se davvero interessati. Da 750 euro al mese.",
+ url:"https://to.indeed.com/aa24lllmwybc", fonte:"L'indirizzo non e nell'annuncio: viene dalla visura camerale, sede legale in via Pietro Crostarosa 38, 00173 Roma."},
 
 {fam:"B", id:"p-segrscuola", pri:0, t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Quindici scuole e otto enti, con le mail gia trovate", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
  tipo:"Varia, spesso part time", pubb:"", stato:"top",
@@ -1202,7 +1459,23 @@ const PORTE = [
 {fam:"C", id:"p-visioncom", t:"Coordinatrice della formazione e selezione formatori", ente:"Vision Com", zona:"Villa Adriana, Tivoli", km:18.4, kmt:"18 km",
  tipo:"Part time, 400-600 euro al mese", pubb:"27 agosto 2026", stato:"attenzione",
  d:"Lo tengo solo perché fa capire cos'è la segreteria didattica: calendari dei corsi, ricerca e selezione dei formatori, database, sostituzioni. Fra i titoli preferenziali c'è proprio l'esperienza in segreteria didattica e la conoscenza del mondo della scuola, e tu le hai tutte e due. Ma sono diciotto chilometri e 400 o 600 euro al mese. Guardalo per sapere che ruolo cercare, non per candidarti.",
- url:"https://to.indeed.com/aas9m76v47kn"}
+ url:"https://to.indeed.com/aas9m76v47kn"},
+{fam:"C", id:"p-topphysio", t:"Front office in un centro di fisioterapia", ente:"Top Physio", zona:"EUR", km:12.5, kmt:"12 km, metro B",
+ tipo:"Part time, a partire da 1.250 euro al mese", pubb:"4 settembre 2026", stato:"attenzione",
+ d:"Di tutto quello che ho trovato oggi, questo e l'incastro piu preciso con quello che sai fare: accoglienza del paziente, agenda dei fisioterapisti, pagamenti e fatturazione, pratiche assicurative, rapporti con medici e fondi sanitari. E il gemello di Fisioaniene, con lo stipendio piu alto della pagina e l'assicurazione sanitaria. Chiedono diploma o laurea ed esperienza in segreteria o accoglienza: tu hai Vitaldent, Blu Dental e l'attestato di receptionist odontoiatrica. L'unico problema e dove sta: l'EUR, dall'altra parte della citta, e per arrivarci servono la C fino a San Giovanni, la A fino a Termini e poi la B. In macchina e tutta la Tuscolana. Guardalo se l'orario e l'ingresso lo giustificano.",
+ url:"https://to.indeed.com/aajtkyy46f2q"},
+{fam:"C", id:"p-mds", t:"Segreteria e amministrazione in azienda", ente:"M.DS srl", zona:"Viale Giorgio Ribotta, zona Torrino, EUR", km:12.0, kmt:"12 km, metro B",
+ tipo:"Part time dal lunedi al venerdi, 800-1300 euro al mese", pubb:"8 settembre 2026", stato:"buono",
+ d:"Segreteria generale, comunicazioni, archiviazione, piu fatture attive e passive, pagamenti, scadenze e prima nota, affiancando la segretaria gia in servizio. Chiedono tre anni di segreteria come requisito obbligatorio: e uno dei pochi annunci dove non passi di misura, ne hai dieci. Lunedi-venerdi, niente sabato, da 800 a 1.300 euro. Pesa solo la distanza, ed e la stessa del Top Physio.",
+ url:"https://to.indeed.com/aa26txbtm2lw", fonte:"L'annuncio non dice dove si lavora e parla genericamente di settore metalmeccanico. La sede in viale Giorgio Ribotta viene dai registri camerali, dove l'attivita dichiarata e l'installazione di impianti antincendio: chiedi conferma dell'indirizzo nella prima mail."},
+{fam:"C", id:"p-odonto-mv", t:"Segretaria di studio odontoiatrico", ente:"Studio odontoiatrico, il nome non e nell'annuncio", zona:"Monteverde e Colli Portuensi", km:9.2, kmt:"9 km, senza metro",
+ tipo:"Part time pomeridiano, 500 euro al mese", pubb:"7 settembre 2026", stato:"attenzione",
+ d:"Accoglienza dei pazienti, telefonate, agenda e appuntamenti, richiami, preventivi, segreteria dello studio. Sulla carta sei perfetta: un anno in Vitaldent, sei mesi in Blu Dental e l'attestato di receptionist per cliniche odontoiatriche. Ed e pomeridiano, che con i bambini la mattina e un vantaggio. Ma Monteverde sta dall'altra parte del Tevere rispetto a te, senza un mezzo diretto, e sono 500 euro al mese: fatti due conti sul tempo e sulla benzina prima di rispondere.",
+ url:"https://to.indeed.com/aal6swllqltn"},
+{fam:"C", id:"p-wenexia", t:"Segretaria amministrativa in azienda", ente:"Wenexia srl", zona:"Via Leonardo Patrasso 132, zona Acilia", km:18.0, kmt:"18 km",
+ tipo:"Part time in presenza, 500-800 euro al mese", pubb:"31 agosto 2026", stato:"attenzione",
+ d:"L'elenco delle mansioni e lungo e ti somiglia tutto: segreteria generale, mail e comunicazioni, documenti e contratti, supporto alla fatturazione, controllo di pagamenti e scadenze, gestionale aziendale, agenda e riunioni, rapporti con clienti, fornitori e consulenti. Chiedono esperienza in segreteria o amministrazione, e come titolo preferenziale proprio l'aver lavorato in aziende o studi professionali. Offrono parcheggio libero. Lo tengo solo per completezza: diciotto chilometri per 500-800 euro al mese, tutti in presenza, non tornano.",
+ url:"https://to.indeed.com/aaj94k6wnfqp"}
 ];
 
 /* ===== SCUOLE PRIVATE E PARITARIE =====
@@ -1385,12 +1658,69 @@ function statoStorage(){
 }
 
 /* ===== NAVIGAZIONE ===== */
+/* Cinque zone invece di dodici pulsanti: dentro ogni zona le pagine
+   stanno in una riga di schede, e ogni pagina ha una testata che dice
+   dove sei e a cosa serve. */
+const ICO_SV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+const ICONE = {
+  home: ICO_SV+'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+  percorso: ICO_SV+'<path d="M5 21V4h11l-2 4 2 4H5"/></svg>',
+  lavoro: ICO_SV+'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg>',
+  candidati: ICO_SV+'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+  info: ICO_SV+'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17.5v.01"/></svg>'
+};
+const GRUPPI = [
+  {id:"home", t:"Oggi", viste:["home"], d:"La pagina da cui partire. Ti fa due domande e ti porta dove serve, e ti mostra le notizie del giorno."},
+  {id:"percorso", t:"Percorso", viste:["percorso","esei"], d:"Le otto tappe da fare, con le spunte, e tutto sul corso ESEI che serve per lavorare al nido."},
+  {id:"lavoro", t:"Trova lavoro", viste:["annunci","concorsi","private","porte"], d:"Tutti i posti dove puoi candidarti: annunci, concorsi, scuole private vicino casa e lavoro d'ufficio."},
+  {id:"candidati", t:"Candidati", viste:["lettere","candidature"], d:"Le lettere già scritte da copiare e l'elenco di quello che hai mandato, con cosa fare dopo."},
+  {id:"info", t:"Guida e dati", viste:["aiuto","dove","canali","profilo"], d:"Questa guida, i siti dove cercare, i canali del Comune e della scuola, e i tuoi dati."}
+];
+const VISTE = {
+  percorso:{s:"Le tappe", t:"Il tuo percorso", d:"Otto tappe verso il lavoro, una alla volta. Spunta quello che hai fatto: la scheda rossa ti dice sempre cosa viene dopo."},
+  esei:{s:"Corso ESEI", t:"Il corso ESEI", d:"Cosa manca alla tua laurea per lavorare al nido, quanto costa e cosa chiedere prima di iscriverti."},
+  annunci:{s:"Annunci", t:"Annunci di lavoro", d:"Offerte vere trovate per te, con la distanza da casa. Tocca un'etichetta colorata per sapere cosa vuol dire."},
+  concorsi:{s:"Concorsi", t:"Concorsi pubblici", d:"Bandi con una scadenza fissa e una domanda da fare online. Per ognuno ti dico se il tuo titolo basta."},
+  private:{s:"Scuole private", t:"Scuole private vicino casa", d:"Scuole a cui puoi scrivere anche se non hanno annunci aperti, con la mail della segreteria già trovata."},
+  porte:{s:"Lavoro d'ufficio", t:"Lavoro d'ufficio", d:"Segreteria e amministrazione, il mestiere che fai da dieci anni, entro pochi chilometri da casa."},
+  lettere:{s:"Lettere pronte", t:"Lettere pronte", d:"Scegli a chi scrivi, metti il nome della struttura e copia il testo. Firma e contatti si mettono da soli."},
+  candidature:{s:"Le mie candidature", t:"Le mie candidature", d:"Tutto quello che hai mandato, a che punto è e cosa fare dopo."},
+  aiuto:{s:"Guida", t:"Guida all'app", d:"Come è fatta l'app e cosa vuol dire ogni etichetta colorata."},
+  dove:{s:"Dove cercare", t:"Dove cercare", d:"I siti dove escono gli annunci, già impostati su Roma, e i consigli per il tuo profilo LinkedIn."},
+  canali:{s:"Canali pubblici", t:"Canali pubblici", d:"Comune, scuole statali e inPA: a che punto è ogni strada e cosa puoi fare adesso."},
+  profilo:{s:"I miei dati", t:"I miei dati", d:"Nome e contatti per firmare le lettere, l'app sul telefono e il salvataggio dei dati."}
+};
+function gruppoDi(v){ return GRUPPI.find(g=>g.viste.includes(v)) || GRUPPI[0]; }
+function renderTestata(v){
+  const box = document.getElementById("testa-vista"); if(!box) return;
+  if(v==="home" || !VISTE[v]){ box.hidden = true; return; }
+  const g = gruppoDi(v), info = VISTE[v];
+  box.hidden = false;
+  const sub = document.getElementById("subnav");
+  if(g.viste.length > 1){
+    sub.hidden = false;
+    sub.innerHTML = g.viste.map(x=>'<button role="tab" data-sv="'+x+'" aria-selected="'+(x===v)+'">'+esc(VISTE[x].s)+'</button>').join("");
+  } else { sub.hidden = true; sub.innerHTML = ""; }
+  document.getElementById("testata").innerHTML =
+    '<div class="testata-ico">'+ICONE[g.id]+'</div>'
+    + '<div style="min-width:0"><div class="briciole">'+esc(g.t)+'</div><h1>'+esc(info.t)+'</h1><p>'+esc(info.d)+'</p></div>';
+}
 function vai(v){
-  document.querySelectorAll(".nav button").forEach(b=>b.setAttribute("aria-current", String(b.dataset.v===v)));
+  if(!document.getElementById("v-"+v)) v = "home";
+  const g = gruppoDi(v);
+  document.querySelectorAll(".nav button").forEach(b=>b.setAttribute("aria-current", String(b.dataset.g===g.id)));
   document.querySelectorAll(".vista").forEach(s=>{ s.hidden = s.id !== ("v-"+v); });
+  renderTestata(v);
+  if(v==="home"){ wizStep="iniziale"; renderWizard(); }
   window.scrollTo({top:0,behavior:"smooth"});
 }
-document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>vai(b.dataset.v)));
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>{
+  const g = GRUPPI.find(x=>x.id===b.dataset.g) || GRUPPI[0];
+  vai(g.viste[0]);
+}));
+document.addEventListener("click", ev=>{
+  const b = ev.target.closest("[data-sv]"); if(b) vai(b.dataset.sv);
+});
 
 /* ===== PERCORSO ===== */
 function fatta(t){ return t.voci.every(v=>S.spunte[t.id+"."+v.id]); }
@@ -1486,6 +1816,117 @@ function renderBarra(){
 }
 function renderPercorso(){ renderRail(); renderOra(); renderBarra(); }
 
+/* ===== OGGI (wizard) =====
+   Notizie e scelte calcolate al volo sulla data vera del dispositivo:
+   non serve ripubblicare l'app perché un annuncio smetta di essere nuovo
+   o un concorso smetta di essere in scadenza. */
+const MESI_IT = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,agosto:7,settembre:8,ottobre:9,novembre:10,dicembre:11};
+function parseDataIt(s){
+  if(!s) return null;
+  const m = String(s).toLowerCase().match(/(\d{1,2})\s+([a-zàèéìòù]+)\s+(\d{4})/);
+  if(!m) return null;
+  const mese = MESI_IT[m[2]];
+  if(mese==null) return null;
+  return new Date(Number(m[3]), mese, Number(m[1]));
+}
+function giorniDa(d){ return Math.round((Date.now()-d.getTime())/86400000); }
+function giorniA(d){ return Math.round((d.getTime()-Date.now())/86400000); }
+
+/* Un passo alla volta: una domanda sola, poi le opzioni portano dritte
+   alla sezione giusta oppure a un'altra domanda. Lo stato non si salva:
+   ogni volta che si torna su Oggi si riparte dalla prima domanda. */
+let wizStep = "iniziale";
+const WIZARD = {
+  iniziale: { domanda:"Cosa vuoi fare oggi?", opzioni: ()=>[
+    {t:"Cercare un lavoro nuovo", d:"Guardo io gli annunci e i concorsi aperti", next:"cerca"},
+    {t:"Scrivere una candidatura", d:"Preparo la lettera giusta per la persona giusta", next:"scrivi"},
+    {t:"Continuare il mio percorso", d: (function(){ const t=tappaCorrente(); return t ? ("Sei alla tappa "+t.n+" di "+TAPPE.length+": "+t.titolo+".") : "Hai fatto tutte le tappe: guarda cosa tenere vivo."; })(), v:"percorso"},
+    {t:"Tenere vivo quello che ho aperto", d:"Il tracker di tutte le candidature mandate", v:"candidature"}
+  ]},
+  cerca: { domanda:"Che lavoro cerchi?", opzioni: ()=>[
+    {t:"Nido o scuola dell'infanzia", d:"Gli annunci da educatrice, in ordine di distanza da casa", v:"annunci"},
+    {t:"Segreteria o ufficio", d:"Il lavoro amministrativo vicino casa, il tuo altro mestiere", v:"porte"},
+    {t:"Un concorso pubblico", d:"Bandi veri, con scadenza e requisiti", v:"concorsi"},
+    {t:"OEPAC o lavoro nel sociale", d:"Qui il titolo che serve ce l'hai già, senza aspettare l'ESEI", v:"annunci", filtro:"socio"}
+  ]},
+  scrivi: { domanda:"A chi vuoi scrivere?", opzioni: ()=>[
+    {t:"Una scuola statale", d:"Messa a disposizione per una supplenza", v:"lettere", lettera:"mad"},
+    {t:"Una scuola privata o un nido", d:"Le quindici scuole vicino casa, con la mail già trovata", v:"private"},
+    {t:"Un ufficio o una segreteria", d:"Il testo per candidarti come amministrativa", v:"lettere", lettera:"segreteria"},
+    {t:"Una cooperativa, ludoteca o doposcuola", d:"Il testo per i servizi extrascolastici", v:"lettere", lettera:"coop"}
+  ]}
+};
+function renderWizard(){
+  const el = document.getElementById("wizard-oggi"); if(!el) return;
+  const passo = WIZARD[wizStep] || WIZARD.iniziale;
+  const numero = wizStep==="iniziale" ? 1 : 2;
+  const opz = passo.opzioni();
+  el.innerHTML = '<div class="wiz-card">'
+    + '<div class="wiz-passo">Passo '+numero+' di 2</div>'
+    + '<h3 class="wiz-domanda">'+esc(passo.domanda)+'</h3>'
+    + '<div class="grid g2">'
+    + opz.map((o,i)=>'<div class="card pad scelta" data-wiz="'+i+'" role="button" tabindex="0">'
+        + '<h3>'+esc(o.t)+'</h3><p>'+esc(o.d)+'</p><span class="va">'+(o.next?"Continua":"Vai")+'</span></div>').join("")
+    + '</div>'
+    + (wizStep!=="iniziale" ? '<button class="wiz-indietro" id="wiz-indietro">&larr; Torna alla domanda di prima</button>' : '')
+    + '</div>';
+  el.querySelectorAll("[data-wiz]").forEach(b=>b.addEventListener("click",()=>{
+    const o = opz[Number(b.dataset.wiz)];
+    if(o.next){ wizStep = o.next; renderWizard(); return; }
+    if(o.filtro!=null){ filtro = o.filtro; renderFiltri(); renderAnnunci(); }
+    if(o.lettera){
+      const tipo = o.lettera;
+      setTimeout(()=>{
+        const sel=document.getElementById("l-tipo");
+        if(sel){ sel.value=tipo; generaLettera(); }
+        const ente=document.getElementById("l-ente");
+        if(ente) ente.focus();
+      }, 30);
+    }
+    wizStep = "iniziale";
+    vai(o.v);
+  }));
+  const back = document.getElementById("wiz-indietro");
+  if(back) back.addEventListener("click", ()=>{ wizStep="iniziale"; renderWizard(); });
+}
+document.addEventListener("keydown", ev=>{
+  if(ev.key==="Escape"){ chiudiFoglio(); return; }
+  if(ev.key!=="Enter" && ev.key!==" ") return;
+  const b = ev.target.closest('[role="button"][tabindex]');
+  if(b){ ev.preventDefault(); b.click(); }
+});
+
+function renderNotizie(){
+  const el = document.getElementById("lista-notizie"); if(!el) return;
+  const scadenze = CONCORSI
+    .filter(c=>c.adatto!==false)
+    .map(c=>({c, d:parseDataIt(c.scadenza)}))
+    .filter(x=>x.d && giorniA(x.d)>=0 && giorniA(x.d)<=21)
+    .sort((x,y)=>x.d-y.d);
+  const nuovi = tutti()
+    .map(a=>({a, d:parseDataIt(a.pubb)}))
+    .filter(x=>x.d && giorniDa(x.d)>=0 && giorniDa(x.d)<=14)
+    .sort((x,y)=>y.d-x.d);
+  let html = "";
+  scadenze.forEach(({c,d})=>{
+    const gg = giorniA(d);
+    const quando = gg===0 ? "scade oggi" : gg===1 ? "scade domani" : "scade tra "+gg+" giorni";
+    html += '<div class="sc"><div class="pillole"><span class="pill p-ora">'+quando+'</span></div>'
+      + '<h3>'+esc(c.titolo)+'</h3>'
+      + '<div class="quando">'+esc(c.ente)+', entro il '+esc(c.scadenza)+'</div>'
+      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="concorsi">Apri il concorso</button></div></div>';
+  });
+  nuovi.slice(0,4).forEach(({a,d})=>{
+    const gg = giorniDa(d);
+    const quando = gg===0 ? "pubblicato oggi" : gg===1 ? "pubblicato ieri" : "nuovo, "+gg+" giorni fa";
+    html += '<div class="sc"><div class="pillole"><span class="pill p-ok">'+quando+'</span></div>'
+      + '<h3>'+esc(a.titolo)+'</h3>'
+      + '<div class="quando">'+esc(a.ente)+', '+esc(a.zona)+'</div>'
+      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="annunci">Apri gli annunci</button></div></div>';
+  });
+  el.innerHTML = html || '<div class="vuoto">Niente di nuovo da quando hai controllato l\'ultima volta.<br>Bacheca e concorsi restano quelli di prima.</div>';
+}
+
 /* ===== ANNUNCI ===== */
 let filtro = "tutti";
 const CATS = [["tutti","Tutti"],["nido","Nido 0-3"],["infanzia","Infanzia 3-6"],["socio","OEPAC e sociale"],["extra","Extrascolastico"],["dom","A domicilio"]];
@@ -1541,7 +1982,7 @@ function renderAnnunci(){
       + '</div></div></div>';
   }).join("") : '<div class="vuoto">Niente in questa categoria.<br>Il prossimo aggiornamento automatico ne porter\u00E0 altri, oppure aggiungine uno tu.</div>';
   const c = document.getElementById("conta"); if(c) c.textContent = l.length + (l.length===1?" annuncio":" annunci");
-  el.querySelectorAll("[data-hd]").forEach(b=>b.addEventListener("click",()=>{ S.nascosti.push(b.dataset.hd); salva(); renderAnnunci(); toast("Tolto dalla bacheca"); }));
+  el.querySelectorAll("[data-hd]").forEach(b=>b.addEventListener("click",()=>{ S.nascosti.push(b.dataset.hd); salva(); renderAnnunci(); renderNotizie(); toast("Tolto dalla bacheca"); }));
   el.querySelectorAll("[data-tr]").forEach(b=>b.addEventListener("click",()=>{
     const a = tutti().find(x=>x.id===b.dataset.tr);
     S.candidature.push({id:"c"+Date.now(), ente:a.ente, ruolo:a.titolo, canale:"Annuncio online", data:"", stato:"dainviare", azione:"Inviare CV e lettera", azioneData:"", note:a.url||""});
@@ -1598,9 +2039,49 @@ function renderPorte(){
   }));
   el.querySelectorAll("[data-trp]").forEach(b=>b.addEventListener("click",()=>{
     const x = PORTE.find(y=>y.id===b.dataset.trp); if(!x) return;
-    S.candidature.push({id:"c"+Date.now(), ente:x.ente, ruolo:x.t, canale:"Altre porte", data:"",
+    S.candidature.push({id:"c"+Date.now(), ente:x.ente, ruolo:x.t, canale:"Lavoro d'ufficio", data:"",
       stato:"dainviare", azione:"Inviare CV e lettera", azioneData:"", note:x.url||""});
     salva(); renderCand(); toast("Aggiunta al tracker, da inviare");
+  }));
+}
+
+/* ===== CONCORSI ===== */
+function renderConcorsi(){
+  const el = document.getElementById("lista-concorsi"); if(!el) return;
+  const PILLC = {true:["p-ok","il titolo ce l'hai già"], false:["p-no","fuori profilo"]};
+  const scheda = c=>{
+    const [cl,tx] = PILLC[c.adatto] || ["p-ora","da verificare"];
+    return '<div class="conc"><div class="pillole"><span class="pill '+cl+'">'+tx+'</span>'
+      + (c.postiN?'<span class="pill p-info">'+c.postiN+(c.postiN===1?" posto":" posti")+'</span>':'')
+      + '</div>'
+      + '<h3>'+esc(c.titolo)+'</h3>'
+      + '<div class="meta">'+esc(c.ente)+', '+esc(c.zona)+'</div>'
+      + (c.pubb?'<div class="meta mono" style="font-size:11.5px;margin-top:2px">pubblicato il '+esc(c.pubb)+'</div>':'')
+      + '<div class="contatti">'
+      + riga("Tipo di selezione", c.tipo)
+      + riga("Titolo richiesto", c.titoloRichiesto)
+      + riga("Scadenza domanda", c.scadenza)
+      + riga("Come si svolge", c.prove)
+      + riga("Tassa di concorso", c.tassa)
+      + riga("Come si fa domanda", c.come)
+      + riga("Stipendio", c.stipendio)
+      + riga("Dopo l'assunzione", c.vincolo)
+      + '</div>'
+      + (c.note?'<p>'+esc(c.note)+'</p>':'')
+      + (c.fonte?'<p class="fonte">'+esc(c.fonte)+'</p>':'')
+      + '<div class="azioni">'
+      + (c.url?'<a class="b b-mini" href="'+esc(c.url)+'" target="_blank" rel="noopener">Apri il bando</a>':'')
+      + (c.adatto?'<button class="b b-mini" data-trc="'+esc(c.id)+'">Aggiungi al tracker</button>':'')
+      + '</div></div>';
+  };
+  const miei = CONCORSI.filter(c=>c.adatto!==false), fuori = CONCORSI.filter(c=>c.adatto===false);
+  el.innerHTML = miei.map(scheda).join("")
+    + (fuori.length ? '<details class="archivio"><summary>Fuori profilo, solo per sapere ('+fuori.length+')</summary>'+fuori.map(scheda).join("")+'</details>' : '');
+  el.querySelectorAll("[data-trc]").forEach(b=>b.addEventListener("click",()=>{
+    const c = CONCORSI.find(x=>x.id===b.dataset.trc); if(!c) return;
+    S.candidature.push({id:"c"+Date.now(), ente:c.ente, ruolo:c.titolo, canale:"Avviso pubblico", data:"",
+      stato:"dainviare", azione:"Preparare e mandare la domanda su inPA entro il "+(c.scadenza||"la scadenza"), azioneData:"", note:c.url||""});
+    salva(); renderCand(); toast("Aggiunta al tracker, da preparare");
   }));
 }
 
@@ -1673,7 +2154,7 @@ function renderScuole(){
     + COMUNALI.map(x=>'<li><b>'+esc(x.n)+'</b>, '+esc(x.ind)+'</li>').join("")
     + '</ul>'
     + '<p style="margin:0 0 12px;font-size:15px">La sesta era la <b>San Vincenzo di via delle Azalee 43</b>. Quella scuola non esiste piu: l\'edificio e stato demolito a marzo del 2024 e al suo posto sono state costruite due palazzine. L\'ho tolta.</p>'
-    + '<p style="margin:0;font-size:14px;color:var(--grigio)">Se vuoi lavorare nelle comunali la strada c\'e, ma e un\'altra: sono i bandi di Roma Capitale per educatore ed insegnante di scuola dell\'infanzia. Li trovi nella sezione Canali, alla voce dei concorsi pubblici.</p>';
+    + '<p style="margin:0;font-size:14px;color:var(--grigio)">Se vuoi lavorare nelle comunali la strada c\'e, ma e un\'altra: sono i bandi di Roma Capitale per educatore ed insegnante di scuola dell\'infanzia. Ne parlo nella sezione Canali, e i concorsi veri che ho trovato stanno nella sezione Concorsi.</p>';
 
   const e = $("#lista-enti");
   if(e) e.innerHTML = ENTI.map(x =>
@@ -1799,12 +2280,19 @@ $("#c-salva").addEventListener("click",()=>{
 
 /* ===== CANALI ===== */
 const PILL = {ora:["p-ora","fallo ora"], ok:["p-ok","sempre attivo"], info:["p-info","da sapere"], chiuso:["p-no","chiuso"]};
-$("#lista-canali").innerHTML = CANALI.map(c=>{
+const schedaCanale = c=>{
   const [cl,tx]=PILL[c.stato];
   return '<div class="sc"><div class="pillole"><span class="pill '+cl+'">'+tx+'</span></div>'
     + '<h3>'+esc(c.t)+'</h3><div class="quando">'+esc(c.quando)+'</div><p>'+esc(c.d)+'</p>'
     + '<div style="margin-top:13px"><a class="b b-mini" href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.link)+'</a></div></div>';
-}).join("");
+};
+(function(){
+  const RANGO = {ora:0, ok:1, info:2};
+  const aperti = CANALI.filter(c=>c.stato!=="chiuso").sort((a,b)=>RANGO[a.stato]-RANGO[b.stato]);
+  const chiusi = CANALI.filter(c=>c.stato==="chiuso");
+  $("#lista-canali").innerHTML = aperti.map(schedaCanale).join("")
+    + (chiusi.length ? '<details class="archivio"><summary>Strade chiuse per ora ('+chiusi.length+')</summary>'+chiusi.map(schedaCanale).join("")+'</details>' : '');
+})();
 
 /* ===== PROFILO ===== */
 $("#box-profilo").innerHTML =
@@ -1927,6 +2415,10 @@ function aggiornaIo(){
   if(logo) logo.textContent = v("nome") ? ("Il percorso di " + v("nome").split(/\s+/)[0]) : "Il mio percorso";
   const av = document.getElementById("avviso-dati");
   if(av) av.hidden = pieno || S.chiusi.includes("dati");
+  const ciao = document.getElementById("oggi-ciao");
+  if(ciao) ciao.textContent = v("nome") ? ("Ciao " + v("nome").split(/\s+/)[0] + "!") : "Ciao!";
+  const dt = document.getElementById("oggi-data");
+  if(dt){ try{ dt.textContent = "Oggi, " + new Date().toLocaleDateString("it-IT",{weekday:"long", day:"numeric", month:"long"}); }catch(e){ dt.textContent = "Oggi"; } }
 }
 
 function renderIo(){ riempiCampiIo(); aggiornaIo(); }
@@ -2111,12 +2603,200 @@ document.addEventListener("click", async ev=>{
   }catch(e){}
 })();
 
+
+/* ===== ETICHETTE SPIEGATE =====
+   Ogni etichetta colorata si puo toccare: si apre un foglio che dice cosa vuol dire.
+   Lo stesso elenco riempie la pagina Guida, cosi le spiegazioni sono scritte una volta sola. */
+const GLOSSARIO = [
+  {g:"Negli annunci: che tipo di lavoro", voci:[
+    {c:"p-ok", t:"Nido 0-3", d:"Lavoro al nido, con bambini da zero a tre anni. Per molti di questi posti serve anche il corso ESEI: leggi bene cosa chiede l'annuncio."},
+    {c:"p-info", t:"Infanzia 3-6", d:"Scuola dell'infanzia, bambini da tre a sei anni. Qui la tua laurea basta già."},
+    {c:"p-ora", t:"OEPAC e sociale", d:"Lavoro da educatrice fuori dalla sezione: affiancare a scuola bambini con disabilità, comunità per minori, centri. Il titolo che serve ce l'hai già."},
+    {c:"p-info", t:"Extrascolastico", d:"Doposcuola, ludoteche, centri estivi. La tua laurea basta già."},
+    {c:"p-no", t:"A domicilio", d:"Si lavora a casa delle famiglie. Hai detto che non fa per te: questi annunci stanno in fondo alla lista."},
+    {c:"p-no", t:"non fa per te", d:"L'annuncio chiede qualcosa che non hai. Lo tengo solo per non nasconderti niente."}
+  ]},
+  {g:"Il riquadro a sinistra: quanto è lontano", box:true, voci:[
+    {n:1, d:"Entro tre chilometri da casa, in linea d'aria. Praticamente dietro l'angolo."},
+    {n:2, d:"Tra tre e sei chilometri. Si arriva in poco, anche con i mezzi."},
+    {n:3, d:"Tra sei e dodici chilometri. Si arriva, ma è dall'altra parte della città."},
+    {n:4, d:"Oltre dodici chilometri, spesso fuori Roma. Guardalo solo se l'offerta vale il viaggio."},
+    {n:0, d:"L'annuncio non dice dove si lavora. La prima domanda da fare al telefono è proprio questa."}
+  ]},
+  {g:"Nei concorsi", voci:[
+    {c:"p-ok", t:"il titolo ce l'hai già", d:"Il bando chiede un titolo che hai: puoi fare domanda senza aspettare niente."},
+    {c:"p-no", t:"fuori profilo", d:"Il bando chiede un titolo che oggi non hai. Lo tengo solo per sapere cosa succede in giro."},
+    {c:"p-ora", t:"da verificare", d:"Dal testo del bando non si capisce se il tuo titolo basta. Va chiesto all'ente prima di fare domanda."},
+    {c:"p-info", t:"1 posto", d:"Quante persone assumono con quel concorso."}
+  ]},
+  {g:"Nel lavoro d'ufficio", voci:[
+    {c:"p-ok", t:"guarda questo per primo", d:"È il più adatto a te tra quelli trovati: vicino, con le mansioni che sai già fare."},
+    {c:"p-info", t:"in linea con te", d:"Buona occasione, le mansioni ti somigliano. Vale la candidatura."},
+    {c:"p-ora", t:"leggi bene prima", d:"C'è un dettaglio che pesa, come l'orario, la distanza o la paga. È scritto nella scheda: leggilo prima di rispondere."},
+    {c:"p-info", t:"da preparare", d:"Non è un annuncio da rispondere oggi: è una strada da preparare per più avanti."},
+    {c:"p-ok", t:"ce l'hai già", d:"Un requisito che hai già in mano: non devi fare niente."},
+    {c:"p-no", t:"4,5 km", d:"La seconda etichetta grigia dice quanto è lontano da casa, in linea d'aria, oppure con quale metro ci arrivi."}
+  ]},
+  {g:"Nei canali pubblici", voci:[
+    {c:"p-ora", t:"fallo ora", d:"È una strada aperta adesso: conviene muoversi subito."},
+    {c:"p-ok", t:"sempre attivo", d:"Un canale sempre aperto, da tenere acceso: per esempio gli avvisi via mail."},
+    {c:"p-info", t:"da sapere", d:"Una notizia utile, ma non c'è niente da fare oggi."},
+    {c:"p-no", t:"chiuso", d:"Per ora la finestra è chiusa. Lo trovi in fondo, nell'elenco delle strade chiuse."}
+  ]},
+  {g:"Nel corso ESEI", voci:[
+    {c:"p-info", t:"da far valutare", d:"Hai esami in quel settore, ma solo l'università può dire se valgono per il nido. È la domanda da fare alla segreteria."},
+    {c:"p-no", t:"manca un pezzo", d:"Hai qualcosa, ma non basta: manca una parte che il corso ESEI copre."},
+    {c:"p-no", t:"manca tutto", d:"Nel tuo piano di studi non c'è niente in quel settore: lo copre il corso ESEI."},
+    {c:"p-ok", t:"dovrebbe bastare", d:"Quello che hai già sembra sufficiente. L'ultima parola resta all'università."},
+    {c:"p-no", t:"iscrizioni chiuse", d:"L'ultima edizione del corso non accetta più iscrizioni. Va aspettata la prossima."},
+    {c:"p-info", t:"stesso ateneo della laurea", d:"È l'università dove ti sei laureata: conosce già la tua carriera."},
+    {c:"p-ok", t:"l'unica che sembra sempre aperta", d:"Sul sito non c'è una scadenza, quindi sembra che ci si possa iscrivere in ogni momento. Va confermato al telefono."},
+    {c:"p-ok", t:"terza strada, da chiedere", d:"Un'alternativa possibile, ma prima va chiesto alla segreteria se funziona per te."}
+  ]},
+  {g:"Nelle candidature", stato:true, voci:[
+    {k:"dainviare", t:"Da inviare", d:"L'hai segnata ma non l'hai ancora mandata."},
+    {k:"inviata", t:"Inviata", d:"L'hai mandata e aspetti una risposta. Dopo dieci giorni senza notizie, ricontatta."},
+    {k:"colloquio", t:"Colloquio", d:"Ti hanno chiamata o hai un colloquio fissato."},
+    {k:"esito", t:"In attesa", d:"Il colloquio c'è stato, aspetti di sapere com'è andata."},
+    {k:"chiusa", t:"Chiusa", d:"Finita, bene o male. Resta solo come promemoria."}
+  ]},
+  {g:"Altre etichette", voci:[
+    {c:"p-ora", t:"da fare presto", d:"Una mossa che conviene fare nei prossimi giorni."},
+    {c:"p-ok", t:"contatto che hai già", d:"Qualcuno che ti conosce già: è il contatto più facile da riaprire."},
+    {c:"p-info", t:"portale", d:"Un sito dove le aziende pubblicano annunci."},
+    {c:"p-info", t:"aggregatore", d:"Un sito che raccoglie gli annunci da tanti altri siti. Utile, ma con doppioni."},
+    {c:"p-ok", t:"servizio pubblico gratuito", d:"Un ufficio pubblico che ti aiuta senza farti pagare niente."},
+    {c:"p-ok", t:"servizio pubblico", d:"Un sito della pubblica amministrazione."}
+  ]}
+];
+function norma(s){ return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s+/g," ").trim(); }
+const INDICE = {};
+GLOSSARIO.forEach(gr=>gr.voci.forEach(v=>{ if(v.t) INDICE[norma(v.t)] = v; }));
+function etichettaHtml(v, gr){
+  if(gr && gr.box){ const [n,u] = ETI[v.n]; return '<div class="dist"><div class="box d'+v.n+'"><div class="n">'+n+'</div><span class="u">'+u+'</span></div></div>'; }
+  if(gr && gr.stato) return '<span class="stato s-'+v.k+'">'+esc(v.t)+'</span>';
+  return '<span class="pill '+v.c+'">'+esc(v.t)+'</span>';
+}
+function spiega(el){
+  if(el.classList.contains("dist")){
+    const b = el.querySelector(".box"); const m = b && b.className.match(/d(\d)/);
+    const gr = GLOSSARIO[1]; const v = gr.voci.find(x=>x.n===(m?Number(m[1]):0));
+    return v ? {html: etichettaHtml(v, gr), d: v.d} : null;
+  }
+  const txt = norma(el.textContent);
+  const v = INDICE[txt];
+  if(v){ const gr = GLOSSARIO.find(g=>g.voci.includes(v)); return {html: etichettaHtml(v, gr), d: v.d}; }
+  const copia = el.outerHTML;
+  if(/^scade/.test(txt)) return {html: copia, d:"Mancano pochi giorni alla scadenza per fare domanda. Apri il concorso e controlla la data esatta sul bando."};
+  if(/^(nuovo|pubblicato)/.test(txt)) return {html: copia, d:"Un annuncio uscito da poco. Gli annunci buoni durano poco: meglio rispondere presto."};
+  if(/^\d+ post/.test(txt)) return INDICE[norma("1 posto")] && {html: copia, d: INDICE[norma("1 posto")].d};
+  if(/gia fatta/.test(txt)) return {html: copia, d: INDICE[norma("ce l'hai già")].d};
+  if(/scegli tu/.test(txt)) return {html: copia, d:"Qui non c'è una sede fissa: le scuole dove lavorare le scegli tu quando fai la domanda."};
+  if(el.closest(".porta")) return {html: copia, d: INDICE[norma("4,5 km")].d};
+  return null;
+}
+function apriFoglio(info){
+  document.getElementById("foglio-et").innerHTML = info.html;
+  document.getElementById("foglio-d").textContent = info.d;
+  const f = document.getElementById("foglio"); f.hidden = false;
+  const b = f.querySelector(".b-pri"); if(b) b.focus();
+}
+function chiudiFoglio(){ const f = document.getElementById("foglio"); if(f && !f.hidden) f.hidden = true; }
+document.addEventListener("click", ev=>{
+  if(ev.target.closest("[data-chiudi-foglio]")){ chiudiFoglio(); return; }
+  if(ev.target.closest("#foglio-guida")){ chiudiFoglio(); vai("aiuto"); return; }
+  const el = ev.target.closest(".pill, .stato, .dist");
+  if(!el || el.closest("#foglio")) return;
+  const info = spiega(el); if(!info) return;
+  ev.preventDefault(); ev.stopPropagation();
+  apriFoglio(info);
+});
+
+function renderGuida(){
+  const el = document.getElementById("guida"); if(!el) return;
+  let h = '<div class="sez" style="margin-top:0"><h2>Come è fatta l\'app</h2>'
+    + '<p class="desc">Cinque zone, sempre a portata di dito: in basso sul telefono, in alto sul computer. Tocca una zona per aprirla. Se ti perdi, tocca Oggi.</p>'
+    + '<div class="grid g2">'
+    + GRUPPI.map(g=>'<div class="card pad scelta" data-vai="'+g.viste[0]+'" role="button" tabindex="0"><div class="guida-ico">'+ICONE[g.id]+'</div><h3>'+esc(g.t)+'</h3><p>'+esc(g.d)+'</p>'
+        + (g.viste.length>1 ? '<p style="font-size:13px">Dentro: '+g.viste.map(x=>esc(VISTE[x].s)).join(", ")+'.</p>' : '') + '</div>').join("")
+    + '</div></div>';
+  h += '<div class="sez"><h2>Cosa vogliono dire le etichette</h2>'
+    + '<p class="desc">Le trovi sulle schede, con un piccolo punto interrogativo. Toccale lì dove sono e ti spiego cosa vogliono dire, oppure apri qui sotto il gruppo che ti interessa.</p>';
+  GLOSSARIO.forEach(gr=>{
+    h += '<details class="card glos"><summary><b>'+esc(gr.g)+'</b><span>'+gr.voci.length+' etichette</span></summary>'
+      + gr.voci.map(v=>'<div class="glos-riga"><div class="glos-et">'+etichettaHtml(v, gr)+'</div><p>'+esc(v.d)+'</p></div>').join("")
+      + '</details>';
+  });
+  h += '</div><div class="sez"><h2>I riquadri colorati con la freccia</h2>'
+    + '<p class="desc">Dentro le pagine trovi dei riquadri gialli o rosa con un titolo e una piccola freccia. Sono le spiegazioni lunghe: toccali per aprirli, toccali di nuovo per chiuderli. Con la x in alto a destra li togli del tutto, e li rimetti dalla pagina I miei dati.</p></div>';
+  el.innerHTML = h;
+}
+
+/* Il titolo grande di ogni pagina adesso sta nella testata: tolgo il doppione
+   e metto la spiegazione lunga dietro un tocco. */
+function semplificaSezioni(){
+  document.querySelectorAll(".vista").forEach(sec=>{
+    if(sec.id==="v-home" || sec.dataset.semplice) return;
+    sec.dataset.semplice = "1";
+    const h2 = sec.querySelector(":scope > .sez > h2"); if(!h2) return;
+    h2.classList.add("titolo-doppio");
+    const d = h2.nextElementSibling;
+    if(d && d.classList.contains("desc")){
+      d.classList.add("nascosta");
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "leggi"; b.textContent = "Leggi la spiegazione completa";
+      b.addEventListener("click", ()=>{
+        const aperta = !d.classList.toggle("nascosta");
+        b.textContent = aperta ? "Chiudi la spiegazione" : "Leggi la spiegazione completa";
+      });
+      d.after(b);
+    }
+  });
+}
+/* I riquadri di spiegazione restano chiusi: si vede solo il titolo, si aprono con un tocco. */
+function comprimiAvvisi(){
+  document.querySelectorAll(".avviso[data-chiudi]").forEach(box=>{
+    if(box.id==="avviso-dati" || box.dataset.comp) return;
+    const h3 = box.querySelector(":scope > h3"); if(!h3) return;
+    box.dataset.comp = "1"; box.classList.add("comp");
+    const corpo = document.createElement("div"); corpo.className = "avviso-corpo";
+    let n = h3.nextSibling;
+    while(n){ const nx = n.nextSibling; if(!(n.classList && n.classList.contains("chiudi"))) corpo.appendChild(n); n = nx; }
+    box.appendChild(corpo);
+    h3.setAttribute("role","button"); h3.tabIndex = 0; h3.setAttribute("aria-expanded","false");
+    h3.addEventListener("click", ()=>{ const a = box.classList.toggle("aperto"); h3.setAttribute("aria-expanded", String(a)); });
+  });
+}
+
+/* Le note lunghe dentro le schede si fermano a tre righe: si legge tutto con un tocco.
+   Funziona anche sulle schede che si ridisegnano (filtri, Non mi interessa). */
+function accorciaTesti(){
+  document.querySelectorAll(".ann p, .porta > p:not(.fonte), .conc > p:not(.fonte), .scuola p:not(.fonte), #lista-canali .sc > p, #lista-dove .sc > p").forEach(p=>{
+    if(p.dataset.corto || p.textContent.length < 200) return;
+    p.dataset.corto = "1"; p.classList.add("lungo");
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "leggi-tutto"; b.textContent = "Leggi tutto";
+    b.addEventListener("click", ()=>{ const a = p.classList.toggle("aperto"); b.textContent = a ? "Mostra meno" : "Leggi tutto"; });
+    p.after(b);
+  });
+}
+(function(){
+  let attesa = false;
+  const oss = new MutationObserver(()=>{ if(attesa) return; attesa = true; requestAnimationFrame(()=>{ attesa = false; accorciaTesti(); }); });
+  oss.observe(document.querySelector("main"), {childList:true, subtree:true});
+})();
+
 /* ===== AVVIO ===== */
-function tuttoIlRender(){ renderPercorso(); renderFiltri(); renderAnnunci(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); statoBarra(); applicaChiusi(); }
+function tuttoIlRender(){ renderPercorso(); renderWizard(); renderNotizie(); renderGuida(); renderFiltri(); renderAnnunci(); renderConcorsi(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); statoBarra(); applicaChiusi(); }
 carica();
+semplificaSezioni();
+comprimiAvvisi();
 tuttoIlRender();
+accorciaTesti();
 generaLettera();
 window.addEventListener("resize", ()=>{ clearTimeout(window._rz); window._rz=setTimeout(riempiRail, 180); });
 </script>
-</body>
-</html>
+
+
+
+</body></html>
