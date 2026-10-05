@@ -422,6 +422,38 @@ details.piede>summary{cursor:pointer;font-weight:600;color:var(--grigio);padding
   .testata h1{font-size:23px}
   .testata-ico{width:42px;height:42px;border-radius:13px}
 }
+
+/* ============ UX: fisarmoniche, ricerca, filtri (5 ottobre 2026) ============ */
+.acc{position:relative;cursor:pointer}
+.acc h3,.acc h4{padding-right:30px}
+.acc>.acc-frec{position:absolute;width:9px;height:9px;border-right:2px solid var(--grigio);border-bottom:2px solid var(--grigio);transform:rotate(45deg);transition:transform .2s;right:22px;top:28px;pointer-events:none}
+.acc.aperto>.acc-frec{transform:rotate(-135deg)}
+.acc:not(.aperto) .acc-corpo{display:none}
+.acc-corpo{cursor:auto}
+.acc:not(.aperto) .meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc:hover h3,.acc:hover h4{color:var(--indaco)}
+.str{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 14px}
+.str input[type=search]{flex:1 1 220px;min-width:0;padding:10px 14px 10px 38px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E6165' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 12px center/18px}
+.str .n-ris{font-size:13px;color:var(--grigio);white-space:nowrap}
+.filtri-stretti{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.chip small{opacity:.7;margin-left:5px}
+.zona-testa.tgl{cursor:pointer}
+.zona-testa.tgl::before{content:"";flex:0 0 auto;width:7px;height:7px;border-right:2px solid var(--indaco);border-bottom:2px solid var(--indaco);transform:rotate(45deg);transition:transform .2s;align-self:center}
+.zona-testa.tgl.chiuso::before{transform:rotate(-45deg)}
+.zona-testa.tgl.chiuso+.gruppo-corpo{display:none}
+@media(max-width:600px){.zona-testa{flex-wrap:wrap;gap:2px 10px}}
+.sez-toggle{cursor:pointer;display:flex;align-items:center;gap:10px;background:var(--carta);border:1px solid var(--nebbia);border-radius:var(--r-s);padding:14px 18px;font-size:17px!important;margin-bottom:0!important;box-shadow:var(--om-s)}
+.sez-toggle::before{content:"";flex:0 0 auto;width:8px;height:8px;border-right:2px solid var(--indaco);border-bottom:2px solid var(--indaco);transform:rotate(-45deg);transition:transform .2s}
+.sez-toggle.aperta::before{transform:rotate(45deg)}
+.sez-toggle:hover{border-color:var(--indaco)}
+.sez-corpo{margin-top:14px}
+.sez-acc{margin-top:16px!important}
+.fuori{display:none!important}
+.ann.acc:not(.aperto),.porta.acc:not(.aperto),.conc.acc:not(.aperto),.sc.acc:not(.aperto),.scuola.acc:not(.aperto){padding-top:14px;padding-bottom:14px}
+.acc:not(.aperto)>.acc-frec{top:22px}
+.cnt{display:inline-block;background:var(--nebbia);color:var(--grigio);border-radius:99px;padding:1px 8px;font-size:12px;font-weight:500;margin-left:6px}
+.vuoto-r{margin-top:12px}
+.acc:focus-within>.acc-frec{border-color:var(--indaco)}
 </style>
 </head>
 <body>
@@ -777,12 +809,6 @@ details.piede>summary{cursor:pointer;font-weight:600;color:var(--grigio);padding
         <li><b>Rispondi a Fisioaniene.</b> Reception in un centro di fisioterapia, orario flessibile e parcheggio, e tu hai già lavorato in due cliniche.</li>
       </ul>
       <p>Tre mail. Mezz'ora in tutto. Quando le hai mandate, aggiungile al tracker e chiudi il telefono.</p>
-    </div>
-
-    <div class="avviso info" style="margin-bottom:18px" data-chiudi="porte-casa">
-      <h3>Cerchi un lavoro da casa?</h3>
-      <p>Sono in fondo a questa pagina, nel gruppo "Da casa, anche part time o a obiettivo": tre schede, con le avvertenze su contratto e tasse. Toccando il pulsante ci arrivi subito.</p>
-      <div style="margin-top:10px"><button class="b b-mini b-pri" id="salta-casa">Vai al lavoro da casa</button></div>
     </div>
 
     <div class="card" id="lista-porte"></div>
@@ -1922,15 +1948,12 @@ function renderWizard(){
     }
     wizStep = "iniziale";
     vai(o.v);
+    if(o.ancora==="porte-d"){ famPorte="D"; renderPorte(); }
     if(o.ancora) setTimeout(()=>{ const t=document.getElementById(o.ancora); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }, 250);
   }));
   const back = document.getElementById("wiz-indietro");
   if(back) back.addEventListener("click", ()=>{ wizStep="iniziale"; renderWizard(); });
 }
-document.addEventListener("click", ev=>{
-  if(!ev.target.closest("#salta-casa")) return;
-  const t = document.getElementById("porte-d"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"});
-});
 document.addEventListener("keydown", ev=>{
   if(ev.key==="Escape"){ chiudiFoglio(); return; }
   if(ev.key!=="Enter" && ev.key!==" ") return;
@@ -1978,7 +2001,7 @@ const ETI = {0:["?","da verif."],1:["3","km o meno"],2:["6","km circa"],3:["12",
 function tutti(){ return ANNUNCI.concat(S.annunciMiei).filter(a=>!S.nascosti.includes(a.id)); }
 
 function renderFiltri(){
-  $("#filtri").innerHTML = CATS.map(([k,l])=>'<button class="chip" data-c="'+k+'" aria-pressed="'+(filtro===k)+'">'+l+'</button>').join("")
+  $("#filtri").innerHTML = CATS.map(([k,l])=>'<button class="chip" data-c="'+k+'" aria-pressed="'+(filtro===k)+'">'+l+'<small>'+tutti().filter(a=>k==="tutti"||a.cat===k).length+'</small></button>').join("")
     + '<span style="margin-left:auto;font-size:13px;color:var(--grigio)" id="conta"></span>';
   document.querySelectorAll("[data-c]").forEach(b=>b.addEventListener("click",()=>{ filtro=b.dataset.c; renderFiltri(); renderAnnunci(); }));
 }
@@ -2050,11 +2073,21 @@ const TESTE = {
   C:["Fuori dal raggio, guardali solo se vuoi","Buoni lavori, ma lontani o senza un mezzo diretto. Li tengo per non nasconderti niente"],
   D:["Da casa, anche part time o a obiettivo","Pochi e da leggere con attenzione: molti annunci da casa sono vendite o truffe. Non pagare mai per candidarti, diffida di chi promette guadagni facili o chiede soldi, e controlla chi e il datore di lavoro"]
 };
+let famPorte = "tutte";
+const FAMNOMI = {A:"Vicino casa", B:"Scuola e pubblico", C:"Fuori raggio", D:"Da casa"};
 function renderPorte(){
   const el = document.getElementById("lista-porte"); if(!el) return;
   const ordine = {fatto:0, top:1, buono:2, prepara:3, attenzione:4};
+  const chipEl = document.getElementById("filtri-porte");
+  if(chipEl){
+    const vis = PORTE.filter(x=>!S.nascosti.includes(x.id));
+    chipEl.innerHTML = [["tutte","Tutte",vis.length]].concat(Object.keys(FAMNOMI).map(k=>[k,FAMNOMI[k],vis.filter(x=>x.fam===k).length]))
+      .map(([k,l,n])=>'<button class="chip" data-fp="'+k+'" aria-pressed="'+(famPorte===k)+'">'+l+'<small>'+n+'</small></button>').join("");
+    chipEl.querySelectorAll("[data-fp]").forEach(b=>b.addEventListener("click",()=>{ famPorte=b.dataset.fp; renderPorte(); }));
+  }
   let html = "";
   ["A","B","C","D"].forEach(f=>{
+    if(famPorte!=="tutte" && famPorte!==f) return;
     const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id))
       .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
     if(!gruppo.length) return;
@@ -2764,6 +2797,15 @@ function renderGuida(){
     + GRUPPI.map(g=>'<div class="card pad scelta" data-vai="'+g.viste[0]+'" role="button" tabindex="0"><div class="guida-ico">'+ICONE[g.id]+'</div><h3>'+esc(g.t)+'</h3><p>'+esc(g.d)+'</p>'
         + (g.viste.length>1 ? '<p style="font-size:13px">Dentro: '+g.viste.map(x=>esc(VISTE[x].s)).join(", ")+'.</p>' : '') + '</div>').join("")
     + '</div></div>';
+  h += '<div class="sez"><h2>Trovare in fretta quello che cerchi</h2>'
+    + '<p class="desc">Le liste sono lunghe, quindi le schede stanno chiuse e si vede solo il titolo.</p>'
+    + '<div class="card pad"><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#4A3A3D">'
+    + '<li style="margin-bottom:6px"><b>Tocca una scheda</b> per aprirla e leggere tutto; toccala di nuovo per chiuderla. Il pulsante <b>Apri tutte</b> le apre insieme.</li>'
+    + '<li style="margin-bottom:6px"><b>Cerca</b>: scrivi una parola (una zona, il nome di uno studio, "legale", "part time") e restano solo le schede che la contengono.</li>'
+    + '<li style="margin-bottom:6px"><b>Filtri</b>: sopra le liste ci sono i pulsanti a pillola. In Lavoro d\'ufficio scegli il gruppo (vicino casa, scuola e pubblico, fuori raggio, da casa); negli Annunci scegli il tipo di lavoro.</li>'
+    + '<li style="margin-bottom:6px"><b>Gruppi</b> con la freccia: tocca il titolo del gruppo per chiuderlo o aprirlo.</li>'
+    + '<li><b>Sezioni con la freccia</b> in Corso ESEI, Scuole private, Dove cercare e I miei dati: sono chiuse, si aprono con un tocco.</li>'
+    + '</ul></div></div>';
   h += '<div class="sez"><h2>Cosa vogliono dire le etichette</h2>'
     + '<p class="desc">Le trovi sulle schede, con un piccolo punto interrogativo. Toccale lì dove sono e ti spiego cosa vogliono dire, oppure apri qui sotto il gruppo che ti interessa.</p>';
   GLOSSARIO.forEach(gr=>{
@@ -2814,9 +2856,164 @@ function comprimiAvvisi(){
 
 /* Le note lunghe dentro le schede si fermano a tre righe: si legge tutto con un tocco.
    Funziona anche sulle schede che si ridisegnano (filtri, Non mi interessa). */
+/* ===== UX: fisarmoniche, gruppi, sezioni, ricerca (5 ottobre 2026) ===== */
+const ACC_SEL = "#lista-annunci .ann, #lista-porte .porta, #lista-concorsi .conc, #lista-scuole .scuola, #lista-enti .scuola, #lista-canali .sc, #lista-dove .sc, .confronto";
+const SEZ_ACC = "#v-esei .sez .sez, #v-private .sez .sez, #v-dove .sez .sez, #v-profilo > .sez:not(:first-child):not(#riapri-riga)";
+const BARRE = [
+  {l:"lista-annunci", sel:".ann", ph:"Cerca negli annunci: zona, ruolo, ente"},
+  {l:"lista-concorsi", sel:".conc", ph:"Cerca nei concorsi"},
+  {l:"lista-scuole", sel:".scuola", ph:"Cerca una scuola: nome, via, zona"},
+  {l:"lista-porte", sel:".porta", ph:"Cerca: studio, ruolo, zona, part time"},
+  {l:"lista-canali", sel:".sc", ph:"Cerca nei canali"},
+  {l:"lista-dove", sel:".sc", ph:"Cerca un portale o un sito"},
+  {l:"cand-schede", sel:".cand-c", ph:"Cerca nelle candidature", ex:"#tbody tr", box:true}
+];
+function setT(el, t){ if(el && el.textContent !== t) el.textContent = t; }
+function apriChiudi(card, forza){
+  const a = forza == null ? !card.classList.contains("aperto") : forza;
+  card.classList.toggle("aperto", a);
+  const t = card.querySelector("h3,h4"); if(t) t.setAttribute("aria-expanded", String(a));
+}
+function accordionize(){
+  document.querySelectorAll(ACC_SEL).forEach(card=>{
+    if(card.dataset.acc) return;
+    card.dataset.acc = "1";
+    let box = card, resto = [];
+    if(card.classList.contains("confronto")){
+      const kids = Array.from(card.children);
+      const testa = kids.find(k=>k.classList.contains("testa"));
+      if(!testa) return;
+      resto = kids.filter(k=>k!==testa);
+    }else{
+      if(card.classList.contains("ann") || card.classList.contains("scuola")){
+        const inner = Array.from(card.children).find(k=>k.tagName==="DIV" && /flex:\s*1/.test(k.getAttribute("style")||""));
+        if(inner) box = inner;
+      }
+      const kids = Array.from(box.children);
+      const ti = kids.findIndex(k=>/^H[34]$/.test(k.tagName));
+      if(ti < 0) return;
+      let fine = ti;
+      const nx = kids[ti+1];
+      if(nx && (nx.classList.contains("meta") || nx.classList.contains("ind") || nx.classList.contains("quando"))) fine = ti+1;
+      resto = kids.slice(fine+1);
+    }
+    if(!resto.length) return;
+    const corpo = document.createElement("div"); corpo.className = "acc-corpo";
+    resto.forEach(e=>corpo.appendChild(e));
+    box.appendChild(corpo);
+    const fr = document.createElement("i"); fr.className = "acc-frec"; fr.setAttribute("aria-hidden","true");
+    card.appendChild(fr);
+    card.classList.add("acc");
+    const t = card.querySelector("h3,h4");
+    if(t){ t.tabIndex = 0; t.setAttribute("role","button"); t.setAttribute("aria-expanded","false"); }
+  });
+}
+function gruppi(){
+  document.querySelectorAll("#lista-porte .zona-testa, #lista-scuole .zona-testa").forEach(h=>{
+    if(h.dataset.grp) return;
+    h.dataset.grp = "1";
+    const corpo = document.createElement("div"); corpo.className = "gruppo-corpo";
+    let n = h.nextSibling;
+    while(n && !(n.classList && n.classList.contains("zona-testa"))){ const nx = n.nextSibling; corpo.appendChild(n); n = nx; }
+    h.after(corpo);
+    h.classList.add("tgl"); h.tabIndex = 0; h.setAttribute("role","button");
+    const b = h.querySelector("b");
+    const k = corpo.querySelectorAll(".porta,.scuola").length;
+    if(b) b.insertAdjacentHTML("beforeend", '<span class="cnt">'+k+'</span>');
+  });
+}
+function sezAcc(){
+  document.querySelectorAll(SEZ_ACC).forEach(sez=>{
+    if(sez.dataset.sa) return;
+    const h2 = sez.querySelector(":scope > h2"); if(!h2) return;
+    sez.dataset.sa = "1"; sez.classList.add("sez-acc");
+    const corpo = document.createElement("div"); corpo.className = "sez-corpo"; corpo.hidden = true;
+    let n = h2.nextSibling;
+    while(n){ const nx = n.nextSibling; corpo.appendChild(n); n = nx; }
+    sez.appendChild(corpo);
+    h2.classList.add("sez-toggle"); h2.tabIndex = 0; h2.setAttribute("role","button"); h2.setAttribute("aria-expanded","false");
+  });
+}
+function creaBarre(){
+  BARRE.forEach(b=>{
+    const lista = document.getElementById(b.l);
+    if(!lista || document.querySelector('.str[data-l="'+b.l+'"]')) return;
+    const bar = document.createElement("div"); bar.className = "str"; bar.dataset.l = b.l;
+    bar.innerHTML = '<input type="search" placeholder="'+b.ph+'" aria-label="'+b.ph+'" autocomplete="off">'
+      + '<button type="button" class="b b-mini" data-acc="1">Apri tutte</button><span class="n-ris"></span>';
+    const ref = b.box ? lista.closest(".card") : lista;
+    if(b.l === "lista-porte"){
+      const ch = document.createElement("div"); ch.className = "filtri-stretti"; ch.id = "filtri-porte";
+      ref.before(ch);
+    }
+    ref.before(bar);
+    const v = document.createElement("div"); v.className = "vuoto vuoto-r"; v.hidden = true;
+    lista.after(v); bar._vuoto = v;
+  });
+}
+function applicaRicerche(){
+  document.querySelectorAll(".str").forEach(bar=>{
+    const b = BARRE.find(x=>x.l===bar.dataset.l); if(!b) return;
+    const lista = document.getElementById(b.l); if(!lista) return;
+    const inp = bar.querySelector("input"); const q = norma(inp.value);
+    const carte = Array.from(lista.querySelectorAll(b.sel));
+    let vis = 0;
+    carte.forEach(c=>{
+      const ok = !q || norma(c.textContent).indexOf(q) >= 0;
+      c.classList.toggle("fuori", !ok); if(ok) vis++;
+    });
+    if(b.ex) document.querySelectorAll(b.ex).forEach(r=>r.classList.toggle("fuori", !!q && norma(r.textContent).indexOf(q) < 0));
+    lista.querySelectorAll(".zona-testa.tgl").forEach(h=>{
+      const c = h.nextElementSibling;
+      const n = c ? c.querySelectorAll(b.sel+":not(.fuori)").length : 0;
+      h.classList.toggle("fuori", !!q && n===0);
+      if(c) c.classList.toggle("fuori", !!q && n===0);
+    });
+    lista.querySelectorAll("details.archivio").forEach(d=>{
+      const n = d.querySelectorAll(b.sel+":not(.fuori)").length;
+      d.classList.toggle("fuori", !!q && n===0);
+      if(q && n>0 && !d.open) d.open = true;
+    });
+    lista.querySelectorAll(".sep-socio,.sep-dom").forEach(x=>x.classList.toggle("fuori", !!q));
+    setT(bar.querySelector(".n-ris"), q ? vis+" di "+carte.length : "");
+    if(bar._vuoto){
+      const mostra = !!q && vis===0 && carte.length>0;
+      bar._vuoto.hidden = !mostra;
+      if(mostra) setT(bar._vuoto, 'Nessun risultato per "'+inp.value.trim()+'". Prova con una parola sola.');
+    }
+    const bt = bar.querySelector("[data-acc]");
+    if(bt){
+      const cs = carte.filter(c=>c.classList.contains("acc") && !c.classList.contains("fuori"));
+      bt.hidden = !cs.length;
+      setT(bt, cs.length && cs.every(c=>c.classList.contains("aperto")) ? "Chiudi tutte" : "Apri tutte");
+    }
+  });
+}
+function ristruttura(){ accordionize(); gruppi(); sezAcc(); applicaRicerche(); accorciaTesti(); }
+document.addEventListener("input", ev=>{ if(ev.target.closest && ev.target.closest(".str input")) applicaRicerche(); });
+document.addEventListener("click", ev=>{
+  const t = ev.target;
+  const bt = t.closest(".str [data-acc]");
+  if(bt){
+    const b = BARRE.find(x=>x.l===bt.closest(".str").dataset.l);
+    const cs = Array.from(document.getElementById(b.l).querySelectorAll(b.sel)).filter(c=>c.classList.contains("acc") && !c.classList.contains("fuori"));
+    const apri = !cs.every(c=>c.classList.contains("aperto"));
+    cs.forEach(c=>apriChiudi(c, apri)); applicaRicerche(); return;
+  }
+  const gh = t.closest(".zona-testa.tgl"); if(gh){ gh.classList.toggle("chiuso"); return; }
+  const sh = t.closest(".sez-toggle");
+  if(sh){ const c = sh.nextElementSibling; if(c){ c.hidden = !c.hidden; sh.classList.toggle("aperta", !c.hidden); sh.setAttribute("aria-expanded", String(!c.hidden)); } return; }
+  if(t.closest("a,button,input,select,textarea,summary,label,.pill,.stato,.dist,.acc-corpo")) return;
+  const card = t.closest(".acc"); if(card) apriChiudi(card);
+});
+document.addEventListener("keydown", ev=>{
+  if(ev.key !== "Enter" && ev.key !== " ") return;
+  const t = ev.target;
+  if(t.matches && t.matches(".acc h3,.acc h4,.zona-testa.tgl,.sez-toggle")){ ev.preventDefault(); t.click(); }
+});
 function accorciaTesti(){
   document.querySelectorAll(".ann p, .porta > p:not(.fonte), .conc > p:not(.fonte), .scuola p:not(.fonte), #lista-canali .sc > p, #lista-dove .sc > p").forEach(p=>{
-    if(p.dataset.corto || p.textContent.length < 200) return;
+    if(p.dataset.corto || p.closest(".acc-corpo") || p.textContent.length < 200) return;
     p.dataset.corto = "1"; p.classList.add("lungo");
     const b = document.createElement("button");
     b.type = "button"; b.className = "leggi-tutto"; b.textContent = "Leggi tutto";
@@ -2826,7 +3023,7 @@ function accorciaTesti(){
 }
 (function(){
   let attesa = false;
-  const oss = new MutationObserver(()=>{ if(attesa) return; attesa = true; requestAnimationFrame(()=>{ attesa = false; accorciaTesti(); }); });
+  const oss = new MutationObserver(()=>{ if(attesa) return; attesa = true; requestAnimationFrame(()=>{ attesa = false; ristruttura(); }); });
   oss.observe(document.querySelector("main"), {childList:true, subtree:true});
 })();
 
@@ -2894,7 +3091,9 @@ carica();
 semplificaSezioni();
 comprimiAvvisi();
 tuttoIlRender();
-accorciaTesti();
+creaBarre();
+renderPorte();
+ristruttura();
 generaLettera();
 caricaDati();
 window.addEventListener("resize", ()=>{ clearTimeout(window._rz); window._rz=setTimeout(riempiRail, 180); });
