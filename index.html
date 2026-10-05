@@ -1492,7 +1492,19 @@ const PORTE = [
 {fam:"C", id:"p-wenexia", t:"Segretaria amministrativa in azienda", ente:"Wenexia srl", zona:"Via Leonardo Patrasso 132, zona Acilia", km:18.0, kmt:"18 km",
  tipo:"Part time in presenza, 500-800 euro al mese", pubb:"31 agosto 2026", stato:"attenzione",
  d:"L'elenco delle mansioni e lungo e ti somiglia tutto: segreteria generale, mail e comunicazioni, documenti e contratti, supporto alla fatturazione, controllo di pagamenti e scadenze, gestionale aziendale, agenda e riunioni, rapporti con clienti, fornitori e consulenti. Chiedono esperienza in segreteria o amministrazione, e come titolo preferenziale proprio l'aver lavorato in aziende o studi professionali. Offrono parcheggio libero. Lo tengo solo per completezza: diciotto chilometri per 500-800 euro al mese, tutti in presenza, non tornano.",
- url:"https://to.indeed.com/aaj94k6wnfqp"}
+ url:"https://to.indeed.com/aaj94k6wnfqp"},
+{fam:"D", id:"p-canthiere", t:"Assistenza clienti da casa, richiamo di contatti", ente:"Canthiere, per l'agenzia Marketing Much More di Roma", zona:"Da casa", km:0, kmt:"da casa",
+ tipo:"Part time, 3 ore al giorno, a partire da 500 euro al mese", pubb:"9 settembre 2026", stato:"buono",
+ d:"Richiamare per telefono persone che hanno gia lasciato il contatto perche interessate a immobili di nuova costruzione, tenendo le anagrafiche in un gestionale. Tre ore al giorno in una fascia libera tra le 9.30 e le 18.30 da concordare, con mezza giornata di formazione prima di partire. Chiedono un PC, una buona connessione, Excel discreto, Google Drive e WhatsApp Web, e una laurea anche in corso: la tua L-19 c'e. Come esperienza preferiscono un anno di segreteria o di call center: tu hai dieci anni di segreteria. L'annuncio compare piu volte con la stessa data.",
+ url:"https://to.indeed.com/aaltrvmqlsb6", fonte:"Attenzione al contratto: l'annuncio chiede preferibilmente la partita IVA, oppure una collaborazione occasionale con ritenuta d'acconto. Non e un lavoro da dipendente. Da fonti fiscali secondarie (fiscozen, giugno 2026) la prestazione occasionale ha un tetto di 5.000 euro l'anno complessivi, e 500 euro al mese fanno 6.000: non posso confermarlo con l'INPS, chiedi a un commercialista prima di accettare. Chiedi anche chi e il datore di lavoro e se la paga e fissa."},
+{fam:"D", id:"p-ltl-tutor", t:"Tutor online per la scuola primaria", ente:"LeTueLezioni", zona:"Da casa", km:0, kmt:"da casa",
+ tipo:"A ore, orari flessibili, anche part time", stato:"attenzione",
+ d:"Aiuto compiti e supporto allo studio per bambini della primaria, a distanza, con orari che scegli tu. E il lavoro piu vicino a quello che hai studiato e a quello che ti piace, ed e compatibile con due bambini piccoli. In un elenco di annunci il compenso risulta di 20 euro l'ora, ma non ho potuto verificarlo sulla pagina ufficiale.",
+ url:"https://letuelezioni.teamtailor.com/jobs/8483430-lavora-da-casa-tutor-online-per-la-scuola-primaria-part-time", link:"Apri la pagina dell'offerta", fonte:"LeTueLezioni e una piattaforma che mette in contatto docenti e studenti: i tutor lavorano come liberi professionisti e gestiscono orari e tariffe (fonte: articolo del 25 aprile 2026). Quindi niente stipendio fisso: quanto guadagni dipende da quante lezioni trovi. Leggi sulla pagina i requisiti e le condizioni prima di candidarti."},
+{fam:"D", id:"p-talentform", t:"Docente per il corso di segreteria di studio legale", ente:"Talentform SpA", zona:"Da remoto", km:0, kmt:"da casa",
+ tipo:"Tempo pieno, determinato, 248 ore, CCNL Terziario livello III", pubb:"2 ottobre 2026", stato:"attenzione",
+ d:"Ente di formazione nazionale che cerca chi insegni segreteria di studio legale con Office, a distanza. E il tuo mestiere, ma dal lato di chi lo insegna. Chiedono almeno tre anni di esperienza nella materia, capacita di gestire un'aula, linea in fibra, PC, microfono e webcam. Orario 9-13 e 14-18: tempo pieno, quindi non e un part time. Il progetto indica come periodo settembre, quindi chiedi se e ancora aperto. Non so se la tua esperienza conta come insegnamento: dillo con onesta nella mail.",
+ url:"https://to.indeed.com/aag26ng6bpbq"}
 ];
 
 /* ===== SCUOLE PRIVATE E PARITARIE =====
@@ -2022,13 +2034,14 @@ const PILLP = {fatto:["p-ok","ce l'hai gia\u0300"], top:["p-ok","guarda questo p
 const TESTE = {
   A:["Segreteria part time, vicino casa","Quello che sai già fare, entro il raggio. In ordine di quanto ti somigliano"],
   B:["Segreteria dentro la scuola e nel pubblico","Le stesse mani, in un altro posto. Non sono annunci: sono strade da aprire tu"],
-  C:["Fuori dal raggio, guardali solo se vuoi","Buoni lavori, ma lontani o senza un mezzo diretto. Li tengo per non nasconderti niente"]
+  C:["Fuori dal raggio, guardali solo se vuoi","Buoni lavori, ma lontani o senza un mezzo diretto. Li tengo per non nasconderti niente"],
+  D:["Da casa, anche part time o a obiettivo","Pochi e da leggere con attenzione: molti annunci da casa sono vendite o truffe. Non pagare mai per candidarti, diffida di chi promette guadagni facili o chiede soldi, e controlla chi e il datore di lavoro"]
 };
 function renderPorte(){
   const el = document.getElementById("lista-porte"); if(!el) return;
   const ordine = {fatto:0, top:1, buono:2, prepara:3, attenzione:4};
   let html = "";
-  ["A","B","C"].forEach(f=>{
+  ["A","B","C","D"].forEach(f=>{
     const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id))
       .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
     if(!gruppo.length) return;
@@ -2828,7 +2841,7 @@ function dataIt(iso){
 function mostraStatoDati(){
   const el = document.getElementById("stato-dati"); if(!el) return;
   const quando = statoDati.data ? "Elenchi aggiornati il " + dataIt(statoDati.data) + ". " : "";
-  const come = { online:"Letti ora dal database.", cache:"Ultima copia salvata su questo telefono, non sono riuscito a collegarmi.", incluso:"Copia inclusa nell'app, non sono riuscito a collegarmi al database." }[statoDati.origine];
+  const come = { online:"Letti ora dal database.", cache:"Ultima copia salvata su questo telefono, non sono riuscito a collegarmi.", incluso:(inCornice?"Questa e l'anteprima: mostra la copia inclusa. Il sito vero legge gli elenchi aggiornati dal database.":"Copia inclusa nell'app, non sono riuscito a collegarmi al database.") }[statoDati.origine];
   el.textContent = quando + come;
 }
 (function(){
