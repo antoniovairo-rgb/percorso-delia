@@ -1049,6 +1049,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
   <details class="piede"><summary>Da dove vengono le informazioni</summary>
   <p>Costruita il 20 agosto 2026. Schermata Oggi con le domande guidate, zone e guida alle etichette rifatte il 29 settembre 2026. Sezione Concorsi creata il 15 settembre 2026, avviso ASMEL aggiunto lo stesso giorno. Annunci e canali ricontrollati il 3 ottobre 2026, Lavoro d'ufficio l'11 settembre 2026, contatti delle scuole il 10 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
   </details>
+  <p id="stato-dati" style="font-size:13px;color:var(--grigio);margin:10px 0 0"></p>
 </footer>
 <div class="foglio" id="foglio" hidden role="dialog" aria-modal="true" aria-labelledby="foglio-tit">
   <div class="foglio-velo" data-chiudi-foglio></div>
@@ -2302,13 +2303,13 @@ const schedaCanale = c=>{
     + '<h3>'+esc(c.t)+'</h3><div class="quando">'+esc(c.quando)+'</div><p>'+esc(c.d)+'</p>'
     + '<div style="margin-top:13px"><a class="b b-mini" href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.link)+'</a></div></div>';
 };
-(function(){
+function renderCanali(){
   const RANGO = {ora:0, ok:1, info:2};
   const aperti = CANALI.filter(c=>c.stato!=="chiuso").sort((a,b)=>RANGO[a.stato]-RANGO[b.stato]);
   const chiusi = CANALI.filter(c=>c.stato==="chiuso");
   $("#lista-canali").innerHTML = aperti.map(schedaCanale).join("")
     + (chiusi.length ? '<details class="archivio"><summary>Strade chiuse per ora ('+chiusi.length+')</summary>'+chiusi.map(schedaCanale).join("")+'</details>' : '');
-})();
+}
 
 /* ===== PROFILO ===== */
 $("#box-profilo").innerHTML =
@@ -2802,14 +2803,73 @@ function accorciaTesti(){
   oss.observe(document.querySelector("main"), {childList:true, subtree:true});
 })();
 
+/* ===== ELENCHI PUBBLICI DAL DATABASE =====
+   Annunci, concorsi, canali, altre porte, zone, scuole comunali, enti e portali stanno in un
+   piccolo database online (Supabase) e si aggiornano senza ripubblicare l'app. Le copie scritte
+   qui sopra restano come riserva: servono la prima volta e quando non c'e rete.
+   Nel database ci sono solo dati pubblici. I dati personali, le spunte e le candidature
+   restano solo su questo telefono. La chiave qui sotto e di sola lettura. */
+const DB_URL = "https://qvgvxxmvifhgmvfggvkr.supabase.co";
+const DB_KEY = "sb_publishable_ijmCWSwRcMoMFyxZfBiuxw_0sXfMm9r";
+const CHIAVE_DATI = "percorso-delia-dati-v1";
+const LISTE = { annunci:ANNUNCI, concorsi:CONCORSI, canali:CANALI, porte:PORTE, zone:ZONE, comunali:COMUNALI, enti:ENTI, dove:DOVE };
+let statoDati = { origine:"incluso", data:"" };
+function applicaDati(liste){
+  for(const k in LISTE){
+    const v = liste && liste[k];
+    if(Array.isArray(v) && v.length) LISTE[k].splice(0, LISTE[k].length, ...v);
+  }
+}
+function dataIt(iso){
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso||""); if(!m) return "";
+  const mesi = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+  return (+m[3]) + " " + mesi[+m[2]-1] + " " + m[1];
+}
+function mostraStatoDati(){
+  const el = document.getElementById("stato-dati"); if(!el) return;
+  const quando = statoDati.data ? "Elenchi aggiornati il " + dataIt(statoDati.data) + ". " : "";
+  const come = { online:"Letti ora dal database.", cache:"Ultima copia salvata su questo telefono, non sono riuscito a collegarmi.", incluso:"Copia inclusa nell'app, non sono riuscito a collegarmi al database." }[statoDati.origine];
+  el.textContent = quando + come;
+}
+(function(){
+  try{
+    const g = localStorage.getItem(CHIAVE_DATI);
+    if(g){ const d = JSON.parse(g); if(d && d.liste){ applicaDati(d.liste); statoDati = { origine:"cache", data:d.data||"" }; } }
+  }catch(e){}
+})();
+async function caricaDati(){
+  try{
+    const ac = new AbortController(); const t = setTimeout(()=>ac.abort(), 8000);
+    const h = { apikey: DB_KEY };
+    const [r1, r2] = await Promise.all([
+      fetch(DB_URL + "/rest/v1/voci?select=lista,dati&order=lista.asc,ordine.asc", { headers:h, signal:ac.signal }),
+      fetch(DB_URL + "/rest/v1/meta?select=chiave,valore", { headers:h, signal:ac.signal })
+    ]);
+    clearTimeout(t);
+    if(!r1.ok || !r2.ok) throw new Error("risposta " + r1.status + "/" + r2.status);
+    const righe = await r1.json(), meta = await r2.json();
+    if(!Array.isArray(righe) || !righe.length) throw new Error("vuoto");
+    const liste = {}; righe.forEach(r=>{ (liste[r.lista] = liste[r.lista] || []).push(r.dati); });
+    const m = {}; (Array.isArray(meta) ? meta : []).forEach(x=>{ m[x.chiave] = x.valore; });
+    const firma = ()=>JSON.stringify(Object.keys(LISTE).map(k=>LISTE[k]));
+    const prima = firma();
+    applicaDati(liste);
+    const cambiato = prima !== firma();
+    statoDati = { origine:"online", data:m.ultimo_aggiornamento || "" };
+    try{ localStorage.setItem(CHIAVE_DATI, JSON.stringify({ liste, data:statoDati.data })); }catch(e){}
+    if(cambiato) tuttoIlRender(); else mostraStatoDati();
+  }catch(e){ mostraStatoDati(); }
+}
+
 /* ===== AVVIO ===== */
-function tuttoIlRender(){ renderPercorso(); renderWizard(); renderNotizie(); renderGuida(); renderFiltri(); renderAnnunci(); renderConcorsi(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); statoBarra(); applicaChiusi(); }
+function tuttoIlRender(){ renderCanali(); mostraStatoDati(); renderPercorso(); renderWizard(); renderNotizie(); renderGuida(); renderFiltri(); renderAnnunci(); renderConcorsi(); renderScuole(); renderPorte(); renderDove(); renderCand(); renderIo(); statoStorage(); statoInstalla(); statoBarra(); applicaChiusi(); }
 carica();
 semplificaSezioni();
 comprimiAvvisi();
 tuttoIlRender();
 accorciaTesti();
 generaLettera();
+caricaDati();
 window.addEventListener("resize", ()=>{ clearTimeout(window._rz); window._rz=setTimeout(riempiRail, 180); });
 </script>
 
