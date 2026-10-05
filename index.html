@@ -275,6 +275,7 @@ tr.riga-ok{background:#EFF6F2}
 .porta .fonte{font-size:12.5px;color:var(--grigio);margin-top:9px;max-width:80ch}
 .porta .azioni{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap}
 .zona-testa{padding:14px 20px;background:#FDF8F8;border-bottom:1px solid var(--nebbia);display:flex;align-items:baseline;gap:10px}
+.zona-testa{scroll-margin-top:96px}
 .zona-testa b{font-size:15px}
 .zona-testa span{font-size:13px;color:var(--grigio)}
 .stella{flex:0 0 auto;width:36px;height:36px;border-radius:11px;background:var(--indaco-chiaro);color:var(--indaco);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
@@ -759,7 +760,7 @@ details.piede>summary{cursor:pointer;font-weight:600;color:var(--grigio);padding
 <section class="vista" id="v-porte" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Altre porte</h2>
-    <p class="desc">Qui c'è il lavoro d'ufficio: segreteria e amministrazione, cioè il mestiere che fai da dieci anni. Il lavoro da educatrice, OEPAC compreso, non sta più qui: è tornato dov'è giusto che stia, negli Annunci, in un gruppo suo. Tengo solo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Ricontrollato l'11 settembre 2026: quattro annunci nuovi, uno dentro il raggio e tre in fondo, nel gruppo dei lontani.</p>
+    <p class="desc">Qui c'è il lavoro d'ufficio: segreteria e amministrazione, cioè il mestiere che fai da dieci anni. Il lavoro da educatrice, OEPAC compreso, non sta più qui: è tornato dov'è giusto che stia, negli Annunci, in un gruppo suo. Tengo quello che sta entro sei chilometri circa nella tua zona, oppure quello che raggiungi con la metro C da Malatesta o con la A dopo San Giovanni. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Ricontrollato l'11 settembre 2026: quattro annunci nuovi, uno dentro il raggio e tre in fondo, nel gruppo dei lontani. Il 5 ottobre 2026 ho aggiunto in fondo un gruppo nuovo, il lavoro da casa, anche part time o a obiettivo.</p>
 
     <div class="avviso" style="margin-bottom:18px" data-chiudi="porte-testa">
       <h3>Fermati un secondo e leggi questo</h3>
@@ -776,6 +777,12 @@ details.piede>summary{cursor:pointer;font-weight:600;color:var(--grigio);padding
         <li><b>Rispondi a Fisioaniene.</b> Reception in un centro di fisioterapia, orario flessibile e parcheggio, e tu hai già lavorato in due cliniche.</li>
       </ul>
       <p>Tre mail. Mezz'ora in tutto. Quando le hai mandate, aggiungile al tracker e chiudi il telefono.</p>
+    </div>
+
+    <div class="avviso info" style="margin-bottom:18px" data-chiudi="porte-casa">
+      <h3>Cerchi un lavoro da casa?</h3>
+      <p>Sono in fondo a questa pagina, nel gruppo "Da casa, anche part time o a obiettivo": tre schede, con le avvertenze su contratto e tasse. Toccando il pulsante ci arrivi subito.</p>
+      <div style="margin-top:10px"><button class="b b-mini b-pri" id="salta-casa">Vai al lavoro da casa</button></div>
     </div>
 
     <div class="card" id="lista-porte"></div>
@@ -1047,7 +1054,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 </main>
 <footer>
   <details class="piede"><summary>Da dove vengono le informazioni</summary>
-  <p>Costruita il 20 agosto 2026. Schermata Oggi con le domande guidate, zone e guida alle etichette rifatte il 29 settembre 2026. Sezione Concorsi creata il 15 settembre 2026, avviso ASMEL aggiunto lo stesso giorno. Annunci e canali ricontrollati il 3 ottobre 2026, Lavoro d'ufficio l'11 settembre 2026, contatti delle scuole il 10 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
+  <p>Costruita il 20 agosto 2026. Schermata Oggi con le domande guidate, zone e guida alle etichette rifatte il 29 settembre 2026. Sezione Concorsi creata il 15 settembre 2026, avviso ASMEL aggiunto lo stesso giorno. Annunci e canali ricontrollati il 3 ottobre 2026, Lavoro d'ufficio l'11 settembre 2026, lavoro da casa il 5 ottobre 2026, contatti delle scuole il 10 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
   </details>
   <p id="stato-dati" style="font-size:13px;color:var(--grigio);margin:10px 0 0"></p>
 </footer>
@@ -1701,7 +1708,7 @@ const ICONE = {
 const GRUPPI = [
   {id:"home", t:"Oggi", viste:["home"], d:"La pagina da cui partire. Ti fa due domande e ti porta dove serve, e ti mostra le notizie del giorno."},
   {id:"percorso", t:"Percorso", viste:["percorso","esei"], d:"Le otto tappe da fare, con le spunte, e tutto sul corso ESEI che serve per lavorare al nido."},
-  {id:"lavoro", t:"Trova lavoro", viste:["annunci","concorsi","private","porte"], d:"Tutti i posti dove puoi candidarti: annunci, concorsi, scuole private vicino casa e lavoro d'ufficio."},
+  {id:"lavoro", t:"Trova lavoro", viste:["annunci","concorsi","private","porte"], d:"Tutti i posti dove puoi candidarti: annunci, concorsi, scuole private vicino casa, lavoro d'ufficio e lavoro da casa."},
   {id:"candidati", t:"Candidati", viste:["lettere","candidature"], d:"Le lettere già scritte da copiare e l'elenco di quello che hai mandato, con cosa fare dopo."},
   {id:"info", t:"Guida e dati", viste:["aiuto","dove","canali","profilo"], d:"Questa guida, i siti dove cercare, i canali del Comune e della scuola, e i tuoi dati."}
 ];
@@ -1711,7 +1718,7 @@ const VISTE = {
   annunci:{s:"Annunci", t:"Annunci di lavoro", d:"Offerte vere trovate per te, con la distanza da casa. Tocca un'etichetta colorata per sapere cosa vuol dire."},
   concorsi:{s:"Concorsi", t:"Concorsi pubblici", d:"Bandi con una scadenza fissa e una domanda da fare online. Per ognuno ti dico se il tuo titolo basta."},
   private:{s:"Scuole private", t:"Scuole private vicino casa", d:"Scuole a cui puoi scrivere anche se non hanno annunci aperti, con la mail della segreteria già trovata."},
-  porte:{s:"Lavoro d'ufficio", t:"Lavoro d'ufficio", d:"Segreteria e amministrazione, il mestiere che fai da dieci anni, entro pochi chilometri da casa."},
+  porte:{s:"Lavoro d'ufficio", t:"Lavoro d'ufficio", d:"Segreteria e amministrazione, il mestiere che fai da dieci anni, vicino casa. In fondo trovi anche il lavoro da casa."},
   lettere:{s:"Lettere pronte", t:"Lettere pronte", d:"Scegli a chi scrivi, metti il nome della struttura e copia il testo. Firma e contatti si mettono da soli."},
   candidature:{s:"Le mie candidature", t:"Le mie candidature", d:"Tutto quello che hai mandato, a che punto è e cosa fare dopo."},
   aiuto:{s:"Guida", t:"Guida all'app", d:"Come è fatta l'app e cosa vuol dire ogni etichetta colorata."},
@@ -1875,6 +1882,7 @@ const WIZARD = {
   cerca: { domanda:"Che lavoro cerchi?", opzioni: ()=>[
     {t:"Nido o scuola dell'infanzia", d:"Gli annunci da educatrice, in ordine di distanza da casa", v:"annunci"},
     {t:"Segreteria o ufficio", d:"Il lavoro amministrativo vicino casa, il tuo altro mestiere", v:"porte"},
+    {t:"Lavoro da casa", d:"Anche part time o a obiettivo: pochi, da leggere con attenzione", v:"porte", ancora:"porte-d"},
     {t:"Un concorso pubblico", d:"Bandi veri, con scadenza e requisiti", v:"concorsi"},
     {t:"OEPAC o lavoro nel sociale", d:"Qui il titolo che serve ce l'hai già, senza aspettare l'ESEI", v:"annunci", filtro:"socio"}
   ]},
@@ -1914,10 +1922,15 @@ function renderWizard(){
     }
     wizStep = "iniziale";
     vai(o.v);
+    if(o.ancora) setTimeout(()=>{ const t=document.getElementById(o.ancora); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }, 250);
   }));
   const back = document.getElementById("wiz-indietro");
   if(back) back.addEventListener("click", ()=>{ wizStep="iniziale"; renderWizard(); });
 }
+document.addEventListener("click", ev=>{
+  if(!ev.target.closest("#salta-casa")) return;
+  const t = document.getElementById("porte-d"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"});
+});
 document.addEventListener("keydown", ev=>{
   if(ev.key==="Escape"){ chiudiFoglio(); return; }
   if(ev.key!=="Enter" && ev.key!==" ") return;
@@ -2046,7 +2059,7 @@ function renderPorte(){
       .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
     if(!gruppo.length) return;
     const [tit,sot] = TESTE[f];
-    html += '<div class="zona-testa"><b>'+tit+'</b><span>'+sot+'</span></div>';
+    html += '<div class="zona-testa" id="porte-'+f.toLowerCase()+'"><b>'+tit+'</b><span>'+sot+'</span></div>';
     html += gruppo.map(x=>{
       const [cl,tx] = PILLP[x.stato] || PILLP.buono;
       return '<div class="porta"><div class="pillole"><span class="pill '+cl+'">'+tx+'</span>'
@@ -2665,6 +2678,7 @@ const GLOSSARIO = [
     {c:"p-ora", t:"leggi bene prima", d:"C'è un dettaglio che pesa, come l'orario, la distanza o la paga. È scritto nella scheda: leggilo prima di rispondere."},
     {c:"p-info", t:"da preparare", d:"Non è un annuncio da rispondere oggi: è una strada da preparare per più avanti."},
     {c:"p-ok", t:"ce l'hai già", d:"Un requisito che hai già in mano: non devi fare niente."},
+    {c:"p-no", t:"da casa", d:"Lavoro da remoto: non c'è una sede. Leggi nella scheda che tipo di contratto è e chi è il datore di lavoro."},
     {c:"p-no", t:"4,5 km", d:"La seconda etichetta grigia dice quanto è lontano da casa, in linea d'aria, oppure con quale metro ci arrivi."}
   ]},
   {g:"Nei canali pubblici", voci:[
