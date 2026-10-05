@@ -507,8 +507,8 @@ details.piede>summary{cursor:pointer;font-weight:600;color:var(--grigio);padding
   <div id="wizard-oggi" class="wiz-posto"></div>
 
   <div class="sez">
-    <h2>Le notizie di oggi</h2>
-    <p class="desc">Annunci nuovi e scadenze vicine. Si aggiornano da sole, ogni giorno.</p>
+    <h2>Da guardare subito</h2>
+    <p class="desc">Compare solo se c'\u00E8 qualcosa che vale davvero: un concorso adatto a te che scade entro due settimane, o un annuncio uscito da meno di una settimana, vicino a casa e nel tuo campo. Se non c'\u00E8 niente, questo riquadro sparisce.</p>
     <div class="card" id="lista-notizie"></div>
   </div>
 
@@ -1966,11 +1966,12 @@ function renderNotizie(){
   const scadenze = CONCORSI
     .filter(c=>c.adatto!==false)
     .map(c=>({c, d:parseDataIt(c.scadenza)}))
-    .filter(x=>x.d && giorniA(x.d)>=0 && giorniA(x.d)<=21)
+    .filter(x=>x.d && giorniA(x.d)>=0 && giorniA(x.d)<=14)
     .sort((x,y)=>x.d-y.d);
   const nuovi = tutti()
+    .filter(a=>!a.escluso && a.dist>=1 && a.dist<=2 && (a.cat==="nido"||a.cat==="infanzia"||a.cat==="socio"))
     .map(a=>({a, d:parseDataIt(a.pubb)}))
-    .filter(x=>x.d && giorniDa(x.d)>=0 && giorniDa(x.d)<=14)
+    .filter(x=>x.d && giorniDa(x.d)>=0 && giorniDa(x.d)<=7)
     .sort((x,y)=>y.d-x.d);
   let html = "";
   scadenze.forEach(({c,d})=>{
@@ -1981,7 +1982,7 @@ function renderNotizie(){
       + '<div class="quando">'+esc(c.ente)+', entro il '+esc(c.scadenza)+'</div>'
       + '<div style="margin-top:12px"><button class="b b-mini" data-vai="concorsi">Apri il concorso</button></div></div>';
   });
-  nuovi.slice(0,4).forEach(({a,d})=>{
+  nuovi.slice(0,3).forEach(({a,d})=>{
     const gg = giorniDa(d);
     const quando = gg===0 ? "pubblicato oggi" : gg===1 ? "pubblicato ieri" : "nuovo, "+gg+" giorni fa";
     html += '<div class="sc"><div class="pillole"><span class="pill p-ok">'+quando+'</span></div>'
@@ -1989,7 +1990,8 @@ function renderNotizie(){
       + '<div class="quando">'+esc(a.ente)+', '+esc(a.zona)+'</div>'
       + '<div style="margin-top:12px"><button class="b b-mini" data-vai="annunci">Apri gli annunci</button></div></div>';
   });
-  el.innerHTML = html || '<div class="vuoto">Niente di nuovo da quando hai controllato l\'ultima volta.<br>Bacheca e concorsi restano quelli di prima.</div>';
+  el.innerHTML = html;
+  const box = el.closest(".sez"); if(box) box.hidden = !html;
 }
 
 /* ===== ANNUNCI ===== */
