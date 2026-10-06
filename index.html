@@ -622,6 +622,23 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;font
 .verd.v-no{background:#EFEAEA}.verd.v-no b{background:#7A6A6D}
 .dett{margin-top:8px}.dett summary{cursor:pointer;font-size:13px;color:#6B5A5D;padding:6px 0}
 .dett p{margin:6px 0 0;font-size:14px;color:#4A3A3D;max-width:78ch}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.gcerca{margin:0 0 14px}
+.gcerca-in{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--nebbia);border-radius:16px;padding:0 14px;box-shadow:var(--om-s);color:var(--grigio)}
+.gcerca-in:focus-within{border-color:var(--indaco);box-shadow:0 0 0 4px rgba(192,36,46,.12)}
+.gcerca-in input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:15px 0;color:var(--ink)}
+.gcerca-in button{border:0;background:transparent;font-size:24px;line-height:1;color:var(--grigio);padding:6px 8px}
+.gris{margin-top:8px;background:#fff;border:1px solid var(--nebbia);border-radius:16px;box-shadow:var(--om-m);overflow:hidden}
+.gr{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline;width:100%;text-align:left;background:#fff;border:0;border-bottom:1px solid var(--nebbia);padding:12px 14px;min-height:48px;font:inherit;color:var(--ink)}
+.gr:hover,.gr:focus-visible{background:#FFF4F1}
+.gk{grid-row:1/3;font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:var(--indaco-chiaro);color:var(--indaco);border-radius:999px;padding:3px 8px;font-weight:700;white-space:nowrap}
+.gr b{font-size:14.5px;line-height:1.3}.gr small{color:var(--grigio);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gmore{padding:12px 14px;font-size:13px;color:var(--grigio)}
+
+.gcerca-in input[type=search]{-webkit-appearance:none;appearance:none;border:0!important;box-shadow:none!important;background:transparent!important;padding:15px 0!important;border-radius:0!important;height:auto!important;min-height:0!important}
+.gcerca-in input::-webkit-search-cancel-button,.gcerca-in input::-webkit-search-decoration{-webkit-appearance:none;display:none}
+.gcerca-in button{min-height:0!important;width:auto;box-shadow:none!important;background:transparent!important}
 </style>
 </head>
 <body>
@@ -656,6 +673,21 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;font
 
 <!-- ===== OGGI (wizard) ===== -->
 <section class="vista" id="v-home">
+  <div class="adesso adesso-oggi">
+    <div class="tit" id="oggi-data">Oggi</div>
+    <h2 id="oggi-ciao">Ciao!</h2>
+    <p>Una domanda alla volta: ti porto io dove serve. Se ti perdi, tocca <b>Oggi</b>.</p>
+  </div>
+
+  <div class="gcerca" id="gcerca">
+    <label for="gq" class="sr">Cerca in tutta l'app</label>
+    <div class="gcerca-in"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="gq" type="search" autocomplete="off" placeholder="Cerca subito: un annuncio, una scuola, un concorso, una lettera...">
+    <button type="button" id="gq-x" hidden aria-label="Svuota la ricerca">&times;</button></div>
+    <div id="gris" class="gris" hidden></div>
+  </div>
+  <div id="wizard-oggi" class="wiz-posto"></div>
+
   <div class="instbar" id="instbar" hidden>
     <div class="ico" aria-hidden="true"></div>
     <div class="txt"><b>Tienila sul telefono</b><span id="instbar-sotto">Diventa un'icona come le altre app e funziona anche senza campo.</span></div>
@@ -666,13 +698,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;font
     <p>Scrivi il tuo nome, il telefono e la mail: servono a firmare le lettere che trovi qui dentro. Restano su questo dispositivo e non li vede nessun altro.</p>
     <div style="margin-top:12px"><button class="b b-mini" data-vai="profilo">Scrivili adesso</button></div>
   </div>
-  <div class="adesso adesso-oggi">
-    <div class="tit" id="oggi-data">Oggi</div>
-    <h2 id="oggi-ciao">Ciao!</h2>
-    <p>Rispondi a una domanda alla volta: ti porto io dove serve. Se ti perdi, tocca <b>Oggi</b> e si riparte da qui.</p>
-  </div>
-
-  <div id="wizard-oggi" class="wiz-posto"></div>
 
   <div class="sez">
     <h2>Da guardare subito</h2>
@@ -1912,7 +1937,7 @@ const VISTE = {
   porte:{s:"Lavoro d'ufficio", t:"Lavoro d'ufficio", d:"Segreteria e amministrazione, il mestiere che fai da dieci anni, vicino casa. In fondo trovi anche il lavoro da casa."},
   lettere:{s:"Lettere pronte", t:"Lettere pronte", d:"Scegli a chi scrivi, metti il nome della struttura e copia il testo. Firma e contatti si mettono da soli."},
   candidature:{s:"Le mie candidature", t:"Le mie candidature", d:"Tutto quello che hai mandato, a che punto è e cosa fare dopo."},
-  aiuto:{s:"Guida", t:"Guida all'app", d:"Come è fatta l'app e cosa vuol dire ogni etichetta colorata."},
+  aiuto:{s:"Guida", t:"Guida all'app", d:"Come trovare le cose in fretta e cosa vuol dire ogni etichetta colorata."},
   dove:{s:"Dove cercare", t:"Dove cercare", d:"I siti dove escono gli annunci, già impostati su Roma, e i consigli per il tuo profilo LinkedIn."},
   canali:{s:"Canali pubblici", t:"Canali pubblici", d:"Comune, scuole statali e inPA: a che punto è ogni strada e cosa puoi fare adesso."},
   profilo:{s:"I miei dati", t:"I miei dati", d:"Nome e contatti per firmare le lettere, l'app sul telefono e il salvataggio dei dati."}
@@ -1930,7 +1955,7 @@ function renderTestata(v){
   } else { sub.hidden = true; sub.innerHTML = ""; }
   document.getElementById("testata").innerHTML =
     '<div class="testata-ico">'+ICONE[g.id]+'</div>'
-    + '<div style="min-width:0"><div class="briciole">'+esc(g.t)+'</div><h1>'+esc(info.t)+'</h1><p>'+esc(info.d)+'</p></div>';
+    + '<div style="min-width:0"><div class="briciole">'+esc(g.t)+'</div><h1>'+esc(info.t)+'</h1></div>';
 }
 function vai(v){
   if(!document.getElementById("v-"+v)) v = "home";
@@ -2119,6 +2144,62 @@ function renderWizard(){
   const back = document.getElementById("wiz-indietro");
   if(back) back.addEventListener("click", ()=>{ wizStep="iniziale"; renderWizard(); });
 }
+
+/* Ricerca globale dal wizard: trova in tutta l'app e porta dritto al risultato. */
+function indiceGlobale(){
+  const r=[];
+  tutti().forEach(a=>r.push({k:"Annuncio",t:a.titolo,s:a.ente+", "+a.zona,x:(a.tipo||"")+" "+a.cat,v:"annunci",l:"lista-annunci",q:a.ente}));
+  CONCORSI.forEach(c=>r.push({k:"Concorso",t:c.titolo,s:c.ente,x:c.zona||"",v:"concorsi",l:"lista-concorsi",q:c.ente}));
+  PORTE.forEach(p=>r.push({k:"Ufficio",t:p.t,s:p.ente+", "+p.zona,x:p.tipo||"",v:"porte",l:"lista-porte",q:p.ente}));
+  ZONE.forEach(z=>(z.scuole||[]).forEach(sc=>r.push({k:"Scuola privata",t:sc.n,s:sc.ind+", "+z.nome,x:(sc.gradi||"")+" "+(sc.mail||""),v:"private",l:"lista-scuole",q:sc.n})));
+  CANALI.forEach(c=>r.push({k:"Canale pubblico",t:c.t,s:c.quando||"",x:c.d||"",v:"canali",l:"lista-canali",q:c.t.split(",")[0]}));
+  DOVE.forEach(d=>r.push({k:"Dove cercare",t:d.n,s:d.forza||d.tipo||"",x:d.d||"",v:"dove",l:"lista-dove",q:d.n}));
+  Object.keys(VISTE).forEach(k=>r.push({k:"Pagina",t:VISTE[k].t,s:VISTE[k].d,x:VISTE[k].s,v:k}));
+  r.push({k:"Pagina",t:"Lettere pronte",s:"Candidatura, messa a disposizione, mail per scuole e uffici",x:"lettera candidatura mad cv",v:"lettere"});
+  TAPPE.forEach(t=>r.push({k:"Tappa",t:"Tappa "+t.n+": "+t.titolo,s:"Il tuo percorso",x:"",v:"percorso"}));
+  return r;
+}
+function cercaGlobale(qs){
+  const tok = norma(qs).split(" ").filter(Boolean); if(!tok.length) return [];
+  const ORD = {"Annuncio":0,"Concorso":1,"Ufficio":2,"Scuola privata":3,"Canale pubblico":4,"Dove cercare":5,"Pagina":6,"Tappa":7};
+  return indiceGlobale().map(e=>{
+    const T=norma(e.t), S=norma(e.s), X=norma(e.x);
+    if(!tok.every(w=>T.includes(w)||S.includes(w)||X.includes(w))) return null;
+    const p = tok.filter(w=>T.includes(w)).length;
+    return {e, sc: p*10 - (ORD[e.k]||0)};
+  }).filter(Boolean).sort((a,b)=>b.sc-a.sc).map(x=>x.e);
+}
+function vaiRisultato(e){
+  if(e.v==="annunci"){ filtro="tutti"; renderFiltri(); renderAnnunci(); }
+  if(e.v==="porte"){ famPorte="tutte"; renderPorte(); }
+  wizStep="iniziale";
+  vai(e.v);
+  if(e.l){
+    setTimeout(()=>{
+      const inp=document.querySelector('.str[data-l="'+e.l+'"] input');
+      if(inp){ inp.value=e.q; inp.dispatchEvent(new Event("input",{bubbles:true})); inp.closest(".str").scrollIntoView({behavior:"smooth",block:"start"}); }
+    }, 120);
+  }
+}
+(function(){
+  const q=document.getElementById("gq"), box=document.getElementById("gris"), x=document.getElementById("gq-x");
+  if(!q) return;
+  let ris=[];
+  function disegna(){
+    const v=q.value.trim(); x.hidden=!v;
+    if(!v){ box.hidden=true; box.innerHTML=""; return; }
+    ris=cercaGlobale(v);
+    box.hidden=false;
+    box.innerHTML = ris.length
+      ? ris.slice(0,8).map((e,i)=>'<button type="button" class="gr" data-i="'+i+'"><span class="gk">'+esc(e.k)+'</span><b>'+esc(e.t)+'</b><small>'+esc(e.s)+'</small></button>').join("")
+        + (ris.length>8 ? '<div class="gmore">e altri '+(ris.length-8)+': scrivi una parola in più per restringere</div>' : '')
+      : '<div class="gmore">Niente con queste parole. Prova con una sola parola (per esempio "nido", "legale", "Pigneto").</div>';
+  }
+  q.addEventListener("input", disegna);
+  x.addEventListener("click",()=>{ q.value=""; disegna(); q.focus(); });
+  box.addEventListener("click",ev=>{ const b=ev.target.closest(".gr"); if(!b) return; const e=ris[Number(b.dataset.i)]; q.value=""; disegna(); vaiRisultato(e); });
+  q.addEventListener("keydown",ev=>{ if(ev.key==="Enter"){ const f=box.querySelector(".gr"); if(f){ ev.preventDefault(); f.click(); } } });
+})();
 document.addEventListener("keydown", ev=>{
   if(ev.key==="Escape"){ chiudiFoglio(); return; }
   if(ev.key!=="Enter" && ev.key!==" ") return;
@@ -2175,7 +2256,7 @@ function tutti(){ return ANNUNCI.concat(S.annunciMiei).filter(a=>!S.nascosti.inc
 
 function renderFiltri(){
   $("#filtri").innerHTML = CATS.map(([k,l])=>'<button class="chip" data-c="'+k+'" aria-pressed="'+(filtro===k)+'">'+l+'<small>'+tutti().filter(a=>k==="tutti"||a.cat===k).length+'</small></button>').join("")
-    + '<span style="margin-left:auto;font-size:13px;color:var(--grigio)" id="conta"></span>';
+    + '<span hidden id="conta"></span>';
   document.querySelectorAll("[data-c]").forEach(b=>b.addEventListener("click",()=>{ filtro=b.dataset.c; renderFiltri(); renderAnnunci(); }));
 }
 function renderAnnunci(){
@@ -2971,12 +3052,7 @@ document.addEventListener("click", ev=>{
 
 function renderGuida(){
   const el = document.getElementById("guida"); if(!el) return;
-  let h = '<div class="sez" style="margin-top:0"><h2>Come è fatta l\'app</h2>'
-    + '<p class="desc">Cinque zone, sempre a portata di dito: in basso sul telefono, in alto sul computer. Tocca una zona per aprirla. Se ti perdi, tocca Oggi.</p>'
-    + '<div class="grid g2">'
-    + GRUPPI.map(g=>'<div class="card pad scelta" data-vai="'+g.viste[0]+'" role="button" tabindex="0"><div class="guida-ico">'+ICONE[g.id]+'</div><h3>'+esc(g.t)+'</h3><p>'+esc(g.d)+'</p>'
-        + (g.viste.length>1 ? '<p style="font-size:13px">Dentro: '+g.viste.map(x=>esc(VISTE[x].s)).join(", ")+'.</p>' : '') + '</div>').join("")
-    + '</div></div>';
+  let h = '';
   h += '<div class="sez"><h2>Trovare in fretta quello che cerchi</h2>'
     + '<p class="desc">Le liste sono lunghe, quindi le schede stanno chiuse e si vede solo il titolo.</p>'
     + '<div class="card pad"><ul style="margin:0;padding-left:20px;font-size:14.5px;color:#4A3A3D">'
