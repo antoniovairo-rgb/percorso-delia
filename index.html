@@ -2000,6 +2000,12 @@ const CATS = [["tutti","Tutti"],["nido","Nido 0-3"],["infanzia","Infanzia 3-6"],
 const ETICAT = {nido:["p-ok","Nido 0-3"], infanzia:["p-info","Infanzia 3-6"], socio:["p-ora","OEPAC e sociale"], extra:["p-info","Extrascolastico"], dom:["p-no","A domicilio"]};
 const ETI = {0:["?","da verif."],1:["3","km o meno"],2:["6","km circa"],3:["12","km circa"],4:["12+","km"]};
 
+/* I link brevi di Indeed (to.indeed.com) possono scadere o dare errore: accanto metto sempre una ricerca su Indeed per ente e ruolo, che non scade. */
+function cercaIndeed(url, ente, ruolo){
+  if(!url || url.indexOf("indeed.com")<0) return "";
+  const q = encodeURIComponent(((ente&&ente!=="-")?ente+" ":"")+ruolo);
+  return '<a class="b b-mini" href="https://it.indeed.com/jobs?q='+q+'&l=Roma%2C+Lazio" target="_blank" rel="noopener">Se non si apre: cerca su Indeed</a>';
+}
 function tutti(){ return ANNUNCI.concat(S.annunciMiei).filter(a=>!S.nascosti.includes(a.id)); }
 
 function renderFiltri(){
@@ -2043,7 +2049,7 @@ function renderAnnunci(){
       + '<div class="meta mono" style="font-size:11.5px;margin-top:2px">'+(a.pubb ? 'pubblicato il '+esc(a.pubb)+(a.fonte?' su '+esc(a.fonte):'') : (a.fonte?esc(a.fonte):'senza data'))+'</div>'
       + (a.note?'<p style="margin:11px 0 0;font-size:14.5px;color:#4A3A3D;max-width:78ch">'+esc(a.note)+'</p>':'')
       + '<div class="azioni">'
-      + (a.url?'<a class="b b-mini" href="'+esc(a.url)+'" target="_blank" rel="noopener">Apri l\'annuncio</a>':'')
+      + (a.url?'<a class="b b-mini" href="'+esc(a.url)+'" target="_blank" rel="noopener">Apri l\'annuncio</a>'+cercaIndeed(a.url,a.ente,a.titolo):'')
       + '<button class="b b-mini" data-tr="'+esc(a.id)+'">Aggiungi al tracker</button>'
       + '<button class="b b-mini b-no" data-hd="'+esc(a.id)+'">Non mi interessa</button>'
       + '</div></div></div>';
@@ -2105,7 +2111,7 @@ function renderPorte(){
         + '<p>'+esc(x.d)+'</p>'
         + (x.fonte?'<p class="fonte">'+esc(x.fonte)+'</p>':'')
         + '<div class="azioni">'
-        + (x.url?'<a class="b b-mini" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.link||"Apri l'annuncio")+'</a>':'')
+        + (x.url?'<a class="b b-mini" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.link||"Apri l'annuncio")+'</a>'+cercaIndeed(x.url,x.ente,x.t):'')
         + '<button class="b b-mini" data-trp="'+esc(x.id)+'">Aggiungi al tracker</button>'
         + '<button class="b b-mini b-no" data-hdp="'+esc(x.id)+'">Non mi interessa</button>'
         + '</div></div>';
