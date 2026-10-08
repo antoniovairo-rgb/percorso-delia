@@ -1,7 +1,9 @@
 # Il percorso di Delia, servizi educativi 0-6 a Roma
 
-App di una pagina sola, HTML statico. Nessun server, nessuna dipendenza esterna,
-nessun font remoto. Tutto quello che scrive Delia (spunte del percorso,
+App di una pagina sola, HTML statico. Nessun server proprio. I font (Fraunces
+e Figtree) si caricano da Google Fonts, e gli elenchi (annunci, concorsi, canali,
+altre porte, zone) si leggono da un database Supabase in sola lettura.
+Tutto quello che scrive Delia (spunte del percorso,
 candidature, dati personali) resta nel localStorage del suo browser: non viene
 spedito da nessuna parte e non lo vede nessun altro.
 
