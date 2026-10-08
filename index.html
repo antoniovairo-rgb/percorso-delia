@@ -652,6 +652,25 @@ body::before{display:none!important}
 .adesso-oggi{margin-bottom:0!important}
 :root{color-scheme:light only}
 html,body{background-color:#F4F4F3}
+/* CONDIVIDI */
+.cond{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center}
+.cond[hidden]{display:none}
+.cond-bg{position:absolute;inset:0;background:rgba(25,25,25,.45)}
+.cond-box{position:relative;background:var(--carta);width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+.cond-box>b{font-size:16px}
+.cond-az{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cond-az .b{justify-content:center;min-height:46px}
+.cond-az .b[hidden]{display:none}
+/* DISTANZE TRA I BOX DI OGGI */
+#wizard-oggi{margin-bottom:20px!important}
+#instbar,#avviso-dati{margin-top:0!important;margin-bottom:20px!important}
+#v-home .sez{margin-top:28px}
+/* HEADER OGGI COMPATTO */
+.adesso.adesso-oggi{padding:14px 18px!important;border-radius:18px!important;box-shadow:none!important}
+.adesso.adesso-oggi::before,.adesso.adesso-oggi::after{display:none!important}
+.adesso.adesso-oggi .tit{font-size:11px;letter-spacing:.1em}
+.adesso.adesso-oggi h2{font-size:22px!important;line-height:1.15!important;margin:4px 0 4px!important;text-shadow:none!important;max-width:none}
+.adesso.adesso-oggi p{font-size:14px!important;line-height:1.4;margin:0}
 </style>
 </head>
 <body>
@@ -714,7 +733,7 @@ html,body{background-color:#F4F4F3}
 
   <div class="sez">
     <h2>Da guardare subito</h2>
-    <p class="desc">Compare solo se c'\u00E8 qualcosa che vale davvero: un concorso adatto a te che scade entro due settimane, o un annuncio uscito da meno di una settimana, vicino a casa e nel tuo campo. Se non c'\u00E8 niente, questo riquadro sparisce.</p>
+    <p class="desc">Compare solo se c'è qualcosa che vale davvero: un concorso adatto a te che scade entro due settimane, o un annuncio uscito da meno di una settimana, vicino a casa e nel tuo campo. Se non c'è niente, questo riquadro sparisce.</p>
     <div class="card" id="lista-notizie"></div>
   </div>
 
@@ -929,11 +948,11 @@ html,body{background-color:#F4F4F3}
 <section class="vista" id="v-concorsi" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Concorsi</h2>
-    <p class="desc">Un concorso è diverso da un annuncio: ha una scadenza fissa, una domanda formale da fare quasi sempre su inPA, spesso una tassa e delle prove da superare, non basta il curriculum. Qui sotto ci sono solo i concorsi veri che ho trovato, letti nel bando, con scritto se il titolo che chiedono è quello che hai già oppure no. Aggiornato il 3 ottobre 2026.</p>
+    <p class="desc">Un concorso è diverso da un annuncio: ha una scadenza fissa, una domanda formale da fare quasi sempre su inPA, spesso una tassa e delle prove da superare, non basta il curriculum. Qui sotto ci sono solo i concorsi veri che ho trovato, letti nel bando, con scritto se il titolo che chiedono è quello che hai già oppure no. Aggiornato l'8 ottobre 2026.</p>
 
     <div class="avviso info" style="margin-bottom:18px" data-chiudi="conc-quadro">
       <h3>Il quadro generale su Roma città</h3>
-      <p>Il concorso grande, quello per insegnanti di scuola dell'infanzia di Roma Capitale, resta solo annunciato: è stato inserito nell'aggiornamento del piano del Comune, ma un bando vero non è stato ancora pubblicato. Controllato di nuovo il 3 ottobre 2026: nessun bando nuovo per Roma, ma la domanda per il concorso ISMA qui sotto si è chiusa il 2 ottobre. Se un giorno uscirà, occhio comunque ai titoli richiesti: le selezioni di questo tipo di solito chiedono Scienze della Formazione Primaria o un vecchio diploma magistrale abilitante, gli stessi titoli delle GPS, non la tua L-19 da sola.</p>
+      <p>Il concorso grande, quello per insegnanti di scuola dell'infanzia di Roma Capitale, resta solo annunciato: è stato inserito nell'aggiornamento del piano del Comune, ma un bando vero non è stato ancora pubblicato. Controllato di nuovo l'8 ottobre 2026: nessun bando nuovo per Roma, ma la domanda per il concorso ISMA qui sotto si è chiusa il 2 ottobre. Se un giorno uscirà, occhio comunque ai titoli richiesti: le selezioni di questo tipo di solito chiedono Scienze della Formazione Primaria o un vecchio diploma magistrale abilitante, gli stessi titoli delle GPS, non la tua L-19 da sola.</p>
       <p>Quello che invece è già reale e concreto sono i due concorsi qui sotto, uno dei quali ti riguarda davvero.</p>
     </div>
 
@@ -1001,7 +1020,7 @@ html,body{background-color:#F4F4F3}
     <p class="desc">Qui c'è il lavoro d'ufficio: segreteria e amministrazione, cioè il mestiere che fai da dieci anni. Il lavoro da educatrice, OEPAC compreso, non sta più qui: è tornato dov'è giusto che stia, negli Annunci, in un gruppo suo. Tengo quello che sta entro dieci chilometri in linea d'aria da Torpignattara e si raggiunge con i mezzi, senza ore di traffico: metro C da Malatesta, A dopo San Giovanni, B. Quello che sta oltre i dieci chilometri o senza metro sta in fondo, chiuso. Gli indirizzi li ho cercati uno per uno, anche quando l'annuncio non li scriveva. Ricontrollato l'11 settembre 2026: quattro annunci nuovi, uno dentro il raggio e tre in fondo, nel gruppo dei lontani. Il 5 ottobre 2026 ho aggiunto in fondo un gruppo nuovo, il lavoro da casa, anche part time o a obiettivo.</p>
 
     <div class="avviso" style="margin-bottom:18px" data-chiudi="porte-testa">
-      <h3>Fermati un secondo e leggi questo</h3>
+      <h3>Fermati un secondo è leggi questo</h3>
       <p>Se in questi mesi ti sei sentita ferma, non è perché non vali abbastanza. La strada dei nidi è lenta per un motivo burocratico, un decreto che chiede certi crediti nel piano di studi, e basta. Non è un giudizio su di te.</p>
       <p>E intanto tu, in mano, hai tre cose e non una: una laurea presa a 107 studiando mentre lavoravi, un diploma di ragioniere, e dieci anni veri di segreteria in società serie. Non sei una che comincia adesso. Sei una che sa già fare due mestieri diversi.</p>
       <p>Qui sotto ci sono due studi legali che descrivono, riga per riga, il lavoro che facevi in DeA Capital. E negli Annunci, in fondo, c'è un gruppo nuovo con l'OEPAC e il lavoro educativo nel sociale: quella porta il regolamento di Roma Capitale te la apre oggi, con la laurea che hai già, senza aspettare nessun corso. Non è poco. Comincia da una sola cosa, e falla oggi.</p>
@@ -1019,7 +1038,7 @@ html,body{background-color:#F4F4F3}
 
     <div class="card" id="lista-porte"></div>
 
-    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di dieci chilometri in linea d'aria da Torpignattara, con una sede raggiungibile in metro (A, B o C) o con un mezzo diretto; quello oltre i dieci chilometri o senza metro l'ho messo in fondo, chiuso. Questa pagina tiene solo il lavoro amministrativo: tutto quello che si fa con i bambini sta negli Annunci. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Parecchi annunci non dicono dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri camerali, e dove l'ho fatto c'e scritto nella scheda, cosi puoi controllarlo tu. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
+    <p style="font-size:13.5px;color:var(--grigio);margin-top:16px;max-width:80ch">Come ho scelto: raggio di dieci chilometri in linea d'aria da Torpignattara, con una sede raggiungibile in metro (A, B o C) o con un mezzo diretto; quello oltre i dieci chilometri o senza metro l'ho messo in fondo, chiuso. Questa pagina tiene solo il lavoro amministrativo: tutto quello che si fa con i bambini sta negli Annunci. Le distanze sono in linea d'aria da Torpignattara e servono a farsi un'idea, non a calcolare il tragitto. Parecchi annunci non dicono dove si lavora: quegli indirizzi li ho presi dai siti delle aziende e dai registri camerali, e dove l'ho fatto c'è scritto nella scheda, così puoi controllarlo tu. Gli annunci vengono da Indeed e sono stati letti uno per uno: quello che leggi qui è quello che c'è scritto nell'annuncio, non una mia interpretazione. Qualcuno può essere già stato coperto, e il link serve proprio a controllare.</p>
   </div>
 </section>
 
@@ -1166,7 +1185,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 <section class="vista" id="v-canali" hidden>
   <div class="sez" style="margin-top:0">
     <h2>Canali e scadenze</h2>
-    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato il 3 ottobre 2026, con la voce sulle graduatorie ATA aggiunta l'8 settembre. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
+    <p class="desc">Dove si trovano davvero i posti, e a che punto è ogni strada. Ricontrollato l'8 ottobre 2026, con la voce sulle graduatorie ATA aggiunta l'8 settembre. Le date ufficiali cambiano spesso: prima di muoverti apri sempre il link e verifica.</p>
     <div class="card" id="lista-canali"></div>
   </div>
 </section>
@@ -1286,7 +1305,7 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
 </main>
 <footer>
   <details class="piede"><summary>Da dove vengono le informazioni</summary>
-  <p>Costruita il 20 agosto 2026. Schermata Oggi con le domande guidate, zone e guida alle etichette rifatte il 29 settembre 2026. Sezione Concorsi creata il 15 settembre 2026, avviso ASMEL aggiunto lo stesso giorno. Annunci e canali ricontrollati il 3 ottobre 2026, Lavoro d'ufficio l'11 settembre 2026, lavoro da casa il 5 ottobre 2026, contatti delle scuole il 10 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
+  <p>Costruita il 20 agosto 2026. Schermata Oggi con le domande guidate, zone e guida alle etichette rifatte il 29 settembre 2026. Sezione Concorsi creata il 15 settembre 2026, avviso ASMEL aggiunto lo stesso giorno. Annunci e canali ricontrollati l'8 ottobre 2026, Lavoro d'ufficio l'11 settembre 2026, lavoro da casa il 5 ottobre 2026, contatti delle scuole il 10 settembre 2026, graduatorie ATA e certificazione CIAD l'8 settembre 2026, sezione sul corso ESEI il 6 settembre 2026. Gli annunci vengono da Indeed, i canali e le scadenze dal sito di Roma Capitale, da inPA e dalle fonti linkate su ogni voce. Niente è stato scritto senza una fonte controllabile: dove la fonte non si riusciva a leggere, c'è scritto.</p>
   </details>
   <p id="stato-dati" style="font-size:13px;color:var(--grigio);margin:10px 0 0"></p>
 </footer>
@@ -1300,6 +1319,19 @@ Cerco un incarico come insegnante di scuola dell'infanzia o educatrice nei servi
   </div>
 </div>
 <div class="toast" id="toast"></div>
+<div class="cond" id="cond" hidden>
+  <div class="cond-bg" data-cond-x></div>
+  <div class="cond-box" role="dialog" aria-modal="true" aria-label="Condividi">
+    <b id="cond-tit">Condividi</b>
+    <div class="cond-az">
+      <a class="b" id="cond-wa" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="b" id="cond-mail">Email</a>
+      <button class="b" id="cond-altro" hidden>Altre app</button>
+      <button class="b" id="cond-copia">Copia il testo</button>
+    </div>
+    <button class="b b-mini" data-cond-x>Chiudi</button>
+  </div>
+</div>
 <script>
 "use strict";
 
@@ -1401,9 +1433,12 @@ const TAPPE = [
     ]}
 ];
 
-/* ===== ANNUNCI, ricerca su Indeed aggiornata il 3 ottobre 2026 ===== */
-const VERDETTI = {"e-iskra": ["ok", "Scrivi: nessun requisito, 4 km. Candidatura spontanea, mail in due righe citando L-19 e art. 12."], "e-obiettivouomo": ["ok", "Scrivi: banca dati sempre aperta, cercano OEPAC ed educatori. Chiedi le scuole del Municipio V."], "a27a": ["ok", "Candidati: chiedono proprio la L-19, inglese solo preferenziale, assunzione da dic/gen. ~9 km."], "o03a": ["forse", "Telefona: titolo ok, ma chiedono esperienza in nido che non hai. Chiedi se è un muro."], "o03b": ["forse", "Telefona: non scrivono titolo né età degli utenti (chiedilo). Tempo indeterminato, zona La Rustica."], "o03c": ["no", "Poco adatto: contratto a chiamata, 300-500 € al mese."], "o03d": ["no", "Lascia stare: 6-9 ore a settimana e Ponte Galeria è lontano."], "a25a": ["forse", "Titolo ok (L-19 richiesta), ma 25 ore + reperibilità notturna settimanale, 6 mesi. Dura con due bimbi piccoli."], "a17a": ["no", "Lascia stare: titolo perfetto ma sede a Lariano, troppo lontana."], "a15a": ["forse", "Telefona: titolo ok, esperienza non obbligatoria, ma non dicono l'ente né l'indirizzo."], "a14a": ["forse", "Telefona: 1.449 € part time, ma non dicono quale titolo abilitante (al nido serve l'ESEI?)."], "a14b": ["no", "Lascia stare: chiedono proprio la L-19, ma Guidonia è oltre 20 km."], "a11a": ["forse", "Telefona: titolo pulito, ibrido/da remoto, ma sede nei Castelli Romani. Chiedi quanti giorni in presenza."], "a11b": ["forse", "Telefona: centri pomeridiani per minori, ma titolo e zona (Roma nord) non scritti, da 501 €."], "a07a": ["no", "Lascia stare: esperienza consolidata e turni a tempo pieno per il colloquio, sede a Formello."], "a09a": ["no", "Poco adatto: domiciliare a casa delle famiglie, 16-20."], "a05a": ["no", "Poco adatto: domiciliare, 300-800 € al mese."], "a05b": ["forse", "Telefona: L-19 sufficiente, 18 ore a settimana, municipi II-III-IV; preferiscono residenti in zona."], "a05c": ["no", "Poco adatto: domiciliare, 12-16 ore a settimana."], "a05d": ["forse", "Telefona: nido aziendale, 1.491 € lordi, vale anche l'esperienza 3-6, ma sede verso i Parioli."], "a05e": ["forse", "Telefona: stesse condizioni del Nido Enel, ma indirizzo non scritto."], "a05f": ["forse", "Telefona solo se i 3 anni di nido non sono un muro: chiedono esperienza che non hai."], "a05g": ["no", "Lascia stare: casa famiglia a Casalotti, festivi inclusi, lontano."], "a03a": ["no", "Poco adatto: domiciliare, 15 ore a 13 € lordi l'ora."], "a31b": ["forse", "Telefona: chiedono 3 anni di esperienza, chiedi se è rigido. 20-25 ore."], "a31c": ["forse", "Telefona insieme all'altro annuncio Antropos: stessa cooperativa, 3 anni di esperienza chiesti."], "a31d": ["no", "Poco adatto: assunzione dalla famiglia con contratto domestico, 9,97 € l'ora."], "a31e": ["no", "Poco adatto: turni su 24 ore, notti e festivi."], "s1": ["no", "Lascia stare: dal 31 agosto non compare più nella ricerca, e sede lontana."], "s5": ["forse", "Prova citando l'art. 12: chiedono la qualifica OEPAC, ma è scelta della cooperativa, non obbligo di legge."]};
+/* ===== ANNUNCI, ricerca su Indeed aggiornata l'8 ottobre 2026 ===== */
+const VERDETTI = {"o08a": ["forse", "Telefona: titolo ok, ma chiedono un anno di esperienza in nido che non hai. Disponibilit\u00e0 immediata. 7 km."], "e-iskra": ["ok", "Scrivi: nessun requisito, 4 km. Candidatura spontanea, mail in due righe citando L-19 e art. 12."], "e-obiettivouomo": ["ok", "Scrivi: banca dati sempre aperta, cercano OEPAC ed educatori. Chiedi le scuole del Municipio V."], "a27a": ["ok", "Candidati: chiedono proprio la L-19, inglese solo preferenziale, assunzione da dic/gen. ~9 km."], "o07a": ["forse", "Telefona: titolo ok, ma chiedono esperienza in nido che non hai. Inglese solo preferenziale. 5-6 km."], "o07b": ["no", "Poco adatto: animazione in un ristorante, soprattutto nei weekend."], "o03a": ["forse", "Telefona: titolo ok, ma chiedono esperienza in nido che non hai. Chiedi se è un muro."], "o03b": ["forse", "Telefona: non scrivono titolo né età degli utenti (chiedilo). Tempo indeterminato, zona La Rustica."], "o03c": ["no", "Poco adatto: contratto a chiamata, 300-500 € al mese."], "o03d": ["no", "Lascia stare: 6-9 ore a settimana e Ponte Galeria è lontano."], "a25a": ["forse", "Titolo ok (L-19 richiesta), ma 25 ore + reperibilità notturna settimanale, 6 mesi. Dura con due bimbi piccoli."], "a17a": ["no", "Lascia stare: titolo perfetto ma sede a Lariano, troppo lontana."], "a15a": ["forse", "Telefona: titolo ok, esperienza non obbligatoria, ma non dicono l'ente né l'indirizzo."], "a14a": ["forse", "Telefona: 1.449 € part time, ma non dicono quale titolo abilitante (al nido serve l'ESEI?)."], "a14b": ["no", "Lascia stare: chiedono proprio la L-19, ma Guidonia è oltre 20 km."], "a11a": ["forse", "Telefona: titolo pulito, ibrido/da remoto, ma sede nei Castelli Romani. Chiedi quanti giorni in presenza."], "a11b": ["forse", "Telefona: centri pomeridiani per minori, ma titolo e zona (Roma nord) non scritti, da 501 €."], "a07a": ["no", "Lascia stare: esperienza consolidata e turni a tempo pieno per il colloquio, sede a Formello."], "a09a": ["no", "Poco adatto: domiciliare a casa delle famiglie, 16-20."], "a05a": ["no", "Poco adatto: domiciliare, 300-800 € al mese."], "a05b": ["forse", "Telefona: L-19 sufficiente, 18 ore a settimana, municipi II-III-IV; preferiscono residenti in zona."], "a05c": ["no", "Poco adatto: domiciliare, 12-16 ore a settimana."], "a05d": ["forse", "Telefona: nido aziendale, 1.491 € lordi, vale anche l'esperienza 3-6, ma sede verso i Parioli."], "a05e": ["forse", "Telefona: stesse condizioni del Nido Enel, ma indirizzo non scritto."], "a05f": ["forse", "Telefona solo se i 3 anni di nido non sono un muro: chiedono esperienza che non hai."], "a05g": ["no", "Lascia stare: casa famiglia a Casalotti, festivi inclusi, lontano."], "a03a": ["no", "Poco adatto: domiciliare, 15 ore a 13 € lordi l'ora."], "a31b": ["forse", "Telefona: chiedono 3 anni di esperienza, chiedi se è rigido. 20-25 ore."], "a31c": ["forse", "Telefona insieme all'altro annuncio Antropos: stessa cooperativa, 3 anni di esperienza chiesti."], "a31d": ["no", "Poco adatto: assunzione dalla famiglia con contratto domestico, 9,97 € l'ora."], "a31e": ["no", "Poco adatto: turni su 24 ore, notti e festivi."], "s1": ["no", "Lascia stare: dal 31 agosto non compare più nella ricerca, e sede lontana."], "s5": ["forse", "Prova citando l'art. 12: chiedono la qualifica OEPAC, ma è scelta della cooperativa, non obbligo di legge."], "w07a": ["forse", "Da verificare: chiedono la L-19, tempo indeterminato, ma mancano ente e zona. Pubblicato il 31 agosto."], "w07b": ["forse", "Da verificare: nido alla Balduina (~9 km), chiedono esperienza e titolo normativo (ESEI?). Età massima 40 anni."], "w07c": ["ok", "Scrivi: OEPAC nel tuo Municipio V, la laurea basta. Non confermato che sia aperto, quindi candidatura spontanea."]};
 const ANNUNCI = [
+  {id:"w07a", titolo:"Educatrice di asilo nido, la L-19 è richiesta", ente:"Servizio educativo (nome non scritto nell'annuncio)", zona:"Roma, zona non indicata", cat:"nido", dist:0, tipo:"Part-time, tempo indeterminato, turni mattina o pomeriggio", pubb:"31 agosto 2026", url:"https://roma.bakeca.it/dettaglio/docenti-formazion-risorsumane/ricerchiamo-educatrice-asilo-nido-r98i270719820", fonte:"Bakeca", note:"Trovato il 7 ottobre su Bakeca, un portale di annunci diverso da Indeed. Nel testo chiedono la laurea in Scienze dell'Educazione L-19 per educatrice di nido, con buone capacità organizzative e relazionali. Contratto a tempo indeterminato, part time con turni flessibili di mattina o pomeriggio. Non scrivono né il nome del servizio né la zona né la paga, e la candidatura passa dal modulo del sito. Per questo è da verificare: le prime domande sono dove si trova il nido e se per l'ESEI chiedono i crediti in più. Pubblicato il 31 agosto, quindi chiedi subito se la ricerca è ancora aperta."},
+  {id:"w07b", titolo:"Educatrice di asilo nido, zona Balduina", ente:"La Giungla dei Cuccioli", zona:"Roma, zona Balduina", cat:"nido", dist:3, km:9.4, tipo:"A turni, contratto da definire", pubb:"27 agosto 2026", url:"https://www.subito.it/offerte-lavoro/educatrice-asilo-nido-roma-658481386.htm", fonte:"Subito", note:"Trovato il 7 ottobre su Subito. Cercano un'educatrice per un nido in zona Balduina, con lavoro a turni e ambiente di squadra. Nel testo scrivono tre cose da sapere prima di scrivere: esperienza pregressa in nidi o servizi per la prima infanzia, titoli validi secondo la normativa vigente (quindi per il nido probabilmente serve l'ESEI, da chiedere) e un'età massima di 40 anni, che per te non è un problema ma è una richiesta insolita. Si candida con il CV a lagiungladeicuccioliroma@gmail.com. Contratto e paga non sono scritti. Distanza stimata come per gli altri annunci della Balduina, non calcolata su questo indirizzo."},
+  {id:"w07c", titolo:"OEPAC nei Municipi III, IV e V, candidatura spontanea", ente:"Aldia Cooperativa Sociale", zona:"Roma, Municipi III, IV e V (Centocelle, Tor Sapienza, Alessandrino, Settebagni, Fidene, San Basilio, Ponte Mammolo)", cat:"socio", dist:0, tipo:"Tempo determinato per l'anno scolastico 2026/2027, 8:30-16:30 dal lunedì al venerdì", pubb:"", url:"https://it.jooble.org/jdp/-8220221698658407313", fonte:"Jooble", note:"Non è un annuncio verificato come aperto: l'ho trovato su Jooble, pubblicato uno o due mesi fa, e nella prima pagina del portale della cooperativa non risultano posizioni a Roma. È però il più vicino al tuo quadrante: il Municipio V è il tuo. Nel testo scrivono che basta la laurea in Scienze dell'Educazione (o psicologia, servizio sociale) oppure la qualifica OEPAC; consigliano l'attestato CAA e il domicilio in zona. CCNL cooperative sociali, livello in base al titolo. Si può mandare una candidatura spontanea a info@aldia.it (telefono 0382 529444) o dal portale lavoraconnoi.aldia.it, scrivendo che sei del Municipio V e citando l'articolo 12 del regolamento OEPAC di Roma Capitale."},
   {id:"e-iskra", titolo:"OEPAC, candidatura spontanea a una cooperativa del tuo quadrante", ente:"ISKRA società cooperativa",
    zona:"Via delle Avocette 16, Torre Maura", cat:"socio", dist:2, tipo:"Non è un annuncio: si manda quando vuoi", pubb:"",
    url:"https://iskra.coop/oepac/", fonte:"sito della cooperativa, letto il 7 settembre 2026",
@@ -1415,51 +1450,63 @@ const ANNUNCI = [
   {id:"a27a", titolo:"Educatrice o educatore per asilo nido, zona Balduina", ente:"Asilo Bimbi a Bordo",
    zona:"Roma, Balduina, via Giorgio Franceschi 26", cat:"nido", dist:3, km:9.4, tipo:"Part-time, contratto ANINSEI a tempo determinato, assunzione da dicembre 2026 o gennaio 2027", pubb:"23 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=c5d8a3aa21a81129", fonte:"Indeed",
-   note:"Nuovo, trovato il 27 settembre. Sul titolo e netto: chiedono la laurea in Scienze dell'Educazione e della Formazione L-19 e scrivono esplicitamente di non mandare il curriculum senza questo titolo. L'inglese e chiesto solo come titolo preferenziale, non come obbligo, quindi non scatta il filtro del bilinguismo: il nido si presenta come una realta bilingue, ma per il posto in se basta il tuo inglese scolastico. Cercano anche interesse per l'ambito musicale. Contratto ANINSEI a tempo determinato, con assunzione prevista da dicembre 2026 o gennaio 2027, quindi c'e tempo per un colloquio con calma. La sede e in zona Balduina, a nord ovest della citta, circa dieci chilometri da Torpignattara: si arriva ma non e dietro l'angolo. Curriculum a asilobimbiabordo@gmail.com."},
+   note:"Nuovo, trovato il 27 settembre. Sul titolo è netto: chiedono la laurea in Scienze dell'Educazione e della Formazione L-19 e scrivono esplicitamente di non mandare il curriculum senza questo titolo. L'inglese è chiesto solo come titolo preferenziale, non come obbligo, quindi non scatta il filtro del bilinguismo: il nido si presenta come una realtà bilingue, ma per il posto in se basta il tuo inglese scolastico. Cercano anche interesse per l'ambito musicale. Contratto ANINSEI a tempo determinato, con assunzione prevista da dicembre 2026 o gennaio 2027, quindi c'è tempo per un colloquio con calma. La sede è in zona Balduina, a nord ovest della città, circa dieci chilometri da Torpignattara: si arriva ma non è dietro l'angolo. Curriculum a asilobimbiabordo@gmail.com."},
+  {id:"o07a", titolo:"Educatrice o educatore di asilo nido, zona Piramide", ente:"Girogirotondo, nido e scuola dell'infanzia bilingue",
+   zona:"Roma, zona Piramide", cat:"nido", dist:2, km:5.6, tipo:"Part-time, orario da concordare, da 800 euro al mese", pubb:"6 ottobre 2026",
+   url:"https://to.indeed.com/aafqpz6n4f7m", fonte:"Indeed",
+   note:"Nuovo, trovato il 7 ottobre. Cercano per ampliamento organico, da ottobre, un educatore o un'educatrice per bambini da 6 mesi a 3 anni. Requisiti indispensabili: un titolo valido per lavorare al nido, esperienza pregressa al nido e domicilio a Roma o provincia. Nell'annuncio la laurea triennale è segnata come obbligatoria. L'inglese è solo preferenziale e scrivono che le candidature di chi parla solo italiano sono benvenute, quindi non scatta il filtro sull'inglese. Due domande da fare al telefono: se la tua L-19 senza ESEI basta come titolo per il nido, e se la tua esperienza alla scuola dell'infanzia conta come esperienza al nido. Distanza stimata in linea d'aria, circa 5-6 chilometri."},
+  {id:"o08a", titolo:"Educatrice o educatore di nido, zona Villa Spada e Fidene", ente:"I Giardini di Zeus",
+   zona:"Roma, nido in zona Villa Spada e Fidene", cat:"nido", dist:3, km:7.5, tipo:"Part-time, contratto ANINSEI, disponibilità immediata", pubb:"5 ottobre 2026",
+   url:"https://to.indeed.com/aawtstmrj87f", fonte:"Indeed",
+   note:"Nuovo, trovato l'8 ottobre. Nido a nord della città, in zona Villa Spada e Fidene. Come titolo accettano la laurea in Scienze dell'Educazione, quindi la tua L-19 rientra. Chiedono però almeno un anno di esperienza in servizi per la prima infanzia (nidi, sezioni primavera): le tue giornate di supplenza sono alla scuola dell'infanzia, quindi è la domanda da fare al telefono. Disponibilità immediata. La paga scritta nell'annuncio (da 5,08 a 24,34 euro all'ora) è una stima automatica di Indeed e non dice niente. Distanza stimata in linea d'aria, circa 7 chilometri da Torpignattara. Non è lo stesso annuncio di I Giardini di Zeus all'EUR di metà settembre."},
+  {id:"o07b", titolo:"Animatrice o animatore per bambini in un ristorante, zona Anagnina", ente:"FBM Srl",
+   zona:"Roma, zona Anagnina, area giochi di un ristorante", cat:"extra", dist:0, tipo:"Part-time, soprattutto venerdì sera, sabato e domenica, da 600 a 800 euro al mese", pubb:"5 ottobre 2026",
+   url:"https://to.indeed.com/aawr2rfdfdpq", fonte:"Indeed",
+   note:"Nuovo, trovato il 7 ottobre. Animazione, laboratori creativi, giochi e truccabimbi nell'area giochi di un ristorante. Chiedono solo un po' di esperienza con i bambini (centri estivi, baby sitting, ludoteche). Si lavora nei fine settimana e nei festivi, quindi pesa sulla famiglia. Curriculum a risorseumane.fbmsrl@gmail.com con oggetto Candidatura Animazione. La distanza non è calcolata: la zona è Anagnina, in fondo alla Tuscolana."},
   {id:"o03a", titolo:"Educatrice o educatore di asilo nido, zona Monteverde", ente:"Filobus 75",
    zona:"Roma, Monteverde", cat:"nido", dist:3, km:6.5, tipo:"Tempo pieno, assunzione immediata, da 1.000 euro al mese", pubb:"30 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=b30ad51d52fc47bf", fonte:"Indeed",
-   note:"Nuovo, trovato il 3 ottobre. Chiedono la laurea in Scienze dell'Educazione, che hai, ma anche esperienza comprovata in asilo nido, che non hai: scrivono che prendono in considerazione solo le candidature con tutti i requisiti. Preferiscono la residenza in zona Monteverde o vicino. Mansioni al nido 0-3, lavoro in team, rapporto con le famiglie, con un occhio all'educazione all'aperto. Monteverde sta dall'altra parte del Tevere rispetto a Torpignattara: vale la telefonata solo se l'esperienza non e un muro vero."},
+   note:"Nuovo, trovato il 3 ottobre. Chiedono la laurea in Scienze dell'Educazione, che hai, ma anche esperienza comprovata in asilo nido, che non hai: scrivono che prendono in considerazione solo le candidature con tutti i requisiti. Preferiscono la residenza in zona Monteverde o vicino. Mansioni al nido 0-3, lavoro in team, rapporto con le famiglie, con un occhio all'educazione all'aperto. Monteverde sta dall'altra parte del Tevere rispetto a Torpignattara: vale la telefonata solo se l'esperienza non è un muro vero."},
   {id:"o03b", titolo:"Educatore professionale, centro di riabilitazione", ente:"Raggio di Sole ETS",
    zona:"Roma, zona La Rustica", cat:"socio", dist:2, tipo:"Tempo pieno, tempo indeterminato", pubb:"25 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=f78c042da0b40d1c", fonte:"Indeed",
-   note:"Nuovo, trovato il 3 ottobre. E un centro di riabilitazione accreditato dalla Regione Lazio che segue persone con disabilita psichica e cognitiva, da oltre sessant'anni, zona La Rustica. L'annuncio non scrive il titolo richiesto ne l'eta delle persone seguite: sono le prime due domande da fare al telefono, perche se il servizio e per adulti il profilo non e lo stesso delle sezioni dell'infanzia. Da 1.300 a 1.400 euro al mese, parcheggio libero. La Rustica e vicina a Torpignattara, ma l'indirizzo esatto non e nell'annuncio."},
+   note:"Nuovo, trovato il 3 ottobre. E un centro di riabilitazione accreditato dalla Regione Lazio che segue persone con disabilita psichica e cognitiva, da oltre sessant'anni, zona La Rustica. L'annuncio non scrive il titolo richiesto ne l'età delle persone seguite: sono le prime due domande da fare al telefono, perché se il servizio è per adulti il profilo non è lo stesso delle sezioni dell'infanzia. Da 1.300 a 1.400 euro al mese, parcheggio libero. La Rustica è vicina a Torpignattara, ma l'indirizzo esatto non è nell'annuncio."},
   {id:"o03c", titolo:"Educatrice o animatrice, zona Bufalotta", ente:"Pop Lab srl",
    zona:"Roma, zona Bufalotta, per Area Bimbi", cat:"extra", dist:3, km:8.2, tipo:"Part-time, contratto a chiamata a tempo determinato, da 300 a 500 euro al mese", pubb:"10 agosto 2026",
    url:"https://it.indeed.com/viewjob?jk=ac275abd580f9afc", fonte:"Indeed",
-   note:"Nuovo, trovato il 3 ottobre. Societa che gestisce servizi per l'infanzia e progetti di animazione, cerca educatrici e animatrici per Area Bimbi in zona Bufalotta. Il titolo e scritto come preferenziale, non obbligatorio, e la laurea in Scienze dell'Educazione e tra quelli accettati insieme a vari diplomi. Chiedono di essere automunite e disponibili da subito, e di mandare anche una fototessera. Il contratto e a chiamata, quindi le ore non sono fisse, e la paga e bassa: da valutare solo se interessa un lavoro di poche ore."},
+   note:"Nuovo, trovato il 3 ottobre. Societa che gestisce servizi per l'infanzia e progetti di animazione, cerca educatrici e animatrici per Area Bimbi in zona Bufalotta. Il titolo è scritto come preferenziale, non obbligatorio, e la laurea in Scienze dell'Educazione e tra quelli accettati insieme a vari diplomi. Chiedono di essere automunite e disponibili da subito, e di mandare anche una fototessera. Il contratto è a chiamata, quindi le ore non sono fisse, e la paga è bassa: da valutare solo se interessa un lavoro di poche ore."},
   {id:"o03d", titolo:"Educatore o educatrice per progetti giovanili", ente:"CICUE ODV",
    zona:"Roma, Ponte Galeria", cat:"socio", dist:4, km:19.1, tipo:"Part-time, 6-9 ore a settimana, di pomeriggio", pubb:"29 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=016980cfcc13e546", fonte:"Indeed",
-   note:"Nuovo, trovato il 3 ottobre. Associazione di volontariato che cerca un educatore o un'educatrice per progetti territoriali con i giovani, contro la dispersione scolastica: laboratori, attivita ludico-ricreative, uscite, rapporto con la rete dei servizi del territorio. L'annuncio non scrive quale titolo serve. Poche ore a settimana e Ponte Galeria e lontano, verso Fiumicino: lo tengo per completezza, ma pesa il viaggio per cosi poche ore."},
+   note:"Nuovo, trovato il 3 ottobre. Associazione di volontariato che cerca un educatore o un'educatrice per progetti territoriali con i giovani, contro la dispersione scolastica: laboratori, attività ludico-ricreative, uscite, rapporto con la rete dei servizi del territorio. L'annuncio non scrive quale titolo serve. Poche ore a settimana e Ponte Galeria è lontano, verso Fiumicino: lo tengo per completezza, ma pesa il viaggio per così poche ore."},
   {id:"a25a", titolo:"Educatore o educatrice professionale per un gruppo appartamento minori", ente:"Cooperativa Sociale Spes Contra Spem Onlus",
-   zona:"Roma, zona Bufalotta, indirizzo esatto da chiedere", cat:"socio", dist:3, km:8.2, tipo:"Part-time 25 ore a settimana piu una reperibilita notturna a settimana, tempo determinato di sei mesi", pubb:"22 settembre 2026",
+   zona:"Roma, zona Bufalotta, indirizzo esatto da chiedere", cat:"socio", dist:3, km:8.2, tipo:"Part-time 25 ore a settimana più una reperibilita notturna a settimana, tempo determinato di sei mesi", pubb:"22 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=705b4f9c22af6f45", fonte:"Indeed",
-   note:"Nuovo, trovato il 25 settembre. Cercano due educatori o educatrici per il gruppo appartamento per minori della cooperativa, in zona Bufalotta. Chiedono la laurea triennale o magistrale in Scienze dell'educazione come requisito, e l'esperienza pregressa e solo preferenziale, non obbligatoria. Il contratto e a tempo determinato di sei mesi con possibilita di proroga, 25 ore a settimana piu una notte di reperibilita in struttura ogni settimana: la prima persona comincia dal 1 novembre, la seconda dal 1 dicembre. La cooperativa lavora nei Municipi II, III, IV, V e VI, quindi il quadrante e quello giusto, ma l'annuncio non scrive l'indirizzo esatto della zona Bufalotta: la distanza resta da verificare al telefono, insieme a come funziona in pratica la reperibilita notturna."},
+   note:"Nuovo, trovato il 25 settembre. Cercano due educatori o educatrici per il gruppo appartamento per minori della cooperativa, in zona Bufalotta. Chiedono la laurea triennale o magistrale in Scienze dell'educazione come requisito, e l'esperienza pregressa e solo preferenziale, non obbligatoria. Il contratto è a tempo determinato di sei mesi con possibilità di proroga, 25 ore a settimana più una notte di reperibilita in struttura ogni settimana: la prima persona comincia dal 1 novembre, la seconda dal 1 dicembre. La cooperativa lavora nei Municipi II, III, IV, V e VI, quindi il quadrante è quello giusto, ma l'annuncio non scrive l'indirizzo esatto della zona Bufalotta: la distanza resta da verificare al telefono, insieme a come funziona in pratica la reperibilita notturna."},
   {id:"a17a", titolo:"Educatore o educatrice di asilo nido, la L-19 basta da sola", ente:"Leonardo Societa Cooperativa Sociale",
    zona:"Lariano, Castelli Romani, fuori Roma", cat:"nido", dist:4, tipo:"Part-time, di persona", pubb:"14 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=49e83a39a7f1062a", fonte:"Indeed",
-   note:"Nuovo, trovato il 17 settembre. Sul titolo e pulito: chiedono la laurea in Scienze dell'Educazione e della Formazione L-19, o un titolo equivalente e idoneo, e non mettono nessun anno fisso di esperienza, basta anche minima nei servizi per la prima infanzia. Il problema e la distanza: la sede e a Lariano, nei Castelli Romani, molto oltre i dodici chilometri da Torpignattara, ed e lavoro di persona, senza nessuna parte da remoto. La paga scritta va da 694 a 1.893 euro al mese, una forbice cosi larga che non dice quasi niente: e la stima automatica di Indeed, non una cifra decisa dalla cooperativa. Lo tengo per completezza, ma il viaggio pesa piu di quanto renda l'offerta."},
+   note:"Nuovo, trovato il 17 settembre. Sul titolo è pulito: chiedono la laurea in Scienze dell'Educazione e della Formazione L-19, o un titolo equivalente e idoneo, e non mettono nessun anno fisso di esperienza, basta anche minima nei servizi per la prima infanzia. Il problema è la distanza: la sede è a Lariano, nei Castelli Romani, molto oltre i dodici chilometri da Torpignattara, ed è lavoro di persona, senza nessuna parte da remoto. La paga scritta va da 694 a 1.893 euro al mese, una forbice così larga che non dice quasi niente: e la stima automatica di Indeed, non una cifra decisa dalla cooperativa. Lo tengo per completezza, ma il viaggio pesa più di quanto renda l'offerta."},
   {id:"a15a", titolo:"Educatore o educatrice di asilo nido", ente:"Job Italia SpA, agenzia per il lavoro",
    zona:"Roma, indirizzo non indicato nell'annuncio", cat:"nido", dist:0, tipo:"Part-time, 25 ore a settimana dal lunedi al venerdi, somministrazione a tempo determinato, dal 1 ottobre 2026", pubb:"1 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=e12c8fe4941344e7", fonte:"Indeed",
-   note:"Nuovo, trovato il 15 settembre. E un'agenzia per il lavoro che cerca per un ente non nominato nell'annuncio. Chiedono un diploma di laurea in Scienze dell'Educazione L-19 o titoli attinenti, e l'esperienza pregressa e solo preferenziale, non obbligatoria. Part time, 25 ore a settimana dal lunedi al venerdi, contratto in somministrazione a tempo determinato, disponibilita immediata, con inizio dal primo ottobre 2026. Non dicono ne per chi assumono ne l'indirizzo: la prima domanda al telefono e proprio questa."},
+   note:"Nuovo, trovato il 15 settembre. E un'agenzia per il lavoro che cerca per un ente non nominato nell'annuncio. Chiedono un diploma di laurea in Scienze dell'Educazione L-19 o titoli attinenti, e l'esperienza pregressa e solo preferenziale, non obbligatoria. Part time, 25 ore a settimana dal lunedi al venerdi, contratto in somministrazione a tempo determinato, disponibilità immediata, con inizio dal primo ottobre 2026. Non dicono ne per chi assumono ne l'indirizzo: la prima domanda al telefono e proprio questa."},
   {id:"a14a", titolo:"Educatrice o educatore nei servizi per l'infanzia", ente:"Crescere Insieme",
    zona:"Roma, indirizzo non indicato nell'annuncio", cat:"nido", dist:0, tipo:"Part-time, 1.449 euro al mese", pubb:"11 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=cc20ad6c3bc32cbe", fonte:"Indeed",
-   note:"Nuovo, trovato il 14 settembre. Crescere Insieme gestisce asili nido e servizi per l'infanzia a Roma dal 1993. L'annuncio parla di attivita educative e ludico didattiche, progettazione dei percorsi, lavoro in equipe e rapporto con le famiglie. Part time a 1.449 euro al mese, che per un part time e una cifra buona. Due cose da chiarire subito al telefono. La prima: chiedono un titolo abilitante conforme alla normativa regionale, ma non dicono quale ne per quale fascia di eta, quindi se il posto e al nido serve l'ESEI che ancora non hai, mentre se e nella 3-6 la tua laurea basta gia cosi. La seconda: non scrivono dove si lavora. Una avvertenza: questa societa ha in giro anche un altro annuncio, quello per il nido bilingue inglese, che resta fuori dal tuo profilo. Questo invece l'inglese non lo chiede."},
+   note:"Nuovo, trovato il 14 settembre. Crescere Insieme gestisce asili nido e servizi per l'infanzia a Roma dal 1993. L'annuncio parla di attività educative e ludico didattiche, progettazione dei percorsi, lavoro in equipe e rapporto con le famiglie. Part time a 1.449 euro al mese, che per un part time e una cifra buona. Due cose da chiarire subito al telefono. La prima: chiedono un titolo abilitante conforme alla normativa regionale, ma non dicono quale ne per quale fascia di età, quindi se il posto è al nido serve l'ESEI che ancora non hai, mentre se e nella 3-6 la tua laurea basta già cosi. La seconda: non scrivono dove si lavora. Una avvertenza: questa società ha in giro anche un altro annuncio, quello per il nido bilingue inglese, che resta fuori dal tuo profilo. Questo invece l'inglese non lo chiede."},
   {id:"a14b", titolo:"Educatrice di asilo nido, chiedono proprio la laurea L-19", ente:"Asilo Nido Piccolo Blu",
    zona:"Guidonia Montecelio, fuori Roma a nord est", cat:"nido", dist:4, tipo:"Part-time, con turni", pubb:"10 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=22eb848b2bd3a0a5", fonte:"Indeed",
-   note:"Nuovo, trovato il 14 settembre. Sul titolo e l'annuncio piu netto di tutta la bacheca: scrivono esclusivamente laurea in Scienze dell'Educazione L-19, e segnano la laurea triennale come obbligatoria. Chiedono anche esperienza nel settore e la conoscenza dell'inglese, che qui pero e indicata come preferenziale e non come madrelingua, quindi non ti taglia fuori. I curriculum si mandano a piccoloblu.asilonido@gmail.com. I problemi sono due. Il primo e la distanza: Guidonia sta fuori Roma verso nord est, oltre i venti chilometri, e nell'annuncio scrivono che accettano candidati con domicilio in zone limitrofe, e Torpignattara limitrofa non e. Il secondo e il solito nodo del titolo: loro chiedono la L-19 e basta, ma per lavorare al nido il decreto chiede anche i crediti in piu. Se il viaggio te lo senti, chiama e fatti dire tutte e due le cose, gli orari dei turni e se la L-19 gli basta davvero."},
+   note:"Nuovo, trovato il 14 settembre. Sul titolo è l'annuncio più netto di tutta la bacheca: scrivono esclusivamente laurea in Scienze dell'Educazione L-19, e segnano la laurea triennale come obbligatoria. Chiedono anche esperienza nel settore e la conoscenza dell'inglese, che qui però è indicata come preferenziale e non come madrelingua, quindi non ti taglia fuori. I curriculum si mandano a piccoloblu.asilonido@gmail.com. I problemi sono due. Il primo è la distanza: Guidonia sta fuori Roma verso nord est, oltre i venti chilometri, e nell'annuncio scrivono che accettano candidati con domicilio in zone limitrofe, e Torpignattara limitrofa non e. Il secondo è il solito nodo del titolo: loro chiedono la L-19 e basta, ma per lavorare al nido il decreto chiede anche i crediti in piu. Se il viaggio te lo senti, chiama e fatti dire tutte e due le cose, gli orari dei turni e se la L-19 gli basta davvero."},
   {id:"a11a", titolo:"Educatrice o educatore professionale, la laurea L-19 chiesta per nome", ente:"Cooperativa Sorriso per Tutti",
    zona:"Castelli Romani, con una parte del lavoro da remoto", cat:"socio", dist:4, tipo:"Part-time, CCNL cooperative sociali", pubb:"8 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=7a8e3c52fe0f8dcf", fonte:"Indeed",
-   note:"Nuovo, trovato l'11 settembre. Sul titolo e il piu pulito di tutta la bacheca: scrivono Laurea L-19 o titolo equivalente, e non chiedono nessun anno di esperienza. Il resto sono qualita, non requisiti: ascolto, lavoro in equipe, progettazione educativa. Contratto CCNL cooperative sociali, orario flessibile, da 200 a 1.300 euro al mese, quindi il monte ore e tutto da chiarire. Il punto debole e la sede: Castelli Romani, fuori Roma a sud est, ben oltre i dodici chilometri. L'annuncio pero scrive ibrido e da remoto, quindi la prima domanda al telefono e quanti giorni si va di persona e dove."},
+   note:"Nuovo, trovato l'11 settembre. Sul titolo è il più pulito di tutta la bacheca: scrivono Laurea L-19 o titolo equivalente, e non chiedono nessun anno di esperienza. Il resto sono qualità, non requisiti: ascolto, lavoro in equipe, progettazione educativa. Contratto CCNL cooperative sociali, orario flessibile, da 200 a 1.300 euro al mese, quindi il monte ore è tutto da chiarire. Il punto debole e la sede: Castelli Romani, fuori Roma a sud est, ben oltre i dodici chilometri. L'annuncio però scrive ibrido e da remoto, quindi la prima domanda al telefono e quanti giorni si va di persona e dove."},
   {id:"a11b", titolo:"Educatrice o educatore per servizi ludico-educativi", ente:"Cooperativa Apriti Sesamo",
    zona:"Roma nord, centri aggregativi, indirizzo da chiedere", cat:"extra", dist:0, tipo:"Part-time, di pomeriggio", pubb:"8 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=079830b716345420", fonte:"Indeed",
-   note:"Nuovo, trovato l'11 settembre. E lavoro in centri aggregativi per minori, di pomeriggio: la fascia extrascolastica, quella dove la tua laurea basta gia cosi. L'annuncio e corto e dice poco: cercano educatori con esperienza in servizi ludico-educativi, retribuzione a partire da 501 euro al mese. Non dicono quale titolo serve e non dicono dove sono i centri, scrivono solo Roma nord. Due domande al telefono: in quale zona si lavora e quante ore sono. L'esperienza in ludoteca non ce l'hai, ma hai la sezione dell'infanzia e il tirocinio: la chiamata vale la pena."},
+   note:"Nuovo, trovato l'11 settembre. E lavoro in centri aggregativi per minori, di pomeriggio: la fascia extrascolastica, quella dove la tua laurea basta già cosi. L'annuncio è corto e dice poco: cercano educatori con esperienza in servizi ludico-educativi, retribuzione a partire da 501 euro al mese. Non dicono quale titolo serve e non dicono dove sono i centri, scrivono solo Roma nord. Due domande al telefono: in quale zona si lavora e quante ore sono. L'esperienza in ludoteca non ce l'hai, ma hai la sezione dell'infanzia e il tirocinio: la chiamata vale la pena."},
   {id:"a07a", titolo:"Educatore o educatrice per l'infanzia", ente:"La Casa dei Chicchi di grano, cooperativa sociale",
    zona:"Formello, fuori Roma, zona Cassia", cat:"infanzia", dist:4, tipo:"Tempo pieno, da metà novembre 2026 a fine gennaio 2027", pubb:"4 settembre 2026",
    url:"https://it.indeed.com/viewjob?jk=2e1914d7e940c535", fonte:"Indeed",
@@ -1543,7 +1590,7 @@ const CONCORSI = [
    come:"Solo online sul portale inPA, con SPID, CIE o CNS.",
    url:"https://www.ismaroma.it/wp-content/uploads/2026/09/Bando-concorso-n.-1-posto-Educatore-professionale-Socio-Pedagogico_signed_Marcato.pdf",
    fonte:"Bando ufficiale ISMA, letto integralmente il 15 settembre 2026. La data di scadenza qui sopra viene da EduNews24, che riporta pubblicazione il 3 settembre 2026 e scadenza il 2 ottobre 2026: il sito di ISMA indicava invece il 3 ottobre alle ore 12. Le due fonti non tornano di un giorno esatto: verifica l'ora precisa su inPA prima di mandare la domanda, non fidarti solo di questa scheda.",
-   note:"È un concorso vero, non basta il curriculum: le prove vanno preparate, non solo la domanda mandata all'ultimo momento. Aggiornamento del 3 ottobre 2026: la domanda andava presentata entro il 2 ottobre 2026 alle 12, secondo EduNews24. Quella data e gia passata: se la domanda non e stata mandata, per questo concorso non si puo piu fare nulla."},
+   note:"È un concorso vero, non basta il curriculum: le prove vanno preparate, non solo la domanda mandata all'ultimo momento. Aggiornamento del 3 ottobre 2026: la domanda andava presentata entro il 2 ottobre 2026 alle 12, secondo EduNews24. Quella data è già passata: se la domanda non è stata mandata, per questo concorso non si può più fare nulla."},
   {id:"c-ciampino-infanzia", adatto:false, postiN:null,
    titolo:"Concorso pubblico, insegnanti di scuola dell'infanzia",
    ente:"Comune di Ciampino",
@@ -1560,18 +1607,18 @@ const CONCORSI = [
    titolo:"Avviso pubblico per la formazione e l'aggiornamento di elenchi di idonei, profili Educatore Asilo Nido ed Educatore Professionale Socio Pedagogico",
    ente:"ASMEL, ente capofila Comune di Altavilla Silentina",
    zona:"Elenco valido per tutti i Comuni aderenti ad ASMEL in Italia, nessuna sede fissa", dist:0,
-   tipo:"Non e un concorso con assunzione garantita: e un avviso per formare 39 elenchi di idonei per varie figure professionali, validi tre anni, da cui i Comuni aderenti ad ASMEL possono attingere quando hanno un posto da coprire, senza certezza che questo avvenga.",
+   tipo:"Non è un concorso con assunzione garantita: e un avviso per formare 39 elenchi di idonei per varie figure professionali, validi tre anni, da cui i Comuni aderenti ad ASMEL possono attingere quando hanno un posto da coprire, senza certezza che questo avvenga.",
    titoloRichiesto:"Laurea triennale classe L-19 in Scienze dell'educazione e della formazione conseguita dopo il 31 maggio 2017, per i profili Educatore Asilo Nido ed Educatore Professionale Socio Pedagogico, entrambi nell'Area Funzionari, ex categoria D. La tua laurea rientra. Non ho potuto rileggere riga per riga la Tabella A del bando per queste due voci: prima di fare domanda controlla personalmente il testo esatto su asmelab.it o inPA, per eventuali clausole aggiuntive.",
    prove:"Prova scritta a distanza, quiz a risposta multipla, con procedure di identificazione da seguire. Nelle edizioni precedenti 60 domande in 60 minuti. Istruzioni ufficiali su trasparenza.asmel.eu.",
    scadenza:"30 settembre 2026, ore 12", pubb:"15 settembre 2026, apertura delle domande",
    tassa:"Quota di partecipazione, nell'edizione precedente circa 15 euro a profilo, da pagare solo con PagoPA sul portale ufficiale",
    come:"Solo sulla piattaforma ufficiale asmelab.it, con SPID o CIE personale. Pubblicato anche su inPA. Il post Instagram che ha segnalato questo avviso indicava un numero di cellulare privato per assistenza alla compilazione della domanda: quel numero non risulta tra i contatti ufficiali di ASMEL, che nelle edizioni precedenti erano un telefono fisso e una mail istituzionale. Non usare quel canale, e non condividere mai lo SPID con nessuno.",
    url:"https://avellino.ordingegneri.it/wp-content/uploads/sites/41/2026/09/bando_-_maxi_avviso_asmel_formazione_e_aggiornamento_elenchi_di_idonei_2026_signed_signed.pdf",
-   fonte:"Bando letto tramite una copia pubblicata dall'Ordine degli Ingegneri di Avellino, con estrazione automatica del testo, non riletta manualmente riga per riga: non sono riuscito a raggiungere direttamente asmel.eu o asmelab.it. Il profilo Educatore Asilo Nido con requisito L-19 e confermato anche da un bando gemello del circuito ASMEL, quello del Comune di Malnate, pubblicato su inPA. ASMEL e un'associazione di diritto privato tra Comuni, non un ente pubblico in senso stretto: il suo ruolo come centrale di committenza per gli appalti e stato giudicato illegittimo dalla Corte di Giustizia UE nel 2020, anche se questo riguarda gli appalti e non la selezione del personale.",
-   note:"Verificato il 15 e il 16 settembre 2026, a partire da un'inserzione Instagram dei profili lavoroesocial e asmel_comuni. Aggiornamento del 16 settembre, importante: Roma Capitale risulta, con buona probabilita, NON fra i Comuni aderenti ad ASMEL. Non sono riuscito a raggiungere direttamente asmel.eu, che ha risposto con un errore di accesso negato, quindi questo non e l'elenco ufficiale letto di persona: viene da un articolo di un sito specializzato in concorsi, Simone Concorsi, che elenca i Comuni del Lazio aderenti a questo stesso concorso ASMEL per provincia. Roma Capitale non compare in quell'elenco. Compaiono invece, in provincia di Roma, Cervara di Roma, Formello, Manziana, Mentana, Monterotondo, Nemi, Rocca Canterano, Roccagiovine, Vicovaro e Vivaro Romano: sono tutti Comuni fuori Roma, dai venti chilometri in su, alcuni anche molto piu lontani. Significa che l'elenco di idonei ASMEL, per te che abiti a Torpignattara e non vuoi trasferirti, oggi vale poco: al massimo potrebbe farti chiamare da uno di quei Comuni della provincia, non da Roma. Prima di fare la domanda, che tra l'altro ha anche una piccola quota da pagare, vale la pena chiedere conferma diretta ad ASMEL, oppure aprire personalmente l'elenco ufficiale degli enti sottoscrittori su asmel.eu/servizi/assunzioni-e-personale/enti-locali-sottoscrittori-accordo-aggregato, che da questa sessione non sono riuscito ad aprire."}
+   fonte:"Bando letto tramite una copia pubblicata dall'Ordine degli Ingegneri di Avellino, con estrazione automatica del testo, non riletta manualmente riga per riga: non sono riuscito a raggiungere direttamente asmel.eu o asmelab.it. Il profilo Educatore Asilo Nido con requisito L-19 e confermato anche da un bando gemello del circuito ASMEL, quello del Comune di Malnate, pubblicato su inPA. ASMEL è un'associazione di diritto privato tra Comuni, non un ente pubblico in senso stretto: il suo ruolo come centrale di committenza per gli appalti è stato giudicato illegittimo dalla Corte di Giustizia UE nel 2020, anche se questo riguarda gli appalti e non la selezione del personale.",
+   note:"Verificato il 15 e il 16 settembre 2026, a partire da un'inserzione Instagram dei profili lavoroesocial e asmel_comuni. Aggiornamento del 16 settembre, importante: Roma Capitale risulta, con buona probabilita, NON fra i Comuni aderenti ad ASMEL. Non sono riuscito a raggiungere direttamente asmel.eu, che ha risposto con un errore di accesso negato, quindi questo non è l'elenco ufficiale letto di persona: viene da un articolo di un sito specializzato in concorsi, Simone Concorsi, che elenca i Comuni del Lazio aderenti a questo stesso concorso ASMEL per provincia. Roma Capitale non compare in quell'elenco. Compaiono invece, in provincia di Roma, Cervara di Roma, Formello, Manziana, Mentana, Monterotondo, Nemi, Rocca Canterano, Roccagiovine, Vicovaro e Vivaro Romano: sono tutti Comuni fuori Roma, dai venti chilometri in su, alcuni anche molto più lontani. Significa che l'elenco di idonei ASMEL, per te che abiti a Torpignattara e non vuoi trasferirti, oggi vale poco: al massimo potrebbe farti chiamare da uno di quei Comuni della provincia, non da Roma. Prima di fare la domanda, che tra l'altro ha anche una piccola quota da pagare, vale la pena chiedere conferma diretta ad ASMEL, oppure aprire personalmente l'elenco ufficiale degli enti sottoscrittori su asmel.eu/servizi/assunzioni-e-personale/enti-locali-sottoscrittori-accordo-aggregato, che da questa sessione non sono riuscito ad aprire."}
 ];
 
-/* ===== CANALI, ricontrollati il 3 ottobre 2026, voce ATA aggiunta l'8 settembre 2026 ===== */
+/* ===== CANALI, ricontrollati l'8 ottobre 2026, voce ATA aggiunta l'8 settembre 2026 ===== */
 const CANALI = [
   {t:"Elenchi MAD del Municipio V, educatore asili nido e insegnante scuola dell'infanzia",
    stato:"ora", quando:"Canale del municipio, si aggiorna ogni tanto",
@@ -1599,7 +1646,7 @@ const CANALI = [
    url:"https://www.comune.roma.it/web/it/informazione-di-servizio.page?contentId=IDS1633940", link:"Apri la pagina del Comune"},
   {t:"inPA, il portale dei concorsi pubblici",
    stato:"ok", quando:"Da tenere acceso con gli avvisi via mail",
-   d:"È il portale unico del reclutamento pubblico: qui escono gli avvisi di Roma Capitale e dei municipi per educatori e insegnanti. Imposta Roma come zona e l'area educativa e sociale, e poi lascia che gli avvisi arrivino da soli. Controllato di nuovo il 3 ottobre: per il nido e per l'infanzia non c'è nessun bando nuovo, e il concorso di Roma Capitale per 800 insegnanti di scuola dell'infanzia resta annunciato ma non ancora bandito. Questa volta però una novità vera c'è, e riguarda te da vicino: ISMA, Istituti di Santa Maria in Aquiro, ha aperto un concorso pubblico per un posto di educatore professionale socio-pedagogico, tempo pieno e indeterminato, con la L-19 scritta per nome tra i titoli ammessi. Lo trovi descritto per intero nella sezione Concorsi, non qui: era una candidatura vera, con domanda entro il 2 ottobre 2026: quella scadenza è già passata, controllato il 3 ottobre 2026. Resta anche quanto già sapevi sul Comune di Ciampino, anche lui nella sezione Concorsi: ha aperto l'11 settembre un concorso per insegnanti di scuola dell'infanzia, domande entro il 9 ottobre 2026, ma chiede Scienze della Formazione Primaria, la LM-85 bis oppure il diploma magistrale abilitante preso entro il 2001 e 2002, gli stessi titoli delle GPS: la L-19 da sola non basta, quindi resta fuori profilo.",
+   d:"È il portale unico del reclutamento pubblico: qui escono gli avvisi di Roma Capitale e dei municipi per educatori e insegnanti. Imposta Roma come zona e l'area educativa e sociale, e poi lascia che gli avvisi arrivino da soli. Controllato di nuovo l'8 ottobre: per il nido e per l'infanzia non c'è nessun bando nuovo, e il concorso di Roma Capitale per 800 insegnanti di scuola dell'infanzia resta annunciato ma non ancora bandito. Questa volta però una novità vera c'è, e riguarda te da vicino: ISMA, Istituti di Santa Maria in Aquiro, ha aperto un concorso pubblico per un posto di educatore professionale socio-pedagogico, tempo pieno e indeterminato, con la L-19 scritta per nome tra i titoli ammessi. Lo trovi descritto per intero nella sezione Concorsi, non qui: era una candidatura vera, con domanda entro il 2 ottobre 2026: quella scadenza è già passata, controllato il 3 ottobre 2026. Resta anche quanto già sapevi sul Comune di Ciampino, anche lui nella sezione Concorsi: ha aperto l'11 settembre un concorso per insegnanti di scuola dell'infanzia, domande entro il 9 ottobre 2026, ma chiede Scienze della Formazione Primaria, la LM-85 bis oppure il diploma magistrale abilitante preso entro il 2001 e 2002, gli stessi titoli delle GPS: la L-19 da sola non basta, quindi resta fuori profilo.",
    url:"https://www.inpa.gov.it/", link:"Vai su inPA"},
   {t:"Supplenze nei nidi comunali 2026 e 2027, scelta delle sedi",
    stato:"chiuso", quando:"La scelta online si è chiusa il 21 agosto 2026 alle 12",
@@ -1642,6 +1689,12 @@ const PORTE = [
  tipo:"Part time, 650-1300 euro al mese", pubb:"1 settembre 2026", stato:"top",
  d:"Questo è il tuo lavoro, scritto da qualcun altro. L'annuncio elenca: gestione di agenda, appuntamenti e call, centralino, accoglienza clienti, posta ordinaria e certificata, corrispondenza in entrata e uscita, organizzazione viaggi, apertura e registrazione incarichi, archiviazione cartacea e digitale, parcelle e fatture elettroniche. È riga per riga quello che facevi come assistente di direzione dell'area legale in DeA Capital, e prima ancora in Cassa Depositi e Prestiti. Non chiedono nessun titolo di studio: chiedono che tu lo sappia fare, e tu lo sai fare da dieci anni.",
  url:"https://it.indeed.com/viewjob?jk=2212ed55c8eba6f8"},
+{fam:"A", id:"p-securintel", t:"Receptionist presso un'azienda cliente", ente:"Securintel Srl", zona:"Porta Maggiore e San Lorenzo", km:2.5, kmt:"circa 2,5 km, stima", tipo:"Part time 25 ore, lunedì-venerdì, circa 1.000 euro al mese (900-1.100), tempo determinato con possibile stabilizzazione", pubb:"5 ottobre 2026", stato:"top", d:"Accoglienza di visitatori e fornitori, centralino, posta, e-mail e un po' di supporto amministrativo: sono mansioni che fai da anni. Chiedono il diploma e il pacchetto Office; esperienza e inglese sono solo graditi. Turni di mattina o di pomeriggio, chiusura al massimo alle 19. La sede è vicina a Porta Maggiore e a Termini, quindi vicinissima a casa tua. Attenzione: il posto è presso un cliente della società e l'annuncio non dice quale. Curriculum a curriculum@securintel.it, con l'autorizzazione al trattamento dei dati. La distanza è una mia stima in linea d'aria e non ho verificato che l'annuncio sia ancora aperto.", url:"https://to.indeed.com/aa97l84ty78z"},
+{fam:"A", id:"p-pellegrini", t:"Segretaria di studio legale, part time", ente:"Studio Legale Pellegrini Quarantotti (annuncio a nome Borgo Ritella)", zona:"Prati, Roma", km:8, kmt:"metro A, stima", tipo:"Part time, CCNL Studi professionali, da 700 euro al mese", pubb:"11 settembre 2026", stato:"buono", d:"Studio legale a Prati. Non chiedono esperienza, ma chiedono Word, Excel e Outlook e precisione: tu hai quattro anni da assistente di direzione dell'area legale in DeA Capital, quindi sei molto oltre il richiesto. Contratto regolare CCNL Studi professionali e orario flessibile. La paga di partenza è bassa (da 700 euro) e il numero di ore non è scritto: chiedilo nella prima mail. Curriculum a segreteria@studiolegalepellegriniquarantotti.it. L'annuncio ha quasi un mese e non so se sia ancora aperto. L'indirizzo esatto non è scritto, quindi la distanza è solo una stima.", url:"https://to.indeed.com/aacfm7dnppz6"},
+{fam:"A", id:"p-beautyclinic", t:"Segreteria e front office in un centro medico", ente:"Beauty Clinic e Centro Medico", zona:"Centocelle", km:2.5, kmt:"circa 2,5 km, stima", tipo:"Part time su turni, lunedì-venerdì e qualche sabato mattina, da 765 a 1.616 euro al mese", pubb:"17 settembre 2026", stato:"buono", d:"Centro medico a Centocelle, vicinissimo a casa: l'annuncio chiede proprio di abitare in zona limitrofa. Requisito obbligatorio: un anno di esperienza in segreteria, e tu ne hai dieci più l'attestato da receptionist per cliniche odontoiatriche. All'inizio c'è un periodo di affiancamento sui turni del pomeriggio. L'annuncio non dice ente, orario preciso né contatti: si risponde da Indeed. La forbice di paga (765-1.616) è molto larga, quindi chiedi la cifra alla prima telefonata. Annuncio di tre settimane fa, non verificato se aperto.", url:"https://to.indeed.com/aaxv2y9ltx82"},
+{fam:"A", id:"p-biodent", t:"Segreteria e accoglienza pazienti in studio odontoiatrico", ente:"Biodent srl", zona:"Appio Latino e Colli Albani", km:5, kmt:"circa 5 km, stima", tipo:"Part time 25-30 ore, CCNL Studi professionali, 1.100-1.400 euro al mese", pubb:"29 settembre 2026", stato:"buono", d:"Studio odontoiatrico con segreteria e un taglio commerciale: seguire i pazienti dalla prima richiesta al piano di cura, preventivi, pratiche assicurative, agenda. L'esperienza in studi odontoiatrici è indicata come elemento di interesse e tu hai Vitaldent e Blu Dental. Chiedono però esperienza di segreteria commerciale o customer care e dimestichezza con i CRM: è la parte da verificare con onestà. Orario da concordare. Nell'annuncio non c'è un contatto: si risponde da Indeed. Distanza stimata, aperto non verificato.", url:"https://to.indeed.com/aak2kwzhhyvv"},
+{fam:"A", id:"p-recos", t:"Segreteria e amministrazione, part time", ente:"RECOS s.r.l.", zona:"Zona Tiburtina", km:5, kmt:"circa 5 km, stima", tipo:"Part time 75%, 9-13 e 14-16, tempo determinato per poi diventare indeterminato, da 1.100 euro al mese", pubb:"28 settembre 2026", stato:"buono", d:"Segreteria generale e amministrazione in un'azienda di appalti: prima nota, fatture attive e passive, scadenziario, pagamenti F24, riconciliazioni bancarie. Chiedono il diploma superiore (tu sei ragioniere) e tre anni di esperienza come segretaria amministrativa o contabile: tu hai segreteria amministrativa, fatturazione in imprese edili e l'attestato di paghe e contributi. La parte da chiarire è la contabilità vera e propria, e conoscere il gestionale Passepartout Mexal è solo gradito. Preferiscono chi abita vicino. Curriculum a info@recos-appalti.it con oggetto Candidatura Segreteria/Amministrazione. Distanza stimata, aperto non verificato.", url:"https://to.indeed.com/aa94ybmktlvv"},
+{fam:"A", id:"p-wsauto", t:"Back office, amministrazione e segreteria", ente:"World Service Auto", zona:"Via Cristoforo Colombo 163", km:8, kmt:"circa 8 km, stima", tipo:"Tempo pieno, tempo indeterminato, fino a 1.300 euro al mese", pubb:"6 ottobre 2026", stato:"buono", d:"Azienda dell'automotive con sette centri a Roma e dintorni. Corrispondenza, appuntamenti e trasferte, archivio, accoglienza, fatturazione e corrispettivi con i software aziendali. Chiedono il diploma e Office, e valutano anche chi è alla prima esperienza: per te è un ruolo facile. È a tempo pieno, quindi con due bambini piccoli pesa; vale se l'orario pieno è un'opzione. Curriculum a segreteria@wsauto.it con oggetto Candidatura Ufficio. Distanza stimata, aperto non verificato.", url:"https://to.indeed.com/aaj8drg8dlsr"},
 {fam:"A", id:"p-fisio", t:"Segretaria di centro di fisioterapia", ente:"Fisioaniene", zona:"Via del Forte Tiburtino, zona Tiburtina", km:4.5, kmt:"4,5 km",
  tipo:"Part time, sostituzione maternità di circa 12 mesi, fino a 950 euro al mese", pubb:"31 agosto 2026", stato:"top",
  d:"Reception, agenda dei fisioterapisti, pratiche amministrative sanitarie, rapporti con assicurazioni e fondi sanitari, supporto alla fatturazione. Chiedono esperienza in segreteria o reception, meglio se in ambito sanitario: tu hai un anno in Vitaldent, sei mesi in Blu Dental e l'attestato di receptionist per cliniche odontoiatriche. Offrono orario flessibile e parcheggio libero, e con due bambini piccoli quelle due righe valgono più dello stipendio. Un anno di contratto è abbastanza per rimettere in moto tutto.",
@@ -1665,12 +1718,12 @@ const PORTE = [
 
 {fam:"A", id:"p-artigiana", t:"Amministrazione in un laboratorio alimentare", ente:"L'Artigiana Fritti", zona:"Via Pietro Crostarosa 38, zona Torre Maura", km:4.4, kmt:"4,4 km",
  tipo:"18-20 ore a settimana, dal lunedi al sabato, si comincia alle 7.00", pubb:"1 settembre 2026", stato:"attenzione",
- d:"Il lavoro e proprio il tuo: documenti di trasporto, fatturazione, prima nota, gestione delle scadenze, archiviazione cartacea ed elettronica, verifica dei pagamenti e solleciti ai clienti. Chiedono esperienza, e tu ne hai dieci anni. E anche vicino, quattro chilometri scarsi, dentro il quadrante est. Il problema e l'orario, e non e piccolo: sono sei giorni a settimana, sabato compreso, e si comincia alle 7.00 o 7.30 del mattino. Con due bambini piccoli va deciso prima in famiglia, non dopo il colloquio. Scrivono assunzione immediata e chiedono di farsi vivi solo se davvero interessati. Da 750 euro al mese.",
- url:"https://it.indeed.com/viewjob?jk=2e7d39cae2239125", fonte:"L'indirizzo non e nell'annuncio: viene dalla visura camerale, sede legale in via Pietro Crostarosa 38, 00173 Roma."},
+ d:"Il lavoro è proprio il tuo: documenti di trasporto, fatturazione, prima nota, gestione delle scadenze, archiviazione cartacea ed elettronica, verifica dei pagamenti e solleciti ai clienti. Chiedono esperienza, e tu ne hai dieci anni. E anche vicino, quattro chilometri scarsi, dentro il quadrante est. Il problema è l'orario, e non è piccolo: sono sei giorni a settimana, sabato compreso, e si comincia alle 7.00 o 7.30 del mattino. Con due bambini piccoli va deciso prima in famiglia, non dopo il colloquio. Scrivono assunzione immediata e chiedono di farsi vivi solo se davvero interessati. Da 750 euro al mese.",
+ url:"https://it.indeed.com/viewjob?jk=2e7d39cae2239125", fonte:"L'indirizzo non è nell'annuncio: viene dalla visura camerale, sede legale in via Pietro Crostarosa 38, 00173 Roma."},
 
-{fam:"B", id:"p-segrscuola", pri:0, t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Quindici scuole e otto enti, con le mail gia trovate", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
+{fam:"B", id:"p-segrscuola", pri:0, t:"Segreteria nelle paritarie e negli enti di formazione", ente:"Quindici scuole e otto enti, con le mail già trovate", zona:"Municipio V e dintorni", km:2, kmt:"vicino casa",
  tipo:"Varia, spesso part time", pubb:"", stato:"top",
- d:"Questa non e un annuncio, e una mossa che puoi fare stasera senza chiedere il permesso a nessuno. Nella sezione Scuole private ci sono quindici scuole paritarie con la mail della segreteria trovata una per una, e otto enti di formazione accreditati dalla Regione. Alle scuole scrivi due volte, per due lavori diversi: una per la sezione, una per la segreteria. Iscrizioni, rette, registri, comunicazioni alle famiglie, rendicontazione dei corsi. Una scuola piccola cerca esattamente quella persona, e chi sa fare segreteria per davvero e capisce anche come funziona una giornata scolastica e raro: tu sei tutte e due le cose nella stessa persona. In Lettere il testo e gia pronto, alla voce Segreteria di una scuola o di un ente di formazione. Ogni scheda ha il tasto per copiare la mail e quello per metterla nel tracker.",
+ d:"Questa non è un annuncio, e una mossa che puoi fare stasera senza chiedere il permesso a nessuno. Nella sezione Scuole private ci sono quindici scuole paritarie con la mail della segreteria trovata una per una, e otto enti di formazione accreditati dalla Regione. Alle scuole scrivi due volte, per due lavori diversi: una per la sezione, una per la segreteria. Iscrizioni, rette, registri, comunicazioni alle famiglie, rendicontazione dei corsi. Una scuola piccola cerca esattamente quella persona, e chi sa fare segreteria per davvero e capisce anche come funziona una giornata scolastica e raro: tu sei tutte e due le cose nella stessa persona. In Lettere il testo è già pronto, alla voce Segreteria di una scuola o di un ente di formazione. Ogni scheda ha il tasto per copiare la mail e quello per metterla nel tracker.",
  url:"", link:"", fonte:"Contatti verificati il 9 settembre 2026 sui siti delle scuole, sugli elenchi USR Lazio e sull'albo regionale degli enti accreditati."},
 {fam:"B", id:"p-ata", pri:1, t:"Assistente amministrativa nelle scuole, il profilo ATA", ente:"Ministero dell'Istruzione, graduatorie di terza fascia", zona:"Le scuole che scegli tu", km:1, kmt:"scegli tu le sedi",
  tipo:"Supplenze nelle segreterie scolastiche", pubb:"", stato:"prepara",
@@ -1703,7 +1756,7 @@ const PORTE = [
  url:"https://it.indeed.com/viewjob?jk=c1ae2687ffa1d29d"},
 {fam:"C", id:"p-bg", t:"Segreteria e assistenza clienti in officina", ente:"Officina di pneumatici", zona:"Casal Monastero, uscita del Raccordo", km:9.9, kmt:"10 km, senza metro",
  tipo:"Part time o tempo pieno da concordare, fino a 1500 euro al mese", pubb:"12 agosto 2026", stato:"attenzione",
- d:"Scrivono nero su bianco che non serve nessuna esperienza e che l'orario si concorda, part time o pieno. Il problema è solo dove sta: Casal Monastero, fuori dal Raccordo a nord est, quasi dieci chilometri e nessun mezzo diretto.",
+ d:"Scrivono nero su bianco che non serve nessuna esperienza è che l'orario si concorda, part time o pieno. Il problema è solo dove sta: Casal Monastero, fuori dal Raccordo a nord est, quasi dieci chilometri e nessun mezzo diretto.",
  url:"https://it.indeed.com/viewjob?jk=a4de9ebd0d3f46dd"},
 {fam:"C", id:"p-omai", t:"Impiegata di segreteria e amministrazione", ente:"OMAI Service", zona:"Sede legale sulla via Flaminia, oltre il Raccordo", km:14.4, kmt:"14 km",
  tipo:"Part time, valutano anche il tempo pieno, 741-1000 euro al mese", pubb:"4 settembre 2026", stato:"attenzione",
@@ -1715,31 +1768,31 @@ const PORTE = [
  url:"https://it.indeed.com/viewjob?jk=540c64c689d9f63b"},
 {fam:"C", id:"p-topphysio", t:"Front office in un centro di fisioterapia", ente:"Top Physio", zona:"EUR", km:12.5, kmt:"12 km, metro B",
  tipo:"Part time, a partire da 1.250 euro al mese", pubb:"4 settembre 2026", stato:"attenzione",
- d:"Di tutto quello che ho trovato oggi, questo e l'incastro piu preciso con quello che sai fare: accoglienza del paziente, agenda dei fisioterapisti, pagamenti e fatturazione, pratiche assicurative, rapporti con medici e fondi sanitari. E il gemello di Fisioaniene, con lo stipendio piu alto della pagina e l'assicurazione sanitaria. Chiedono diploma o laurea ed esperienza in segreteria o accoglienza: tu hai Vitaldent, Blu Dental e l'attestato di receptionist odontoiatrica. L'unico problema e dove sta: l'EUR, dall'altra parte della citta, e per arrivarci servono la C fino a San Giovanni, la A fino a Termini e poi la B. In macchina e tutta la Tuscolana. Guardalo se l'orario e l'ingresso lo giustificano.",
+ d:"Di tutto quello che ho trovato oggi, questo e l'incastro più preciso con quello che sai fare: accoglienza del paziente, agenda dei fisioterapisti, pagamenti e fatturazione, pratiche assicurative, rapporti con medici e fondi sanitari. E il gemello di Fisioaniene, con lo stipendio più alto della pagina e l'assicurazione sanitaria. Chiedono diploma o laurea ed esperienza in segreteria o accoglienza: tu hai Vitaldent, Blu Dental e l'attestato di receptionist odontoiatrica. L'unico problema è dove sta: l'EUR, dall'altra parte della città, e per arrivarci servono la C fino a San Giovanni, la A fino a Termini e poi la B. In macchina e tutta la Tuscolana. Guardalo se l'orario è l'ingresso lo giustificano.",
  url:"https://it.indeed.com/viewjob?jk=168ad069b76d89c4"},
 {fam:"C", id:"p-mds", t:"Segreteria e amministrazione in azienda", ente:"M.DS srl", zona:"Viale Giorgio Ribotta, zona Torrino, EUR", km:12.0, kmt:"12 km, metro B",
  tipo:"Part time dal lunedi al venerdi, 800-1300 euro al mese", pubb:"8 settembre 2026", stato:"buono",
- d:"Segreteria generale, comunicazioni, archiviazione, piu fatture attive e passive, pagamenti, scadenze e prima nota, affiancando la segretaria gia in servizio. Chiedono tre anni di segreteria come requisito obbligatorio: e uno dei pochi annunci dove non passi di misura, ne hai dieci. Lunedi-venerdi, niente sabato, da 800 a 1.300 euro. Pesa solo la distanza, ed e la stessa del Top Physio.",
- url:"https://it.indeed.com/viewjob?jk=9ff565a558a11ce7", fonte:"L'annuncio non dice dove si lavora e parla genericamente di settore metalmeccanico. La sede in viale Giorgio Ribotta viene dai registri camerali, dove l'attivita dichiarata e l'installazione di impianti antincendio: chiedi conferma dell'indirizzo nella prima mail."},
-{fam:"C", id:"p-odonto-mv", t:"Segretaria di studio odontoiatrico", ente:"Studio odontoiatrico, il nome non e nell'annuncio", zona:"Monteverde e Colli Portuensi", km:9.2, kmt:"9 km, senza metro",
+ d:"Segreteria generale, comunicazioni, archiviazione, più fatture attive e passive, pagamenti, scadenze e prima nota, affiancando la segretaria già in servizio. Chiedono tre anni di segreteria come requisito obbligatorio: e uno dei pochi annunci dove non passi di misura, ne hai dieci. Lunedi-venerdi, niente sabato, da 800 a 1.300 euro. Pesa solo la distanza, ed è la stessa del Top Physio.",
+ url:"https://it.indeed.com/viewjob?jk=9ff565a558a11ce7", fonte:"L'annuncio non dice dove si lavora e parla genericamente di settore metalmeccanico. La sede in viale Giorgio Ribotta viene dai registri camerali, dove l'attività dichiarata e l'installazione di impianti antincendio: chiedi conferma dell'indirizzo nella prima mail."},
+{fam:"C", id:"p-odonto-mv", t:"Segretaria di studio odontoiatrico", ente:"Studio odontoiatrico, il nome non è nell'annuncio", zona:"Monteverde e Colli Portuensi", km:9.2, kmt:"9 km, senza metro",
  tipo:"Part time pomeridiano, 500 euro al mese", pubb:"7 settembre 2026", stato:"attenzione",
  d:"Accoglienza dei pazienti, telefonate, agenda e appuntamenti, richiami, preventivi, segreteria dello studio. Sulla carta sei perfetta: un anno in Vitaldent, sei mesi in Blu Dental e l'attestato di receptionist per cliniche odontoiatriche. Ed e pomeridiano, che con i bambini la mattina e un vantaggio. Ma Monteverde sta dall'altra parte del Tevere rispetto a te, senza un mezzo diretto, e sono 500 euro al mese: fatti due conti sul tempo e sulla benzina prima di rispondere.",
  url:"https://it.indeed.com/viewjob?jk=09fa7d2ab68ff39a"},
 {fam:"C", id:"p-wenexia", t:"Segretaria amministrativa in azienda", ente:"Wenexia srl", zona:"Via Leonardo Patrasso 132, zona Acilia", km:18.0, kmt:"18 km",
  tipo:"Part time in presenza, 500-800 euro al mese", pubb:"31 agosto 2026", stato:"attenzione",
- d:"L'elenco delle mansioni e lungo e ti somiglia tutto: segreteria generale, mail e comunicazioni, documenti e contratti, supporto alla fatturazione, controllo di pagamenti e scadenze, gestionale aziendale, agenda e riunioni, rapporti con clienti, fornitori e consulenti. Chiedono esperienza in segreteria o amministrazione, e come titolo preferenziale proprio l'aver lavorato in aziende o studi professionali. Offrono parcheggio libero. Lo tengo solo per completezza: diciotto chilometri per 500-800 euro al mese, tutti in presenza, non tornano.",
+ d:"L'elenco delle mansioni è lungo e ti somiglia tutto: segreteria generale, mail e comunicazioni, documenti e contratti, supporto alla fatturazione, controllo di pagamenti e scadenze, gestionale aziendale, agenda e riunioni, rapporti con clienti, fornitori e consulenti. Chiedono esperienza in segreteria o amministrazione, e come titolo preferenziale proprio l'aver lavorato in aziende o studi professionali. Offrono parcheggio libero. Lo tengo solo per completezza: diciotto chilometri per 500-800 euro al mese, tutti in presenza, non tornano.",
  url:"https://it.indeed.com/viewjob?jk=8e77fe02f005079e"},
 {fam:"D", id:"p-canthiere", t:"Assistenza clienti da casa, richiamo di contatti", ente:"Canthiere, per l'agenzia Marketing Much More di Roma", zona:"Da casa", km:0, kmt:"da casa",
  tipo:"Part time, 3 ore al giorno, a partire da 500 euro al mese", pubb:"9 settembre 2026", stato:"buono",
- d:"Richiamare per telefono persone che hanno gia lasciato il contatto perche interessate a immobili di nuova costruzione, tenendo le anagrafiche in un gestionale. Tre ore al giorno in una fascia libera tra le 9.30 e le 18.30 da concordare, con mezza giornata di formazione prima di partire. Chiedono un PC, una buona connessione, Excel discreto, Google Drive e WhatsApp Web, e una laurea anche in corso: la tua L-19 c'e. Come esperienza preferiscono un anno di segreteria o di call center: tu hai dieci anni di segreteria. L'annuncio compare piu volte con la stessa data.",
- url:"https://it.indeed.com/viewjob?jk=fa4e64e6f98cd689", fonte:"Attenzione al contratto: l'annuncio chiede preferibilmente la partita IVA, oppure una collaborazione occasionale con ritenuta d'acconto. Non e un lavoro da dipendente. Da fonti fiscali secondarie (fiscozen, giugno 2026) la prestazione occasionale ha un tetto di 5.000 euro l'anno complessivi, e 500 euro al mese fanno 6.000: non posso confermarlo con l'INPS, chiedi a un commercialista prima di accettare. Chiedi anche chi e il datore di lavoro e se la paga e fissa."},
+ d:"Richiamare per telefono persone che hanno già lasciato il contatto perché interessate a immobili di nuova costruzione, tenendo le anagrafiche in un gestionale. Tre ore al giorno in una fascia libera tra le 9.30 e le 18.30 da concordare, con mezza giornata di formazione prima di partire. Chiedono un PC, una buona connessione, Excel discreto, Google Drive e WhatsApp Web, e una laurea anche in corso: la tua L-19 c'è. Come esperienza preferiscono un anno di segreteria o di call center: tu hai dieci anni di segreteria. L'annuncio compare più volte con la stessa data.",
+ url:"https://it.indeed.com/viewjob?jk=fa4e64e6f98cd689", fonte:"Attenzione al contratto: l'annuncio chiede preferibilmente la partita IVA, oppure una collaborazione occasionale con ritenuta d'acconto. Non è un lavoro da dipendente. Da fonti fiscali secondarie (fiscozen, giugno 2026) la prestazione occasionale ha un tetto di 5.000 euro l'anno complessivi, e 500 euro al mese fanno 6.000: non posso confermarlo con l'INPS, chiedi a un commercialista prima di accettare. Chiedi anche chi è il datore di lavoro è se la paga è fissa."},
 {fam:"D", id:"p-ltl-tutor", t:"Tutor online per la scuola primaria", ente:"LeTueLezioni", zona:"Da casa", km:0, kmt:"da casa",
  tipo:"A ore, orari flessibili, anche part time", stato:"attenzione",
- d:"Aiuto compiti e supporto allo studio per bambini della primaria, a distanza, con orari che scegli tu. E il lavoro piu vicino a quello che hai studiato e a quello che ti piace, ed e compatibile con due bambini piccoli. In un elenco di annunci il compenso risulta di 20 euro l'ora, ma non ho potuto verificarlo sulla pagina ufficiale.",
- url:"https://letuelezioni.teamtailor.com/jobs/8483430-lavora-da-casa-tutor-online-per-la-scuola-primaria-part-time", link:"Apri la pagina dell'offerta", fonte:"LeTueLezioni e una piattaforma che mette in contatto docenti e studenti: i tutor lavorano come liberi professionisti e gestiscono orari e tariffe (fonte: articolo del 25 aprile 2026). Quindi niente stipendio fisso: quanto guadagni dipende da quante lezioni trovi. Leggi sulla pagina i requisiti e le condizioni prima di candidarti."},
+ d:"Aiuto compiti e supporto allo studio per bambini della primaria, a distanza, con orari che scegli tu. E il lavoro più vicino a quello che hai studiato e a quello che ti piace, ed è compatibile con due bambini piccoli. In un elenco di annunci il compenso risulta di 20 euro l'ora, ma non ho potuto verificarlo sulla pagina ufficiale.",
+ url:"https://letuelezioni.teamtailor.com/jobs/8483430-lavora-da-casa-tutor-online-per-la-scuola-primaria-part-time", link:"Apri la pagina dell'offerta", fonte:"LeTueLezioni è una piattaforma che mette in contatto docenti e studenti: i tutor lavorano come liberi professionisti e gestiscono orari e tariffe (fonte: articolo del 25 aprile 2026). Quindi niente stipendio fisso: quanto guadagni dipende da quante lezioni trovi. Leggi sulla pagina i requisiti e le condizioni prima di candidarti."},
 {fam:"D", id:"p-talentform", t:"Docente per il corso di segreteria di studio legale", ente:"Talentform SpA", zona:"Da remoto", km:0, kmt:"da casa",
  tipo:"Tempo pieno, determinato, 248 ore, CCNL Terziario livello III", pubb:"2 ottobre 2026", stato:"attenzione",
- d:"Ente di formazione nazionale che cerca chi insegni segreteria di studio legale con Office, a distanza. E il tuo mestiere, ma dal lato di chi lo insegna. Chiedono almeno tre anni di esperienza nella materia, capacita di gestire un'aula, linea in fibra, PC, microfono e webcam. Orario 9-13 e 14-18: tempo pieno, quindi non e un part time. Il progetto indica come periodo settembre, quindi chiedi se e ancora aperto. Non so se la tua esperienza conta come insegnamento: dillo con onesta nella mail.",
+ d:"Ente di formazione nazionale che cerca chi insegni segreteria di studio legale con Office, a distanza. E il tuo mestiere, ma dal lato di chi lo insegna. Chiedono almeno tre anni di esperienza nella materia, capacita di gestire un'aula, linea in fibra, PC, microfono e webcam. Orario 9-13 e 14-18: tempo pieno, quindi non è un part time. Il progetto indica come periodo settembre, quindi chiedi se e ancora aperto. Non so se la tua esperienza conta come insegnamento: dillo con onesta nella mail.",
  url:"https://it.indeed.com/viewjob?jk=1aa99b69603eacc2"}
 ];
 
@@ -1761,7 +1814,7 @@ const ZONE = [
     {n:"Istituto Cavanis", ind:"Via Casilina 600", gradi:"Medie e liceo scientifico",
      mail:"segreteria@scuolaparitariacavanis.it", tel:"06 86927541", tel2:"342 5207179",
      url:"https://www.scuolaparitariacavanis.com/contattaci",
-     nota:"Non ha l'infanzia, quindi non \u00E8 per una supplenza in sezione. Ma \u00E8 a duecento metri dalla Cerioli, ha medie e liceo, e una scuola con due ordini ha una segreteria vera. Per la segreteria \u00E8 uno dei nomi migliori della lista."}
+     nota:"Non ha l'infanzia, quindi non è per una supplenza in sezione. Ma è a duecento metri dalla Cerioli, ha medie e liceo, e una scuola con due ordini ha una segreteria vera. Per la segreteria è uno dei nomi migliori della lista."}
   ]},
   {cap:"00176", nome:"Pigneto e Prenestino", nota:"Il quartiere accanto", scuole:[
     {n:"Amore Misericordioso", ind:"Via Casilina 323", gradi:"Sezione primavera, infanzia e primaria",
@@ -1779,7 +1832,7 @@ const ZONE = [
      nota:"Tre ordini di scuola nello stesso istituto: significa una segreteria strutturata. Allo stesso civico ci sono anche una casa di riposo e un pensionato con numeri diversi, non usarli."},
     {n:"Giulia Billiart", ind:"Via F. Paciotti 21", gradi:"Infanzia e primaria",
      tel:"06 24402009",
-     nota:"Questa \u00E8 l'unica della lista senza mail. Il vecchio dominio della scuola \u00E8 spento e la congregazione non la elenca. Qui serve una telefonata: chiedi a chi mandare il curriculum e fatti dare l'indirizzo a voce."}
+     nota:"Questa è l'unica della lista senza mail. Il vecchio dominio della scuola è spento e la congregazione non la elenca. Qui serve una telefonata: chiedi a chi mandare il curriculum e fatti dare l'indirizzo a voce."}
   ]},
   {cap:"00171", nome:"Centocelle e Tor de' Schiavi", nota:"Dieci minuti di macchina", scuole:[
     {n:"Istituto Filippo Smaldone", ind:"Via Tor de' Schiavi 404", gradi:"Infanzia e primaria",
@@ -1798,24 +1851,24 @@ const ZONE = [
     {n:"Maria Immacolata", ind:"Via Tor de' Schiavi 150", gradi:"Infanzia, primaria, medie e liceo delle scienze umane",
      mail:"segreteriaimi.1949@gmail.com", mail2:"presidenza@mariaimmacolata.com", tel:"06 2417200",
      url:"https://istitutomariaimmacolata.edu.it/contact-us/",
-     nota:"Dall'infanzia al liceo: \u00E8 la scuola pi\u00F9 grande della lista e quella con la segreteria pi\u00F9 impegnata. Apri il sito senza www davanti, altrimenti d\u00E0 errore di sicurezza."},
+     nota:"Dall'infanzia al liceo: è la scuola pi\u00F9 grande della lista e quella con la segreteria pi\u00F9 impegnata. Apri il sito senza www davanti, altrimenti d\u00E0 errore di sicurezza."},
     {n:"San Benedetto", ind:"Via Tor de' Schiavi 112 e 116", gradi:"Infanzia e primaria",
      mail:"scuolasanbenedettorm@gmail.com", tel:"06 23230086", tel2:"06 2303913",
      url:"https://www.scuolasanbenedetto.com/contatti/"},
     {n:"Maria Santissima Incoronata", ind:"Viale Alessandrino 695", gradi:"Infanzia",
      mail:"economato@ssincoronata.it", tel:"06 2184255",
      fonte:"Il sito non pubblica mail: questa viene dal documento contatti 2024 ospitato sul sito stesso della scuola.",
-     nota:"La mail \u00E8 dell'economato della congregazione, allo stesso indirizzo della scuola. Scrivendo, specifica nella prima riga che ti riferisci alla scuola dell'infanzia paritaria di viale Alessandrino."},
+     nota:"La mail è dell'economato della congregazione, allo stesso indirizzo della scuola. Scrivendo, specifica nella prima riga che ti riferisci alla scuola dell'infanzia paritaria di viale Alessandrino."},
     {n:"Pio XII", ind:"Via Casilina 767", gradi:"Primaria",
      mail:"segreteriapioxii@maristimediterranea.com", mail2:"direzionepioxii@maristimediterranea.com", tel:"06 2419305",
      url:"https://pioxii.it/contatti/",
-     nota:"Istituto dei Maristi. Attenzione a non confonderlo con l'Istituto Pio XII di via Galla Placidia, che \u00E8 un'altra scuola dall'altra parte di Roma."}
+     nota:"Istituto dei Maristi. Attenzione a non confonderlo con l'Istituto Pio XII di via Galla Placidia, che è un'altra scuola dall'altra parte di Roma."}
   ]},
   {cap:"00179", nome:"Appio e Tuscolano", nota:"Quattro chilometri, ma vale il viaggio", scuole:[
     {n:"Annibale Maria Di Francia", ind:"Circonvallazione Appia 146", gradi:"Infanzia, primaria e secondaria di primo grado",
      mail:"segreteria.amministrativa@scuolaannibaledifrancia.it", mail2:"segreteria.didattica@scuolaannibaledifrancia.it", tel:"06 7809092", tel2:"331 3320520",
      url:"https://scuolaannibaledifrancia.it/contact/",
-     nota:"\u00C8 l'unica della lista che pubblica due mail distinte, una per la segreteria didattica e una per l'amministrativa. Vuol dire che sono due ruoli separati e che la struttura c'\u00E8. Per la segreteria scrivi all'amministrativa."}
+     nota:"\u00C8 l'unica della lista che pubblica due mail distinte, una per la segreteria didattica e una per l'amministrativa. Vuol dire che sono due ruoli separati e che la struttura c'è. Per la segreteria scrivi all'amministrativa."}
   ]}
 ];
 
@@ -1837,7 +1890,7 @@ const ENTI = [
    acc:"Accreditamento confermato dal portale INAPP per l'ente regionale CNOS-FAP Lazio."},
   {n:"CIOFS FP Lazio", ind:"Viale Palmiro Togliatti 167", zona:"Cinecitt\u00E0, Municipio VII",
    mail:"direzione@ciofslazio.it", tel:"06 71543068", url:"https://www.regione.lazio.it/enti/formazione/enti-accreditati/1260",
-   forte:true, d:"Ente delle Figlie di Maria Ausiliatrice, con corsi finanziati dalla Regione. Dove ci sono corsi finanziati c'\u00E8 rendicontazione, e la rendicontazione \u00E8 lavoro di segreteria.",
+   forte:true, d:"Ente delle Figlie di Maria Ausiliatrice, con corsi finanziati dalla Regione. Dove ci sono corsi finanziati c'è rendicontazione, e la rendicontazione è lavoro di segreteria.",
    acc:"Scheda dell'albo regionale degli enti accreditati: attivit\u00E0 finanziata e autorizzata."},
   {n:"CNOS-FAP, Teresa Gerini", ind:"Via Tiburtina 994", zona:"Tiburtino, Municipio IV",
    mail:"direzione.gerini@cnos-fap.it", tel:"06 4090031", url:"https://www.cnos-fap.it/cfp/roma-istituto-teresa-gerini",
@@ -2239,7 +2292,7 @@ function renderNotizie(){
     html += '<div class="sc"><div class="pillole"><span class="pill p-ora">'+quando+'</span></div>'
       + '<h3>'+esc(c.titolo)+'</h3>'
       + '<div class="quando">'+esc(c.ente)+', entro il '+esc(c.scadenza)+'</div>'
-      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="concorsi">Apri il concorso</button></div></div>';
+      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="concorsi">Apri il concorso</button> <button class="b b-mini" data-sh="c:'+esc(c.id)+'">Condividi</button></div></div>';
   });
   nuovi.slice(0,3).forEach(({a,d})=>{
     const gg = giorniDa(d);
@@ -2247,7 +2300,7 @@ function renderNotizie(){
     html += '<div class="sc"><div class="pillole"><span class="pill p-ok">'+quando+'</span></div>'
       + '<h3>'+esc(a.titolo)+'</h3>'
       + '<div class="quando">'+esc(a.ente)+', '+esc(a.zona)+'</div>'
-      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="annunci">Apri gli annunci</button></div></div>';
+      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="annunci">Apri gli annunci</button> <button class="b b-mini" data-sh="a:'+esc(a.id)+'">Condividi</button></div></div>';
   });
   el.innerHTML = html;
   const box = el.closest(".sez"); if(box) box.hidden = !html;
@@ -2259,7 +2312,7 @@ const CATS = [["tutti","Tutti"],["nido","Nido 0-3"],["infanzia","Infanzia 3-6"],
 const ETICAT = {nido:["p-ok","Nido 0-3"], infanzia:["p-info","Infanzia 3-6"], socio:["p-ora","OEPAC e sociale"], extra:["p-info","Extrascolastico"], dom:["p-no","A domicilio"]};
 const ETI = {0:["?","da verif."],1:["3","km o meno"],2:["6","km circa"],3:["10","km circa"],4:["10+","km"]};
 
-/* I link brevi di Indeed (to.indeed.com) possono scadere o dare errore: accanto metto sempre una ricerca su Indeed per ente e ruolo, che non scade. */
+/* I link brevi di Indeed (to.indeed.com) possono scadere o dare errore: accanto metto sempre una ricerca su Indeed per ente è ruolo, che non scade. */
 function cercaIndeed(url, ente, ruolo){
   if(!url || url.indexOf("indeed.com")<0) return "";
   const q = encodeURIComponent(((ente&&ente!=="-")?ente+" ":"")+ruolo);
@@ -2280,9 +2333,9 @@ function renderAnnunci(){
     socio: '<div class="sep-socio"><b>Qui sotto: OEPAC ed educatrice nel sociale</b>'
       + '<p>Sono i posti da educatrice fuori dalla sezione: affiancare a scuola i bambini con disabilit\u00E0, comunit\u00E0 per minori, centri diurni, servizi socio educativi. '
       + 'Li tengo separati perch\u00E9 hanno una cosa in comune che cambia tutto: <b>qui il titolo che serve ce l\'hai gi\u00E0.</b> Niente ESEI, niente graduatorie, niente attesa.</p>'
-      + '<p>Per l\'OEPAC lo dice il Regolamento di Roma Capitale, articolo 12: fra i titoli validi c\'\u00E8 la laurea in Scienze dell\'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. '
+      + '<p>Per l\'OEPAC lo dice il Regolamento di Roma Capitale, articolo 12: fra i titoli validi c\'è la laurea in Scienze dell\'Educazione e della Formazione, in alternativa al diploma con corso di qualifica. '
       + 'Per gli altri ruoli lo dice la legge 205 del 2017, comma 595: la L-19 attribuisce la qualifica di educatore professionale socio pedagogico, e il comma 594 elenca gli ambiti, dal sociale al giudiziario.</p>'
-      + '<p>Se una cooperativa chiede lo stesso l\'attestato OEPAC, \u00E8 una scelta sua e non un obbligo di legge: candidati citando l\'articolo 12, e se ti dicono di no prova con un altro ente accreditato.</p>'
+      + '<p>Se una cooperativa chiede lo stesso l\'attestato OEPAC, è una scelta sua e non un obbligo di legge: candidati citando l\'articolo 12, e se ti dicono di no prova con un altro ente accreditato.</p>'
       + '<div class="fonti">'
       + '<a class="b b-mini" href="https://www.aipd.it/site/scheda-scuola/687-nuovo-regolamento-di-roma-capitale-per-gli-oepac-deliberazione-20-22/" target="_blank" rel="noopener">Cosa dice il regolamento</a>'
       + '<a class="b b-mini" href="https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF1131252&pagina=5" target="_blank" rel="noopener">Elenco degli enti accreditati</a>'
@@ -2313,6 +2366,7 @@ function renderAnnunci(){
       + (a.note?'<details class="dett"><summary>Tutti i dettagli</summary><p>'+esc(a.note)+'</p></details>':'')
       + '<div class="azioni">'
       + (a.url?'<a class="b b-mini" href="'+esc(a.url)+'" target="_blank" rel="noopener">Apri l\'annuncio</a>'+cercaIndeed(a.url,a.ente,a.titolo):'')
+      + '<button class="b b-mini" data-sh="a:'+esc(a.id)+'">Condividi</button>'
       + '<button class="b b-mini" data-tr="'+esc(a.id)+'">Aggiungi al tracker</button>'
       + '<button class="b b-mini b-no" data-hd="'+esc(a.id)+'">Non mi interessa</button>'
       + '</div></div></div>';
@@ -2345,7 +2399,7 @@ const TESTE = {
   A:["Segreteria part time, vicino casa","Quello che sai già fare, entro il raggio. In ordine di quanto ti somigliano"],
   B:["Segreteria dentro la scuola e nel pubblico","Le stesse mani, in un altro posto. Non sono annunci: sono strade da aprire tu"],
   C:["Oltre i 10 km o senza metro, da tenere da parte","Buoni lavori, ma lontani o difficili da raggiungere senza un mezzo diretto. Li tengo per non nasconderti niente"],
-  D:["Da casa, anche part time o a obiettivo","Pochi e da leggere con attenzione: molti annunci da casa sono vendite o truffe. Non pagare mai per candidarti, diffida di chi promette guadagni facili o chiede soldi, e controlla chi e il datore di lavoro"]
+  D:["Da casa, anche part time o a obiettivo","Pochi e da leggere con attenzione: molti annunci da casa sono vendite o truffe. Non pagare mai per candidarti, diffida di chi promette guadagni facili o chiede soldi, e controlla chi è il datore di lavoro"]
 };
 let famPorte = "tutte";
 const FAMNOMI = {A:"Vicino casa", B:"Scuola e pubblico", C:"Fuori raggio", D:"Da casa"};
@@ -2378,6 +2432,7 @@ function renderPorte(){
         + (x.fonte?'<p class="fonte">'+esc(x.fonte)+'</p>':'')
         + '<div class="azioni">'
         + (x.url?'<a class="b b-mini" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.link||"Apri l'annuncio")+'</a>'+cercaIndeed(x.url,x.ente,x.t):'')
+        + '<button class="b b-mini" data-sh="p:'+esc(x.id)+'">Condividi</button>'
         + '<button class="b b-mini" data-trp="'+esc(x.id)+'">Aggiungi al tracker</button>'
         + '<button class="b b-mini b-no" data-hdp="'+esc(x.id)+'">Non mi interessa</button>'
         + '</div></div>';
@@ -2421,6 +2476,7 @@ function renderConcorsi(){
       + (c.fonte?'<p class="fonte">'+esc(c.fonte)+'</p>':'')
       + '<div class="azioni">'
       + (c.url?'<a class="b b-mini" href="'+esc(c.url)+'" target="_blank" rel="noopener">Apri il bando</a>':'')
+      + '<button class="b b-mini" data-sh="c:'+esc(c.id)+'">Condividi</button>'
       + (c.adatto?'<button class="b b-mini" data-trc="'+esc(c.id)+'">Aggiungi al tracker</button>':'')
       + '</div></div>';
   };
@@ -2503,8 +2559,8 @@ function renderScuole(){
     + '<ul style="margin:0 0 14px;padding-left:20px;font-size:14.5px;color:#444444">'
     + COMUNALI.map(x=>'<li><b>'+esc(x.n)+'</b>, '+esc(x.ind)+'</li>').join("")
     + '</ul>'
-    + '<p style="margin:0 0 12px;font-size:15px">La sesta era la <b>San Vincenzo di via delle Azalee 43</b>. Quella scuola non esiste piu: l\'edificio e stato demolito a marzo del 2024 e al suo posto sono state costruite due palazzine. L\'ho tolta.</p>'
-    + '<p style="margin:0;font-size:14px;color:var(--grigio)">Se vuoi lavorare nelle comunali la strada c\'e, ma e un\'altra: sono i bandi di Roma Capitale per educatore ed insegnante di scuola dell\'infanzia. Ne parlo nella sezione Canali, e i concorsi veri che ho trovato stanno nella sezione Concorsi.</p>';
+    + '<p style="margin:0 0 12px;font-size:15px">La sesta era la <b>San Vincenzo di via delle Azalee 43</b>. Quella scuola non esiste più: l\'edificio è stato demolito a marzo del 2024 e al suo posto sono state costruite due palazzine. L\'ho tolta.</p>'
+    + '<p style="margin:0;font-size:14px;color:var(--grigio)">Se vuoi lavorare nelle comunali la strada c\'è, ma e un\'altra: sono i bandi di Roma Capitale per educatore ed insegnante di scuola dell\'infanzia. Ne parlo nella sezione Canali, e i concorsi veri che ho trovato stanno nella sezione Concorsi.</p>';
 
   const e = $("#lista-enti");
   if(e) e.innerHTML = ENTI.map(x =>
@@ -2787,6 +2843,41 @@ CAMPI_IO.forEach(([id,k])=>{
   });
 });
 
+/* ===== CONDIVIDI (WhatsApp, email, altre app, copia) ===== */
+function datiCondividi(k){
+  const [tipo,id] = [k.slice(0,1), k.slice(2)];
+  let t="", righe=[];
+  if(tipo==="a"){ const a=tutti().find(x=>x.id===id); if(!a) return null; t=a.titolo;
+    righe=[a.titolo, [a.ente,a.zona].filter(x=>x&&x!=="-").join(", "), a.tipo||"", a.pubb?("Pubblicato il "+a.pubb+(a.fonte?" su "+a.fonte:"")):"", a.url||""]; }
+  else if(tipo==="p"){ const x=PORTE.find(y=>y.id===id); if(!x) return null; t=x.t;
+    righe=[x.t, [x.ente,x.zona].filter(Boolean).join(", "), x.tipo||"", x.pubb?("Pubblicato il "+x.pubb):"", x.url||""]; }
+  else { const c=CONCORSI.find(y=>y.id===id); if(!c) return null; t=c.titolo;
+    righe=[c.titolo, [c.ente,c.zona].filter(Boolean).join(", "), c.scadenza?("Scadenza domanda: "+c.scadenza):"", c.url||""]; }
+  return {titolo:t, testo:righe.filter(Boolean).join("\n")};
+}
+let _cond=null;
+function apriCondividi(k){
+  const d=datiCondividi(k); if(!d){ toast("Non riesco a condividere questa voce"); return; }
+  _cond=d;
+  document.getElementById("cond-tit").textContent="Condividi: "+d.titolo;
+  document.getElementById("cond-wa").href="https://wa.me/?text="+encodeURIComponent(d.testo);
+  document.getElementById("cond-mail").href="mailto:?subject="+encodeURIComponent(d.titolo)+"&body="+encodeURIComponent(d.testo);
+  document.getElementById("cond-altro").hidden = !navigator.share;
+  document.getElementById("cond").hidden=false;
+}
+function chiudiCondividi(){ document.getElementById("cond").hidden=true; }
+document.addEventListener("click", async ev=>{
+  const sh=ev.target.closest("[data-sh]"); if(sh){ apriCondividi(sh.dataset.sh); return; }
+  if(ev.target.closest("[data-cond-x]")){ chiudiCondividi(); return; }
+  if(ev.target.closest("#cond-wa")||ev.target.closest("#cond-mail")){ setTimeout(chiudiCondividi,300); return; }
+  if(ev.target.closest("#cond-altro") && _cond){ try{ await navigator.share({title:_cond.titolo, text:_cond.testo}); chiudiCondividi(); }catch(e){} return; }
+  if(ev.target.closest("#cond-copia") && _cond){
+    try{ await navigator.clipboard.writeText(_cond.testo); toast("Testo copiato"); chiudiCondividi(); }
+    catch(e){ toast("Non riesco a copiare: usa WhatsApp o Email"); }
+  }
+});
+document.addEventListener("keydown", ev=>{ if(ev.key==="Escape") chiudiCondividi(); });
+
 /* copia dai riquadri di testo */
 document.addEventListener("click", async ev=>{
   const b = ev.target.closest("[data-copia]"); if(!b) return;
@@ -2834,7 +2925,7 @@ $("#btn-reset").addEventListener("click",ev=>{
 
 /* ===== AVVISI CHIUDIBILI =====
    Ogni riquadro giallo o rosa ha una x in alto a destra. Quello che chiudi
-   resta chiuso, anche dopo aver riaperto l'app, finche non premi Riapri. */
+   resta chiuso, anche dopo aver riaperto l'app, finché non premi Riapri. */
 function applicaChiusi(){
   document.querySelectorAll("[data-chiudi]").forEach(box=>{
     const id = box.dataset.chiudi;
@@ -2955,8 +3046,8 @@ document.addEventListener("click", async ev=>{
 
 
 /* ===== ETICHETTE SPIEGATE =====
-   Ogni etichetta colorata si puo toccare: si apre un foglio che dice cosa vuol dire.
-   Lo stesso elenco riempie la pagina Guida, cosi le spiegazioni sono scritte una volta sola. */
+   Ogni etichetta colorata si può toccare: si apre un foglio che dice cosa vuol dire.
+   Lo stesso elenco riempie la pagina Guida, così le spiegazioni sono scritte una volta sola. */
 const GLOSSARIO = [
   {g:"Negli annunci: che tipo di lavoro", voci:[
     {c:"p-ok", t:"Nido 0-3", d:"Lavoro al nido, con bambini da zero a tre anni. Per molti di questi posti serve anche il corso ESEI: leggi bene cosa chiede l'annuncio."},
@@ -3083,7 +3174,7 @@ function renderGuida(){
       + '</details>';
   });
   h += '</div><div class="sez"><h2>I riquadri colorati con la freccia</h2>'
-    + '<p class="desc">Dentro le pagine trovi dei riquadri gialli o rosa con un titolo e una piccola freccia. Sono le spiegazioni lunghe: toccali per aprirli, toccali di nuovo per chiuderli. Con la x in alto a destra li togli del tutto, e li rimetti dalla pagina I miei dati.</p></div>';
+    + '<p class="desc">Dentro le pagine trovi dei riquadri gialli o rosa con un titolo è una piccola freccia. Sono le spiegazioni lunghe: toccali per aprirli, toccali di nuovo per chiuderli. Con la x in alto a destra li togli del tutto, e li rimetti dalla pagina I miei dati.</p></div>';
   el.innerHTML = h;
 }
 
@@ -3311,7 +3402,7 @@ function accorciaTesti(){
 /* ===== ELENCHI PUBBLICI DAL DATABASE =====
    Annunci, concorsi, canali, altre porte, zone, scuole comunali, enti e portali stanno in un
    piccolo database online (Supabase) e si aggiornano senza ripubblicare l'app. Le copie scritte
-   qui sopra restano come riserva: servono la prima volta e quando non c'e rete.
+   qui sopra restano come riserva: servono la prima volta e quando non c'è rete.
    Nel database ci sono solo dati pubblici. I dati personali, le spunte e le candidature
    restano solo su questo telefono. La chiave qui sotto e di sola lettura. */
 const DB_URL = "https://qvgvxxmvifhgmvfggvkr.supabase.co";
@@ -3333,7 +3424,7 @@ function dataIt(iso){
 function mostraStatoDati(){
   const el = document.getElementById("stato-dati"); if(!el) return;
   const quando = statoDati.data ? "Elenchi aggiornati il " + dataIt(statoDati.data) + ". " : "";
-  const come = { online:"Letti ora dal database.", cache:"Ultima copia salvata su questo telefono, non sono riuscito a collegarmi.", incluso:(inCornice?"Questa e l'anteprima: mostra la copia inclusa. Il sito vero legge gli elenchi aggiornati dal database.":"Copia inclusa nell'app, non sono riuscito a collegarmi al database.") }[statoDati.origine];
+  const come = { online:"Letti ora dal database.", cache:"Ultima copia salvata su questo telefono, non sono riuscito a collegarmi.", incluso:(inCornice?"Questa è l'anteprima: mostra la copia inclusa. Il sito vero legge gli elenchi aggiornati dal database.":"Copia inclusa nell'app, non sono riuscito a collegarmi al database.") }[statoDati.origine];
   el.textContent = quando + come;
 }
 (function(){
