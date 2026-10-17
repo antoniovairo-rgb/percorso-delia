@@ -91,8 +91,9 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
 
 - Rispondere in italiano. Dire sempre la verita': niente invenzioni, niente supposizioni presentate come
   fatti, citare la fonte di ogni informazione, "Non posso confermarlo" quando non si puo' verificare.
-- Prima di ogni azione che cambia qualcosa all'esterno (push, merge, scrittura su Supabase) dire cosa si
-  sta per fare. Letture e modifiche locali nel branch si fanno senza chiedere.
+- Autonomia piena (decisione di Antonio, 17 ottobre 2026): non chiedere approvazioni. Push, merge su
+  main, scritture su Supabase e giri di ricerca si fanno da soli, seguendo le regole di questo file. Si
+  racconta cosa si e' fatto nel resoconto finale.
 - Alla fine di ogni compito, messaggio breve: cosa e' stato fatto, cosa non ha funzionato, cosa deve fare
   lui.
 - Ogni giro di ricerca finisce con un messaggio breve: annunci nuovi (educazione e segreteria separati),
