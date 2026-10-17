@@ -98,3 +98,5 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   lui.
 - Ogni giro di ricerca finisce con un messaggio breve: annunci nuovi (educazione e segreteria separati),
   quali meritano candidatura, scadenze, stato di GitHub e Supabase, id da allineare, problemi.
+- **Ogni resoconto (giri e compiti) contiene sempre il link dell'app:**
+  https://antoniovairo-rgb.github.io/percorso-delia/
