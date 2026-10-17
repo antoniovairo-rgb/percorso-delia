@@ -48,7 +48,7 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   (in passato venivano annullati). Dopo ogni allineamento: `meta.ultimo_aggiornamento`, una riga in
   `log_versioni` e una in `log_giri`.
 
-## Regole di ricerca (giri periodici, a giorni alterni)
+## Regole di ricerca (giro OGNI GIORNO, su tutti i siti disponibili)
 
 - **Educazione/infanzia** a Roma e provincia: risultati in `ANNUNCI`. Scartare educatore professionale
   sanitario SNT/2, OEPAC senza qualifica, madrelingua inglese.
@@ -56,6 +56,13 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   `fam:"A"`. Scartare sedi oltre circa 10 km da Torpignattara, ruoli commerciali o di vendita, categorie
   protette, inglese obbligatorio, orari serali, tirocini e apprendistati (limite di eta').
 - Controllare anche comune.roma.it (MAD Municipio V) e inPA.
+- Fonti da provare a ogni giro, tutte, e per ognuna dire nel resoconto se era leggibile o no:
+  Indeed (tramite connettore; la lettura diretta del sito da' 403), Randstad (leggibile il 17 ottobre),
+  Adecco, Gi Group, Manpower, Umana, Openjobmetis, Synergie, LinkedIn, Jooble, Glassdoor, Bakeca, Subito
+  (Bakeca e Subito davano 403 il 17 ottobre), Monster, Trovit, Lavoro.it, Talent.com, Helplavoro,
+  Euspert, i siti delle cooperative sociali gia' in elenco, inPA, comune.roma.it,
+  concorsipubblici.com, ASMEL. InfoJobs ha chiuso. Le pagine elenco degli aggregatori hanno date poco
+  affidabili: un annuncio entra solo dopo averne letto la scheda.
 - Scala `dist` negli ANNUNCI: 1 entro 3 km, 2 da 3 a 6, 3 da 6 a 12, 4 oltre, 0 da verificare. Raggio
   dichiarato all'utente: 10 km.
 - Campi PORTE: `fam, id, t, ente, zona, km, kmt, tipo, pubb, stato (top, buono, attenzione), d, url`.
