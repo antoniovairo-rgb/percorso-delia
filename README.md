@@ -53,3 +53,5 @@ Un sito GitHub Pages su account gratuito e **pubblico** e non si puo proteggere
 con password. Per questo nel file non ci sono nome, telefono, email, indirizzo
 ne matricola: quei campi li compila Delia al primo avvio e restano solo sul suo
 dispositivo.
+
+Ultimo controllo del repository: 17 ottobre 2026.
