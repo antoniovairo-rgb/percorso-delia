@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "mcp__Supabase",
+      "mcp__Indeed",
+      "mcp__github",
+      "mcp__a08db891-ffb4-491b-b5c3-5308882e5dee",
+      "mcp__3251ba25-b639-491e-bab3-84475ab1b9b4"
+    ]
+  }
+}
