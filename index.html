@@ -1807,8 +1807,8 @@ const PORTE = [
 {fam:"A", id:"p-randstad-macsrl", t:"Segreteria amministrativa in un'impresa edile, zona San Paolo", ente:"MAC Srl, impresa edile, tramite Randstad", zona:"Roma, zona San Paolo", km:5.4, kmt:"circa 5 km, stima: l'indirizzo non è scritto", tipo:"Tempo pieno dalle 9 alle 18, senza smart working, tempo determinato, CCNL Edilizia 3 livello, 22.000-28.000 euro lordi l'anno", pubb:"14 settembre 2026", stato:"buono",
  d:"Novità del 17 ottobre. Accoglienza, centralino, cancelleria e ordini, supporto alla prima nota, lettere e documenti. Chiedono esperienza in segreteria o front office e Office. Non è il MAC già in elenco, è un'altra azienda. Il peso è il tempo pieno fino alle 18. Randstad scrive scadenza dell'annuncio il 14 novembre 2026. Scheda letta il 17 ottobre.",
  url:"https://www.randstad.it/offerte-lavoro/addetto-segreteria-amministrativa-roma-san-paolo_roma_31478a0b-d702-4196-9d58-f318ce02dc16/"},
-{fam:"A", id:"p-manpower-pertini", t:"Segreteria della Direzione Medica dell'Ospedale Sandro Pertini", ente:"ASL Roma 2, tramite Manpower", zona:"Roma, Via dei Monti Tiburtini 395", km:5, kmt:"circa 5 km, stima in linea d'aria", tipo:"Tempo pieno 36 ore, dal lunedì al sabato, il sabato solo 1 o 2 volte al mese, somministrazione fino al 15 maggio 2027, CCNL Sanità, 23.000-24.000 euro lordi l'anno con il diploma, 27.000-28.000 con la laurea", pubb:"14 ottobre 2026", stato:"top",
- d:"Novità del 18 ottobre. Segreteria vera di un ospedale vicino: agenda della direzione, telefonate e mail, protocollo, atti e scadenze. Chiedono il diploma e 3-5 anni di segreteria di direzione, meglio in sanità. I tuoi dieci anni contano. Con la tua laurea il livello e la paga salgono. Il peso è il tempo pieno. ATTENZIONE: la pagina di Manpower scrive scadenza dell'annuncio il 18 ottobre 2026. Se ti interessa, candidati subito. Scheda letta il 18 ottobre.",
+{fam:"A", id:"p-manpower-pertini", scaduto:true, t:"Segreteria della Direzione Medica dell'Ospedale Sandro Pertini", ente:"ASL Roma 2, tramite Manpower", zona:"Roma, Via dei Monti Tiburtini 395", km:5, kmt:"circa 5 km, stima in linea d'aria", tipo:"Tempo pieno 36 ore, dal lunedì al sabato, il sabato solo 1 o 2 volte al mese, somministrazione fino al 15 maggio 2027, CCNL Sanità, 23.000-24.000 euro lordi l'anno con il diploma, 27.000-28.000 con la laurea", pubb:"14 ottobre 2026", stato:"top",
+ d:"Novità del 18 ottobre. Segreteria vera di un ospedale vicino: agenda della direzione, telefonate e mail, protocollo, atti e scadenze. Chiedono il diploma e 3-5 anni di segreteria di direzione, meglio in sanità. I tuoi dieci anni contano. Con la tua laurea il livello e la paga salgono. Il peso è il tempo pieno. Chiuso: il 19 ottobre la pagina di Manpower scrive scaduto, posizione non più disponibile, validità fino al 17 ottobre 2026. Scheda letta il 18 ottobre.",
  url:"https://www.manpower.it/it/annuncio-lavoro/pubblica-amministrazione/amministrazione/assistente-amministrativoa-segreteria-di-direzione/1053911"},
 {fam:"A", id:"p-manpower-eur-pt", t:"Back office amministrativo part time 25 ore, zona EUR", ente:"Azienda di impianti, tramite Manpower (il nome non è scritto)", zona:"Roma, zona EUR", km:7.5, kmt:"circa 7 o 8 km, stima: l'indirizzo non è scritto", tipo:"Part time 25 ore a settimana, orario non scritto, somministrazione di 3 mesi con l'idea di assumere, CCNL Metalmeccanica Confapi 2 livello, da 10 a 13 euro lordi l'ora", pubb:"13 ottobre 2026", stato:"top",
  d:"Novità del 18 ottobre. È part time ed è lavoro tuo: segreteria e affari generali, fatture da emettere e controllare, archivio, documenti delle commesse, contatti con clienti e fornitori. Chiedono esperienza anche breve e Office. Niente vendita, niente inglese. L'orario non è scritto, chiedilo. Manpower scrive scadenza dell'annuncio il 14 novembre 2026. Scheda letta il 18 ottobre.",
@@ -2342,7 +2342,7 @@ function indiceGlobale(){
   const r=[];
   tutti().forEach(a=>r.push({k:"Annuncio",t:a.titolo,s:a.ente+", "+a.zona,x:(a.tipo||"")+" "+a.cat,v:"annunci",l:"lista-annunci",q:a.ente}));
   CONCORSI.forEach(c=>r.push({k:"Concorso",t:c.titolo,s:c.ente,x:c.zona||"",v:"concorsi",l:"lista-concorsi",q:c.ente}));
-  PORTE.forEach(p=>r.push({k:"Ufficio",t:p.t,s:p.ente+", "+p.zona,x:p.tipo||"",v:"annunci",f:"ufficio",l:"lista-porte",q:p.ente}));
+  PORTE.filter(p=>!p.scaduto).forEach(p=>r.push({k:"Ufficio",t:p.t,s:p.ente+", "+p.zona,x:p.tipo||"",v:"annunci",f:"ufficio",l:"lista-porte",q:p.ente}));
   ZONE.forEach(z=>(z.scuole||[]).forEach(sc=>r.push({k:"Scuola privata",t:sc.n,s:sc.ind+", "+z.nome,x:(sc.gradi||"")+" "+(sc.mail||""),v:"private",l:"lista-scuole",q:sc.n})));
   CANALI.forEach(c=>r.push({k:"Canale pubblico",t:c.t,s:c.quando||"",x:c.d||"",v:"canali",l:"lista-canali",q:c.t.split(",")[0]}));
   DOVE.forEach(d=>r.push({k:"Dove cercare",t:d.n,s:d.forza||d.tipo||"",x:d.d||"",v:"dove",l:"lista-dove",q:d.n}));
@@ -2446,7 +2446,7 @@ function cercaIndeed(url, ente, ruolo){
 function tutti(){ return ANNUNCI.concat(S.annunciMiei).filter(a=>!S.nascosti.includes(a.id) && !a.scaduto); }
 
 function renderFiltri(){
-  $("#filtri").innerHTML = CATS.map(([k,l])=>'<button class="chip" data-c="'+k+'" aria-pressed="'+(filtro===k)+'">'+l+'<small>'+(k==="ufficio"?PORTE.filter(x=>!S.nascosti.includes(x.id)).length:tutti().filter(a=>k==="tutti"||a.cat===k).length)+'</small></button>').join("")
+  $("#filtri").innerHTML = CATS.map(([k,l])=>'<button class="chip" data-c="'+k+'" aria-pressed="'+(filtro===k)+'">'+l+'<small>'+(k==="ufficio"?PORTE.filter(x=>!S.nascosti.includes(x.id) && !x.scaduto).length:tutti().filter(a=>k==="tutti"||a.cat===k).length)+'</small></button>').join("")
     + '<span hidden id="conta"></span>';
   document.querySelectorAll("[data-c]").forEach(b=>b.addEventListener("click",()=>{ filtro=b.dataset.c; renderFiltri(); renderAnnunci(); }));
 }
@@ -2537,7 +2537,7 @@ function renderPorte(){
   const ordine = {fatto:0, top:1, buono:2, prepara:3, attenzione:4};
   const chipEl = document.getElementById("filtri-porte");
   if(chipEl){
-    const vis = PORTE.filter(x=>!S.nascosti.includes(x.id));
+    const vis = PORTE.filter(x=>!S.nascosti.includes(x.id) && !x.scaduto);
     chipEl.innerHTML = [["tutte","Tutte",vis.length]].concat(Object.keys(FAMNOMI).map(k=>[k,FAMNOMI[k],vis.filter(x=>x.fam===k).length]))
       .map(([k,l,n])=>'<button class="chip" data-fp="'+k+'" aria-pressed="'+(famPorte===k)+'">'+l+'<small>'+n+'</small></button>').join("");
     chipEl.querySelectorAll("[data-fp]").forEach(b=>b.addEventListener("click",()=>{ famPorte=b.dataset.fp; renderPorte(); }));
@@ -2545,7 +2545,7 @@ function renderPorte(){
   let html = "";
   ["A","B","C","D"].forEach(f=>{
     if(famPorte!=="tutte" && famPorte!==f) return;
-    const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id))
+    const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id) && !x.scaduto)
       .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
     if(!gruppo.length) return;
     const [tit,sot] = TESTE[f];
