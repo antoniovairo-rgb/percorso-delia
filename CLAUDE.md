@@ -69,6 +69,20 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
 - Link Indeed: il connettore da' solo la forma breve `to.indeed.com`. Il `jk` non va mai inventato.
 - Nessun annuncio inventato. URL reali. Nessuna scadenza dedotta. Distanze non verificate dichiarate come
   stime. Non dire "aperto" senza averlo verificato. Se una fonte non e' leggibile, scriverlo.
+- **Verifica delle scadenze a OGNI giro, su TUTTI gli annunci e le porte gia' in elenco** (richiesta di
+  Antonio, 21 ottobre 2026), prima di cercare quelli nuovi:
+  - aprire ogni URL e cercare la prova: "scaduto", "non piu' disponibile", "non accetta piu' candidature",
+    errore 404, rimando alla pagina elenco, oppure una data di validita' gia' passata (Manpower:
+    `isExpired` e "Validita' annuncio"; Randstad: `validThrough` nel JSON, perche' la frase "non e' piu'
+    disponibile" c'e' anche nelle pagine attive);
+  - Indeed: con il connettore, cercare l'annuncio per azienda e titolo; se non compare piu', o se la
+    scheda non si apre, e' da segnalare. La lettura diretta del sito da' 403: non vale come prova;
+  - le copie degli aggregatori (Jooble, Talent, Euspert) non bastano a dire "aperto";
+  - se chiuso: `scaduto:true` nel codice e in `voci` con INSERT ... ON CONFLICT, piu' una riga nel campo
+    note o `d` con la data e la prova. L'app nasconde gia' annunci e porte con `scaduto:true`;
+  - quando Antonio o Delia dicono che un annuncio e' scaduto, segnarlo subito, citando loro come fonte;
+  - nel resoconto: quanti controllati, quali chiusi, quali non verificabili e perche'. Mai proporre una
+    candidatura per un annuncio non ricontrollato nello stesso giro.
 
 ## Regole di scrittura nell'app
 
