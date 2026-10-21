@@ -50,6 +50,16 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
 
 ## Regole di ricerca (giro OGNI GIORNO, su tutti i siti disponibili)
 
+- **Pausa dal 22 ottobre al 30 novembre 2026** (decisione di Antonio, 21 ottobre): Delia non e' disponibile
+  per supplenze e per lavori che iniziano subito, per gravi motivi familiari. Ha comunicato l'indisponibilita'
+  all'ufficio supplenze infanzia del Municipio V. In questo periodo il giro continua e gli annunci entrano
+  comunque nell'app, ma nel resoconto:
+  - tra quelli che meritano candidatura proporre solo concorsi, annunci con inizio da dicembre 2026 in poi e
+    annunci che non chiedono disponibilita' immediata;
+  - supplenze, MAD e annunci con "disponibilita' immediata" vanno in una riga a parte, "Per dopo il 30 novembre";
+  - le scadenze di candidatura (concorsi, inPA) si segnalano sempre, anche in pausa.
+  Dal 1 dicembre 2026 questa regola non vale piu'.
+
 - **Educazione/infanzia** a Roma e provincia: risultati in `ANNUNCI`. Scartare educatore professionale
   sanitario SNT/2, OEPAC senza qualifica, madrelingua inglese.
 - **Segreteria/ufficio**: cercare sempre con filtro part time e poi anche senza. Risultati in `PORTE` con
