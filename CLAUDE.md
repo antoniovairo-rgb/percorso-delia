@@ -88,6 +88,11 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   - Indeed: con il connettore, cercare l'annuncio per azienda e titolo; se non compare piu', o se la
     scheda non si apre, e' da segnalare. La lettura diretta del sito da' 403: non vale come prova;
   - le copie degli aggregatori (Jooble, Talent, Euspert) non bastano a dire "aperto";
+  - **regola dei 30 giorni (Antonio, 27 ottobre 2026: "devi toglierli tutti, fanno solo rumore"):** un annuncio
+    o una porta pubblicati da piu' di 30 giorni si tolgono (`scaduto:true`) se non c'e' una prova che siano
+    ancora aperti (per esempio `validThrough` futuro su Randstad). Con Indeed la prova non c'e' quasi mai:
+    la ricerca del connettore rende al massimo 10 risultati e i link brevi rimandano sempre, anche per gli
+    annunci chiusi. Restano le voci fisse senza data (candidature spontanee, schede informative B);
   - se chiuso: `scaduto:true` nel codice e in `voci` con INSERT ... ON CONFLICT, piu' una riga nel campo
     note o `d` con la data e la prova. L'app nasconde gia' annunci e porte con `scaduto:true`;
   - quando Antonio o Delia dicono che un annuncio e' scaduto, segnarlo subito, citando loro come fonte;
