@@ -2578,7 +2578,7 @@ function renderNotizie(){
     html += '<div class="sc"><div class="pillole"><span class="pill p-ora">'+quando+'</span></div>'
       + '<h3>'+esc(c.titolo)+'</h3>'
       + '<div class="quando">'+esc(c.ente)+', entro il '+esc(c.scadenza)+'</div>'
-      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="concorsi">Apri il concorso</button> <button class="b b-mini" data-sh="c:'+esc(c.id)+'">Condividi</button></div></div>';
+      + '<div style="margin-top:12px"><button class="b b-mini" data-apri="c:'+esc(c.id)+'">Apri il concorso</button> <button class="b b-mini" data-sh="c:'+esc(c.id)+'">Condividi</button></div></div>';
   });
   nuovi.slice(0,3).forEach(({a,d})=>{
     const gg = giorniDa(d);
@@ -2586,9 +2586,15 @@ function renderNotizie(){
     html += '<div class="sc"><div class="pillole"><span class="pill p-ok">'+quando+'</span></div>'
       + '<h3>'+esc(a.titolo)+'</h3>'
       + '<div class="quando">'+esc(a.ente)+', '+esc(a.zona)+'</div>'
-      + '<div style="margin-top:12px"><button class="b b-mini" data-vai="annunci">Apri gli annunci</button> <button class="b b-mini" data-sh="a:'+esc(a.id)+'">Condividi</button></div></div>';
+      + '<div style="margin-top:12px"><button class="b b-mini" data-apri="a:'+esc(a.id)+'">Apri l\'annuncio</button> <button class="b b-mini" data-sh="a:'+esc(a.id)+'">Condividi</button></div></div>';
   });
   el.innerHTML = html;
+  /* porta alla scheda giusta, con la categoria dell'annuncio e non l'ultimo filtro usato */
+  el.querySelectorAll("[data-apri]").forEach(b=>b.addEventListener("click",()=>{
+    const [t,id] = b.dataset.apri.split(":");
+    if(t==="c"){ const c=CONCORSI.find(x=>x.id===id); if(c) vaiRisultato({v:"concorsi",l:"lista-concorsi",q:c.ente}); return; }
+    const a=tutti().find(x=>x.id===id); if(a) vaiRisultato({v:"annunci",f:a.cat,l:"lista-annunci",q:a.ente});
+  }));
   const box = el.closest(".sez"); if(box) box.hidden = !html;
 }
 
