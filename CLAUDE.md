@@ -109,6 +109,14 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
 - **Non toccare la struttura di `TAPPE` (gli id legano le spunte salvate) ne' l'oggetto `S.io`.**
 - Ripubblicare solo se c'e' una novita' vera.
 
+## Skill karpathy-guidelines (Antonio, 29 ottobre 2026)
+
+- In `.claude/skills/karpathy-guidelines/SKILL.md` (copia del repository multica-ai/andrej-karpathy-skills,
+  licenza MIT). Si usa quando si scrive o si modifica il codice dell'app: niente aggiunte non richieste,
+  modifiche minime e mirate, stile del codice esistente, controllo verificabile prima di pubblicare.
+- Il punto "se non sei sicuro, chiedi" non vale per i giri e le pubblicazioni: lì resta l'autonomia piena
+  di questo file. Si chiede solo se una richiesta di Antonio si puo' leggere in due modi davvero diversi.
+
 ## Rituale di pubblicazione
 
 1. Modifiche su un branch, mai direttamente su `main`.
