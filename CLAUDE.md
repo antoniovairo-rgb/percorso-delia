@@ -65,6 +65,9 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
 - **Segreteria/ufficio**: cercare sempre con filtro part time e poi anche senza. Risultati in `PORTE` con
   `fam:"A"`. Scartare sedi oltre circa 10 km da Torpignattara, ruoli commerciali o di vendita, categorie
   protette, inglese obbligatorio, orari serali, tirocini e apprendistati (limite di eta').
+  Scartare anche gli annunci che chiedono come indispensabili o obbligatori i programmi Zucchetti
+  (anche Ad Hoc) o B-Point: Delia non li conosce (Antonio, 30 ottobre 2026). Se sono solo preferibili,
+  l'annuncio resta.
 - Controllare anche comune.roma.it (MAD Municipio V) e inPA.
 - Fonti da provare a ogni giro, tutte, e per ognuna dire nel resoconto se era leggibile o no:
   Indeed (tramite connettore; la lettura diretta del sito da' 403), Randstad (leggibile il 17 ottobre),
