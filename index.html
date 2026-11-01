@@ -1450,7 +1450,7 @@ const ANNUNCI = [
    url:"https://www.kitlavoro.it/lavoro/661117213/educatore-ice-o-psicologo-a-roma", fonte:"Kitlavoro",
    note:"Nuovo, trovato il 31 ottobre e letto su Kitlavoro, che è una copia. Interventi educativi a casa di bambini e famiglie. Cercano educatrici o psicologhe, la laurea triennale è preferibile ma non scrivono quale: chiedi se la L-19 va bene. L'auto è preferibile. Nessuna data di inizio e nessuna urgenza scritta. Alessandrino e Tor Sapienza sono circa 3-5 km, le zone più lontane fino a 11-13 km, stima. Contatto scritto nell'annuncio: sismif@yahoo.it."},
   {id:"o30a", titolo:"Educatrice nel servizio SISMIF del Municipio V, la L-19 basta", ente:"Nuova Sair Onlus",
-   zona:"Roma, Municipio V, il tuo", cat:"socio", dist:1, tipo:"Tempo determinato, soprattutto di pomeriggio, 10,47 euro l'ora più rimborso chilometrico", pubb:"28 ottobre 2026 (Kitlavoro)",
+   zona:"Roma, Municipio V, il tuo", cat:"dom", dist:1, tipo:"Tempo determinato, soprattutto di pomeriggio, 10,47 euro l'ora più rimborso chilometrico", pubb:"28 ottobre 2026 (Kitlavoro)",
    url:"https://www.kitlavoro.it/lavoro/659507438/educatrice-professionale-servizio-sismif-roma", fonte:"Kitlavoro",
    note:"Nuovo, trovato il 30 ottobre e letto su Kitlavoro, che è una copia: il sito di Nuova Sair non si apre, quindi non posso confermare che sia ancora aperto lì. Interventi educativi a casa di bambini e famiglie del Municipio V. Chiedono la laurea in Scienze dell'Educazione: è la tua. L'esperienza è solo preferibile. Nessuna data di inizio e nessuna urgenza scritta. Distanza stimata tra 0 e 4 km."},
   {id:"o28a", titolo:"Educatrice per l'educativa domiciliare dei minori, la L-19 basta", ente:"Cooperativa Famiglie Anziani Infanzia F.A.I.",
@@ -2614,7 +2614,7 @@ document.addEventListener("keydown", ev=>{
 function renderNotizie(){
   const el = document.getElementById("lista-notizie"); if(!el) return;
   const scadenze = CONCORSI
-    .filter(c=>c.adatto!==false)
+    .filter(c=>c.adatto!==false && !(c.dist>=4))
     .map(c=>({c, d:parseDataIt(c.scadenza)}))
     .filter(x=>x.d && giorniA(x.d)>=0 && giorniA(x.d)<=14)
     .sort((x,y)=>x.d-y.d);

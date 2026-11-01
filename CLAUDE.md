@@ -78,6 +78,10 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   affidabili: un annuncio entra solo dopo averne letto la scheda.
 - Scala `dist` negli ANNUNCI: 1 entro 3 km, 2 da 3 a 6, 3 da 6 a 12, 4 oltre, 0 da verificare. Raggio
   dichiarato all'utente: 10 km.
+- Riquadro "Da guardare subito" della Home (Antonio, 1 novembre 2026: "mai in primo piano" i concorsi lontani e
+  l'assistenza domiciliare): non mostra i concorsi con `dist:4` ne' gli annunci con `cat:"dom"`. Quindi ogni
+  servizio educativo a casa delle famiglie (SISMIF, educativa domiciliare, assistenza a casa) va messo in
+  `cat:"dom"`, anche se si chiama OEPAC o educatrice, e ogni concorso lontano (oltre circa 12 km) in `dist:4`.
 - Campi PORTE: `fam, id, t, ente, zona, km, kmt, tipo, pubb, stato (top, buono, attenzione), d, url`.
 - Link Indeed: il connettore da' solo la forma breve `to.indeed.com`. Il `jk` non va mai inventato.
 - Nessun annuncio inventato. URL reali. Nessuna scadenza dedotta. Distanze non verificate dichiarate come
