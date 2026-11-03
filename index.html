@@ -2626,7 +2626,7 @@ function renderNotizie(){
     .filter(x=>x.d && giorniA(x.d)>=0 && giorniA(x.d)<=14)
     .sort((x,y)=>x.d-y.d);
   const nuovi = tutti()
-    .filter(a=>!a.escluso && a.dist>=1 && a.dist<=2 && (a.cat==="nido"||a.cat==="infanzia"||a.cat==="socio"))
+    .filter(a=>!a.escluso && a.dist>=1 && a.dist<=2 && (a.cat==="nido"||a.cat==="infanzia"||a.cat==="socio") && !/immediat|da subito/i.test(a.tipo||""))
     .map(a=>({a, d:parseDataIt(a.pubb)}))
     .filter(x=>x.d && giorniDa(x.d)>=0 && giorniDa(x.d)<=7)
     .sort((x,y)=>y.d-x.d);

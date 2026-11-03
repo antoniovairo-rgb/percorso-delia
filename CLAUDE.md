@@ -82,6 +82,7 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   l'assistenza domiciliare): non mostra i concorsi con `dist:4` ne' gli annunci con `cat:"dom"`. Quindi ogni
   servizio educativo a casa delle famiglie (SISMIF, educativa domiciliare, assistenza a casa) va messo in
   `cat:"dom"`, anche se si chiama OEPAC o educatrice, e ogni concorso lontano (oltre circa 12 km) in `dist:4`.
+  Dal 3 novembre 2026 (Antonio) il riquadro nasconde anche gli annunci il cui campo `tipo` dice "immediata", "immediato" o "da subito". Quindi scrivi quelle parole nel `tipo` quando l'annuncio le dice.
 - Campi PORTE: `fam, id, t, ente, zona, km, kmt, tipo, pubb, stato (top, buono, attenzione), d, url`.
 - Link Indeed: il connettore da' solo la forma breve `to.indeed.com`. Il `jk` non va mai inventato.
 - Nessun annuncio inventato. URL reali. Nessuna scadenza dedotta. Distanze non verificate dichiarate come
