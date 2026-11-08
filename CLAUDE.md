@@ -125,6 +125,18 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
 - Il punto "se non sei sicuro, chiedi" non vale per i giri e le pubblicazioni: lì resta l'autonomia piena
   di questo file. Si chiede solo se una richiesta di Antonio si puo' leggere in due modi davvero diversi.
 
+## Giro con l'API di Claude (prova, dall'8 novembre 2026)
+
+- `tools/giro-api/giro.mjs` e la GitHub Action `.github/workflows/giro-api.yml` (per ora parte solo a mano).
+  Legge le sezioni "Regole di ricerca" e "Regole di scrittura nell'app" di questo file e le passa a Claude:
+  se cambi le regole qui, cambiano anche per lui.
+- Fa: verifica delle scadenze senza AI (Randstad, Manpower, LinkedIn, 404, regola dei 30 giorni), ricerca con
+  `web_search` e `web_fetch`, trasformazione in JSON, scrittura su Supabase via REST (`on_conflict`, cioe'
+  INSERT ... ON CONFLICT) e su `index.html`, resoconto come commento nella issue "Resoconti del giro automatico".
+- Segreti su GitHub: `ANTHROPIC_API_KEY` e `SUPABASE_SECRET_KEY` (chiave `sb_secret_...`). Mai nel codice.
+- Le voci che aggiunge hanno id `oMMGGx` (annunci), `p-ente-MMGG` (porte) e `c-ente-anno` (concorsi), e
+  nelle note la dicitura "dal giro automatico".
+
 ## Rituale di pubblicazione
 
 1. Modifiche su un branch, mai direttamente su `main`.

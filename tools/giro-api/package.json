@@ -1,0 +1,9 @@
+{
+  "name": "giro-api",
+  "private": true,
+  "type": "module",
+  "description": "Giro di ricerca automatico per Il percorso di Delia, con l'API di Claude",
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.6.0"
+  }
+}

@@ -1,0 +1,68 @@
+name: Giro di ricerca con l'API
+
+# Per ora parte solo a mano (Actions, "Giro di ricerca con l'API", Run workflow).
+# Con "prova" spuntato cerca e scrive il resoconto, ma non tocca Supabase ne' index.html.
+on:
+  workflow_dispatch:
+    inputs:
+      prova:
+        description: "Prova: cerca ma non scrive niente"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: giro-api
+  cancel-in-progress: false
+
+jobs:
+  giro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installa l'SDK di Anthropic
+        run: npm install --prefix tools/giro-api --no-audit --no-fund
+
+      - name: Giro di ricerca
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          DRY_RUN: ${{ inputs.prova && '1' || '0' }}
+        run: node tools/giro-api/giro.mjs
+
+      - name: Resoconto nel riepilogo della corsa
+        if: always()
+        run: if [ -f resoconto.md ]; then cat resoconto.md >> "$GITHUB_STEP_SUMMARY"; fi
+
+      - name: Pubblica index.html
+        if: ${{ !inputs.prova }}
+        run: |
+          if git diff --quiet -- index.html; then echo "niente da pubblicare"; exit 0; fi
+          git config user.name "giro-automatico"
+          git config user.email "giro-automatico@users.noreply.github.com"
+          git add index.html
+          git commit -m "Giro automatico del $(TZ=Europe/Rome date +%F)"
+          git push
+
+      - name: Resoconto come commento nella issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f resoconto.md ]; then exit 0; fi
+          gh label create giro-automatico --force >/dev/null
+          n=$(gh issue list --label giro-automatico --state open --json number -q '.[0].number')
+          if [ -z "$n" ]; then
+            n=$(gh issue create --title "Resoconti del giro automatico" --label giro-automatico \
+              --body "Qui arriva il resoconto di ogni giro automatico con l'API." | grep -o '[0-9]*$')
+          fi
+          gh issue comment "$n" --body-file resoconto.md
