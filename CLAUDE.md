@@ -85,6 +85,12 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   Dal 3 novembre 2026 (Antonio) il riquadro nasconde anche gli annunci il cui campo `tipo` dice "immediata", "immediato" o "da subito". Quindi scrivi quelle parole nel `tipo` quando l'annuncio le dice.
 - Campi PORTE: `fam, id, t, ente, zona, km, kmt, tipo, pubb, stato (top, buono, attenzione), d, url`.
 - Link Indeed: il connettore da' solo la forma breve `to.indeed.com`. Il `jk` non va mai inventato.
+- Se il connettore Indeed non c'e' (ToolSearch "indeed" senza risultati, o server MCP "failed to connect", per
+  esempio il 10 novembre 2026 con errore -32429): non e' una scusa per saltare il giro. Si fanno tutte le altre
+  fonti. Le voci con link `to.indeed.com` non si ricontrollano e non si dichiarano aperte; vale la regola dei 30
+  giorni. Nel resoconto si scrive "Indeed non collegato" e quante voci Indeed non sono state ricontrollate. Non
+  si prova a leggere indeed.com direttamente (403). Si dice ad Antonio di riconnettere Indeed nella pagina dei
+  connettori di Claude.
 - Nessun annuncio inventato. URL reali. Nessuna scadenza dedotta. Distanze non verificate dichiarate come
   stime. Non dire "aperto" senza averlo verificato. Se una fonte non e' leggibile, scriverlo.
 - **Verifica delle scadenze a OGNI giro, su TUTTI gli annunci e le porte gia' in elenco** (richiesta di
