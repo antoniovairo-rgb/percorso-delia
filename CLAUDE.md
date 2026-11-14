@@ -69,13 +69,17 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   (anche Ad Hoc) o B-Point: Delia non li conosce (Antonio, 30 ottobre 2026). Se sono solo preferibili,
   l'annuncio resta.
 - Controllare anche comune.roma.it (MAD Municipio V) e inPA.
-- Fonti da provare a ogni giro, tutte, e per ognuna dire nel resoconto se era leggibile o no:
-  Indeed (tramite connettore; la lettura diretta del sito da' 403), Randstad (leggibile il 17 ottobre),
-  Adecco, Gi Group, Manpower, Umana, Openjobmetis, Synergie, LinkedIn, Jooble, Glassdoor, Bakeca, Subito
-  (Bakeca e Subito davano 403 il 17 ottobre), Monster, Trovit, Lavoro.it, Talent.com, Helplavoro,
-  Euspert, i siti delle cooperative sociali gia' in elenco, inPA, comune.roma.it,
-  concorsipubblici.com, ASMEL. InfoJobs ha chiuso. Le pagine elenco degli aggregatori hanno date poco
-  affidabili: un annuncio entra solo dopo averne letto la scheda.
+- Fonti da provare, e per ognuna dire nel resoconto se era leggibile o no. **Ogni giorno, tutte:** Indeed
+  (tramite connettore; la lettura diretta del sito da' 403), Randstad (leggibile il 17 ottobre), Gi Group,
+  Manpower, LinkedIn, Jooble, Talent.com, Helplavoro, inPA, comune.roma.it, piu' i siti delle voci gia' in
+  elenco (per esempio Jobijoba, Kitlavoro, Regione Lazio). **A rotazione (Antonio, 14 novembre 2026):** un
+  gruppo al giorno, scelto con il resto della divisione del giorno del mese per 4 (resto 1 gruppo A, resto 2
+  gruppo B, resto 3 gruppo C, resto 0 gruppo D), letto a fondo e non solo con la ricerca web. Gruppo A: Adecco,
+  Umana, Openjobmetis. Gruppo B: Synergie, Glassdoor, Monster, Trovit. Gruppo C: Lavoro.it, Euspert, Bakeca,
+  Subito (Bakeca e Subito davano 403 il 17 ottobre). Gruppo D: concorsipubblici.com, ASMEL, i siti delle
+  cooperative sociali gia' in elenco. Nel resoconto: quali fonti a rotazione ho letto oggi e quali sono
+  rimaste fuori. InfoJobs ha chiuso. Le pagine elenco degli aggregatori hanno date poco affidabili: un
+  annuncio entra solo dopo averne letto la scheda.
 - Scala `dist` negli ANNUNCI: 1 entro 3 km, 2 da 3 a 6, 3 da 6 a 12, 4 oltre, 0 da verificare. Raggio
   dichiarato all'utente: 10 km.
 - Riquadro "Da guardare subito" della Home (Antonio, 1 novembre 2026: "mai in primo piano" i concorsi lontani e
@@ -106,7 +110,11 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
     o una porta pubblicati da piu' di 30 giorni si tolgono (`scaduto:true`) se non c'e' una prova che siano
     ancora aperti (per esempio `validThrough` futuro su Randstad). Con Indeed la prova non c'e' quasi mai:
     la ricerca del connettore rende al massimo 10 risultati e i link brevi rimandano sempre, anche per gli
-    annunci chiusi. Restano le voci fisse senza data (candidature spontanee, schede informative B);
+    annunci chiusi. Restano le voci fisse senza data (candidature spontanee, schede informative B).
+    **Eccezione (Antonio, 14 novembre 2026):** se nello stesso giro la ricerca del connettore Indeed ritrova
+    l'annuncio (stessa azienda e stesso titolo), la voce resta fino a 45 giorni dalla pubblicazione; oltre i 45
+    giorni si toglie comunque. "Ritrovata" non vuol dire "aperta": nel resoconto si scrive "ritrovata su
+    Indeed", mai "aperta";
   - se chiuso: `scaduto:true` nel codice e in `voci` con INSERT ... ON CONFLICT, piu' una riga nel campo
     note o `d` con la data e la prova. L'app nasconde gia' annunci e porte con `scaduto:true`;
   - quando Antonio o Delia dicono che un annuncio e' scaduto, segnarlo subito, citando loro come fonte;
