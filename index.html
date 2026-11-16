@@ -2712,14 +2712,25 @@ function renderFiltri(){
     + '<span hidden id="conta"></span>';
   document.querySelectorAll("[data-c]").forEach(b=>b.addEventListener("click",()=>{ filtro=b.dataset.c; renderFiltri(); renderAnnunci(); }));
 }
+/* Data di pubblicazione letta dal campo pubb ("23 ottobre 2026 (Indeed)", "LinkedIn scrive ... intorno al 20 ottobre 2026"): 0 se non c'e'. */
+const MESI_PUBB = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,agosto:7,settembre:8,ottobre:9,novembre:10,dicembre:11};
+function dataPubb(x){
+  // Si salta una data che e' una scadenza ("scade il", "fino al"): non e' la data di pubblicazione.
+  const re = /(\d{1,2}) (gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre) (\d{4})/g;
+  const t = String((x&&x.pubb)||""); let m;
+  while((m = re.exec(t))){ if(/(scade il|fino al) $/.test(t.slice(0, m.index))) continue; return new Date(+m[3], MESI_PUBB[m[2]], +m[1]).getTime(); }
+  return 0;
+}
+const piuRecente = (a,b)=> dataPubb(b)-dataPubb(a);
 function renderAnnunci(){
   const uff = filtro==="ufficio";
   const be=document.getElementById("blocco-edu"), bu=document.getElementById("blocco-ufficio");
   if(be) be.hidden = uff; if(bu) bu.hidden = !uff;
   if(uff){ renderPorte(); return; }
-  const RANGO = {socio:1, dom:2};
+  // Dal 16 novembre 2026 (Antonio): dal piu' recente al piu' vecchio. Restano in fondo solo il lavoro a domicilio e quelli segnati "non fa per te".
+  const RANGO = {dom:1};
   const l = tutti().filter(a=>filtro==="tutti"||a.cat===filtro)
-    .sort((a,b)=>((RANGO[a.cat]||0)-(RANGO[b.cat]||0)) || (a.escluso?1:0)-(b.escluso?1:0) || (a.dist||3.5)-(b.dist||3.5));
+    .sort((a,b)=>((RANGO[a.cat]||0)-(RANGO[b.cat]||0)) || (a.escluso?1:0)-(b.escluso?1:0) || piuRecente(a,b) || (a.dist||3.5)-(b.dist||3.5));
   const BANDE = {
     socio: '<div class="sep-socio"><b>Qui sotto: OEPAC ed educatrice nel sociale</b>'
       + '<p>Sono i posti da educatrice fuori dalla sezione: affiancare a scuola i bambini con disabilit\u00E0, comunit\u00E0 per minori, centri diurni, servizi socio educativi. '
@@ -2745,7 +2756,7 @@ function renderAnnunci(){
     const [clc,txc] = ETICAT[a.cat] || ETICAT.extra;
     const cat = '<span class="pill '+clc+'">'+txc+'</span>';
     let sep = "";
-    if(bande && BANDE[a.cat] && !bandaFatta[a.cat]){ bandaFatta[a.cat] = true; sep = BANDE[a.cat]; }
+    if(bande && a.cat!=="socio" && BANDE[a.cat] && !bandaFatta[a.cat]){ bandaFatta[a.cat] = true; sep = BANDE[a.cat]; }
     return sep + '<div class="ann"><div class="dist"><div class="'+cls+'"><div class="n">'+n+'</div><span class="u">'+u+'</span></div></div>'
       + '<div style="flex:1;min-width:0"><div class="pillole">'+cat+(a.escluso?'<span class="pill p-no">non fa per te</span>':'')+'</div>'
       + '<h3>'+esc(a.titolo)+'</h3>'
@@ -2762,7 +2773,7 @@ function renderAnnunci(){
       + '<button class="b b-mini b-no" data-hd="'+esc(a.id)+'">Non mi interessa</button>'
       + '</div></div></div>';
   };
-  el.innerHTML = l.length ? dentro.map(a=>mk(a,true)).join("")
+  el.innerHTML = l.length ? (filtro==="socio" ? BANDE.socio : "") + dentro.map(a=>mk(a,true)).join("")
     + (fuori.length ? '<details class="archivio"><summary>Oltre i 10 km, da tenere da parte ('+fuori.length+')</summary>'+fuori.map(a=>mk(a,false)).join("")+'</details>' : '')
     : '<div class="vuoto">Niente in questa categoria.<br>Il prossimo aggiornamento automatico ne porter\u00E0 altri, oppure aggiungine uno tu.</div>';
   const c = document.getElementById("conta"); if(c) c.textContent = l.length + (l.length===1?" annuncio":" annunci");
@@ -2808,7 +2819,7 @@ function renderPorte(){
   ["A","B","C","D"].forEach(f=>{
     if(famPorte!=="tutte" && famPorte!==f) return;
     const gruppo = PORTE.filter(x=>x.fam===f && !S.nascosti.includes(x.id) && !x.scaduto)
-      .sort((a,b)=>(ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
+      .sort((a,b)=>piuRecente(a,b) || (ordine[a.stato]-ordine[b.stato]) || ((a.pri!=null?a.pri:(a.km||99))-(b.pri!=null?b.pri:(b.km||99))));
     if(!gruppo.length) return;
     const [tit,sot] = TESTE[f];
     html += '<div class="zona-testa" id="porte-'+f.toLowerCase()+'"><b>'+tit+'</b><span>'+sot+'</span></div>';
