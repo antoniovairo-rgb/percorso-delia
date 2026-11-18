@@ -39,7 +39,9 @@ Regole per le sessioni Claude Code che lavorano su questo repository. Valgono se
   anche in `voci`.
 - Liste in `voci`: annunci, concorsi, canali, porte, zone, comunali, enti, dove. Le voci con campo `id`
   si abbinano per id; canali, zone, comunali, enti, dove non hanno id nel codice e si abbinano per
-  posizione (id DB `c01`, `c02`, ...).
+  posizione (il campo `ordine`). Gli id nel DB sono: `c01`, `c02`, ... per i canali; il CAP per le zone
+  (per esempio `00177`); il nome della voce per comunali, enti e dove (per esempio `Indeed`). Verificato
+  il 18 novembre 2026 con una lettura del database.
 - Negli annunci il database puo' portare anche `verdetto` dentro `dati` (copia di `VERDETTI[id]`):
   l'app usa `a.verdetto || VERDETTI[a.id]`, quindi e' equivalente.
 - Controllo codice contro database: estrarre gli array dall'index, confrontare ogni voce con `dati`
